@@ -31,7 +31,6 @@ const ui = {
   officialLink: document.querySelector("#officialLink"),
   documentTransition: document.querySelector("#documentTransition"),
   transitionMessage: document.querySelector("#transitionMessage"),
-  transitionAction: document.querySelector("#transitionAction"),
   transitionSeconds: document.querySelector("#transitionSeconds"),
 };
 
@@ -261,13 +260,10 @@ function hideTransition() {
   document.body.style.overflow = "";
 }
 
-function showTransition(url = null) {
+function showTransition() {
   if (transitionTimer) clearInterval(transitionTimer);
 
   let seconds = 6;
-  ui.transitionAction.textContent = url
-    ? "Abrindo o documento em"
-    : "O painel será exibido em";
   ui.transitionSeconds.textContent = seconds;
   ui.documentTransition.classList.remove("hidden");
   document.body.style.overflow = "hidden";
@@ -279,20 +275,9 @@ function showTransition(url = null) {
     if (seconds <= 0) {
       clearInterval(transitionTimer);
       transitionTimer = null;
-      if (url) {
-        window.location.assign(url);
-      } else {
-        hideTransition();
-      }
+      hideTransition();
     }
   }, 1000);
-}
-
-function handleSeiLink(event) {
-  const link = event.target.closest(".document-link, #officialLink");
-  if (!link?.href) return;
-  event.preventDefault();
-  showTransition(link.href);
 }
 
 function render(data, old) {
@@ -359,7 +344,6 @@ ui.closeHistory.addEventListener("click", () => ui.historyDialog.close());
 ui.historyDialog.addEventListener("click", (event) => {
   if (event.target === ui.historyDialog) ui.historyDialog.close();
 });
-document.addEventListener("click", handleSeiLink);
 window.addEventListener("load", () => showTransition(), { once: true });
 window.addEventListener("pageshow", (event) => {
   if (event.persisted) hideTransition();
