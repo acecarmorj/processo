@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { Agent } from "undici";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const DATA_PATH = resolve(ROOT, "data", "processo.json");
@@ -12,6 +13,11 @@ const PROCESS_URL =
 const SEI_BASE = "https://sei.rj.gov.br/sei/modulos/pesquisa/";
 const MODEL = process.env.OPENAI_MODEL || "gpt-5.4-mini";
 const DATA_SCHEMA_VERSION = 2;
+const SEI_AGENT = new Agent({
+  connect: {
+    timeout: 30_000,
+  },
+});
 
 function clean(value = "") {
   return value.replace(/\u00a0/g, " ").replace(/\s+/g, " ").trim();
@@ -25,16 +31,37 @@ async function loadPrevious() {
   }
 }
 
-async function fetchText(url, timeout = 45_000) {
-  const response = await fetch(url, {
-    headers: {
-      "User-Agent": "Mozilla/5.0 (Painel público FAEP-FAETEC)",
-      Referer: PROCESS_URL,
-    },
-    signal: AbortSignal.timeout(timeout),
-  });
-  if (!response.ok) throw new Error(`Consulta falhou: HTTP ${response.status}`);
-  return response.text();
+async function fetchText(url, timeout = 60_000, attempts = 3) {
+  let lastError;
+
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    try {
+      const response = await fetch(url, {
+        dispatcher: SEI_AGENT,
+        headers: {
+          "User-Agent": "Mozilla/5.0 (Painel público FAEP-FAETEC)",
+          Referer: PROCESS_URL,
+        },
+        signal: AbortSignal.timeout(timeout),
+      });
+      if (!response.ok) {
+        throw new Error(`Consulta falhou: HTTP ${response.status}`);
+      }
+      return response.text();
+    } catch (error) {
+      lastError = error;
+      if (attempt < attempts) {
+        console.error(
+          `SEI indisponível na tentativa ${attempt}/${attempts}; tentando novamente.`,
+        );
+        await new Promise((resolvePromise) =>
+          setTimeout(resolvePromise, attempt * 5_000),
+        );
+      }
+    }
+  }
+
+  throw lastError;
 }
 
 function documentUrl(row, $) {
@@ -427,7 +454,18 @@ async function generateAiAnalysis(data) {
 
 async function main() {
   const previous = await loadPrevious();
-  const html = await fetchText(PROCESS_URL);
+  let html;
+  try {
+    html = await fetchText(PROCESS_URL);
+  } catch (error) {
+    if (previous) {
+      console.error(
+        `O portal SEI não respondeu. Mantendo o último relatório válido: ${error.message}`,
+      );
+      return;
+    }
+    throw error;
+  }
   const rawDocuments = parseDocuments(html);
   const movements = parseMovements(html);
   const hash = sourceHash(rawDocuments, movements);
