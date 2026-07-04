@@ -98,6 +98,13 @@ h3 {
   color: var(--blue);
 }
 
+.section-hint {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+
 .status-badge,
 .mode-badge,
 .count,
@@ -561,6 +568,47 @@ dialog::backdrop {
 
 .history-item p {
   margin-bottom: 0;
+}
+
+.transition-overlay {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(5, 35, 50, 0.92);
+}
+
+.transition-overlay.hidden {
+  display: none;
+}
+
+.transition-card {
+  width: min(500px, 100%);
+  padding: 26px 22px;
+  border-top: 4px solid var(--amber);
+  border-radius: 8px;
+  background: white;
+  text-align: center;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+}
+
+.transition-message {
+  margin: 12px 0 18px;
+  color: var(--blue-dark);
+  font-size: clamp(1.08rem, 4.5vw, 1.35rem);
+  font-weight: 750;
+  line-height: 1.45;
+}
+
+.transition-countdown {
+  margin: 0;
+  color: var(--muted);
+}
+
+.transition-countdown strong {
+  color: var(--blue);
 }
 
 @media (min-width: 720px) {

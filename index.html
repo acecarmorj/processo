@@ -109,6 +109,18 @@
         </dl>
       </details>
 
+      <section class="panel" aria-labelledby="documentsTitle">
+        <div class="section-header">
+          <div>
+            <p class="label">Documentos oficiais</p>
+            <h2 id="documentsTitle">Despachos e pareceres</h2>
+            <p class="section-hint">(clique para visualizar)</p>
+          </div>
+          <span id="documentCount" class="count"></span>
+        </div>
+        <div id="documents" class="documents"></div>
+      </section>
+
       <section class="panel" aria-labelledby="timelineTitle">
         <div class="section-header">
           <div>
@@ -121,17 +133,6 @@
         <button id="showMoreButton" class="button text-button" type="button">
           Mostrar mais andamentos
         </button>
-      </section>
-
-      <section class="panel" aria-labelledby="documentsTitle">
-        <div class="section-header">
-          <div>
-            <p class="label">Documentos oficiais</p>
-            <h2 id="documentsTitle">Despachos e pareceres</h2>
-          </div>
-          <span id="documentCount" class="count"></span>
-        </div>
-        <div id="documents" class="documents"></div>
       </section>
 
       <a
@@ -157,6 +158,25 @@
       </header>
       <div id="historyContent" class="history-content"></div>
     </dialog>
+
+    <div
+      id="documentTransition"
+      class="transition-overlay hidden"
+      role="status"
+      aria-live="polite"
+    >
+      <div class="transition-card">
+        <p class="label">Nossa luta continua</p>
+        <p id="transitionMessage" class="transition-message">
+          Há mais de 30 anos essa categoria espera. Cada despacho lido é mais
+          um passo para transformar espera em justiça.
+        </p>
+        <p class="transition-countdown">
+          Abrindo o documento em <strong id="transitionSeconds">4</strong>
+          segundos...
+        </p>
+      </div>
+    </div>
 
     <template id="movementTemplate">
       <article class="movement">
