@@ -12,7 +12,8 @@ const PROCESS_URL =
   "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x";
 const SEI_BASE = "https://sei.rj.gov.br/sei/modulos/pesquisa/";
 const MODEL = process.env.OPENAI_MODEL || "gpt-5.4-mini";
-const DATA_SCHEMA_VERSION = 4;
+const DATA_SCHEMA_VERSION = 6;
+const EXCERPT_VERSION = 2;
 const SEI_AGENT = new Agent({
   connect: {
     timeout: 30_000,
@@ -163,7 +164,7 @@ function coreText(html, number) {
   return clean($("body").text())
     .replace(new RegExp(`^.*?${number}\\s*[-–]\\s*`, "i"), "")
     .replace(/Documento assinado eletronicamente por.*$/i, "")
-    .slice(0, 2400)
+    .slice(0, 12_000)
     .trim();
 }
 
@@ -177,15 +178,27 @@ async function enrichDocuments(documents, previous) {
   for (const document of documents) {
     const old = previousByNumber.get(document.number);
     if (!recentNumbers.has(document.number)) {
-      enriched.push({ ...document, excerpt: old?.excerpt || "" });
+      enriched.push({
+        ...document,
+        excerpt: old?.excerpt || "",
+        excerptVersion: old?.excerptVersion || 1,
+      });
       continue;
     }
-    if (old?.excerpt && old.publicUrl === document.publicUrl) {
-      enriched.push({ ...document, excerpt: old.excerpt });
+    if (
+      old?.excerpt &&
+      old.publicUrl === document.publicUrl &&
+      old.excerptVersion === EXCERPT_VERSION
+    ) {
+      enriched.push({
+        ...document,
+        excerpt: old.excerpt,
+        excerptVersion: EXCERPT_VERSION,
+      });
       continue;
     }
     if (!document.publicUrl) {
-      enriched.push({ ...document, excerpt: "" });
+      enriched.push({ ...document, excerpt: "", excerptVersion: EXCERPT_VERSION });
       continue;
     }
 
@@ -194,9 +207,14 @@ async function enrichDocuments(documents, previous) {
       enriched.push({
         ...document,
         excerpt: coreText(html, document.number),
+        excerptVersion: EXCERPT_VERSION,
       });
     } catch {
-      enriched.push({ ...document, excerpt: old?.excerpt || "" });
+      enriched.push({
+        ...document,
+        excerpt: old?.excerpt || "",
+        excerptVersion: old?.excerptVersion || 1,
+      });
     }
   }
 
@@ -210,8 +228,9 @@ function explainDocument(document) {
 
   const text = (document.excerpt || "").toLowerCase();
   if (
-    text.includes("rioprevidência") &&
-    (text.includes("207,02") || text.includes("r$ 207"))
+    document.number === "135635411" ||
+    (text.includes("rioprevidência") &&
+      (text.includes("207,02") || text.includes("r$ 207")))
   ) {
     return "Este é o parecer orçamentário mais importante até agora. Ele não nega o pedido: aponta um custo de cerca de R$ 207,02 milhões por ano e mostra que os órgãos não têm folga no orçamento atual. Agora o governo precisa decidir como financiar ou ajustar a proposta.";
   }

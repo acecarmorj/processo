@@ -1,8 +1,8 @@
 {
-  "schemaVersion": 4,
+  "schemaVersion": 6,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-07-04T03:44:30.312Z",
+  "generatedAt": "2026-07-04T04:11:09.544Z",
   "sourceHash": "415476c692992951ab6b512efb4e953bac06e90713bd7692e44563677d8b6f0f",
   "movements": [
     {
@@ -2459,6 +2459,7 @@
       "unit": "SEEDUC/SUBEXE",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1ZuccKtiiT8_6aBRvM7Ts-Ag0PJgQmC6OY4i05FXYMT7hJxv3pg84oE6Hpz_TvZ7Vcan9QESw_iPR3pMPWeNDg",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBEXE. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2468,6 +2469,7 @@
       "unit": "SEEDUC/SUPTA",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3rE5TarKn7KiSgImLy7QvAmLGf5Eu8F5C_jY-Aox6t3ZkWJIKf-RocfIdLrujHmo646uVSx8pTuYwdbtFI7o8Z",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPTA. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2477,6 +2479,7 @@
       "unit": "SEEDUC/SUPTA",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj2SFTXjdOk2_PF0fSMNrz-2csYuwvUJD-2jj71GDmwVVsbTRnmEXmZin9Zc3-b2CRPmqVY4qMrRiisn0CNSsdVx",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPTA. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2486,6 +2489,7 @@
       "unit": "SEEDUC/SUPTA",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0X1dZkZqNbSWXxT68J9SEXvZlabZekUju3_aNAPZ5YBvsuU16fEqiCrsvmH0qqAFKG_gV6oPwa_rjBrWSeKzrH",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPTA. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2495,6 +2499,7 @@
       "unit": "SEEDUC/SUPTA",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj2pBXk0Zh5SCnnbDy5vIRDdCdGpcNfKJCQJrp7quVHhC46OgDd393fs6cw-M3IMfM0gVUF15M-EUNM-5B1ng0Zp",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPTA. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2504,6 +2509,7 @@
       "unit": "SEEDUC/SUPTA",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0uW0uQAs7H2dv80lWT8eBEVYdS4y63lXyv9AYcSUHvBVGowuYiz3_7-1un5yMWk5Lx6gRnKBWaScZSVqyx3P2Q",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPTA. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2513,6 +2519,7 @@
       "unit": "SEEDUC/SUPTA",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj16k2iugUiuXt6pIvsv6__D_vQ0QL2DOLsronS0GzNXwDt8EcOE8ugQACC3X6Y591X1Naq9dJ4CdblMM7ySEAU0",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPTA. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2522,6 +2529,7 @@
       "unit": "SEEDUC/PROTPUB",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj2A2Zoc5ntBkDq2Fl0IZawnCAcphRJhCcYhUT-dwPXKFAs2kJQBcbrUHrLQHn2HcAMmOtIqxJF7JdKb1AeDieMO",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/PROTPUB. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2531,6 +2539,7 @@
       "unit": "SEEDUC/SUPTA",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj2ZWoxhTGwgk3dB1_AGCbx0VEEH6A7Da2GcQMqHg-hFfqpqrwnFjjQxBDDFtsxviQl_xmbVk_aJdxuSAu0JJGCS",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPTA. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2540,6 +2549,7 @@
       "unit": "SEEDUC/SUBEXE",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3WE4SA0rld1A_8OApmYVqhtHykfuZt1cED1kKHPzc1mHN2wUujyuNmJYiEbpM-HlAQ33GwKvt-qgRdaVC_dmyP",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBEXE. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2549,6 +2559,7 @@
       "unit": "SEEDUC/CHEGAB",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1hTLOyicR6v1SPI7rl_B9vcWZ4CI5_PePR_Nf4M_xd0jpL89USUBjR7wfbUb2hFDLo_Xee_ZUqwa09SJBMJapt",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/CHEGAB. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2558,6 +2569,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0BlufGfSxAheh4LDaPxG27lOiZ-jfajH3-0pJCj7Ho-QQGFEuyYxo_BalktUic_8LkTejmc2_RkiovbTIRZGfv",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2567,6 +2579,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0D92cOHqAQd1WWzRffLXNueevC9Aj74zrkozoFA-XLnW5Whlfw1QXK2k_-WF8nfV3QuMpBXC0quoa69QbDFiDA",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2576,6 +2589,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1uDgzLvgJsR28RwmQCuT2ccPdgff74bvFp8nnc-rmKMAtRzDjFVHrsYQhAblBK-w2Ryg-r1jTaLohqP5QX2qKZ",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2585,6 +2599,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0yyHCnMtsBB0CHKO8LooEkdtw22fuapAGhnGJllxhkZ8KWlrPkGeP-W9cvHTexrCjSxymjQ1TmDLSTP93RqTaF",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2594,6 +2609,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1JmzxS4Faqwr23OuAJa6YnkxIj_r78E5ixMTGKZqpMLmi_NZzYx8Qmjt2WO0soksphUHIt_hHoSCBgSAwXRuZ3",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2603,6 +2619,7 @@
       "unit": "SEEDUC/ASSJUR",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3CqHIwr2NP-E5PWjKJKjGrI3A-igEyQasbigDvDsyRAvIV1r5nJ6gczT0KsLwCx16pOqwzOwVl_FO4zJCsD7D-",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/ASSJUR. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2612,6 +2629,7 @@
       "unit": "SECC/CHEGAB",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3aoIo5iS8cm5NotTUsH60ismEZiFV6N_rMauv3UluOCV-sunGBIfoiGmX6cd6BcisYicMJAobFJphfHCZtyGrf",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SECC/CHEGAB. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2621,6 +2639,7 @@
       "unit": "FAETEC/PRESI",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj2vfT1bMv_Ov3inAzgUQ3Zuvexri2Df0nSGaTSnzY4JWefl6vKj_9jUD10KNVuEI5KKCle3Oh56ZQvXNpV31Hqv",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por FAETEC/PRESI. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2630,6 +2649,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1YKq0vbmItVebczs36tYW9lbtXyUD0YYvNPU1gpTOug7jxmqmMQ6Jg3jSZ2wJNG4EqImYYffoKrkZHqZ_wdrAR",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2639,6 +2659,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0CFTl-OpsMmCBao4sKv0uv74Bg8GPtqDis-n3kl30GkIEoUMux7yRxGnt8TIvlOEX9BiA1EwmG-1PmmXl4PV07",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2648,6 +2669,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj19jfTgutglXCTRq81PVYY9tT9s5sOo68t3NTJkEn2daVwyUz2ns0_N8dfWTfvTpY4LRY6wmfkGQrI5YBAs5S2p",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2657,6 +2679,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj25TW_q8wiTs0eLb_I7JYHgdgtqxfEP9CISGp8Ne2BrprD01XtpiaD8nypEeVqezOeurtWFrQ69k39w-8KPyy7K",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2666,6 +2689,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj09MRDSWxoeV3qqW-FbtjxXqTKQKlR-U-KOizBa5XhdMOPZbVrVMOPlZMXjP0k5y0LZW2s8fpFvwbJZD-t5UnMO",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2675,6 +2699,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1M4SF-vlZUsYCHvZ8QBKxnFiFxzIu9mLQVi6lqSgPWG66QunZFYEcUGteEzSLdbt2QA0FY0Jw9epBSnqABQkT1",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2684,6 +2709,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1YuBAsjILtkXX6vaD1HAggjUOfrVIO8llyyIpfqJ1H37F_jg52APYyWcRd-_X5VIFpJrkCmNylGtTuE1MUopgT",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2693,6 +2719,7 @@
       "unit": "SEEDUC/SUPTA",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3bbHU4XQvFqN2a-Hvat_q4yV902timFY1r2R4ypwXKhCLqBnXsOzr3GxJ5nXDMo8vAu6-3A0MSdBatZ_-VM_Qg",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPTA. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2702,6 +2729,7 @@
       "unit": "SEEDUC/SUPTA",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0SwtuLuEWmwrYwjXKxiudtj3utj2lQwp5VTERcqpgoV08Z45Ap-dglWMwIHZVM9qwK58sTTQr_k-1FrwGmht7s",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPTA. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2711,6 +2739,7 @@
       "unit": "SEEDUC/PROTPUB",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0L8PGpNkLxu3NEDT4MkmgU5YhGlJ-KDEkzkEIfJcZjU6nPfG1ljGaA6psSGaTAcKs5fPKeokd-Kd6MA9Unfxje",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/PROTPUB. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2720,6 +2749,7 @@
       "unit": "SEEDUC/SUPTA",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1sglJ_7gxx96ZcqXSw2l9t5vGKRmbZtfVBWPLxXpwLv5mpM8VJDxo0Uvox2f1mz-hwtaRhkKk2BTnUnUikr7ja",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPTA. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2729,6 +2759,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj2Fw8HP07MJGNz5AAki9e6Af68MPnBBXwCcFYtK8rhL-6E1f0nlo1liSu5fpQTtqqEF1kcqhc-bIk5OfErYvihV",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2738,6 +2769,7 @@
       "unit": "FAETEC/PRESI",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0MmPbenT7kSKnUJhHQ3P86v1ABuKZIgTl33-cd7HlT5S5BM4smqEkdSEMeS3R3f1E3TABnB0wmfxY2fJEU5pfz",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por FAETEC/PRESI. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2747,6 +2779,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1mAti4MT-kA9VNl1Y_MgIBBs61_r0zVlIv3CW6s_qVERy4bD5z1M6Lm9db6By3Zzskjay2zSfaja7oL5CqIXVr",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2756,6 +2789,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj39qa5TLljlOdamDdMdWzM7ihSi9lIHfRAv4IXZNE-Z8VwAl59kpEU_X9H4iwhqP5NfsQsLqT8WUOJSuHAyoSmH",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2765,6 +2799,7 @@
       "unit": "SECC/CHEGAB",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj06xYgrg7vdCacOfSW31ddjF8qPMscoDkvB8Q_Aqc7ZQoUCClN2ypT9-Ye-a4KbB8y_hGc0xkMqdqFoD50XnjZ_",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SECC/CHEGAB. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2774,6 +2809,7 @@
       "unit": "FAETEC/PRESI",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj30QdDguMS1jgpWRC6A3ZpNKThel0Sei0pcDucztZ-Jtt9j1AgsyGqhkhCZWzAfqbGb9t9Hrj0vL6tRpFX8Ja8O",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por FAETEC/PRESI. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2783,6 +2819,7 @@
       "unit": "FAETEC/ASSJUR",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj31-pT8MflQLTBPwGzsPVhv7FXX5L6WY6KW9vHq2QDbnvTX0vBHKCKloIjBqD7x-wlp_4Eqpvfw2NIdxaVYFRAA",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por FAETEC/ASSJUR. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2792,6 +2829,7 @@
       "unit": "RIOPREV/PRESI",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj2aY8Bf0EPTkpwBeNwGTuwPR4phNio8X_Kzi7Xm1Tk7cIVkbUFAu1OX7ZY6686xHMoHy1fMCG827XZ5x8jo8MBw",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por RIOPREV/PRESI. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2801,6 +2839,7 @@
       "unit": "FAETEC/DIVRH",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj28EBPQSm6kw9DaE8k4F5Bqx_w1iUZspu415XigJNWLIZOVXmKhIOhfl8tXM-kzjhfd8FO0PIgupuT8gC16iuLm",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por FAETEC/DIVRH. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2810,6 +2849,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1f9AKTPeDOATxtWcTryCoKa8BQ5aJZDLD6A4f0rygvHLxthaZ1-mqZtestfwFSjvSSsf_TyB6bk_VU5oF4LOmE",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2819,6 +2859,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0xAfKaLO2Tu_X1X57KR82wzU2l9tho0r2l72iQzcGmzk9-3nfSw8jpiY9DKH4krJWVTuHm082nq9xSLgrMsC7M",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2828,6 +2869,7 @@
       "unit": "FAETEC/PRESI",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1aPH3qBOSWQ31Wumdm6VEh7TRHUatNX8bamEqhj0K8z3v9O4AeZkxu-m8gNQbRbexTy-ozkoP_Gq23_ovl0_nW",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por FAETEC/PRESI. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2837,6 +2879,7 @@
       "unit": "RIOPREV/DIRSE",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0MadywZ2nnXLcomHewQDmEETXYlYFr655AUoIs_3IXd-XuuGpypoVT56_-MHQ2FUuXKRsrc9fr9MQ4zfhFPVGk",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por RIOPREV/DIRSE. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2846,6 +2889,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj10wbJKbsFvkBt9WOTkjzN70N69622r5qRKjswKhuXjlQfYVgFqaVmOVXDyFFmgvORlKHH9CewfR6620pMIbm4T",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2855,6 +2899,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0M_-hySSTzeVjqSxsVwoZezXBE3xmJfww0Q17CLSUmqhpZhxQ0zFzijTlyuZCnOyECfmQWbxcvpokHHWhLAjIs",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2864,6 +2909,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj28u_hn7spVDKhQ3QtaUv61e5wiMPQX4dsEOqhZdMvpmgO1kKzbhzMGRGeLB79Drcg_bDK-FpiqUamVrX7kP5jg",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2873,6 +2919,7 @@
       "unit": "SEEDUC/SUBEXE",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1fOpXAsrdgRLoXrBi6LHfO0aQCLyPf6Fj6HAcS6AM4yAZePAcEBJCd8G7L_3dcJjID17iPsOVSZw85ezHwTIut",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBEXE. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2882,6 +2929,7 @@
       "unit": "SEEDUC/SUPOF",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0pHxDd1OqMVEh0gPdUgltzHGez8QQwOvYdKXytK-ls_9VeFtO1RFpi_jouD7dH2N3cdlwnCLi6CwGOxe_CpOhU",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPOF. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2891,6 +2939,7 @@
       "unit": "SEEDUC/SUBEXE",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1vaBUOea37llEIHz8SvpkEzVRiMUh1fKqEA5yR1AI1luGMuEnAxWLzfrGRMzj0rm2ZcuiMRv1pp50O99oQGcK-",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBEXE. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2900,6 +2949,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1z-g14cDVwffVbi8TppDIznkuaWjfOzOiLQrn0rGuz8hIZlp_RvJ4C-0a4upTYdnHPZ7OtT69Cr5XkC8UfTg4e",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2909,6 +2959,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0PbWjLWS6he-ljz3zscgXsRjqHLY26eQeR5ZAEOLeHYOzaxeuo0rP195iA-IldiDRfHyN7GvsgwvNoaGzqadAz",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2918,6 +2969,7 @@
       "unit": "FAETEC/PRESI",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3iWRpcDTmj0N05JBx1q9GHsMgkEWi66RVHg8DfWRvFuJVb0SoIofnUdgm8r4QR87BCeHQ0CMfI187orvxi5BdD",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por FAETEC/PRESI. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2927,6 +2979,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0UVLT6WCAkwFXg-GXNdPXvz4uOKRPHn3eJ2v4JvKvsC6FBry15vhHO078nYYyit_F6QpsqxxkirbZov6giM53q",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2936,6 +2989,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj2m-qqlOvoIVMgZDb5Q695YE-qeaRRDLGu1nvuEtQNJJU82NrD1VXn5WqNj15xOdelSsYAtqJgZSole5Mvkqnmd",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2945,6 +2999,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj104R_3FcbS7F2DLf5dyNXlBymAuBi-0-TfuUN_RGJ52_NKshR0uIMujyQs_hdALI4KQt0GT4eGeh4P70cQDCiT",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2954,6 +3009,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": null,
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
     },
     {
@@ -2963,6 +3019,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0VYaIuQsPoAoExDyzOAgdgUHOPJm_7OLnJZX2FdxdA9OwyQHaXweEXoIYGE7fPCQyGr3QiHd00l0angTCrwUQm",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2972,6 +3029,7 @@
       "unit": "RIOPREV/DIRSE",
       "publicUrl": null,
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
     },
     {
@@ -2981,6 +3039,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3AvwgFDLOpOp27yRg1LfH-5m-HcD7hoPjUERZvcbI_ICNJ-6j4joDCaVyb1vRlRzhbOtvPcSBMv0Kzg0xp5hUM",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2990,6 +3049,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0wVx61P3xoMTn22FAW0XaVCgCTXnO0uY5w4DdnLvAy_yOT8zPZvsBqJazwM0Wcnv4exj2IBCnFJe-pPG7tV2TL",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -2999,6 +3059,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3gOrjB6a9lxxAfzdc7dJrey9-a03VZ2lwHEZgiWeZwNCn0ybkJ7PNeDF02MfOk8BaiQnGJrNVozYlv528qnIuC",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3008,6 +3069,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0SajRpvfxmLPF1fbfJcA7HVtaYzT3WyUcq0u5l-EoZz0tNUXZOi9ED6Bn79pdKjMWpMUMlo5s9W2ifAVT6tNJp",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3017,6 +3079,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1K258vD6RD4nFiyduIiPna9txjYd25335OqT6Qqnd3tx6UTD0KYW5na2AlI7FQUatY3NojlykBONIqR860mMOw",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3026,6 +3089,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj01ttfF-F1MY1_xBemm8X5ftKm8ZK7CfeIT86WMIyurQ-SqXSfCGcdiRydemUpnc4ZNilLQxIFH_lX7cG1nG65K",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3035,6 +3099,7 @@
       "unit": "RIOPREV/DIRSE",
       "publicUrl": null,
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
     },
     {
@@ -3044,6 +3109,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1mW2hnwlHCV339K8SiwqS-EOWd9rFUexPXYhpvqGADKRAChcjR3iykpYIJcgPy_m7O_s5MJIwNU6uqTqjxnQKt",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3053,6 +3119,7 @@
       "unit": "SECC/SUBGEP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0KoMclJnuDjBWtIAKm-LBifVMuQHTD1O8xRPqd0Mu1AuB3_JMz-mM3-nOvYlQtUMEKPT0snRG11yrTs4fCn2k1",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SECC/SUBGEP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3062,6 +3129,7 @@
       "unit": "SECC/COGIC",
       "publicUrl": null,
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
     },
     {
@@ -3071,6 +3139,7 @@
       "unit": "SECC/SUBGEP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1ObHE9ySrK7bbuQv9fsOhV_bLYxpSBxU9F87FDyrmmUZrFCFjRasuVsIufmuE5xlohrFtc3jkfqtLbephLkyKb",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SECC/SUBGEP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3080,6 +3149,7 @@
       "unit": "RIOPREV/DIRSE",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0oAakfj3DJBhrX6f24iPtStNr_Vls9X832RcHSZf2a9zFgczI-wO44KypBLmHGGruauEcANkpYbY4Ik3Irnjiu",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por RIOPREV/DIRSE. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3089,6 +3159,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj2Sy3Fx4vbJiltIyNDoBIi32NroURboh3oyqvD5_sG6GU2xcV3uktKwZnM82DNs-VGmJnbJE0xjkNhKOAsAHOMi",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3098,6 +3169,7 @@
       "unit": "SEEDUC/SUBEXE",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0L60B6f78QAQ1tuFKziVOzUDegr47rQhnhmdqpva3lwsucoA_mpxGgMbjdo56LReKojfmyRrraSTqbxFeLhDKH",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBEXE. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3107,6 +3179,7 @@
       "unit": "SEEDUC/SUPOF",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj2WboH2eYdZYhULsUIrxAeHAv30dzpJTQ-Osv5Cc_GPgGSWhfd7R8KrjCpe_nBAEEf7uf3Sax2dwFYBtb1biMVA",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPOF. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3116,6 +3189,7 @@
       "unit": "SEEDUC/ASPLO",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3UCEcRrmRyKjVygkleI0xI4imImLgkh_IZ_fJcpna9OZxNmEQKRIqBRG9t0L6WmlzRIw8Nd51erparwPW-37An",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/ASPLO. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3125,6 +3199,7 @@
       "unit": "SEEDUC/SUPOF",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj263HH6khUv6lx2XBuYIXo5k9_UQhvWyjwKsZ6sYcG9cNxW2lyql7Hs8GOPBtJVM9CPbMvw71eOt8Zwi0t9KYbv",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPOF. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3134,6 +3209,7 @@
       "unit": "SEEDUC/SUBEXE",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3GvQ7OuxZkBb_JTQOd3ea4bdteQpPxrbliBDnFXOWQVIFsnxBaKTNtkz2zZ7lzucWUY4UbDG5NeWJSKtvp3V23",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBEXE. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3143,6 +3219,7 @@
       "unit": "SEEDUC/ASSCONT",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1jtuprTLfWb3x7w7pbc1GSPlWpqqUNMbuEOoWB6BAQgRteV4qy2a8eDJKLPiUOcqH1k_D7RFdnopNvHg5q_0zl",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/ASSCONT. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3152,6 +3229,7 @@
       "unit": "SEEDUC/SUPOF",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3nRth8xqYKrYtekTrtwUQpNk4kCDpEEZVBlY2MOg_dv5N2aOfzsg7-or44hgpFKiJJbz7zx7p8nNCQDzMfDqIA",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPOF. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3161,6 +3239,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj31WTS8w2KXeEMODPKedOMwH9bx0QByRRRpFH7zZO-Fq_M5VxKW93aWXHrGruR8T1qj7fFXxBKAoSxba5J6OtBr",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3170,6 +3249,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3ZkOO8bUYEkUWduSzYJTghq_BIo3FMpfm0KqU8s5YfhtBjmk9vdPdIremtp8HsOzJEhCSg-qqsE18XUw6tCXaD",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3179,6 +3259,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1SceEODjKgsnKj7IkWGrrZ4fm0Pl58BvCsMqwHrOyb4v3AFhV_3qdGEFfBqHjMr3ntVfIR0wr8Wd5O25jlcfxH",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3188,6 +3269,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3OS_ChueCRIjOhLfnoa2DYfykU7voR-seerBtj2QCh1AEhNdQVLTfqhxZSbyxcFZAjoARfCMPLUZ7pgE8qRfNd",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3197,6 +3279,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj2p707oV2U_nOQIL6NN3666TgSGO1he3y-MROvukdQy1q7c8qZmKPsqKQlzkvqzNGGkETzzeCdN2JqPX5YLvtgd",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3206,6 +3289,7 @@
       "unit": "SEEDUC/SUBEXE",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj2PyhwNBxvCetq_gTS2k8qRqNkXAFg11bL4YzCd6IH8nfRZohAP8nOjDXHWT8-32DfwHdwuyz5Vm39mwq8JXDJR",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBEXE. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3215,6 +3299,7 @@
       "unit": "SEEDUC/ASSCONT",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1zRBV2zLuiNcs_R3WEUttc83p4TVOxpM0tEhXufcuFkuEI9y3LkJLd7i0daYdAt0EFlz6mBPkl-hThRNEMkhL2",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/ASSCONT. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3224,6 +3309,7 @@
       "unit": "SEEDUC/SUPOF",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj39uZdpNt_H0V9p6IBxEkp_u6a2Y7op5NGDnPAYoqRJ8M_bmMf8J2gN6_For9EbvNvXBhZ77wXH3a0OHb0tHXli",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPOF. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3233,6 +3319,7 @@
       "unit": "SEEDUC/SUBEXE",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1VDW70XEmNwtoGhOCkBG8P8RLk-mHO7pvNV_5QGSfJg68zpKVU-2jchx1QYHiarN7sCLB-TlLKOHPtyPk_24bk",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBEXE. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3242,6 +3329,7 @@
       "unit": "SEEDUC/SUBEXE",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0kVlerFsc_dZu9ZPTtCicctrwu5ZK35mRRwUpqJjfmtBrftN-D0xehYLZt1gA9gAZmxBEhH2BAJMUhx3bIcaMV",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBEXE. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3251,6 +3339,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1PZuIX1N-PcsQJPZurECe7A302zDs6OVv-htLRLIcQA6g7OVZsnx5LDYXXpYufqABh2ix8utONwb4zLYq_QwPd",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3260,6 +3349,7 @@
       "unit": "SECC/CHEGAB",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1MFK0ZVqzatr_bNe_NSNhDay0mr4j2TkwoNVS6MwYFchG2lypij1Nd9UvuXor9fdXQkulsUAgt2disPVuwrKcv",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SECC/CHEGAB. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3269,6 +3359,7 @@
       "unit": "SECC/SUPDP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3A6AtQaVkoqENJgv2CXpdfXgSFSfCoqGBcrAMNLDZmawtHW6wK2Y2X120x9RLusuunQd6RZ9VZcQzMWAkcy57J",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SECC/SUPDP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3278,6 +3369,7 @@
       "unit": "SECC/CHEGAB",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0c-76oWG9GH3SJHpDJdOOf3gD-F6bdOzhd9vw1fwyNyH5mdcevJqIEp-R6bOEteOF1v6BmrawF7P9BTdMth29e",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SECC/CHEGAB. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3287,6 +3379,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3CQNZafDyRRVAmDvubicaJcC6iTqD8u2oMOaQQBWnpqUKib5vgfmTZHRfeeiMuRh7XRHDFBYuMfChQPDkU_6Le",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3296,6 +3389,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj18sEVWhdfeGQKaeHXeBrGdcA7bBKmg6jSlC0447chs2A-wBgAz-wMyDiwrdWLY3HqWVeENixGSBzBUiV-FYp5Y",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3305,6 +3399,7 @@
       "unit": "SEEDUC/ASSJUR",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0-tndWikGiDic6bYpi6dVaoXNpQSnWIN37An5ZxwfiAt6gjrg0MCtwKDOUV4QDGIR1cD0uMHmQblzFZLSzrV3H",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/ASSJUR. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3314,6 +3409,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3pcBENLhwRItW1pnHOe0AnqFWBPpOcX_05TZbhUKRDkpr0fd6d0H_fyhO1ucGfnqBzFPvlvnJt161kuiux6ebW",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3323,6 +3419,7 @@
       "unit": "SECC/CHEGAB",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj2oED9-hQ-qjNBZU6qYjiKS9Tbi7-mYgzAHNVlOgyqHzM1VI9Ryk5TsIR-kep4FpggrxzDsHVcyJKFu0s6zh6mr",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SECC/CHEGAB. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3332,6 +3429,7 @@
       "unit": "SECC/SUBTEX",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3LquIyF2L75EsVfdi73mXgaQ7mWGa-GBIP4tVYzH40ahhRMgVMmzfKWUo4RN0AsdzRtjLpsQcr2N89rRs80wed",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SECC/SUBTEX. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3341,6 +3439,7 @@
       "unit": "SECTI/CHEGAB",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0m023SGOEWDSJR_huS-Hyyxc9CRHqReZKV5MOuh7aLGCyPd1natT1-GUJj12XKUB9dwIbM9_fVPrLVP7St5fxp",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SECTI/CHEGAB. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3350,6 +3449,7 @@
       "unit": "FAETEC/PRESI",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj2M7OsUmPcgs4lCcnEF8AT6kD0vfR9mH5MacGze4jX4RpqunksSus4kI_ipkKSNMYiEFz9p1GZUByd_7b93N9vs",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por FAETEC/PRESI. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3359,6 +3459,7 @@
       "unit": "FAETEC/ASSJUR",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3Or81Iu1CQMe894qfPvHXARbzubwOn39sI7TXdmNRXkfhBtB4xlOTRL1dJH20yu3bhD0ukcbWNKH0jIXhRrXxK",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por FAETEC/ASSJUR. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3368,6 +3469,7 @@
       "unit": "FAETEC/PRESI",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj2QY9cXkxB8ziTEKWvNAa4J5Hz386ukByAsXGlZMaFqlsU1PNDcfPN68CZ2VQa2tUx5eBAGs4685nQJkAmAvdbR",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por FAETEC/PRESI. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3377,6 +3479,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1Fl7SUZsQhXsjrQKSOepjjWOFO1LHBNo93GKtw-hQdsgrXYVbHU5n1-TSjkiw0Ud-EgdqzFeFnCUFpgELcbi1i",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3386,6 +3489,7 @@
       "unit": "SEFAZ/CHEGAB",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0VKH_N_hpDwQi6iDV9Mw9Ql6K-Aq-FeacHdDIA9PSfiYYElLN63G9o-BtGOnZtSZOmr8I5uR12wfusEyi0hIO_",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEFAZ/CHEGAB. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3395,6 +3499,7 @@
       "unit": "SEFAZ/COMISARRF",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3Q8JzbmWmcjcdvl6EUvXczBslQxH_ho2Muq98fjlLBj_FSn6KZBRqj5SWnJcrjhBFSkK2nLRoFjmLlOZXkNBtU",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEFAZ/COMISARRF. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3404,6 +3509,7 @@
       "unit": "SEFAZ/SUBAPOF",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3uW8GaaeF0SOABYzKCLqJYU68te4oY_jaVBWECfBKyIGiZ_WUdGgzXdEEIUhOyeo-TvQl3YlmG1Tmli9_8bb2k",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEFAZ/SUBAPOF. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3413,6 +3519,7 @@
       "unit": "SEFAZ/CHEGAB",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1n8wyG9fJpIv68MgXUjyJs10MM6x3z1hYST_p4ksEBx82eZ6pARmjbPkIKhEvDGUJc0ywAeGYCGREoae7uDjJ1",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEFAZ/CHEGAB. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3422,6 +3529,7 @@
       "unit": "FAETEC/ASSJUR",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3JrYLFZwCOjIMy1xQhRFUug26hG8zfMmrsEbVtoOIDGz94Z0ybFWAIKh1CtRRuIxzEqd6MUbOnMegypzctOlqy",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por FAETEC/ASSJUR. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3431,6 +3539,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0mXRlPTtWd71lBJY_2luUoToDtrS4V7C78HeW7dfkbo0Q-_1tEcYpwgMkULS1ATmfbtz8D1IXV-0k5ho12v0LF",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3440,6 +3549,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj2gV0YTj7b0Diebo71jI_bXLuPbWITTMzCQf3x5lu8zaim5jjfBPTxVbG0YoRrOdNUZ_00kTj-1HvNLM9Dui-Ua",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3449,6 +3559,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj35U0KwWbzj5xUtjSgXdmY0GAtxGbpU_875s0zRDJgHXxHcl5aBaqnt1t4ST1AECL4COoeJR3GWrjWX2pou_3Ug",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPGP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3458,6 +3569,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0gJf87DGMy_nVdjshjiQJVSQ00I5inj0DveHx0xyI4nRp0oRBux18x7iYiiKdXjyWXLQzN3aGSbNYfaXWGpaFI",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPGP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3467,6 +3579,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3WXQWy1S2Qy9BV78aaeEh-vvHUVuMZs9ne7qQ8uAuGoWriSI63-tzBK2LZGwdy1kB3r0i4Q0fq2yycvAmd7PUN",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPGP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3476,6 +3589,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj2dc42vputFBprWb4OXwVi7Ipa6zpwzYpMF_szYVuNyh3-rbJVCCI6I8DiFuGA1s5zysboLQL18TxqeO-LYzaeD",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPGP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3485,6 +3599,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3nKn6oKmgTR6gepYF2p5Gb2skI90jbfHkQGsH1uXhOicRAWmqXpocvQMevRCgt1j2Xs5H393Yd81M8JrWfBfW8",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPGP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3494,6 +3609,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj10fhCKR0CvJbyO61T0hfgv8jnyv_RV8ti4lzTOwthyI51fhYINaVCpx8F3pL3tJpkGN0CpIyK-B2i6WSYXUt8Z",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPGP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3503,6 +3619,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1ksUX5TEqUCBWd7-pYP7qknu3pucQKpBqFeiGFMO0qp3Oixb6uUGuvHUlOT6I9r4638xyqfau6h6kKcrrkA0Am",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPGP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3512,6 +3629,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0p_Eb-HiMHLxHh8vwKIzDgcFp9rXwKr1eDfu_Z6HYQ9UEB-mlZ54YdWb_Zrw9zr2z5QnrzumnfgEsrQkLXEAL5",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3521,6 +3639,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj2abghV-arklQSXjS_uanF9AHu3QJNMIHzZFlcgoJj7kYScdycjMStIG_6ENoQRjPuqmC8O7F8bMkrDS8vy3_oF",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3530,6 +3649,7 @@
       "unit": "SEEDUC/ASSJUR",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj2jqO5Mfkn99Ws-YYUpf5vonJ_ZsMtz2UUKTHXRS11qQm-fUQqUTpeKAnEZwUo1GhD5BmgnCryCnj0dCw5QLR6G",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/ASSJUR. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3539,6 +3659,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0xaSt7euYAWCAKJYzwGQJMCdfQUVrNV-IcxQTWwyo9Y49TQ0QHctHjVkPGPZ19YcynBK_eTIYzAZoE8OUJa-rL",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3548,6 +3669,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3GclRHMFuIgII4Q3HJYRaXZA4v0f2PtpVmaXWzd190LYSgVXRfihcg8QdIzrFAWIB4jRCVxD6niNoixvDRXEnt",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3557,6 +3679,7 @@
       "unit": "SECC/CHEGAB",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0Iv57NR-Y7YMfMOxt_zIL8FyLVBEQ9y5cICE__jggMno8FCdIed62jLO6U5YL2UBdmabu9jJ0seFnNGMp7D_Wr",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SECC/CHEGAB. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3566,6 +3689,7 @@
       "unit": "FAETEC/PRESI",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1TKgfwNO0vMi1RU8Dq63cbuBnizsdV99M33mNZxiD5sFWVUPcyzM59kmsw_SGyxH-e7IzJLkLCN7qrC_m1N_my",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por FAETEC/PRESI. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3575,6 +3699,7 @@
       "unit": "FAETEC/DIVRH",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj2yrQ1jm5wz2IiIowwlv-nAKaMpbEY3un8hhXJlwiAQjwXTUrbNvTCBAipZ8HX18f_UT-H0oJCP6C1mO9_whMhw",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por FAETEC/DIVRH. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3584,6 +3709,7 @@
       "unit": "SECC/SUPTEX",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj06vPoTxxjk_M_Zc3ufXS9ufhosVeuEvDOsZroC7dWiG3qT9NAAiKztXv36r0Q-fCBfuh8WxkFrwlIG3VChp1rC",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SECC/SUPTEX. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3593,6 +3719,7 @@
       "unit": "SECC/COPRE",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3TfVw5Uv8CJhf8vz-SsUeoxbos5Lgm8yj7JoDycxhffoVBVMHHzzeHFrkxmm3XLBNcllmMH0t8Wyh3yIsC7_es",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SECC/COPRE. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3602,6 +3729,7 @@
       "unit": "SECC/SUBGEP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0hhgEZmAKYPryXVzjQliRPGi8jdKA7oHF8qd5cFXCXbHiGEtg_zbX-yLtUpCHIAxguANF31JKtqPVcmHngbs5w",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SECC/SUBGEP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3611,6 +3739,7 @@
       "unit": "FAETEC/PRESI",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3cp-LqFvwGqFtc5q9_IQgo_CZFJ59CR-LxGK4T1KDWI9daVORgkFlK0v6uJNdTJAuJ1JiwYKraG6wRek9s3ZK4",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por FAETEC/PRESI. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3620,6 +3749,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3FJyvLafDESUB56DpfhWlFEkQtOZXPrumVxV5EjflEo5sPXTOhtCUPCnPtuFjm6wRqFbnAP3LPwGH9YdZUsP8W",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3629,6 +3759,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0Fyar5HXENL7V01MwJKydOMCcZzsqBgrec-lWrcRo_Jqz9KL3zsPGBWzlL_A_coySVB_uc1qH3rgxIB7tAAxG3",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3638,6 +3769,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": null,
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
     },
     {
@@ -3647,6 +3779,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj21zteB9yIPCae7Zj3Wubpqu3QLzV6-Y6FkrqO7Cahp64nR0Q_zmpujg6giD2sKxMwmpqMerYSuz59U4AbKsUls",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPGP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3656,6 +3789,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0A8-Dou_rYYy2noJ5XnXIZwqrHAD3TasRAc2n77c2mOYgSCvKzeL_vLMwCpzwBO7FzPrli0isq-e-f4XgxKwpm",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3665,6 +3799,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3pYJ3CIb2u1o_b5OZT_k7jqjyu-ynNj3QZiUXfwaLhaXRz44zXWzjlCsxh8pxfOaJPSOFLMBYF_cG9esvHOPtp",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3674,6 +3809,7 @@
       "unit": "FAETEC/PRESI",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj33ON18d3BmfJ6OfeeFY4L6BPPduXKcQLxnN32JrLz0JdYbxaX--bOH1_pr5pTb4hYiB_r6S8niStHc0mNk4ABq",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por FAETEC/PRESI. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3683,6 +3819,7 @@
       "unit": "FAETEC/DIVRH",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj2s93e67UMMioqH6VTbH3fsDLfUc8JdpUbQAOB0Cv3D0leAQ_wU_xNbNAKKwfMBdQRBf0_khXeqsEWvQUtZ1s50",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por FAETEC/DIVRH. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3692,6 +3829,7 @@
       "unit": "FAETEC/PRESI",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj2jbn1jOJbUEu4o_tEkiZKBp_Dk6furnPaMn82lg3xO7gEe3ranwZRVdYUP_U7_zJH36TUNJmMFzL4dOJy5CsfD",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por FAETEC/PRESI. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3701,6 +3839,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0JY09Sw1fmpUcKgcuq6j8CTeKY7a4RL5EWiR4pzSGi0Zfva2qcDJmGvUaxIFTZ9ovssfNTRnYnpl3EGdyyw65z",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3710,6 +3849,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1NpV-Fz629kOxQ_7_XpSadWcmS5pLJqgB4vmUOPwB_HI-4FWYyAMrFEezHMkf14dOSUi6GoNfvb2VYbRfM4OZb",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3719,6 +3859,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3Dn1mMj9IiPZUAKvwLfxzV-SsvZknutECa2-bb4C0BwCXT4D_CuKn3aEqWeC9u8vXR1D_ey9OC1ZUUaYnAJDVC",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3728,6 +3869,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": null,
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
     },
     {
@@ -3737,6 +3879,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": null,
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
     },
     {
@@ -3746,6 +3889,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": null,
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
     },
     {
@@ -3755,6 +3899,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": null,
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
     },
     {
@@ -3764,6 +3909,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1nI1hXzKthjhKXDAQ5lAD-MKuYHqbUoqUjpzr4BYx8umPjR664A7k8zpLQanWlaUbSGYSAQWDRjbUCpbkgYu0G",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPGP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3773,6 +3919,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": null,
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
     },
     {
@@ -3782,6 +3929,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": null,
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
     },
     {
@@ -3791,6 +3939,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": null,
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
     },
     {
@@ -3800,6 +3949,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0oagLuMK20JQsKz6XNDvcKipiP0CVgu5-1_7ri0sJdIk3w_1wT0_VTyXqGyZ6lmg3z6nqZz2QPhzjlITe5n4Y5",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPGP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3809,6 +3959,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3J_zqWopMYluyGkaRfNSYmu_rHgJ9-Yo-HewBBbpkHU4UjNOpDbC2evvM5xCouZiZKsnXrizXe5H7mTO9n6qOB",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3818,6 +3969,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1B9B6qxCp1hF47fKSwFEQHnCD04hnmWhWCoilwpieNMDAm7hr3PbtvQY8ccF9jmhyzqk1SvtLlF7pfJwcjRj2n",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3827,6 +3979,7 @@
       "unit": "FAETEC/PRESI",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1p1wzz8iVNKrlm5tsw52RWbglsJJx5CG82FFOFNxa_NgGZgYnEtoOhs7JVTPbRw0a5jP6VCM5VkfSepywDjkJ0",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por FAETEC/PRESI. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3836,6 +3989,7 @@
       "unit": "FAETEC/DIVRH",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNNv2icp18o0ToCBixJHE0Gny5dzf32YOxdU_k2q05AoEC8pKeafNTzPWw4YOvkjkOaALQKN6U0AI1B-9xlX6JFO",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por FAETEC/DIVRH. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3845,6 +3999,7 @@
       "unit": "FAETEC/PRESI",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNM4qARaHsLl0N4vxf_zttcU4GApITKU4P5cR7Zfo_Wy1Cm11P2J9F6q-Wt89ZF4HcYclwjRDL_O9eyygeMZQuIV",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por FAETEC/PRESI. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3854,6 +4009,7 @@
       "unit": "SECTI/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNNjqH8IZQcOM27xcen6xfzRRf1R9Slt8v_bQr6Mom9fNYSyyLXAaiUJUw6NwJu9eFUc-p9IO59Jwlp3CJsp-EXc",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SECTI/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3863,6 +4019,7 @@
       "unit": "SECC/SUBGEP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNMiecQOYc2ZZ-cqJBhgcE5CIiPnCNbbTfRGqgmpP9ya7dsIIkfIYGPLSbH9LTlVCcY0Hy-zK48B9k3YiKfynvzo",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SECC/SUBGEP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3872,6 +4029,7 @@
       "unit": "SECC/SUBJUR",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNOzmTn2vqJvK5C3AMG2jDmoDELKJC7drZcSnYrhejAPnOQW6E4C9ORJ4WzbuGA4UpCZ5Qv2rAWhYicmbhK5XY6W",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SECC/SUBJUR. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3881,6 +4039,7 @@
       "unit": "SECC/SUBGEP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNNrkFoPZ85tXJcgHzp_HcQgEG5HJZ0BD7JGHtlUY9jVdTITtmMk8-RKKQdctNXPO08oDmiLxoFZfoNRMMX41Sx2",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SECC/SUBGEP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3890,6 +4049,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNOY2_q4dh2gILekMQbwhX3Kn3ul6I6mCSkNUBHN4zw7KVSdLOC1HDZ2CroAn9PAkgLXrXMI7IRVpLU1FsFOSMTw",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3899,6 +4059,7 @@
       "unit": "SECTI/ASSJUR",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNOGGE5Xcvm-l_Zz-X-GO_Oqrx3CsxBRycl9ULYrc_hQV75crTMttYBbAuTMnQe0i9sf6ayPSm_umV8b9JH523Tt",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SECTI/ASSJUR. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3908,6 +4069,7 @@
       "unit": "SECTI/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNM4mAifY9NS00jqWbiR4_qXQw5-kD0VeIWAiCCdEri5j4zEMQUyAvrj0X3_nKPG8oREgbbEUc3c6wP8OlNPyAoV",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SECTI/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3917,6 +4079,7 @@
       "unit": "FAETEC/PRESI",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNPA7VJVagUmSKZl1eCYNzsy_N6RG73CxsNFIHxaCWmg5icYWcQtZDGyNMxxv56V4c44iqErNaVP5eAKboo8GM_Q",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por FAETEC/PRESI. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3926,6 +4089,7 @@
       "unit": "FAETEC/ASSJUR",
       "publicUrl": null,
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
     },
     {
@@ -3935,6 +4099,7 @@
       "unit": "FAETEC/PRESI",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNP6QzDIsaLUhb2gD1-fCPsANOJJBYI6A31uGhfI0sNWMyOu_rDyb23oqr7jOpz5shn1wYHwqADZTIvPF900hOW3",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por FAETEC/PRESI. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3944,6 +4109,7 @@
       "unit": "SECTI/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNP0-JI1JTiSoXjCnb5iYZkmzls7O04o9l-np69XxQMgnlG70k0gyocWiKOzH70mvR0iAMicN-yy8YEThbmz57KG",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SECTI/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3953,6 +4119,7 @@
       "unit": "SECTI/ASSJUR",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNMpsTJnlxRQZZQlxNrbRQU4dAT-FuGDHkiXRjX_hmxPwePo7yLW7_213n3IPJrkRJJABZgSvJfWMbEJjxHb7LXa",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SECTI/ASSJUR. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3962,6 +4129,7 @@
       "unit": "SECTI/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNP0NL4bnz_SgZctrp3cvLNpv8wV5_TKV3coS6EHQA2v7tEaIfdA8JGlOh62Pop-0-tmZ2FtzAQV4roTN2tpaMzk",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SECTI/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3971,6 +4139,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNMhtBJR2ECbTVicR9aEaHqOIXYVkDYQkpNGKetDGd5GeoI3_H2mChnRi6D1BgfXLJKiTwe_UB3GlwH-rAheVYrk",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3980,6 +4149,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNOvxrG5wZScFQXwhpNDwFtNQ3-ZQftPXOnDEs3Ou2Wu6JpCtg9q-EAR3s_EZqGmhkNpA6K9h7pqJlFeM6Iow-B0",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3989,6 +4159,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNNzrQFRm79LgpEjBD1AngsbQb9HHXGjB7ZK-YoJI1h_aWgcrai8RKTQmogSvMkGqvkNGVo8C4p3YId7lTwzkDcz",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPGP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -3998,6 +4169,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNN4Mcja-GBGgQgtHkXI3KEjCkvhF-wMAHlnw2d424ROnNPkURroXaLfxj_7Y0MvjO7yqZQoiR2KTn-wZ_s2Ss8x",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPGP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4007,6 +4179,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNNvDqr32ptz5g1AdEmm80TmXVOc9FXQsUSvkQ408mMLP2xb5d_UuE_NPeqoC3t-Kn9nLI3JrdINZ-XPDQ7LS34Q",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPGP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4016,6 +4189,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNM-RNQtBxK8cp9wVa8miKwTL0uE48eVzLG5ppNpZFSrkKgy8OYu7apDf1oOwGUZZo0vtStdMYXKrrZ7qm1k9WEm",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPGP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4025,6 +4199,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNOohLqqSvRBFsYmaL1LN0BSQssFUZAMpizG3JhVOhLMLztpBLl3Yp2AFoapr5ps-ZNAoZRPdMCSG1Z_k4FUQTBT",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPGP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4034,6 +4209,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNN_wafKhYamoEANfKeSBdQ9uC-iJ9CM1Fah1FxtrTfzJLpVwyYbw-yrE6JipXZff8b9dB_dmIaTXANpkSHRKPCx",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPGP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4043,6 +4219,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNNf-2LSROYbyNKXipVSYrCvonydHqIZnr6_NnWIDPmQfIEJf_GEqqODrVxpLOQfW5kMzTUgLL7HjdUydQ-BL833",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPGP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4052,6 +4229,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNP5RkC5uCSh6tJIRzAm-esVrAQkfdc4yC4HDuRngwjwKCa89Ymu8ReVbNS5Fzt3_rRzBqYs9hw4tOX283RDuf0X",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPGP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4061,6 +4239,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNNA9RHxEklCTsZHOVrxenowiUmcYyUNXYdxvALHlR96IyCfiNwbWPzcqqJX1XqZ2pkBM-VlM6fWT_tsnzNNQTYo",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPGP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4070,6 +4249,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNO04mfEdnNCJ2wQZfr7D5peXbc5_1OBdfFvlZcMZaK06aA70x1x9L1UkU9pEaVJw-BaMkdJlM08tuouD6NY9RrA",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPGP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4079,6 +4259,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNMcfREqSEJyXGM6Rq9l7zgT527kmxabJTw55Qv4JSkU17CJO3Dv0slXJUCI4rtnBgZWi3eFyRvbhqJMGe6c2AxH",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPGP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4088,6 +4269,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNPR07t29a7YI-aVJxR22la1htHIzKnnAypFLZUpTxNhBqK1fjKF2LyPTTCfaV_W0VBYi9VhYd0OanmyHOZrlWju",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPGP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4097,6 +4279,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNOnFEJmWXg0MuCBuJaHzLTNKrOcmUKcb43IWdZeZ5EnCUjS95CAlNsWcMM2alVbHHFnq3rjOn5fOB0ms0VOpl7s",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPGP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4106,6 +4289,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNOdpqwtO7b5XrNRiFdE1f3venk3q42RS3MKu6rvOdQX7qUdFFc1ENyr6vcWFcjlCQ1fmQgS52sxYBzvP7nM7X1z",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4115,6 +4299,7 @@
       "unit": "SEEDUC/NUCSPEA",
       "publicUrl": null,
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
     },
     {
@@ -4124,6 +4309,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNPjmCiuh7YsWSl0EGfu86lwKcM9w93YaPyMX9kb5E_0fWN-MhoHCbXQf0kou--6PqNdUYjmUgJQljcNst6NODHo",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/GABSEC. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4133,6 +4319,7 @@
       "unit": "SEEDUC/SUPOF",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNONaEHXt9FnmwG4J5XZSd1havEMFLTHaOIhepH8lpIE__EkxtXqq0tMlQGi3_STf3YGN3V9ZmSI5C96tGa5adgR",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPOF. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4142,6 +4329,7 @@
       "unit": "SEEDUC/ASSUPOF",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNPa5XWNiKETQlRS-ZNqevKCVh5QIgFc3WN3Uqvy3fZIbZWCknmjdfKXwdIH7QLGwPUJiGGkW17--N7VGDBvJxKH",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/ASSUPOF. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4151,6 +4339,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNPPRZOlWkVrBPhiLCopqpXqkXGjQse0WR82xnY0wUc62MOr8Ofe1g6_X6u5GzCeYRQdiXXMLxV-XfsjDzqzQVsL",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4160,6 +4349,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": null,
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
     },
     {
@@ -4169,6 +4359,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNMrG5aDjD6swF6NbZc60SISqQIxRM7e6xR0UoiT5IBB__ZkWG3ErbZojQwdryqBjcwpp-xA9SbZfwMijr5l7owY",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPGP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4178,6 +4369,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNNTDGcuV3VDogwlHaCbt8DsLLSI6AjLkTvups4VhNU9d_2n0oQFaoHOZTBtJOt91bu_96pqZAnR8fc79-Wur5Ai",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4187,6 +4379,7 @@
       "unit": "SEEDUC/ASSUPOF",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNOiOWO0LbXwxF-cQyuLXfEoozgK1v7oTUfOOXws16MZNeWVloQ5gvLtTO5eBinpAkMWPSbqiVePiBXe_xjUG0iW",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/ASSUPOF. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4196,6 +4389,7 @@
       "unit": "SEEDUC/SUBEXE",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNPlK01YVW2WUERqwMoftl5Io9-tsPzwyBMCNqrLGLCw64uQ2PULdcMa3wVU0oVue6qeLXLEsyweJa59U5fd-WsA",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBEXE. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4205,6 +4399,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNOK4by1FNinAZZ7EGbS65jQQQhGeM_xXOnDmtC2Pb1TjSdwAzsmXF6RmIKpRLD5mVlE1nJXhdz_0XyiJLlqbkP-",
       "excerpt": "",
+      "excerptVersion": 1,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4214,6 +4409,7 @@
       "unit": "SEEDUC/SUPGP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNPiJBewuvqnpoohYRviPK2SrbjwoIwonrJIe3GWaMSF3iMuCQMTaeX3DXyqdsc0UiRNMkFJpAOAi67u2fr71O9o",
       "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de EducaçãoSubsecretaria Administrativa À Subsecretaria Administrativa (SEEDUC/SUBAD), com vistas à Assessoria de Orçamento e Finanças (SEEDUC/ASSUPOF), Em atenção ao índice 131960504, da Assessoria de Orçamento e Finanças, informamos que a minuta de Projeto de Lei anexada a este processo, sob o índice 130562126, não contempla, até o momento, efeitos retroativos, s.m.j., questão que será decidida em outros âmbitos. Assim, encaminhamos o presente administrativo com o Impacto Orçamentário Estimado (131868597), referente à conversão dos servidores ativos desta classe para os vencimentos indicados no Despacho de Encaminhamento de Processo (61568455), levando em conta as rubricas básicas para os cálculos. Monica da Cunha LongobardiSuperintendente de Gestão de Pessoas/ SUPGPID Funcional: 41322657 Rio de Janeiro, na data da assinatura",
+      "excerptVersion": 2,
       "simpleExplanation": "Documento produzido por SEEDUC/SUPGP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4223,6 +4419,7 @@
       "unit": "SEEDUC/SUBAD",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNP4PixVXbIVAjn9XOPL3teNF3bkAqfk6H3A-YkPEw9CzzWJ5NR_iwbMwUUUKabDl70CSToy_8_uP-sbtYOIWH-X",
       "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de EducaçãoSubsecretaria Administrativa À Subsecretaria Executiva (SEEDUC/SUBEXE),Trata o presente processo sobre a regularização da situação jurídico funcional dos servidores de apoio técnico administrativo, oriundos do concurso público realizado pela Fundação de Apoio à Escola Pública – FAEP, no ano de 1993.Em atendimento à solicitação realizada pela Assessoria de Orçamento e Finanças (SEEDUC/ASSUPOF) através do documento 131960504, encaminhado por essa i. Subsecretaria Executiva (SEEDUC/SUBEXE) por meio do documento 132342592, restituímos o presente expediente com as informações e apontamentos realizados pela Superintendência de Gestão de Pessoas (SEEDUC/SUPGP) através do documento 132398524, com vistas ao prosseguimento do feito. Luciana Gomes Magalhães Subsecretária de Gestão AdministrativaID: 3484144-0 Rio de Janeiro, na data da assinatura",
+      "excerptVersion": 2,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBAD. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4232,6 +4429,7 @@
       "unit": "SEEDUC/SUBEXE",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNPbeqHyzqCsmV2KRIGYbE8_0wnOr_dt29g8qeIQlHpvmVsigc1uStQAZce5g_N22MRHLDMeZa_qZs4ITaANAzkH",
       "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de EducaçãoSubsecretaria Executiva À ASSUPOF,Em prosseguimento, após novos pronunciamentos da SUBAD e SUPGP (132405506, 132398524). José Mauro BrazAssessor/SUBEXEID.: 5114243-0 Rio de Janeiro, na data da assinatura",
+      "excerptVersion": 2,
       "simpleExplanation": "Documento produzido por SEEDUC/SUBEXE. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4241,6 +4439,7 @@
       "unit": "FAETEC/CHEGAB",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNNAvtTYph-qnGPOa2kNKneDGoNGmTjFR_vy6RjGPBC0dBjnIXZT8Mx39973f2Pp-cZepIKEeWl687jiCS5w9FRD",
       "excerpt": "Governo do Estado do Rio de JaneiroFundação de Apoio à Escola TécnicaPresidência À Presidência - PRESI, Após visto e analisado o presente processo, que trata de proposta de edição de ato normativo voltado à promoção da migração de servidores da extinta Fundação de Apoio à Escola Pública – FAEP para a estrutura da Fundação de Apoio à Escola Técnica do Estado do Rio de Janeiro – FAETEC, registro a manifestação da Assessoria Jurídica da Secretaria de Estado de Ciência, Tecnologia e Inovação – SECTI, constante do Despacho de Encaminhamento de Processo (indexador nº 129662008).Considerando a relevância institucional da matéria e os potenciais reflexos administrativos, funcionais e orçamentários decorrentes da eventual adoção da medida proposta, submeto os autos à apreciação da Presidência desta Fundação, para ciência e deliberação quanto ao prosseguimento da instrução processual e às providências que entender pertinentes.Ressalto que o presente encaminhamento possui caráter meramente processual e de assessoramento, não importando em manifestação de mérito acerca da viabilidade jurídica, administrativa ou financeira da proposta, cuja análise compete às unidades técnicas e jurídicas competentes. À consideração superior. Wagner Luiz Coelho de JesusChefe de Gabinete - FAETECID 5072427-4Rio de Janeiro, na data da assinatura",
+      "excerptVersion": 2,
       "simpleExplanation": "Documento produzido por FAETEC/CHEGAB. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4250,6 +4449,7 @@
       "unit": "SEEDUC/ASSUPOF",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNOYHXn5cgGUNtot9WhXStbheiYR-I200UZQtYkBx1j87AGKek5wZDuc_Joq5hEvem4NIVCTzmWs3W3zmOGhz5fC",
       "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de EducaçãoSubsecretaria Executiva À Subsecretaria Executiva - SUBEXE, Em atenção ao solicitado (132460300), informamos que, no momento, não há disponibilidade orçamentária para atendimento da presente demanda, em razão da despesa atualmente autorizada para a SEEDUC e do impacto financeiro decorrente da medida, conforme demonstrado na planilha de impacto da SEEDUC/SUPGP (131868597).Ressaltamos que o pleito é considerado relevante por esta Secretaria, motivo pelo qual estão sendo realizadas consultas e tratativas junto aos órgãos centrais de governo, planejamento e finanças, com vistas à análise de sua viabilidade e à identificação da melhor forma de atendimento.Por se tratar de tema prioritário e de interesse desta Pasta, o assunto vem sendo acompanhado com a atenção que sua importância requer. Entretanto, a adoção das providências necessárias depende da conclusão das análises em curso e da superação das limitações orçamentárias e financeiras atualmente existentes.Ante o exposto, encaminhamos o presente para ciência e demais providências que couberem. Gilvania Amaral Superintendente de Orçamento e FinançasID 5108551-8Rio de Janeiro, na data da assinatura",
+      "excerptVersion": 2,
       "simpleExplanation": "O documento informa que, naquele momento, o órgão não encontrou dinheiro disponível no próprio orçamento para atender integralmente ao pedido."
     },
     {
@@ -4259,6 +4459,7 @@
       "unit": "SEEDUC/SUBEXE",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNPTCBXLkBs24FrVnsEZTFB3L7Ascp0giZsbYTWNEqWy5knwQH--KykAzrMqxb9DySctb7FFEQMdJyCVfWZZB8yW",
       "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de EducaçãoSubsecretaria ExecutivaDespachoTrata-se de processo administrativo que versa sobre a situação funcional dos servidores cujos cargos efetivos foram transferidos da Fundação de Apoio à Escola Pública do Estado do Rio de Janeiro – FAEP para a Secretaria de Estado de Educação, em decorrência da extinção da referida Fundação.Considerando o pronunciamento da Assessoria da Superintendência de Orçamento e Finanças – ASSUPOF (133495946) acerca da disponibilidade orçamentária, sugere-se a restituição dos autos ao Gabinete, em atenção ao despacho GABSEC nº 131125941, para conhecimento e avaliação quanto a forma do prosseguimento da matéria. José Mauro BrazAssessor/SUBEXEID.: 5114243-0 De acordo. Acolho o encaminhamento sugerido e autorizo o prosseguimento dos autos na forma proposta. Gleice Renata Martins MenezesSubsecretária ExecutivaSecretaria de Estado de EducaçãoID. Funcional nº 4420972-0 Rio de Janeiro, 10 junho de 2026",
+      "excerptVersion": 2,
       "simpleExplanation": "A autoridade concordou com o encaminhamento e autorizou que o processo continuasse."
     },
     {
@@ -4268,6 +4469,7 @@
       "unit": "SEEDUC/GABSEC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNNjFHW_dB2uY8uuN7_0zyV4lI7WHXi2FbrrgsCRDaI01NsI5VUNvk80rqXAkHUKBBp_xglh2CkolNYcTw1awUOo",
       "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de EducaçãoGabinete do SecretárioOf.SEEDUC/GABSEC Nº623 Rio de Janeiro, 10 de junho de 2026Ao Exmo SrRAFAEL ABREUSecretário de Estado de PlanejamentoSecretaria de Planejamento e Gestão Prezado Sr Secretário,Cumprimentando-o cordialmente, sirvo-me do presente para apresentar todas as tratativas e esforços empenhados pelas áreas técnicas da Secretaria de Estado de Educação para atender o pleito da categoria. Contudo, conforme informações prestadas pela Superintendência de Orçamento e Finanças (documento index 133607874), não há disponibilidade orçamentária para atendimento da demanda em decorrência do impacto financeiro decorrente da medida, de acordo com estudo de impacto da Superintendente de Gestão de Pessoas desta Pasta (documento index 131868597).Isto posto, submeto o presente a V.Exa., no intuito de verificar a viabilidade de atendimento.Sendo o que nos cabia informar no momento, permanecemos à disposição para outros esclarecimentos e renovamos nossos votos de elevada estima e consideração.Atenciosamente, LUCIANA MARTINS CALAÇASecretária de Estado de Educação",
+      "excerptVersion": 2,
       "simpleExplanation": "O documento informa que, naquele momento, o órgão não encontrou dinheiro disponível no próprio orçamento para atender integralmente ao pedido."
     },
     {
@@ -4277,6 +4479,7 @@
       "unit": "SEPLAG/CHEGAB",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNOkGQUIyIyqwAjkuxCwJAQTnvUSf8tejilokT3J2IO0kfLSwMiSSMPrrIAIItAbddSa9L_3rOAJIE8B2La8Za81",
       "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de Planejamento e GestãoGabinete do Secretário À Subsecretaria de Orçamento - SUBORC, Cumprimentando-os cordialmente, em atenção ao Ofício - NA 623 (133904370), encaminho o presente administrativo, informando que, após análise das tratativas conduzidas pelas áreas técnicas da Secretaria de Estado de Educação (SES), verificou-se a impossibilidade de atendimento ao pleito da categoria. Conforme manifestação da Superintendência de Orçamento e Finanças da SES (133607874), comunicando que não há disponibilidade orçamentária em razão do impacto financeiro da medida, conforme estudo elaborado pela Superintendência de Gestão de Pessoas daquela Pasta (131868597). Assim sendo, considerando a pertinência da matéria, encaminhamos o presente administrativo para apreciação. Atenciosamente, OCTÁVIO VIDAL Assessor do Gabinete da SEPLAGID Funcional n.º 2025678-7 Rio de Janeiro, 11 de junho de 2026.",
+      "excerptVersion": 2,
       "simpleExplanation": "O documento informa que, naquele momento, o órgão não encontrou dinheiro disponível no próprio orçamento para atender integralmente ao pedido."
     },
     {
@@ -4286,6 +4489,7 @@
       "unit": "SEPLAG/SUBPLO",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNP2BkLo_6W8R_E02RSClt6x5gGU732foHgmlQ9bOJ2Nm-unMWFZDrS7AjKLs-LQfWZ1y6qR18bybopOKzxoZT5l",
       "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de Planejamento e GestãoSubsecretaria de Planejamento e Orçamento À Subsecretaria Adjunta de Orçamento,Considerando o Of.SEEDUC/GABSEC Nº623 (133904370), encaminho o p.p. para conhecimento e as providências cabíveis.Rio de Janeiro, na data da assinatura MARCOS MOREIRAAssessorSubsecretaria de OrçamentoID. Funcional: 1940053-5",
+      "excerptVersion": 2,
       "simpleExplanation": "É um despacho de encaminhamento: o setor recebeu as informações e enviou o processo para a área responsável pelas próximas providências. Não é aprovação final."
     },
     {
@@ -4294,7 +4498,8 @@
       "date": "24/06/2026",
       "unit": "SEPLAG/SUPEFIS",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNM4Pz4I4h3MfzgHLBxM_vdUao-qgA2qygzUSYcbQbxg0Pb822rXfPvF12iJtXpvHKDVFK5WonsAePG28FBo46IS",
-      "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de Planejamento e GestãoSubsecretaria de Orçamento À Subsecretaria Adjunta de Orçamento,Trata o p.p. de proposta de migração dos servidores concursados da extinta Fundação Apoio à Escola Pública - FAEP, atualmente pertencentes ao quadro de pessoal da Secretaria Estadual de Educação - SEEDUC, para o quadro da Fundação de Apoio à Escola Técnica do Estado do Rio de Janeiro - FAETEC. Para isso, através da Resolução SEEDUC nº 6.164 de 27/04/23, foi instituído um grupo de trabalho com o objetivo de elaborar estudo técnico acerca da viabilidade e instrumentalização dessa migração, com membros indicados da SEEDUC, do Sindicato Estadual dos Profissionais de Educação -SEPE, do Sindicato dos Executivos Públicos do Rio de Janeiro - EXEC-RIO, da Secretaria de Estado da Casa Civil - SECC e da Fundação de Apoio à Escola Técnica do Estado do Rio de Janeiro - FAETEC. Posteriormente, a Resolução SEEDUC nº 6.174 de 13/06/2023 altera a Resolução anterior incluindo o Rioprevidência para a composição do grupo de trabalho.O Relatório Parcial realizado pelo grupo de trabalho (57456783) traz uma breve exposição sobre o assunto. A FAEP foi instituída pela Lei Estadual nº 1.176/1987, vinculada à Secretaria de Estado de Educação. Posteriormente, com a publicação do Decreto nº 16.807/1991, a FAEP passa a vincular-se à Secretaria Extraordinária de Programas Especiais - SEPE. Com a promulgação da Lei nº 2.162/1993, foram criados os cargos públicos integrantes do quadro de pessoal da FAEP, a serem providos mediante concurso público de provas e provas e títulos. Em seguida, a reorganização administrativa promovida pelo Decreto nº 21.258/1995 estabeleceu que os servidores oriundos da extinta SEPE permaneceriam apenas provisoriamente à disposição da FAEP, determinando expressamente que, no prazo de 180 dias, a Secretaria de Estado de Educação deveria promover a regularização definitiva de suas situações funcionais, mediante a absorção do contingente pela própria Secretaria ou o retorno às respectivas origens funcionais. Posteriormente, a Lei Estadual nº 2.735 de 1997 alterou a denominação da FAEP para Fundação de Apoio à Escola Técnica do Estado do Rio de Janeiro - FAETEC, aprovou seu quadro permanente de pessoal e redefiniu suas atribuições institucionais. A promulgação da Lei nº 5.766 de 2010 facultou aos servidores à disposição da FAE",
+      "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de Planejamento e GestãoSubsecretaria de Orçamento À Subsecretaria Adjunta de Orçamento,Trata o p.p. de proposta de migração dos servidores concursados da extinta Fundação Apoio à Escola Pública - FAEP, atualmente pertencentes ao quadro de pessoal da Secretaria Estadual de Educação - SEEDUC, para o quadro da Fundação de Apoio à Escola Técnica do Estado do Rio de Janeiro - FAETEC. Para isso, através da Resolução SEEDUC nº 6.164 de 27/04/23, foi instituído um grupo de trabalho com o objetivo de elaborar estudo técnico acerca da viabilidade e instrumentalização dessa migração, com membros indicados da SEEDUC, do Sindicato Estadual dos Profissionais de Educação -SEPE, do Sindicato dos Executivos Públicos do Rio de Janeiro - EXEC-RIO, da Secretaria de Estado da Casa Civil - SECC e da Fundação de Apoio à Escola Técnica do Estado do Rio de Janeiro - FAETEC. Posteriormente, a Resolução SEEDUC nº 6.174 de 13/06/2023 altera a Resolução anterior incluindo o Rioprevidência para a composição do grupo de trabalho.O Relatório Parcial realizado pelo grupo de trabalho (57456783) traz uma breve exposição sobre o assunto. A FAEP foi instituída pela Lei Estadual nº 1.176/1987, vinculada à Secretaria de Estado de Educação. Posteriormente, com a publicação do Decreto nº 16.807/1991, a FAEP passa a vincular-se à Secretaria Extraordinária de Programas Especiais - SEPE. Com a promulgação da Lei nº 2.162/1993, foram criados os cargos públicos integrantes do quadro de pessoal da FAEP, a serem providos mediante concurso público de provas e provas e títulos. Em seguida, a reorganização administrativa promovida pelo Decreto nº 21.258/1995 estabeleceu que os servidores oriundos da extinta SEPE permaneceriam apenas provisoriamente à disposição da FAEP, determinando expressamente que, no prazo de 180 dias, a Secretaria de Estado de Educação deveria promover a regularização definitiva de suas situações funcionais, mediante a absorção do contingente pela própria Secretaria ou o retorno às respectivas origens funcionais. Posteriormente, a Lei Estadual nº 2.735 de 1997 alterou a denominação da FAEP para Fundação de Apoio à Escola Técnica do Estado do Rio de Janeiro - FAETEC, aprovou seu quadro permanente de pessoal e redefiniu suas atribuições institucionais. A promulgação da Lei nº 5.766 de 2010 facultou aos servidores à disposição da FAETEC, em 31 de dezembro de 2002, a opção de permanecerem vinculados ao quadro da Secretaria de Estado de Educação ou serem transferiados para a FAETEC. Art. 1º - Ficam transferidos para o quadro de pessoal da Fundação de Apoio à Escola Técnica do Estado do Rio de Janeiro - FAETEC os servidores da Secretaria de Estado de Educação - SEEDUC que, em 31 de dezembro de 2002, se encontravam à disposição da mencionada Fundação, assim como os respectivos cargos. Em função da divergência remuneratória dos servidores ocupantes do mesmo cargo e oriundos do mesmo concurso público, parcela dos servidores que optaram pela permanência na Secretaria de Estado de Educação passou a pleitear, junto ao Chefe do Poder Executivo, a migração para o quadro de pessoal da FAETEC.Em Outubro de 2023, por meio do documento (61568455), a Subsecretaria de Gestão de Pessoas – SUBGEP apresentou a estimativa do impacto financeiro dos servidores ativos e aposentados relativo ao enquadramento dos servidores ex-FAEP vinculados ao quadro da SEEDUC em função da tabela remuneratória da FAETEC, com o impacto financeiro estimado de aproximadamente de R$ 275.000.000,00 (duzentos e setenta e cinco milhões de reais) anual. O Relatório Final do estudo realizado pelo grupo de trabalho (62657902) foi encaminhado à Secretaria de Estado da Casa Civil - SECC juntamente com a Nota Técnica GBE Nº 001/2023, apresentada pelo Rioprevidência, onde ficou esclarecido que os servidores da FAEP que migrarem para a FAETEC continuarão no mesmo cargo e carreira, havendo apenas equiparação salarial com o atual quadro da FAETEC e, que a princípio, não haveria qualquer tipo de transformação de cargo ou ingresso em cargo/carreira diferentes sobre regras de aposentadoria (60584818). Após o retorno da SECC, a Secretaria de Educação acostou o documento (65103378) contendo minuta de Projeto de Lei que propõe a transferência dos servidores da extinta FAEP, atualmente vinculada à SEEDUC, para o quadro de pessoal da FAETEC. Em seguida, o processo foi novamente encaminhado à SECC para a adoção das medidas cabíveis. Todavia, a Assessoria Jurídica da SEEDUC (66931785) observou a ausência de manifestações dos demais órgãos diretamente envolvidos na matéria, notadamente da SECTI e da FAETEC. Diante disso, a SEEDUC solicitou a manifestação dos referidos órgãos, com vistas à adequada instrução processual. (67155131).De acordo com Ofício SEEDUC/GABSEC Nº283/2024 (72429563), a FAETEC manifestou-se de maneira inconclusiva, provocando a revisão da instrução processual, motivo pelo qual o processo foi encaminhado à Comissão de Acompanhamento e Monitoramento Econômico-Financeiro do Regime de Recuperação Fiscal - COMISARRF/SEFAZ solicitando a análise à luz da execução do Regime de Recuperação Fiscal. Posteriormente, a COMISARRF (72795939) remeteu o processo à Procuradoria Geral do Estado - PGE para preciação da matéria em observância ao disposto na Orientação Administrativa nº 04.Orientação Administrativa PGEnº 04I. Devem ser objeto de prévio exame jurídico, com Parecer conclusivo do Órgão Jurídico Local ou Setorial, as matérias que possam ter impacto sobre o Regime de Recuperação Fiscal do Estado, previsto na Lei Complementar nº 159 (tais como as vedações constantes do art. 8º da citada lei), submetendo-se sempre tal parecer ao Procurador do Estado titular da Assessoria Jurídica da Secretaria de Estado a que esteja vinculado.II. Presume-se a repercussão geral para a Administração Pública estadual, para fins de incidência do disposto no art. 4º, inciso IV, da Lei Estadual nº 5.414/2009, e consequente sujeição obrigatória à aprovação do Procurador-Geral do Estado, dos pareceres exarados sobre as matérias que possam ter impacto no Regime de Recuperação Fiscal do Estado, exceto aquelas que já tenham sido objeto de análise pela Procuradoria-Geral do Estado. Publicado: DO I, de 08/08/18 Pág. 23Ato contínuo, a PGE remeteu o processo à Assessoria Jurídica da FAETEC a fim de conceder integral cumprimento à Orientação Administrativa PGERJ nº 04 com reforço da instrução processual para o parecer conclusivo ao Procurador do Estado(72906635). A Assessoria Jurídica da FAETEC responde informando que a proposta de ato normativo proposto pela SEEDUC não estava acompanhado de documentos estabelecidos pelo Art. 4º do Decreto nº 31.869/2022, o que s.m.j. impedia a elaboração do parecer conclusivo por esta assessoria (72946282). Art. 4º Incumbe aos Secretários de Estado e aos titulares dos demais órgãos diretamente subordinados ao Governador do Estado, observadas as suas respectivas competências, oferecer a exame final do Gabinete Civil proposta para a elaboração de atos normativos ou regulamentares que considerem necessário editar, referidos nos arts. 110, I, II, III e IV, 145, IV e VI, 148, II, e 211, § 3º, da Constituição do Estado, à qual constituirá processo no órgão proponente em que serão anexados obrigatoriamente:I - a exposição de motivos, as notas explicativas e as justificativas para a edição do ato;II - o projeto do ato normativo;III - o parecer conclusivo do órgão de assessoramento jurídico da respectiva Secretaria de Estado, quanto à constitucionalidade e à juridicidade da proposição, bem como sobre a forma do ato a ser editado.No intervalo em questão, não ocorreu qualquer alteração na tramitação processual. Não obstante, no presente exercício, a SEEDUC instrui o processo com os documentos estabelecidos pelo Decreto supracitado anexando a Minuta do Projeto de Lei (130562126), a Justificativa do Projeto de Lei (130574847), bem como a Nota Técnica 2026-02 (130528267), onde concluiu que:Os servidores concursados da FAEP, cujos cargos foram instituídos pela Lei nº 2.162/1993, mantêm vínculo jurídico com a FAETEC, ainda que em exercício na SEEDUC; A Lei nº 2.512/1996 não promoveu alteração de regime jurídico, tendo sido equivocada a interpretação administrativa que os absorveu como servidores da SEEDUC; O desenvolvimento funcional desses servidores deve observar as regras aplicáveis às respectivas carreiras, conforme assegurado na legislação de criação dos cargos; A ausência de menção expressa aos cargos na reorganização promovida pela Lei nº 2.735/1997 não afasta direitos adquiridos; O direito à percepção de vencimentos conforme o Plano de Cargos e Vencimentos da FAETEC possui natureza de direito subjetivo, não se confundindo com aumento remuneratório; O Regime de Recuperação Fiscal não constitui óbice à recomposição da legalidade remuneratória; Em complemento, a SEEDUC inseriu nova estimativa de impacto orçamentário com os valores abaixo discriminados (131868597):202620272028R$ 92.819.500 R$ 185.639.001R$ 185.639.001*Valor referente à aplicação a partir de julho de 2026. A SUPGP/SEEDUC (131869119) informa que a estimativa de impacto considera todos os servidores ativos estando no plano financeiro de previdência. Além disso, para Adicionais de Qualificação, utilizou-se as informações contidas no Sistema Integrado de Recursos Humanos - SIGRH, não considerando majorações futuras.Diante do exposto, solicitamos esclarecimentos da Subsecretaria de Gestão de Pessoas - SUBGEP acerca da metodologia utilizada para a apuração do impacto orçamentário apresentado pela Secretaria de Estado de Educação, tendo em vista a existência de divergência relevante entre os valores projetados para os exercícios de 2023 e 2026, os quais indicam redução expressiva de R$ 275 milhões para R$ 185,6 milhões.Após o devido esclarecimento dessa informação, e com vistas ao prosseguimento da análise orçamentária por esta Subsecretaria Adjunta, solicitamos o encaminhamento do demonstrativo de impacto orçamentário da proposta com a adequada segregação dos efeitos financeiros relativos aos servidores ativos, inativos e pensionistas, acompanhada da discriminação dos respectivos quantitativos de cada grupo. Tal detalhamento mostra-se necessário em razão da existência de órgãos distintos responsáveis pelo pagamento das correspondentes despesas.Isto posto, sugerimos o encaminhamento do p.p. à SUBGEP para providências cabíveis. GILZA LOPES SILVEIRA DE MELLOCoordenadora de Limites de Despesas BEATRIZ MARTINS DE SÁSuperintendente de Estudos Fiscais De acordo.À Subsecretaria de Orçamento - SUBOR. MONICA MARIA DE SOUSASubsecretária Adjunta de OrçamentoRio de Janeiro, na data da assinatura",
+      "excerptVersion": 2,
       "simpleExplanation": "O setor respondeu ao que havia sido solicitado e devolveu o processo para continuidade da análise."
     },
     {
@@ -4304,6 +4509,7 @@
       "unit": "SEPLAG/SUPDP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNNy2Z9uui8MHlJE9BgcQOG7EpJLJzI5phyU7TP16oSyMb4Uv_7DGCpMa5riMTGuWUV8FHhJEkiq9XW-iEkgQraw",
       "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de Planejamento e GestãoSubsecretaria de Gestão de Pessoas À SUBGEP,Por pertinência e considerando o lapso de tempo desde a última manifestação desta Superintendência de Planejamento e Desenvolvimento de Pessoas/SUBGEP (documento SEI nº 61568455), cabe atualização do impacto orçamentário e financeiro da proposta de enquadramento dos servidores da subcategoria EX FAEP na tabela remuneratória da FAETEC. Desta forma, segue abaixo quadro resumo atualizado do impacto orçamentário e financeiro (em Milhões R$): SITUAÇÃOquantidade totalIMPACTO ANUALIMPACTO MENSALATIVOS3.700160,0913,34INATIVOS3.04546,933,91TOTAL6.745207,0217,25 Como premissas utilizamos como base os dados do Sistema de Gestão de Recursos Humanos - SIGRH-RJ. Para realização do enquadramento dos servidores da subcategoria EX FAEP na tabela remuneratória da FAETEC, consideramos: a) Cada dois anos de exercício corresponde a um nível na Tabela da FAETEC.b) Para cargos de nível superior utilizamos como hipótese que todos seriam enquadrados no nível de especializaçãoc) Para cargos de nível médio utilizamos como hipótese que todos seriam enquadrados no nível de graduação Assim, recomenda-se o envio à SUBPLO/SEPLAG para conhecimento do exposto. Atenciosamente, Viviane Alves SimõesSuperintendente de Planejamento e Desenvolvimento de PessoasID 5025316-6Rio de Janeiro, na data da assinatura",
+      "excerptVersion": 2,
       "simpleExplanation": "A área de pessoal atualizou o cálculo do enquadramento para aproximadamente R$ 207,02 milhões por ano e devolveu o processo ao orçamento."
     },
     {
@@ -4313,6 +4519,7 @@
       "unit": "SEPLAG/SUBGEP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNMPSzk3p8VvfA9JZf87OckfBkBrZV2aJjs2n2jfiz_rAwXXcnLiDgv5kcMec8vKTHcifw8C8Cp5Y-SF-I_e09MR",
       "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de Planejamento e GestãoSubsecretaria de Gestão de Pessoas À SUPDP,Em atenção ao conteúdo do Despacho (index. 134970152) encaminho os autos para verificação da viabilidade quanto ao pleito de atualização do impacto orçamentário e financeiro da proposta de enquadramento dos servidores da subcategoria EX FAEP na tabela remuneratória da FAETEC.Atenciosamente, Lucas Castro de OliveiraAssessor Jurídico - SUBGEP/SEPLAGID. Funcional n.º 5139055-8Rio de Janeiro, 24 de junho 2026.",
+      "excerptVersion": 2,
       "simpleExplanation": "O documento envia o processo para outro setor analisar ou tomar providências. Sozinho, esse ato não significa aprovação."
     },
     {
@@ -4322,6 +4529,7 @@
       "unit": "SEPLAG/SUBORC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNOUCGnzOB4F2zLmbo0LwfaDcqATAp9CVuTm6t7FIObLLHWE9gWEo1UFJHPtjp2boYX9quO05moc6Vkrvo7OnlwX",
       "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de Planejamento e GestãoSubsecretaria de Orçamento À Subsecretaria de Gestão de Pessoas,Encaminho o p.p. para conhecimento e providências cabíveis, tendo em vista as informações prestadas pela Subsecretaria Adjunta de Orçamento desta Subsecretaria no Despacho SEI nº 134225890.Atenciosamente, Rio de Janeiro, na data da assinatura MARIA DE FATIMA LOPES LEITEAssessora-ChefeSubsecretaria de OrçamentoID Funcional: 2025243-9",
+      "excerptVersion": 2,
       "simpleExplanation": "É um despacho de encaminhamento: o setor recebeu as informações e enviou o processo para a área responsável pelas próximas providências. Não é aprovação final."
     },
     {
@@ -4331,6 +4539,7 @@
       "unit": "SEPLAG/SUBGEP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNPhYCur99_F9-KWc__et12YphB2g7I8P01nnZfOA9RuKItummJD-28Fek9Q8mGf7zygo9bq9Tify-Mfuo1tUA0g",
       "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de Planejamento e GestãoSubsecretaria de Gestão de Pessoas À SUPDP, Em prosseguimento, tendo em vista as informações prestadas pela Subsecretaria Adjunta de Orçamento desta Subsecretaria no Despacho SEI nº 134225890.Atenciosamente, Bárbara BarcelosAssessora ChefeID Funcional 5109492-4Subsecretaria de Gestão de Pessoas - SUBGEP/SEPLAGRio de Janeiro, 26 de junho de 2026.",
+      "excerptVersion": 2,
       "simpleExplanation": "Documento produzido por SEPLAG/SUBGEP. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
@@ -4340,6 +4549,7 @@
       "unit": "SEPLAG/SUPDP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNP5Ta3UkzSuxgbhxFbSHh35iwLuLIjTPFqjgWCaNFonDafEewMifqWOoOLNBLIhMspvTG8MMnUTVsQP7gYlTQYX",
       "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de Planejamento e GestãoSubsecretaria de Gestão de Pessoas À SUBGEP,Tendo em vista o solicitado através do documento SEI nº 134225890, cabe discorrer que em 2023, com base em dados extraídos do SIGRH-RJ, esta Superintendência de Planejamento e Desenvolvimento de Pessoas - SUPDP calculou o impacto referente ao enquadramento dos servidores classificados como “EX-FAEP” na tabela remuneratória da FAETEC, utilizando como premissas: a) Enquadramento conforme o Tempo de Serviço de cada servidor, considerando que a cada 2 anos corresponde a 1 nível da Tabela Remuneratória da FAETEC;b) Os servidores de nível superior foram enquadrados considerando a hipótese de que todos teriam o grau de especialização; ec) Os servidores de nível médio foram enquadrados considerando a hipótese que todos tivessem concluído a graduação. Com base nesses parâmetros a estimativa de impacto em 2023 foi a seguinte, em R$ Milhões: SITUACAOVINCULOSIMPACTO ANUAL BRUTOAPOSENTADO2.73150,68ATIVO4.316224,62TOTAL7.047275,30Nota: Considerou-se férias, 13º salário e patronal. Com base na folha de Maio de 2026, esta Superintendência atualizou a estimativa de impacto orçamentário considerando as mesmas premissas utilizadas no ano de 2023. Porém, é importante destacar que foi implementado, no ano de 2025, a rubrica “ Complemento Piso EX – FAEP”. Tal verba complementa o vencimento base da categoria, de forma que nenhum servidor receba valores inferiores ao salário mínimo (R$ 1.621), além disso, esta mesma verba compõe a base de cálculo para o triênio destes servidores. Nesse novo contexto, segue a estimativa de impacto em 2026 , em R$ Milhões:SITUACAOVINCULOSIMPACTO ANUAL BRUTOAPOSENTADO3.04546,93ATIVO3.700160,09TOTAL6.745207,02 Nota: Considerou-se férias, 13º salário e patronal. Portanto, o pagamento da verba “Complemento EX-FAEP”, implementada em 2025, que é paga para 6.700 servidores (99% do total da categoria), é o principal motivo da redução da estimativa de impacto referente ao enquadramento dos servidores EX FAEP na tabela remuneratória da FAETEC. Desta forma, restitui-se para ciência e com sugestão de posterior retorno à Subsecretaria de Orçamento/SEPLAG. Viviane Alves SimõesSuperintendente de Planejamento e Desenvolvimento de PessoasID 5025316-6 Rio de Janeiro, na data da assinatura",
+      "excerptVersion": 2,
       "simpleExplanation": "A área de pessoal atualizou o cálculo do enquadramento para aproximadamente R$ 207,02 milhões por ano e devolveu o processo ao orçamento."
     },
     {
@@ -4349,6 +4559,7 @@
       "unit": "SEPLAG/SUBGEP",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNN1Mfu-UUj7M8MIp8BKhutFxBDt-rmbobbUgoZDkp3_OvaLVWwifkMBKErK5nrkvxEXJlOOfjiWZMzr3AiOc4kN",
       "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de Planejamento e GestãoSubsecretaria de Gestão de Pessoas À Subsecretaria de Orçamento/SEPLAG, Trata-se de retorno dos autos para atendimento ao solicitado através do documento SEI nº 134225890.O setor técnico desta Pasta se manifestou, através do despacho (135348861), acerca da estimativa de impacto financeiro referente ao enquadramento dos servidores EX FAEP na tabela remuneratória da FAETEC, sugerindo o retorno à essa Subsecretaria.Nesse sentido, restituo o presente para conhecimento e providências cabíveis.Atenciosamente, FELIPE DE CARVALHO PIRESSubsecretário de Gestão de Pessoas - SUBGEPSecretaria de Estado de Planejamento e GestãoId. Funcional nº 5000357-7Rio de Janeiro, 30 de junho de 2026.",
+      "excerptVersion": 2,
       "simpleExplanation": "É um despacho de encaminhamento: o setor recebeu as informações e enviou o processo para a área responsável pelas próximas providências. Não é aprovação final."
     },
     {
@@ -4358,6 +4569,7 @@
       "unit": "SEPLAG/SUBORC",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNNjhDA-b-YbNrPSkgth_FebAsV6ie_uDpo4VdlYoFsUlADPeQA5t1FFam1x02nio1Uu4XnHEfJ-HcBs-q7ggeVO",
       "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de Planejamento e GestãoSubsecretaria de Orçamento À Subsecretaria Adjunta de Orçamento, Considerando o Despacho SEI nº 135422897, encaminho o p.p. para conhecimento e providências cabíveis.Rio de Janeiro, na data da assinatura MARIA DE FATIMA LOPES LEITEAssessora-ChefeSubsecretaria de OrçamentoID Funcional: 2025243-9",
+      "excerptVersion": 2,
       "simpleExplanation": "É um despacho de encaminhamento: o setor recebeu as informações e enviou o processo para a área responsável pelas próximas providências. Não é aprovação final."
     },
     {
@@ -4366,8 +4578,9 @@
       "date": "03/07/2026",
       "unit": "SEPLAG/SUPEFIS",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNMYkLnVt-6OC0KhLUXmmK8nkMh3iZB2M4pkI7vJbdTpgQUg4uR2nNyzGa26ALU6qjw1GrfWMV_GDXSryaSb6aMV",
-      "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de Planejamento e GestãoSubsecretaria de Orçamento À Subsecretaria Adjunta de Orçamento, Trata-se de solicitação da Secretaria de Estado de Educação - SEEDUC, visando análise da viabilidade e instrumentalização da migração/transferência de servidores concursados da extinta Fundação de Apoio à Escola Pública – FAEP, que fazem parte atualmente do quadro de pessoal da SEEDUC, para a estrutura da Fundação de Apoio à Escola Técnica – FAETEC. No ínterim do processo consta a solicitação desta Subsecretaria (134225890) para a Subsecretaria de Gestão de Pessoas - SUBGEP encaminhar o demonstrativo de impacto orçamentário da proposta com a adequada segregação dos efeitos financeiros relativos aos servidores ativos, inativos e pensionistas, acompanhada da discriminação dos respectivos quantitativos de cada grupo.Em despacho (135348861), a Superintendência de Planejamento e Desenvolvimento de Pessoas -SUPDP/SEPLAG informa o impacto referente ao enquadramento dos servidores classificados como “EX-FAEP” na tabela remuneratória da FAETEC para os anos de 2023 e 2026, utilizando como premissas: a) Enquadramento conforme o Tempo de Serviço de cada servidor, considerando que a cada 2 anos corresponde a 1 nível da Tabela Remuneratória da FAETEC;b) Os servidores de nível superior foram enquadrados considerando a hipótese de que todos teriam o grau de especialização; ec) Os servidores de nível médio foram enquadrados considerando a hipótese que todos tivessem concluído a graduação. Assim, a estimativa de impacto em 2023 , em R$ Milhões, foi: Contudo, com base na folha de Maio -2026, foi calculado novo impacto, em R$ Milhões , para 2026: Cabe, então, a esta Subsecretaria Adjunta a análise acerca do impacto no orçamento anual do RIOPREVIDÊNCIA, da FAETEC e da SEEDUC, órgãos envolvidos na questão. Diante disso, a seguir, consta Quadro Demonstrativo da Despesa de Pessoal, considerando a liquidação da folha de pesssoal até o mês de Maio/2026. No que compete aos servidores inativos e aos pensionistas, foi apurado o impacto orçamentário no âmbito do RIOPREVIDÊNCIA, considerando somente o Plano Financeiro: UO 20341 - RIOPREVIDÊNCIA Dotação Atual (A)19.541.369.492Contingenciado (B)5.387.698.001Orçamento Disponível (LDE) [C=A-B]14.153.671.491Liquidação até Maio/20267.759.370.444Projeção 2026 (D)18.397.449.468Saldo (E=C-D)- 4.243.777.97",
-      "simpleExplanation": "Documento produzido por SEPLAG/SUPEFIS. A explicação completa depende da leitura do trecho oficial abaixo."
+      "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de Planejamento e GestãoSubsecretaria de Orçamento À Subsecretaria Adjunta de Orçamento, Trata-se de solicitação da Secretaria de Estado de Educação - SEEDUC, visando análise da viabilidade e instrumentalização da migração/transferência de servidores concursados da extinta Fundação de Apoio à Escola Pública – FAEP, que fazem parte atualmente do quadro de pessoal da SEEDUC, para a estrutura da Fundação de Apoio à Escola Técnica – FAETEC. No ínterim do processo consta a solicitação desta Subsecretaria (134225890) para a Subsecretaria de Gestão de Pessoas - SUBGEP encaminhar o demonstrativo de impacto orçamentário da proposta com a adequada segregação dos efeitos financeiros relativos aos servidores ativos, inativos e pensionistas, acompanhada da discriminação dos respectivos quantitativos de cada grupo.Em despacho (135348861), a Superintendência de Planejamento e Desenvolvimento de Pessoas -SUPDP/SEPLAG informa o impacto referente ao enquadramento dos servidores classificados como “EX-FAEP” na tabela remuneratória da FAETEC para os anos de 2023 e 2026, utilizando como premissas: a) Enquadramento conforme o Tempo de Serviço de cada servidor, considerando que a cada 2 anos corresponde a 1 nível da Tabela Remuneratória da FAETEC;b) Os servidores de nível superior foram enquadrados considerando a hipótese de que todos teriam o grau de especialização; ec) Os servidores de nível médio foram enquadrados considerando a hipótese que todos tivessem concluído a graduação. Assim, a estimativa de impacto em 2023 , em R$ Milhões, foi: Contudo, com base na folha de Maio -2026, foi calculado novo impacto, em R$ Milhões , para 2026: Cabe, então, a esta Subsecretaria Adjunta a análise acerca do impacto no orçamento anual do RIOPREVIDÊNCIA, da FAETEC e da SEEDUC, órgãos envolvidos na questão. Diante disso, a seguir, consta Quadro Demonstrativo da Despesa de Pessoal, considerando a liquidação da folha de pesssoal até o mês de Maio/2026. No que compete aos servidores inativos e aos pensionistas, foi apurado o impacto orçamentário no âmbito do RIOPREVIDÊNCIA, considerando somente o Plano Financeiro: UO 20341 - RIOPREVIDÊNCIA Dotação Atual (A)19.541.369.492Contingenciado (B)5.387.698.001Orçamento Disponível (LDE) [C=A-B]14.153.671.491Liquidação até Maio/20267.759.370.444Projeção 2026 (D)18.397.449.468Saldo (E=C-D)- 4.243.777.977Demanda do Processo SEI-030029/004475/2023 (F)46.930.000Saldo Final (E-F)- 4.290.707.977 Conforme a Nota Técnica 2026-02 (130528267) conclui que os servidores concursados da FAEP, cujos cargos foram instituídos pela Lei nº 2.162/1993, mantêm vínculo jurídico com a FAETEC, ainda que em exercício na SEEDUC. Portanto, a análise do impacto orçamentário dos servidores ativos foi considerada o orçamento da SEEDUC e da FAETEC, conforme demonstrativo abaixo: UO 18010 - SEEDUCDotação Atual (A)4.856.594.474Contingenciado (B)425.589.070Orçamento Disponível (LDE) [C=A-B]4.431.005.404 Provável Excesso de Arrecadação (5ª NT SEFAZ) (D)383.581.956Liquidação até Maio/20262.159.117.314Projeção 2026 (E)5.247.968.182Saldo [F=C+D-E]- 433.380.822Demanda do Processo SEI-030029/004475/2023 (G)160.090.000Saldo Final [H=F - G]- 593.470.822 Para a apuração da análise do impacto orçamentário, foi adotada a metodologia na SEEDUC considerando todas as ações orçamentárias que contemplam as despesas de pessoal e encargos sociais e todas as fontes de recursos que custeam esta despesa. Essa demada representa 3% da projeção da despesa de pessoal para o exercício na SEEDUC. UO 40440 - FAETECDotação Atual (A)963.900.906Contingenciado (B)-Orçamento Disponível (LDE) [C=A-B]963.900.906Liquidação até Maio/2026343.773.180Projeção 2026 (D)832.982.101Saldo [E=C-D]130.918.805Demanda do Processo SEI-030029/004475/2023 (F)160.090.000Saldo Final [G=E-F]- 29.171.195 Diante das informações aqui prestadas, sugerimos o encaminhamento do p.p. à SEEDUC. GILZA LOPES SILVEIRA DE MELLOCoordenadora de Limites de Despesas BEATRIZ MARTINS DE SÁSuperintendente de Estudos Fiscais De acordo.À Subsecretaria de Orçamento.MONICA MARIA DE SOUSASubsecretária Adjunta de Orçamento",
+      "excerptVersion": 2,
+      "simpleExplanation": "Este é o parecer orçamentário mais importante até agora. Ele não nega o pedido: aponta um custo de cerca de R$ 207,02 milhões por ano e mostra que os órgãos não têm folga no orçamento atual. Agora o governo precisa decidir como financiar ou ajustar a proposta."
     }
   ],
   "analysis": {
