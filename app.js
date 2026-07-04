@@ -252,7 +252,7 @@ function render(data, old) {
 
 async function loadData() {
   ui.refresh.disabled = true;
-  ui.refresh.textContent = "Verificando...";
+  ui.refresh.textContent = "Carregando...";
   ui.status.textContent = "Consultando";
   ui.error.classList.add("hidden");
 
@@ -270,7 +270,7 @@ async function loadData() {
     ui.error.classList.remove("hidden");
   } finally {
     ui.refresh.disabled = false;
-    ui.refresh.textContent = "Verificar atualização";
+    ui.refresh.textContent = "Recarregar painel";
   }
 }
 
