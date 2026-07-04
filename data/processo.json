@@ -2,8 +2,8 @@
   "schemaVersion": 2,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-07-04T02:18:51.383Z",
-  "sourceHash": "c5a09d5a8109ac14a6906ae338ce35c8175d5241ba71c84c245c6e398ff150a6",
+  "generatedAt": "2026-07-04T03:32:39.396Z",
+  "sourceHash": "415476c692992951ab6b512efb4e953bac06e90713bd7692e44563677d8b6f0f",
   "movements": [
     {
       "dateTime": "03/07/2026 19:05",
@@ -4365,9 +4365,9 @@
       "type": "Despacho de Encaminhamento de Processo",
       "date": "03/07/2026",
       "unit": "SEPLAG/SUPEFIS",
-      "publicUrl": null,
-      "excerpt": "",
-      "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
+      "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNMYkLnVt-6OC0KhLUXmmK8nkMh3iZB2M4pkI7vJbdTpgQUg4uR2nNyzGa26ALU6qjw1GrfWMV_GDXSryaSb6aMV",
+      "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de Planejamento e GestãoSubsecretaria de Orçamento À Subsecretaria Adjunta de Orçamento, Trata-se de solicitação da Secretaria de Estado de Educação - SEEDUC, visando análise da viabilidade e instrumentalização da migração/transferência de servidores concursados da extinta Fundação de Apoio à Escola Pública – FAEP, que fazem parte atualmente do quadro de pessoal da SEEDUC, para a estrutura da Fundação de Apoio à Escola Técnica – FAETEC. No ínterim do processo consta a solicitação desta Subsecretaria (134225890) para a Subsecretaria de Gestão de Pessoas - SUBGEP encaminhar o demonstrativo de impacto orçamentário da proposta com a adequada segregação dos efeitos financeiros relativos aos servidores ativos, inativos e pensionistas, acompanhada da discriminação dos respectivos quantitativos de cada grupo.Em despacho (135348861), a Superintendência de Planejamento e Desenvolvimento de Pessoas -SUPDP/SEPLAG informa o impacto referente ao enquadramento dos servidores classificados como “EX-FAEP” na tabela remuneratória da FAETEC para os anos de 2023 e 2026, utilizando como premissas: a) Enquadramento conforme o Tempo de Serviço de cada servidor, considerando que a cada 2 anos corresponde a 1 nível da Tabela Remuneratória da FAETEC;b) Os servidores de nível superior foram enquadrados considerando a hipótese de que todos teriam o grau de especialização; ec) Os servidores de nível médio foram enquadrados considerando a hipótese que todos tivessem concluído a graduação. Assim, a estimativa de impacto em 2023 , em R$ Milhões, foi: Contudo, com base na folha de Maio -2026, foi calculado novo impacto, em R$ Milhões , para 2026: Cabe, então, a esta Subsecretaria Adjunta a análise acerca do impacto no orçamento anual do RIOPREVIDÊNCIA, da FAETEC e da SEEDUC, órgãos envolvidos na questão. Diante disso, a seguir, consta Quadro Demonstrativo da Despesa de Pessoal, considerando a liquidação da folha de pesssoal até o mês de Maio/2026. No que compete aos servidores inativos e aos pensionistas, foi apurado o impacto orçamentário no âmbito do RIOPREVIDÊNCIA, considerando somente o Plano Financeiro: UO 20341 - RIOPREVIDÊNCIA Dotação Atual (A)19.541.369.492Contingenciado (B)5.387.698.001Orçamento Disponível (LDE) [C=A-B]14.153.671.491Liquidação até Maio/20267.759.370.444Projeção 2026 (D)18.397.449.468Saldo (E=C-D)- 4.243.777.97",
+      "simpleExplanation": "Documento produzido por SEPLAG/SUPEFIS. A explicação completa depende da leitura do trecho oficial abaixo."
     }
   ],
   "analysis": {
@@ -4389,7 +4389,6 @@
       "O processo retornou à estrutura de orçamento."
     ],
     "risks": [
-      "O documento mais recente ainda não está aberto ao público.",
       "Movimentação no SEI não equivale a aprovação.",
       "A decisão ainda depende de manifestação fiscal, recursos e instrumento jurídico adequado."
     ]

@@ -3,7 +3,7 @@ import { createHash } from "node:crypto";
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { Agent } from "undici";
+import { Agent, fetch as undiciFetch } from "undici";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const DATA_PATH = resolve(ROOT, "data", "processo.json");
@@ -36,7 +36,7 @@ async function fetchText(url, timeout = 60_000, attempts = 3) {
 
   for (let attempt = 1; attempt <= attempts; attempt += 1) {
     try {
-      const response = await fetch(url, {
+      const response = await undiciFetch(url, {
         dispatcher: SEI_AGENT,
         headers: {
           "User-Agent": "Mozilla/5.0 (Painel público FAEP-FAETEC)",
