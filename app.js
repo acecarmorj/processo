@@ -264,7 +264,7 @@ function hideTransition() {
 function showTransition(url = null) {
   if (transitionTimer) clearInterval(transitionTimer);
 
-  let seconds = 4;
+  let seconds = 6;
   ui.transitionAction.textContent = url
     ? "Abrindo o documento em"
     : "O painel será exibido em";
