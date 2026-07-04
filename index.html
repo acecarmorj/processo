@@ -9,7 +9,7 @@
       content="Painel público de acompanhamento do processo dos servidores ex-FAEP/FAETEC."
     />
     <title>Painel ex-FAEP / FAETEC</title>
-    <link rel="stylesheet" href="./styles.css?v=20260704-4" />
+    <link rel="stylesheet" href="./styles.css?v=20260704-5" />
   </head>
   <body>
     <header class="topbar">
@@ -30,6 +30,15 @@
         <button id="historyButton" class="button secondary" type="button">
           Resumo histórico
         </button>
+        <a
+          id="officialLink"
+          class="button secondary"
+          href="#"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Consultar no SEI
+        </a>
       </nav>
 
       <div id="errorMessage" class="message error hidden" role="alert"></div>
@@ -135,16 +144,6 @@
         </button>
       </section>
 
-      <a
-        id="officialLink"
-        class="official-link"
-        href="#"
-        target="_blank"
-        rel="noreferrer"
-      >
-        Consultar o processo diretamente no SEI
-      </a>
-
       <footer class="site-footer">
         <span>Acessos ao painel</span>
         <a
@@ -235,6 +234,6 @@
       </details>
     </template>
 
-    <script type="module" src="./app.js?v=20260704-4"></script>
+    <script type="module" src="./app.js?v=20260704-5"></script>
   </body>
 </html>

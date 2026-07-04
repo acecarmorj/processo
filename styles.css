@@ -132,7 +132,7 @@ main {
   z-index: 10;
   top: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
   padding: 8px 0;
   margin-bottom: 10px;
@@ -140,11 +140,17 @@ main {
 }
 
 .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: 46px;
   padding: 10px 13px;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 750;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
 }
 
 .button.primary {
@@ -513,12 +519,6 @@ li + li {
   display: inline;
 }
 
-.official-link {
-  display: block;
-  margin-top: 18px;
-  text-align: center;
-}
-
 .site-footer {
   display: flex;
   align-items: center;
@@ -671,5 +671,16 @@ dialog::backdrop {
   .document-meta {
     justify-content: flex-end;
     text-align: right;
+  }
+}
+
+@media (max-width: 480px) {
+  .actions {
+    gap: 5px;
+  }
+
+  .actions .button {
+    padding-inline: 6px;
+    font-size: 0.82rem;
   }
 }
