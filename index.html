@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#075a7c" />
+    <meta
+      name="description"
+      content="Painel público de acompanhamento do processo dos servidores ex-FAEP/FAETEC."
+    />
+    <title>Painel ex-FAEP / FAETEC</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div>
+          <p class="process-number">SEI-030029/004475/2023</p>
+          <h1>Painel ex-FAEP / FAETEC</h1>
+        </div>
+        <span id="statusBadge" class="status-badge">Carregando</span>
+      </div>
+    </header>
+
+    <main>
+      <nav class="actions" aria-label="Ações do painel">
+        <button id="refreshButton" class="button primary" type="button">
+          Verificar atualização
+        </button>
+        <button id="historyButton" class="button secondary" type="button">
+          Resumo histórico
+        </button>
+      </nav>
+
+      <div id="errorMessage" class="message error hidden" role="alert"></div>
+      <div id="newsMessage" class="message news hidden" aria-live="polite"></div>
+
+      <section class="current-status" aria-labelledby="phaseTitle">
+        <div>
+          <p class="label">Situação atual</p>
+          <h2 id="phaseTitle">Consultando dados</h2>
+          <p id="phaseExplanation" class="lead">
+            Aguarde enquanto o relatório mais recente é carregado.
+          </p>
+        </div>
+        <dl class="facts">
+          <div>
+            <dt>Setor onde o processo está</dt>
+            <dd id="currentUnit">-</dd>
+          </div>
+          <div>
+            <dt>Última movimentação no SEI</dt>
+            <dd id="lastMovement">-</dd>
+          </div>
+          <div>
+            <dt>Última atualização do painel</dt>
+            <dd id="generatedAt">-</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="panel" aria-labelledby="analysisTitle">
+        <div class="section-header">
+          <div>
+            <p class="label">O que isso significa</p>
+            <h2 id="analysisTitle">Análise automática</h2>
+          </div>
+          <span id="analysisMode" class="mode-badge">Automática</span>
+        </div>
+        <p id="analysisText" class="analysis-text">Carregando análise.</p>
+
+        <div class="analysis-grid">
+          <div>
+            <h3>Sinais observados</h3>
+            <ul id="signalsList"></ul>
+          </div>
+          <div>
+            <h3>Riscos e cuidados</h3>
+            <ul id="risksList"></ul>
+          </div>
+          <div>
+            <h3>Próximos passos prováveis</h3>
+            <ul id="nextStepsList"></ul>
+          </div>
+        </div>
+      </section>
+
+      <details class="glossary">
+        <summary>Entenda as principais siglas</summary>
+        <dl>
+          <div>
+            <dt>SUPEFIS</dt>
+            <dd>Setor que analisa o impacto nas contas do Estado.</dd>
+          </div>
+          <div>
+            <dt>SUBORC / SUBAORC</dt>
+            <dd>Setores que analisam orçamento e disponibilidade de recursos.</dd>
+          </div>
+          <div>
+            <dt>SUBGEP / SUPDP</dt>
+            <dd>Setores responsáveis por servidores, carreiras e folha de pagamento.</dd>
+          </div>
+          <div>
+            <dt>CHEGAB / GABSEC</dt>
+            <dd>Gabinetes que recebem o processo para decisões superiores.</dd>
+          </div>
+        </dl>
+      </details>
+
+      <section class="panel" aria-labelledby="timelineTitle">
+        <div class="section-header">
+          <div>
+            <p class="label">Linha do tempo</p>
+            <h2 id="timelineTitle">Últimos andamentos</h2>
+          </div>
+          <span id="movementCount" class="count"></span>
+        </div>
+        <div id="timeline" class="timeline"></div>
+        <button id="showMoreButton" class="button text-button" type="button">
+          Mostrar mais andamentos
+        </button>
+      </section>
+
+      <section class="panel" aria-labelledby="documentsTitle">
+        <div class="section-header">
+          <div>
+            <p class="label">Documentos oficiais</p>
+            <h2 id="documentsTitle">Despachos e pareceres</h2>
+          </div>
+          <span id="documentCount" class="count"></span>
+        </div>
+        <div id="documents" class="documents"></div>
+      </section>
+
+      <a
+        id="officialLink"
+        class="official-link"
+        href="#"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Consultar o processo diretamente no SEI
+      </a>
+    </main>
+
+    <dialog id="historyDialog">
+      <header class="dialog-header">
+        <div>
+          <p class="label">Do início até agora</p>
+          <h2>Resumo histórico</h2>
+        </div>
+        <button id="closeHistoryButton" class="button close" type="button">
+          Fechar
+        </button>
+      </header>
+      <div id="historyContent" class="history-content"></div>
+    </dialog>
+
+    <template id="movementTemplate">
+      <article class="movement">
+        <span class="movement-dot"></span>
+        <div>
+          <div class="movement-heading">
+            <time></time>
+            <span class="unit"></span>
+          </div>
+          <p></p>
+        </div>
+      </article>
+    </template>
+
+    <template id="documentTemplate">
+      <details class="document">
+        <summary>
+          <div>
+            <strong class="document-number"></strong>
+            <span class="document-type"></span>
+          </div>
+          <div class="document-meta">
+            <span class="document-unit"></span>
+            <time></time>
+          </div>
+        </summary>
+        <div class="document-content">
+          <p class="document-explanation"></p>
+          <details class="original-text">
+            <summary>Ver trecho original</summary>
+            <p class="document-excerpt"></p>
+          </details>
+          <a class="document-link" target="_blank" rel="noreferrer">
+            Abrir documento no SEI
+          </a>
+          <span class="locked-message">
+            Documento ainda não liberado para leitura pública.
+          </span>
+        </div>
+      </details>
+    </template>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
