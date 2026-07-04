@@ -4,7 +4,7 @@ Painel mobile-first para acompanhar o processo `SEI-030029/004475/2023`.
 
 ## Funcionamento
 
-- O GitHub Actions consulta o SEI a cada 15 minutos.
+- A consulta automática ocorre de hora em hora, das 08:00 às 20:00, com uma verificação extra às 00:10, no horário de Brasília.
 - Se encontrar mudança, atualiza `data/processo.json`.
 - O GitHub Pages publica o painel.
 - Ao abrir a página, o visitante recebe os dados mais recentes.

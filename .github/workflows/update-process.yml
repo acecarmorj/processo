@@ -2,7 +2,9 @@ name: Atualizar processo SEI
 
 on:
   schedule:
-    - cron: "*/15 * * * *"
+    # Horários em UTC: 00:10 e, de hora em hora, das 08:00 às 20:00 em Brasília.
+    - cron: "10 3 * * *"
+    - cron: "0 11-23 * * *"
   workflow_dispatch:
 
 permissions:
