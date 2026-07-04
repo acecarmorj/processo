@@ -18,6 +18,7 @@ const ui = {
   analysisTitle: document.querySelector("#analysisTitle"),
   analysisMode: document.querySelector("#analysisMode"),
   analysisText: document.querySelector("#analysisText"),
+  keyNumbers: document.querySelector("#keyNumbers"),
   signals: document.querySelector("#signalsList"),
   risks: document.querySelector("#risksList"),
   nextSteps: document.querySelector("#nextStepsList"),
@@ -98,6 +99,24 @@ function fillList(element, values) {
     const item = document.createElement("li");
     item.textContent = value;
     element.append(item);
+  }
+}
+
+function renderKeyNumbers(numbers = []) {
+  ui.keyNumbers.replaceChildren();
+  ui.keyNumbers.classList.toggle("hidden", numbers.length === 0);
+
+  for (const number of numbers) {
+    const item = document.createElement("div");
+    const value = document.createElement("strong");
+    const label = document.createElement("span");
+    const detail = document.createElement("small");
+    value.textContent = number.value;
+    label.textContent = number.label;
+    detail.textContent = number.detail || "";
+    item.append(value, label);
+    if (number.detail) item.append(detail);
+    ui.keyNumbers.append(item);
   }
 }
 
@@ -215,10 +234,11 @@ function render(data, old) {
 
   const hasAi = analysis.mode === "openai" && analysis.aiText;
   ui.analysisTitle.textContent = hasAi
-    ? "Análise por inteligência artificial"
-    : "Análise automática";
+    ? "Explicação por inteligência artificial"
+    : "Explicação simples";
   ui.analysisMode.textContent = hasAi ? "IA" : "Automática";
   ui.analysisText.textContent = hasAi ? analysis.aiText : analysis.summary;
+  renderKeyNumbers(analysis.numbers);
   fillList(ui.signals, analysis.signals);
   fillList(ui.risks, analysis.risks);
   fillList(ui.nextSteps, analysis.phase.nextSteps);

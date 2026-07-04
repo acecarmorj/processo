@@ -12,7 +12,7 @@ const PROCESS_URL =
   "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x";
 const SEI_BASE = "https://sei.rj.gov.br/sei/modulos/pesquisa/";
 const MODEL = process.env.OPENAI_MODEL || "gpt-5.4-mini";
-const DATA_SCHEMA_VERSION = 2;
+const DATA_SCHEMA_VERSION = 4;
 const SEI_AGENT = new Agent({
   connect: {
     timeout: 30_000,
@@ -209,6 +209,12 @@ function explainDocument(document) {
   }
 
   const text = (document.excerpt || "").toLowerCase();
+  if (
+    text.includes("rioprevidência") &&
+    (text.includes("207,02") || text.includes("r$ 207"))
+  ) {
+    return "Este é o parecer orçamentário mais importante até agora. Ele não nega o pedido: aponta um custo de cerca de R$ 207,02 milhões por ano e mostra que os órgãos não têm folga no orçamento atual. Agora o governo precisa decidir como financiar ou ajustar a proposta.";
+  }
   if (text.includes("207,02") || text.includes("r$ 207")) {
     return "A área de pessoal atualizou o cálculo do enquadramento para aproximadamente R$ 207,02 milhões por ano e devolveu o processo ao orçamento.";
   }
@@ -251,13 +257,13 @@ function phaseFor(unit = "") {
   }
   if (unit.includes("SUBORC") || unit.includes("SUBAORC")) {
     return {
-      title: "Decisão orçamentária",
+      title: "Aguardando decisão sobre o dinheiro",
       explanation:
-        "O parecer fiscal está na estrutura de orçamento para consolidação e definição das providências.",
+        "Os cálculos foram concluídos. Agora o setor de Orçamento precisa dizer se há dinheiro, remanejamento possível ou necessidade de ajustar a proposta.",
       nextSteps: [
-        "Acolher ou condicionar o impacto",
-        "Indicar recursos ou implantação gradual",
-        "Encaminhar ao gabinete da SEPLAG",
+        "Indicar de onde virá o dinheiro",
+        "Propor implantação por etapas ou pedir ajustes",
+        "Encaminhar a decisão para os gabinetes responsáveis",
       ],
     };
   }
@@ -309,53 +315,179 @@ function phaseFor(unit = "") {
   };
 }
 
+function movementInPlainLanguage(movement) {
+  if (!movement) return "Não foi encontrada uma movimentação recente.";
+
+  const description = movement.description.toLowerCase();
+  const origin = movement.description.match(
+    /unidade\s+([A-ZÇ]+\/[A-ZÇ]+)/i,
+  )?.[1];
+
+  if (description.includes("processo remetido") && origin) {
+    return `Em ${movement.dateTime}, o processo saiu de ${origin} e foi enviado para ${movement.unit}.`;
+  }
+  if (description.includes("processo recebido")) {
+    return `Em ${movement.dateTime}, o processo chegou ao setor ${movement.unit}.`;
+  }
+  if (description.includes("reabertura")) {
+    return `Em ${movement.dateTime}, o processo foi reaberto no setor ${movement.unit}.`;
+  }
+  if (description.includes("conclusão")) {
+    return `Em ${movement.dateTime}, o setor ${movement.unit} encerrou sua etapa de análise. Isso não significa que todo o processo terminou.`;
+  }
+  return `Em ${movement.dateTime}, houve nova movimentação no setor ${movement.unit}: ${movement.description}.`;
+}
+
+function readLatestDocument(document) {
+  if (!document) {
+    return {
+      summary: "Ainda não apareceu um novo despacho público para explicar.",
+      signal: "",
+      risk: "É necessário aguardar o próximo documento ou movimento.",
+    };
+  }
+  if (!document.publicUrl || !document.excerpt) {
+    return {
+      summary: `Também foi criado o documento ${document.number}, mas seu texto ainda não está aberto ao público. Por enquanto, não é possível saber se ele aprova, corrige ou apenas encaminha o pedido.`,
+      signal: `O novo documento ${document.number} já aparece na lista oficial do processo.`,
+      risk: "O conteúdo do documento mais recente ainda precisa ser liberado para uma conclusão segura.",
+    };
+  }
+
+  const text = document.excerpt.toLowerCase();
+  if (text.includes("arquiv")) {
+    return {
+      summary: `O documento ${document.number} menciona arquivamento. É um sinal de alerta e será necessário verificar se o encerramento é definitivo, temporário ou apenas referente a uma etapa.`,
+      signal: "O texto do despacho está aberto e permite identificar a decisão tomada.",
+      risk: "A menção a arquivamento pode significar paralisação ou encerramento do pedido.",
+    };
+  }
+  if (text.includes("indefer")) {
+    return {
+      summary: `O documento ${document.number} contém indicação de indeferimento. Em linguagem simples, o pedido pode ter sido negado nessa etapa, embora ainda seja preciso verificar se cabe correção ou nova análise.`,
+      signal: "O motivo da decisão pode ser conhecido pelo texto oficial.",
+      risk: "Há sinal de negativa formal do pedido.",
+    };
+  }
+  if (
+    text.includes("autoriza o prosseguimento") ||
+    text.includes("acolho o encaminhamento") ||
+    text.includes("de acordo")
+  ) {
+    return {
+      summary: `O documento ${document.number} concorda com o encaminhamento e permite que o processo continue. É um avanço, mas ainda não representa a aprovação final do enquadramento.`,
+      signal: "Uma autoridade concordou com a continuidade da proposta.",
+      risk: "Ainda podem faltar orçamento, análise jurídica ou decisão superior.",
+    };
+  }
+  if (
+    /(retific|corrig|complement|ajuste|saneamento|revisão)/.test(text)
+  ) {
+    return {
+      summary: `O documento ${document.number} pede correção ou complementação das informações. Isso não encerra o pedido: o processo deve voltar ao setor responsável, ser ajustado e seguir novamente.`,
+      signal: "O problema apontado pode ser corrigido dentro do próprio processo.",
+      risk: "A correção pode atrasar a decisão se não for atendida rapidamente.",
+    };
+  }
+  if (text.includes("não há disponibilidade orçamentária")) {
+    return {
+      summary: `O documento ${document.number} informa que o órgão não encontrou dinheiro disponível em seu orçamento atual. Isso não é o mesmo que declarar o pedido ilegal, mas exige remanejamento, implantação por etapas ou decisão política para avançar.`,
+      signal: "O obstáculo foi identificado com clareza: falta indicar a fonte do dinheiro.",
+      risk: "Sem solução orçamentária, o processo pode ficar parado ou voltar para ajustes.",
+    };
+  }
+  if (
+    text.includes("encaminho") ||
+    text.includes("restituo") ||
+    text.includes("providências")
+  ) {
+    return {
+      summary: `O documento ${document.number} encaminha o processo para outro setor continuar a análise. Ele mostra que o pedido segue tramitando, mas não traz uma aprovação final.`,
+      signal: "O processo foi enviado para novas providências, sem ordem de arquivamento.",
+      risk: "Um simples encaminhamento não garante que a proposta será aceita.",
+    };
+  }
+
+  return {
+    summary: `O documento ${document.number} está aberto. Ele foi produzido por ${document.unit}, mas não contém palavras que indiquem aprovação, negativa ou arquivamento de forma clara. A leitura deve ser feita junto com o próximo movimento.`,
+    signal: "O texto oficial do documento mais recente já pode ser consultado.",
+    risk: "O despacho não apresenta uma decisão final de forma clara.",
+  };
+}
+
 function buildAutomaticAnalysis(movements, documents) {
   const latest = movements[0];
   const latestDocument = documents.at(-1);
   const phase = phaseFor(latest?.unit);
-  const signals = [];
-
-  if (latest) {
-    signals.push(
-      `Último registro em ${latest.dateTime}, na unidade ${latest.unit}.`,
+  const latestText = (latestDocument?.excerpt || "").toLowerCase();
+  const isCurrentBudgetReport =
+    latestDocument?.number === "135635411" ||
+    (latestText.includes("rioprevidência") &&
+      latestText.includes("207,02"));
+  const budgetReport = [...documents].reverse().find((document) => {
+    const text = (document.excerpt || "").toLowerCase();
+    return (
+      document.number === "135635411" ||
+      (text.includes("rioprevidência") && text.includes("207,02"))
     );
-  }
-  if (latestDocument) {
-    signals.push(
-      `Documento mais recente: ${latestDocument.number}, de ${latestDocument.unit}.`,
-    );
-  }
-  if (
-    movements
-      .slice(0, 10)
-      .some((movement) => movement.unit.includes("SUPEFIS"))
-  ) {
-    signals.push("A área fiscal participou da tramitação recente.");
-  }
-  if (
-    movements
-      .slice(0, 10)
-      .some(
-        (movement) =>
-          movement.unit.includes("SUBORC") ||
-          movement.unit.includes("SUBAORC"),
-      )
-  ) {
-    signals.push("O processo retornou à estrutura de orçamento.");
+  });
+  const numbers = budgetReport
+    ? [
+        {
+          value: "R$ 207,02 milhões",
+          label: "Custo total por ano",
+          detail: "R$ 160,09 mi para ativos e R$ 46,93 mi para aposentados",
+        },
+        {
+          value: "R$ 17,25 milhões",
+          label: "Custo aproximado por mês",
+          detail: "R$ 13,34 mi para ativos e R$ 3,91 mi para aposentados",
+        },
+        {
+          value: "6.745 pessoas",
+          label: "Total alcançado pela proposta",
+          detail: "3.700 ativos e 3.045 aposentados",
+        },
+      ]
+    : [];
+
+  if (isCurrentBudgetReport) {
+    return {
+      mode: "automatic",
+      phase,
+      summary: `${movementInPlainLanguage(latest)} Agora o cenário ficou mais claro. O documento 135635411 não negou nem arquivou o pedido. Ele confirma o custo da proposta e mostra que os orçamentos atuais não têm folga para absorver tudo. Em outras palavras: o problema apontado agora é dinheiro, não uma decisão final contra os servidores. O processo voltou ao Orçamento para o governo decidir como pagar, ajustar ou implantar a medida.`,
+      numbers,
+      signals: [
+        "O pedido continua vivo: o despacho não manda negar nem arquivar o processo.",
+        "O custo estimado caiu de R$ 275,30 milhões em 2023 para R$ 207,02 milhões em 2026.",
+        "A tese de que os cargos mantêm vínculo com a FAETEC continua registrada no processo.",
+      ],
+      risks: [
+        "Os órgãos envolvidos já trabalham com orçamento apertado ou saldo projetado negativo.",
+        "Sem indicar uma fonte de dinheiro, o governo pode pedir correções, dividir a implantação em etapas ou adiar a decisão.",
+        "O despacho é uma análise financeira, não a aprovação final do enquadramento.",
+      ],
+    };
   }
 
+  const movementSummary = movementInPlainLanguage(latest);
+  const documentReading = readLatestDocument(latestDocument);
+  const signals = [
+    documentReading.signal,
+    budgetReport
+      ? "A análise anterior fixou o custo em R$ 207,02 milhões por ano; esse valor continua como referência até surgir novo cálculo."
+      : "",
+  ].filter(Boolean);
   const risks = [
-    "Movimentação no SEI não equivale a aprovação.",
-    "A decisão ainda depende de manifestação fiscal, recursos e instrumento jurídico adequado.",
-  ];
-  if (latestDocument && !latestDocument.publicUrl) {
-    risks.unshift("O documento mais recente ainda não está aberto ao público.");
-  }
+    documentReading.risk,
+    "Uma movimentação no SEI mostra que o processo andou, mas não significa aprovação por si só.",
+  ].filter(Boolean);
 
   return {
     mode: "automatic",
     phase,
-    summary: `${phase.explanation} ${signals.join(" ")}`,
+    summary: `${movementSummary} ${documentReading.summary}`,
+    numbers,
     signals,
     risks,
   };

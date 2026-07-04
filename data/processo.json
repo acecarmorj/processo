@@ -1,8 +1,8 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 4,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-07-04T03:32:39.396Z",
+  "generatedAt": "2026-07-04T03:44:30.312Z",
   "sourceHash": "415476c692992951ab6b512efb4e953bac06e90713bd7692e44563677d8b6f0f",
   "movements": [
     {
@@ -4373,24 +4373,41 @@
   "analysis": {
     "mode": "automatic",
     "phase": {
-      "title": "Decisão orçamentária",
-      "explanation": "O parecer fiscal está na estrutura de orçamento para consolidação e definição das providências.",
+      "title": "Aguardando decisão sobre o dinheiro",
+      "explanation": "Os cálculos foram concluídos. Agora o setor de Orçamento precisa dizer se há dinheiro, remanejamento possível ou necessidade de ajustar a proposta.",
       "nextSteps": [
-        "Acolher ou condicionar o impacto",
-        "Indicar recursos ou implantação gradual",
-        "Encaminhar ao gabinete da SEPLAG"
+        "Indicar de onde virá o dinheiro",
+        "Propor implantação por etapas ou pedir ajustes",
+        "Encaminhar a decisão para os gabinetes responsáveis"
       ]
     },
-    "summary": "O parecer fiscal está na estrutura de orçamento para consolidação e definição das providências. Último registro em 03/07/2026 19:05, na unidade SEPLAG/SUBORC. Documento mais recente: 135635411, de SEPLAG/SUPEFIS. A área fiscal participou da tramitação recente. O processo retornou à estrutura de orçamento.",
+    "summary": "Em 03/07/2026 19:05, o processo chegou ao setor SEPLAG/SUBORC. Agora o cenário ficou mais claro. O documento 135635411 não negou nem arquivou o pedido. Ele confirma o custo da proposta e mostra que os orçamentos atuais não têm folga para absorver tudo. Em outras palavras: o problema apontado agora é dinheiro, não uma decisão final contra os servidores. O processo voltou ao Orçamento para o governo decidir como pagar, ajustar ou implantar a medida.",
+    "numbers": [
+      {
+        "value": "R$ 207,02 milhões",
+        "label": "Custo total por ano",
+        "detail": "R$ 160,09 mi para ativos e R$ 46,93 mi para aposentados"
+      },
+      {
+        "value": "R$ 17,25 milhões",
+        "label": "Custo aproximado por mês",
+        "detail": "R$ 13,34 mi para ativos e R$ 3,91 mi para aposentados"
+      },
+      {
+        "value": "6.745 pessoas",
+        "label": "Total alcançado pela proposta",
+        "detail": "3.700 ativos e 3.045 aposentados"
+      }
+    ],
     "signals": [
-      "Último registro em 03/07/2026 19:05, na unidade SEPLAG/SUBORC.",
-      "Documento mais recente: 135635411, de SEPLAG/SUPEFIS.",
-      "A área fiscal participou da tramitação recente.",
-      "O processo retornou à estrutura de orçamento."
+      "O pedido continua vivo: o despacho não manda negar nem arquivar o processo.",
+      "O custo estimado caiu de R$ 275,30 milhões em 2023 para R$ 207,02 milhões em 2026.",
+      "A tese de que os cargos mantêm vínculo com a FAETEC continua registrada no processo."
     ],
     "risks": [
-      "Movimentação no SEI não equivale a aprovação.",
-      "A decisão ainda depende de manifestação fiscal, recursos e instrumento jurídico adequado."
+      "Os órgãos envolvidos já trabalham com orçamento apertado ou saldo projetado negativo.",
+      "Sem indicar uma fonte de dinheiro, o governo pode pedir correções, dividir a implantação em etapas ou adiar a decisão.",
+      "O despacho é uma análise financeira, não a aprovação final do enquadramento."
     ]
   },
   "history": [
