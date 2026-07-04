@@ -31,6 +31,7 @@ const ui = {
   officialLink: document.querySelector("#officialLink"),
   documentTransition: document.querySelector("#documentTransition"),
   transitionMessage: document.querySelector("#transitionMessage"),
+  transitionAction: document.querySelector("#transitionAction"),
   transitionSeconds: document.querySelector("#transitionSeconds"),
 };
 
@@ -255,10 +256,18 @@ function renderHistory(data) {
   }
 }
 
-function openAfterMessage(url) {
+function hideTransition() {
+  ui.documentTransition.classList.add("hidden");
+  document.body.style.overflow = "";
+}
+
+function showTransition(url = null) {
   if (transitionTimer) clearInterval(transitionTimer);
 
   let seconds = 4;
+  ui.transitionAction.textContent = url
+    ? "Abrindo o documento em"
+    : "O painel será exibido em";
   ui.transitionSeconds.textContent = seconds;
   ui.documentTransition.classList.remove("hidden");
   document.body.style.overflow = "hidden";
@@ -270,7 +279,11 @@ function openAfterMessage(url) {
     if (seconds <= 0) {
       clearInterval(transitionTimer);
       transitionTimer = null;
-      window.location.assign(url);
+      if (url) {
+        window.location.assign(url);
+      } else {
+        hideTransition();
+      }
     }
   }, 1000);
 }
@@ -279,7 +292,7 @@ function handleSeiLink(event) {
   const link = event.target.closest(".document-link, #officialLink");
   if (!link?.href) return;
   event.preventDefault();
-  openAfterMessage(link.href);
+  showTransition(link.href);
 }
 
 function render(data, old) {
@@ -347,9 +360,9 @@ ui.historyDialog.addEventListener("click", (event) => {
   if (event.target === ui.historyDialog) ui.historyDialog.close();
 });
 document.addEventListener("click", handleSeiLink);
-window.addEventListener("pageshow", () => {
-  ui.documentTransition.classList.add("hidden");
-  document.body.style.overflow = "";
+window.addEventListener("load", () => showTransition(), { once: true });
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) hideTransition();
 });
 ui.showMore.addEventListener("click", () => {
   movementLimit = Math.min(movementLimit + 15, 50);

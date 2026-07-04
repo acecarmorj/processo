@@ -9,7 +9,7 @@
       content="Painel público de acompanhamento do processo dos servidores ex-FAEP/FAETEC."
     />
     <title>Painel ex-FAEP / FAETEC</title>
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=20260704-2" />
   </head>
   <body>
     <header class="topbar">
@@ -144,6 +144,21 @@
       >
         Consultar o processo diretamente no SEI
       </a>
+
+      <footer class="site-footer">
+        <span>Acessos ao painel</span>
+        <a
+          href="https://hits.sh/acecarmorj.github.io/processo/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Ver estatísticas públicas de acesso"
+        >
+          <img
+            src="https://hits.sh/acecarmorj.github.io/processo.svg?view=total&style=flat-square&label=acessos&color=0b6686&labelColor=093f57"
+            alt="Contador de acessos ao painel"
+          />
+        </a>
+      </footer>
     </main>
 
     <dialog id="historyDialog">
@@ -172,7 +187,8 @@
           um passo para transformar espera em justiça.
         </p>
         <p class="transition-countdown">
-          Abrindo o documento em <strong id="transitionSeconds">4</strong>
+          <span id="transitionAction">Abrindo o documento em</span>
+          <strong id="transitionSeconds">4</strong>
           segundos...
         </p>
       </div>
@@ -219,6 +235,6 @@
       </details>
     </template>
 
-    <script type="module" src="./app.js"></script>
+    <script type="module" src="./app.js?v=20260704-2"></script>
   </body>
 </html>

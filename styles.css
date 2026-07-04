@@ -519,6 +519,28 @@ li + li {
   text-align: center;
 }
 
+.site-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 22px;
+  padding: 18px 8px 0;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.site-footer a,
+.site-footer img {
+  display: block;
+}
+
+.site-footer img {
+  min-width: 86px;
+  height: 20px;
+}
+
 dialog {
   width: min(720px, calc(100% - 16px));
   max-height: calc(100dvh - 16px);
