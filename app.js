@@ -20,6 +20,11 @@ const ui = {
   analysisMode: document.querySelector("#analysisMode"),
   analysisText: document.querySelector("#analysisText"),
   keyNumbers: document.querySelector("#keyNumbers"),
+  deepIntro: document.querySelector("#deepIntro"),
+  unitMeaning: document.querySelector("#unitMeaning"),
+  documentMeaning: document.querySelector("#documentMeaning"),
+  scenarioCards: document.querySelector("#scenarioCards"),
+  watchList: document.querySelector("#watchList"),
   signals: document.querySelector("#signalsList"),
   risks: document.querySelector("#risksList"),
   nextSteps: document.querySelector("#nextStepsList"),
@@ -128,6 +133,192 @@ function formatGeneratedAt(value) {
 function readableUnit(unit) {
   const name = UNIT_NAMES[unit];
   return name ? `${unit} — ${name}` : unit;
+}
+
+function originFromDescription(description = "") {
+  return description.match(/unidade\s+([A-ZÇ]+\/[A-ZÇ]+)/i)?.[1] || "";
+}
+
+function describeLatestMovement(movement) {
+  if (!movement) {
+    return "Ainda nao foi possivel identificar o ultimo andamento publico.";
+  }
+
+  const lowerDescription = movement.description.toLowerCase();
+  const origin = originFromDescription(movement.description);
+  if (origin && lowerDescription.includes("remetido")) {
+    return `O ultimo andamento mostra que o processo saiu de ${origin} e foi enviado para ${movement.unit}, em ${movement.dateTime}.`;
+  }
+  if (lowerDescription.includes("recebido")) {
+    return `O ultimo andamento mostra que o processo chegou em ${movement.unit}, em ${movement.dateTime}.`;
+  }
+  if (lowerDescription.includes("reabertura")) {
+    return `O ultimo andamento mostra uma reabertura em ${movement.unit}, em ${movement.dateTime}. Isso costuma indicar retomada da analise naquele setor.`;
+  }
+  if (lowerDescription.includes("conclus")) {
+    return `O ultimo andamento mostra conclusao de etapa em ${movement.unit}, em ${movement.dateTime}. Isso encerra a analise daquele setor, nao o processo inteiro.`;
+  }
+  return `O ultimo andamento foi em ${movement.dateTime}, na unidade ${movement.unit}: ${movement.description}.`;
+}
+
+function unitMeaningText(unit = "") {
+  if (unit.includes("CHEGAB") || unit.includes("GABSEC")) {
+    return "Quando o processo chega a gabinete, normalmente ele deixa de ser apenas conta tecnica e passa para decisao de encaminhamento: mandar ao secretario, devolver para ajuste, enviar a Casa Civil ou pedir uma definicao superior.";
+  }
+  if (unit.includes("SUBORC") || unit.includes("SUBAORC")) {
+    return "Orcamento e o setor que olha se a despesa cabe, se precisa de fonte de recurso, remanejamento ou implantacao por etapas. E onde o governo transforma o calculo em possibilidade pratica.";
+  }
+  if (unit.includes("SUPEFIS")) {
+    return "Estudos Fiscais analisa o impacto nas contas do Estado. Esse setor nao decide sozinho a causa, mas mostra o tamanho da despesa e os riscos fiscais.";
+  }
+  if (unit.includes("SUBGEP") || unit.includes("SUPDP")) {
+    return "Gestao de Pessoas olha quantidade de servidores, enquadramento, folha, ativos, aposentados e impacto funcional. E a area que ajuda a conferir quem entra e quanto custaria.";
+  }
+  if (unit.includes("FAETEC")) {
+    return "Quando passa pela FAETEC, o processo toca no orgao de origem da carreira. Isso pode servir para ciencia, manifestacao institucional ou alinhamento sobre o enquadramento.";
+  }
+  if (unit.includes("SEEDUC")) {
+    return "Quando passa pela SEEDUC, o processo volta ao orgao onde muitos servidores ainda estao em exercicio. Ali podem ser pedidos dados, validacoes ou posicionamento do secretario.";
+  }
+  return "Esse setor faz parte da tramitacao administrativa. Para entender melhor, o mais importante e observar o texto do despacho e o proximo destino do processo.";
+}
+
+function documentMeaningText(documentData) {
+  if (!documentData) {
+    return "Ainda nao ha documento recente identificado para leitura.";
+  }
+  if (!documentData.publicUrl || !documentData.excerpt) {
+    return `O documento ${documentData.number} ja foi criado, mas ainda nao abriu para leitura publica. Isso e comum no SEI: primeiro aparece o numero, depois o conteudo fica visivel. Ate abrir, nao da para afirmar se ele aprovou, pediu ajuste ou apenas encaminhou.`;
+  }
+
+  const text = documentData.excerpt.toLowerCase();
+  if (text.includes("rioprevid") && text.includes("207,02")) {
+    return `O documento ${documentData.number} e uma peca forte de orcamento. Ele confirmou o impacto anual aproximado de R$ 207,02 milhoes e separou ativos, aposentados e orgaos envolvidos. Isso nao aprova, mas tira a discussao do campo da duvida e coloca o custo oficialmente na mesa.`;
+  }
+  if (text.includes("nao ha disponibilidade") || text.includes("não há disponibilidade")) {
+    return `O documento ${documentData.number} aponta falta de disponibilidade no orcamento atual. Isso e obstaculo importante, mas nao significa automaticamente que o direito foi negado. Pode exigir fonte, faseamento ou decisao politica.`;
+  }
+  if (text.includes("de acordo") || text.includes("prosseguimento")) {
+    return `O documento ${documentData.number} tem linguagem de concordancia ou continuidade. Isso e positivo porque autoriza o processo a seguir, mas ainda nao e a publicacao final do enquadramento.`;
+  }
+  if (/(retific|corrig|complement|ajuste|saneamento|revis)/.test(text)) {
+    return `O documento ${documentData.number} parece pedir correcao ou complementacao. Isso atrasa, mas normalmente e corrigivel: o setor responsavel ajusta e devolve para nova analise.`;
+  }
+  if (text.includes("encaminho") || text.includes("restituo") || text.includes("provid")) {
+    return `O documento ${documentData.number} e principalmente um encaminhamento. Em linguagem simples: o processo nao parou; ele foi mandado para outro setor tomar ciencia ou dar o proximo passo.`;
+  }
+  return `O documento ${documentData.number} esta aberto, mas nao traz uma palavra clara de aprovacao, negativa ou arquivamento. A melhor leitura vem combinando esse texto com o setor para onde o processo foi enviado.`;
+}
+
+function scenarioList(data) {
+  const latest = data.movements[0];
+  const unit = latest?.unit || "";
+  const latestDocument = data.documents.at(-1);
+  const scenarios = [];
+
+  if (!latestDocument?.publicUrl) {
+    scenarios.push({
+      title: "Documento fechado abrir",
+      text: "O primeiro passo e o despacho mais novo ficar visivel. So com o texto aberto da para saber se foi encaminhamento simples, pedido de ajuste ou decisao mais forte.",
+    });
+  }
+
+  if (unit.includes("CHEGAB") || unit.includes("GABSEC")) {
+    scenarios.push(
+      {
+        title: "Subir para decisao do secretario",
+        text: "O gabinete pode levar o caso ao secretario da pasta para definir se segue para Casa Civil, SEEDUC ou outro setor decisorio.",
+      },
+      {
+        title: "Pedir ajuste antes de decidir",
+        text: "O gabinete pode devolver para orcamento, pessoal, SEEDUC ou FAETEC corrigirem detalhe de fonte, impacto, minuta ou grupo de servidores.",
+      },
+      {
+        title: "Preparar caminho para ato final",
+        text: "Se a decisao politica estiver madura, o processo pode caminhar para Casa Civil ou para o instrumento juridico escolhido pelo governo.",
+      },
+    );
+  } else if (unit.includes("SUBORC") || unit.includes("SUBAORC")) {
+    scenarios.push(
+      {
+        title: "Indicar fonte ou remanejamento",
+        text: "O orcamento pode dizer de onde viria o dinheiro ou quais ajustes seriam necessarios para acomodar a despesa.",
+      },
+      {
+        title: "Sugerir implantacao gradual",
+        text: "Uma saida possivel e fasear a implantacao para reduzir impacto imediato e permitir decisao politica com menor risco fiscal.",
+      },
+      {
+        title: "Encaminhar ao gabinete",
+        text: "Depois da analise tecnica, o caminho natural e subir para gabinete, onde a decisao deixa de ser so conta e vira escolha administrativa.",
+      },
+    );
+  } else if (unit.includes("SUBGEP") || unit.includes("SUPDP")) {
+    scenarios.push(
+      {
+        title: "Revisar numeros e grupos",
+        text: "A area de pessoas pode separar ativos, aposentados, pensionistas, cargos e regras de enquadramento.",
+      },
+      {
+        title: "Atualizar impacto da folha",
+        text: "Se houver duvida no valor, esse setor pode refazer ou confirmar o calculo antes do retorno ao orcamento.",
+      },
+    );
+  } else {
+    scenarios.push(
+      {
+        title: "Novo despacho de encaminhamento",
+        text: "O mais comum e aparecer um despacho dizendo para qual setor o processo deve seguir e qual providencia foi pedida.",
+      },
+      {
+        title: "Pedido de complementacao",
+        text: "Se faltar alguma informacao, o processo pode voltar para quem tem os dados corrigir e enviar novamente.",
+      },
+    );
+  }
+
+  return scenarios.slice(0, 4);
+}
+
+function watchItems(data) {
+  const latestDocument = data.documents.at(-1);
+  const items = [
+    "Se aparecer 'de acordo', 'acolho' ou 'prosseguimento', e sinal de continuidade.",
+    "Se aparecer 'fonte', 'remanejamento' ou 'adequacao orcamentaria', o debate virou como pagar.",
+    "Se aparecer 'faseamento' ou 'implantacao gradual', pode ser tentativa de viabilizar por etapas.",
+    "Se aparecer 'Casa Civil', 'Governador' ou 'Secretario', o processo subiu para decisao politica.",
+  ];
+
+  if (!latestDocument?.publicUrl) {
+    items.unshift(
+      `O documento ${latestDocument?.number || "mais recente"} ainda precisa abrir para leitura publica.`,
+    );
+  }
+
+  return items;
+}
+
+function renderDeepExplanation(data) {
+  const latest = data.movements[0];
+  const latestDocument = data.documents.at(-1);
+
+  ui.deepIntro.textContent = `${describeLatestMovement(latest)} Em linguagem simples: o SEI mostra o caminho oficial do processo, mas a conclusao depende do texto do despacho e do setor que recebeu a demanda.`;
+  ui.unitMeaning.textContent = unitMeaningText(latest?.unit);
+  ui.documentMeaning.textContent = documentMeaningText(latestDocument);
+
+  ui.scenarioCards.replaceChildren();
+  for (const scenario of scenarioList(data)) {
+    const card = document.createElement("article");
+    card.className = "scenario-card";
+    const title = document.createElement("h4");
+    const text = document.createElement("p");
+    title.textContent = scenario.title;
+    text.textContent = scenario.text;
+    card.append(title, text);
+    ui.scenarioCards.append(card);
+  }
+
+  fillList(ui.watchList, watchItems(data));
 }
 
 function fillList(element, values) {
@@ -301,6 +492,7 @@ function render(data, old) {
   ui.analysisMode.textContent = hasAi ? "IA" : "Automática";
   ui.analysisText.textContent = hasAi ? analysis.aiText : analysis.summary;
   renderKeyNumbers(analysis.numbers);
+  renderDeepExplanation(data);
   fillList(ui.signals, analysis.signals);
   fillList(ui.risks, analysis.risks);
   fillList(ui.nextSteps, analysis.phase.nextSteps);

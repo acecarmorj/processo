@@ -347,6 +347,53 @@ main {
   color: var(--muted);
 }
 
+.explain-panel .analysis-text {
+  margin-bottom: 16px;
+}
+
+.explain-grid,
+.scenario-cards {
+  display: grid;
+  gap: 10px;
+}
+
+.explain-card,
+.scenario-card {
+  padding: 13px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #f7fafb;
+}
+
+.explain-card h3,
+.scenario-card h4,
+.scenario-block h3,
+.watch-block h3 {
+  margin-bottom: 6px;
+  color: var(--blue-dark);
+}
+
+.explain-card p,
+.scenario-card p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.scenario-block,
+.watch-block {
+  margin-top: 16px;
+  padding-top: 15px;
+  border-top: 1px solid var(--line);
+}
+
+.scenario-card {
+  border-left: 4px solid var(--blue);
+}
+
+.watch-block ul {
+  padding-left: 19px;
+}
+
 .analysis-grid {
   display: grid;
   gap: 18px;
@@ -660,6 +707,14 @@ dialog::backdrop {
 
   .key-numbers {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .explain-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .scenario-cards {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .document summary {

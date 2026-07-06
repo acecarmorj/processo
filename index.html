@@ -9,7 +9,7 @@
       content="Painel público de acompanhamento do processo dos servidores ex-FAEP/FAETEC."
     />
     <title>Painel ex-FAEP / FAETEC</title>
-    <link rel="stylesheet" href="./styles.css?v=20260704-5" />
+    <link rel="stylesheet" href="./styles.css?v=20260706-1" />
   </head>
   <body>
     <header class="topbar">
@@ -93,6 +93,36 @@
             <h3>O que pode acontecer agora</h3>
             <ul id="nextStepsList"></ul>
           </div>
+        </div>
+      </section>
+
+      <section class="panel explain-panel" aria-labelledby="explainTitle">
+        <div class="section-header">
+          <div>
+            <p class="label">Entenda melhor</p>
+            <h2 id="explainTitle">Leitura em linguagem simples</h2>
+          </div>
+        </div>
+        <p id="deepIntro" class="analysis-text">
+          Carregando explicacao detalhada.
+        </p>
+        <div class="explain-grid">
+          <article class="explain-card">
+            <h3>Por que esse setor importa</h3>
+            <p id="unitMeaning"></p>
+          </article>
+          <article class="explain-card">
+            <h3>O que o documento indica</h3>
+            <p id="documentMeaning"></p>
+          </article>
+        </div>
+        <div class="scenario-block">
+          <h3>Caminhos possiveis agora</h3>
+          <div id="scenarioCards" class="scenario-cards"></div>
+        </div>
+        <div class="watch-block">
+          <h3>O que observar no proximo despacho</h3>
+          <ul id="watchList"></ul>
         </div>
       </section>
 
@@ -234,6 +264,6 @@
       </details>
     </template>
 
-    <script type="module" src="./app.js?v=20260704-5"></script>
+    <script type="module" src="./app.js?v=20260706-1"></script>
   </body>
 </html>
