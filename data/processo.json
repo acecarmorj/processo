@@ -2,9 +2,19 @@
   "schemaVersion": 6,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-07-04T04:11:09.544Z",
-  "sourceHash": "415476c692992951ab6b512efb4e953bac06e90713bd7692e44563677d8b6f0f",
+  "generatedAt": "2026-07-06T14:46:58.765Z",
+  "sourceHash": "c563a1eec08edbca1a10d1f68cafaccdc29a079175e6501cdecd4af5c28baecc",
   "movements": [
+    {
+      "dateTime": "06/07/2026 11:05",
+      "unit": "SEPLAG/CHEGAB",
+      "description": "Processo remetido pela unidade SEPLAG/SUBORC"
+    },
+    {
+      "dateTime": "06/07/2026 10:58",
+      "unit": "FAETEC/SECPRES",
+      "description": "Processo remetido pela unidade FAETEC/PRESI"
+    },
     {
       "dateTime": "03/07/2026 19:05",
       "unit": "SEPLAG/SUBORC",
@@ -4581,20 +4591,30 @@
       "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de Planejamento e GestãoSubsecretaria de Orçamento À Subsecretaria Adjunta de Orçamento, Trata-se de solicitação da Secretaria de Estado de Educação - SEEDUC, visando análise da viabilidade e instrumentalização da migração/transferência de servidores concursados da extinta Fundação de Apoio à Escola Pública – FAEP, que fazem parte atualmente do quadro de pessoal da SEEDUC, para a estrutura da Fundação de Apoio à Escola Técnica – FAETEC. No ínterim do processo consta a solicitação desta Subsecretaria (134225890) para a Subsecretaria de Gestão de Pessoas - SUBGEP encaminhar o demonstrativo de impacto orçamentário da proposta com a adequada segregação dos efeitos financeiros relativos aos servidores ativos, inativos e pensionistas, acompanhada da discriminação dos respectivos quantitativos de cada grupo.Em despacho (135348861), a Superintendência de Planejamento e Desenvolvimento de Pessoas -SUPDP/SEPLAG informa o impacto referente ao enquadramento dos servidores classificados como “EX-FAEP” na tabela remuneratória da FAETEC para os anos de 2023 e 2026, utilizando como premissas: a) Enquadramento conforme o Tempo de Serviço de cada servidor, considerando que a cada 2 anos corresponde a 1 nível da Tabela Remuneratória da FAETEC;b) Os servidores de nível superior foram enquadrados considerando a hipótese de que todos teriam o grau de especialização; ec) Os servidores de nível médio foram enquadrados considerando a hipótese que todos tivessem concluído a graduação. Assim, a estimativa de impacto em 2023 , em R$ Milhões, foi: Contudo, com base na folha de Maio -2026, foi calculado novo impacto, em R$ Milhões , para 2026: Cabe, então, a esta Subsecretaria Adjunta a análise acerca do impacto no orçamento anual do RIOPREVIDÊNCIA, da FAETEC e da SEEDUC, órgãos envolvidos na questão. Diante disso, a seguir, consta Quadro Demonstrativo da Despesa de Pessoal, considerando a liquidação da folha de pesssoal até o mês de Maio/2026. No que compete aos servidores inativos e aos pensionistas, foi apurado o impacto orçamentário no âmbito do RIOPREVIDÊNCIA, considerando somente o Plano Financeiro: UO 20341 - RIOPREVIDÊNCIA Dotação Atual (A)19.541.369.492Contingenciado (B)5.387.698.001Orçamento Disponível (LDE) [C=A-B]14.153.671.491Liquidação até Maio/20267.759.370.444Projeção 2026 (D)18.397.449.468Saldo (E=C-D)- 4.243.777.977Demanda do Processo SEI-030029/004475/2023 (F)46.930.000Saldo Final (E-F)- 4.290.707.977 Conforme a Nota Técnica 2026-02 (130528267) conclui que os servidores concursados da FAEP, cujos cargos foram instituídos pela Lei nº 2.162/1993, mantêm vínculo jurídico com a FAETEC, ainda que em exercício na SEEDUC. Portanto, a análise do impacto orçamentário dos servidores ativos foi considerada o orçamento da SEEDUC e da FAETEC, conforme demonstrativo abaixo: UO 18010 - SEEDUCDotação Atual (A)4.856.594.474Contingenciado (B)425.589.070Orçamento Disponível (LDE) [C=A-B]4.431.005.404 Provável Excesso de Arrecadação (5ª NT SEFAZ) (D)383.581.956Liquidação até Maio/20262.159.117.314Projeção 2026 (E)5.247.968.182Saldo [F=C+D-E]- 433.380.822Demanda do Processo SEI-030029/004475/2023 (G)160.090.000Saldo Final [H=F - G]- 593.470.822 Para a apuração da análise do impacto orçamentário, foi adotada a metodologia na SEEDUC considerando todas as ações orçamentárias que contemplam as despesas de pessoal e encargos sociais e todas as fontes de recursos que custeam esta despesa. Essa demada representa 3% da projeção da despesa de pessoal para o exercício na SEEDUC. UO 40440 - FAETECDotação Atual (A)963.900.906Contingenciado (B)-Orçamento Disponível (LDE) [C=A-B]963.900.906Liquidação até Maio/2026343.773.180Projeção 2026 (D)832.982.101Saldo [E=C-D]130.918.805Demanda do Processo SEI-030029/004475/2023 (F)160.090.000Saldo Final [G=E-F]- 29.171.195 Diante das informações aqui prestadas, sugerimos o encaminhamento do p.p. à SEEDUC. GILZA LOPES SILVEIRA DE MELLOCoordenadora de Limites de Despesas BEATRIZ MARTINS DE SÁSuperintendente de Estudos Fiscais De acordo.À Subsecretaria de Orçamento.MONICA MARIA DE SOUSASubsecretária Adjunta de Orçamento",
       "excerptVersion": 2,
       "simpleExplanation": "Este é o parecer orçamentário mais importante até agora. Ele não nega o pedido: aponta um custo de cerca de R$ 207,02 milhões por ano e mostra que os órgãos não têm folga no orçamento atual. Agora o governo precisa decidir como financiar ou ajustar a proposta."
+    },
+    {
+      "number": "135780300",
+      "type": "Despacho de Encaminhamento de Processo",
+      "date": "06/07/2026",
+      "unit": "SEPLAG/SUBORC",
+      "publicUrl": null,
+      "excerpt": "",
+      "excerptVersion": 2,
+      "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
     }
   ],
   "analysis": {
     "mode": "automatic",
     "phase": {
-      "title": "Aguardando decisão sobre o dinheiro",
-      "explanation": "Os cálculos foram concluídos. Agora o setor de Orçamento precisa dizer se há dinheiro, remanejamento possível ou necessidade de ajustar a proposta.",
+      "title": "Decisão administrativa superior",
+      "explanation": "O processo chegou a gabinete ou presidência para definição do encaminhamento seguinte.",
       "nextSteps": [
-        "Indicar de onde virá o dinheiro",
-        "Propor implantação por etapas ou pedir ajustes",
-        "Encaminhar a decisão para os gabinetes responsáveis"
+        "Despacho da autoridade",
+        "Encaminhamento jurídico ou à Casa Civil",
+        "Definição do instrumento final"
       ]
     },
-    "summary": "Em 03/07/2026 19:05, o processo chegou ao setor SEPLAG/SUBORC. Agora o cenário ficou mais claro. O documento 135635411 não negou nem arquivou o pedido. Ele confirma o custo da proposta e mostra que os orçamentos atuais não têm folga para absorver tudo. Em outras palavras: o problema apontado agora é dinheiro, não uma decisão final contra os servidores. O processo voltou ao Orçamento para o governo decidir como pagar, ajustar ou implantar a medida.",
+    "summary": "Em 06/07/2026 11:05, o processo saiu de SEPLAG/SUBORC e foi enviado para SEPLAG/CHEGAB. Também foi criado o documento 135780300, mas seu texto ainda não está aberto ao público. Por enquanto, não é possível saber se ele aprova, corrige ou apenas encaminha o pedido.",
     "numbers": [
       {
         "value": "R$ 207,02 milhões",
@@ -4613,14 +4633,12 @@
       }
     ],
     "signals": [
-      "O pedido continua vivo: o despacho não manda negar nem arquivar o processo.",
-      "O custo estimado caiu de R$ 275,30 milhões em 2023 para R$ 207,02 milhões em 2026.",
-      "A tese de que os cargos mantêm vínculo com a FAETEC continua registrada no processo."
+      "O novo documento 135780300 já aparece na lista oficial do processo.",
+      "A análise anterior fixou o custo em R$ 207,02 milhões por ano; esse valor continua como referência até surgir novo cálculo."
     ],
     "risks": [
-      "Os órgãos envolvidos já trabalham com orçamento apertado ou saldo projetado negativo.",
-      "Sem indicar uma fonte de dinheiro, o governo pode pedir correções, dividir a implantação em etapas ou adiar a decisão.",
-      "O despacho é uma análise financeira, não a aprovação final do enquadramento."
+      "O conteúdo do documento mais recente ainda precisa ser liberado para uma conclusão segura.",
+      "Uma movimentação no SEI mostra que o processo andou, mas não significa aprovação por si só."
     ]
   },
   "history": [
@@ -4642,7 +4660,7 @@
     },
     {
       "period": "Situação atual",
-      "text": "O registro público mais recente é de 03/07/2026 19:05, em SEPLAG/SUBORC. O documento mais recente é 135635411, de SEPLAG/SUPEFIS. Ainda não existe publicação definitiva do enquadramento."
+      "text": "O registro público mais recente é de 06/07/2026 11:05, em SEPLAG/CHEGAB. O documento mais recente é 135780300, de SEPLAG/SUBORC. Ainda não existe publicação definitiva do enquadramento."
     }
   ]
 }
