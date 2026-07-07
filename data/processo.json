@@ -2,8 +2,8 @@
   "schemaVersion": 6,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-07-06T14:46:58.765Z",
-  "sourceHash": "c563a1eec08edbca1a10d1f68cafaccdc29a079175e6501cdecd4af5c28baecc",
+  "generatedAt": "2026-07-07T10:12:26.890Z",
+  "sourceHash": "bd7077a1256dc7906ec9500205c3e6a33693fc0a0b0babdd2d68772872a3d9b2",
   "movements": [
     {
       "dateTime": "06/07/2026 11:05",
@@ -4597,10 +4597,10 @@
       "type": "Despacho de Encaminhamento de Processo",
       "date": "06/07/2026",
       "unit": "SEPLAG/SUBORC",
-      "publicUrl": null,
-      "excerpt": "",
+      "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNPgO9nwdIVe-KIKhcvgYvbvXOhqQLpqjZvOHqav4L-bkWpC2RmllS1iT88yvKtAR9xb72GufT1gMlQjlsZOq2ch",
+      "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de Planejamento e GestãoSubsecretaria de Orçamento À Chefia de Gabinete da Secretaria de Estado de Planejamento e Gestão,Sugerimos o encaminhamento do p.p. à Secretaria de Estado de Educação - SEEDUC, tendo em vista as informações prestadas pela Subsecretaria Adjunta de Orçamento desta Subsecretaria no Despacho SEI nº 135635411.Atenciosamente, Rio de Janeiro, na data da assinatura PABLO VILLARIMSubsecretário de OrçamentoID. Funcional: 5000317-8",
       "excerptVersion": 2,
-      "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
+      "simpleExplanation": "Documento produzido por SEPLAG/SUBORC. A explicação completa depende da leitura do trecho oficial abaixo."
     }
   ],
   "analysis": {
@@ -4614,7 +4614,7 @@
         "Definição do instrumento final"
       ]
     },
-    "summary": "Em 06/07/2026 11:05, o processo saiu de SEPLAG/SUBORC e foi enviado para SEPLAG/CHEGAB. Também foi criado o documento 135780300, mas seu texto ainda não está aberto ao público. Por enquanto, não é possível saber se ele aprova, corrige ou apenas encaminha o pedido.",
+    "summary": "Em 06/07/2026 11:05, o processo saiu de SEPLAG/SUBORC e foi enviado para SEPLAG/CHEGAB. O documento 135780300 está aberto. Ele foi produzido por SEPLAG/SUBORC, mas não contém palavras que indiquem aprovação, negativa ou arquivamento de forma clara. A leitura deve ser feita junto com o próximo movimento.",
     "numbers": [
       {
         "value": "R$ 207,02 milhões",
@@ -4633,11 +4633,11 @@
       }
     ],
     "signals": [
-      "O novo documento 135780300 já aparece na lista oficial do processo.",
+      "O texto oficial do documento mais recente já pode ser consultado.",
       "A análise anterior fixou o custo em R$ 207,02 milhões por ano; esse valor continua como referência até surgir novo cálculo."
     ],
     "risks": [
-      "O conteúdo do documento mais recente ainda precisa ser liberado para uma conclusão segura.",
+      "O despacho não apresenta uma decisão final de forma clara.",
       "Uma movimentação no SEI mostra que o processo andou, mas não significa aprovação por si só."
     ]
   },
