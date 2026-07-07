@@ -487,8 +487,8 @@ function render(data, old) {
 
   const hasAi = analysis.mode === "openai" && analysis.aiText;
   ui.analysisTitle.textContent = hasAi
-    ? "Explicação por inteligência artificial"
-    : "Explicação simples";
+    ? "Análise do painel"
+    : "Situação atual";
   ui.analysisMode.textContent = hasAi ? "IA" : "Automática";
   ui.analysisText.textContent = hasAi ? analysis.aiText : analysis.summary;
   renderKeyNumbers(analysis.numbers);
