@@ -2,9 +2,14 @@
   "schemaVersion": 6,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-07-07T10:12:26.890Z",
-  "sourceHash": "bd7077a1256dc7906ec9500205c3e6a33693fc0a0b0babdd2d68772872a3d9b2",
+  "generatedAt": "2026-07-08T12:40:37.247Z",
+  "sourceHash": "cc891164cc8c5ab02c10f301596cec477b26021ed73abc54cc726c02a8d08e28",
   "movements": [
+    {
+      "dateTime": "08/07/2026 09:02",
+      "unit": "SEPLAG/CHEGAB",
+      "description": "Processo recebido na unidade"
+    },
     {
       "dateTime": "06/07/2026 11:05",
       "unit": "SEPLAG/CHEGAB",
@@ -4614,7 +4619,7 @@
         "Definição do instrumento final"
       ]
     },
-    "summary": "Em 06/07/2026 11:05, o processo saiu de SEPLAG/SUBORC e foi enviado para SEPLAG/CHEGAB. O documento 135780300 está aberto. Ele foi produzido por SEPLAG/SUBORC, mas não contém palavras que indiquem aprovação, negativa ou arquivamento de forma clara. A leitura deve ser feita junto com o próximo movimento.",
+    "summary": "Em 08/07/2026 09:02, o processo chegou ao setor SEPLAG/CHEGAB. O documento 135780300 está aberto. Ele foi produzido por SEPLAG/SUBORC, mas não contém palavras que indiquem aprovação, negativa ou arquivamento de forma clara. A leitura deve ser feita junto com o próximo movimento.",
     "numbers": [
       {
         "value": "R$ 207,02 milhões",
@@ -4660,7 +4665,7 @@
     },
     {
       "period": "Situação atual",
-      "text": "O registro público mais recente é de 06/07/2026 11:05, em SEPLAG/CHEGAB. O documento mais recente é 135780300, de SEPLAG/SUBORC. Ainda não existe publicação definitiva do enquadramento."
+      "text": "O registro público mais recente é de 08/07/2026 09:02, em SEPLAG/CHEGAB. O documento mais recente é 135780300, de SEPLAG/SUBORC. Ainda não existe publicação definitiva do enquadramento."
     }
   ]
 }
