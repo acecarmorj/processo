@@ -319,6 +319,25 @@ main {
   white-space: pre-line;
 }
 
+.diagnosis-box {
+  margin-top: 15px;
+  padding: 14px 15px;
+  border-left: 4px solid var(--blue);
+  border-radius: 6px;
+  background: #f7fafb;
+}
+
+.diagnosis-box .label {
+  margin-bottom: 6px;
+}
+
+.diagnosis-box p:last-child {
+  margin-bottom: 0;
+  color: var(--blue-dark);
+  font-weight: 650;
+  line-height: 1.55;
+}
+
 .key-numbers {
   display: grid;
   gap: 9px;
@@ -669,6 +688,7 @@ dialog::backdrop {
   font-size: clamp(1.08rem, 4.5vw, 1.35rem);
   font-weight: 750;
   line-height: 1.45;
+  white-space: pre-line;
 }
 
 .transition-countdown {

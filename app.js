@@ -1,6 +1,5 @@
 const DATA_URL = "./data/processo.json";
 const STORAGE_KEY = "painel-faep-faetec-v1";
-const PHRASE_STORAGE_KEY = "painel-faep-frase-anterior";
 
 const ui = {
   refresh: document.querySelector("#refreshButton"),
@@ -19,6 +18,8 @@ const ui = {
   analysisTitle: document.querySelector("#analysisTitle"),
   analysisMode: document.querySelector("#analysisMode"),
   analysisText: document.querySelector("#analysisText"),
+  diagnosisBox: document.querySelector("#diagnosisBox"),
+  diagnosisText: document.querySelector("#diagnosisText"),
   keyNumbers: document.querySelector("#keyNumbers"),
   deepIntro: document.querySelector("#deepIntro"),
   unitMeaning: document.querySelector("#unitMeaning"),
@@ -43,37 +44,9 @@ let currentData = null;
 let movementLimit = 12;
 let transitionTimer = null;
 
-const MOTIVATIONAL_PHRASES = [
-  "Há mais de 30 anos essa categoria espera. Cada despacho lido é mais um passo para transformar espera em justiça.",
-  "Uma história de trabalho tão longa merece terminar com reconhecimento, respeito e justiça.",
-  "Cada novo documento mostra que a nossa causa continua viva e sendo acompanhada.",
-  "Direitos podem ser adiados, mas não devem ser esquecidos. A categoria segue firme.",
-  "A união dos servidores transforma uma espera individual em uma luta que ninguém pode ignorar.",
-  "Quem dedicou décadas ao serviço público merece uma solução clara, digna e definitiva.",
-  "O processo avança porque a categoria acompanha, pergunta, participa e não desiste.",
-  "Informação também é força: entender cada despacho ajuda a categoria a defender seus direitos.",
-  "Nenhum documento é apenas papel quando carrega a esperança de milhares de famílias.",
-  "A espera foi longa, mas cada passo oficial aproxima a categoria de uma resposta definitiva.",
-  "Quando a categoria permanece unida, sua história ganha voz e sua reivindicação ganha força.",
-  "Justiça é reconhecer hoje o direito de quem serviu ao Estado durante toda uma vida.",
-  "Cada assinatura pode aproximar milhares de servidores da reparação que esperam há décadas.",
-  "Nossa trajetória é feita de trabalho, resistência e esperança. Seguimos acompanhando cada passo.",
-  "O tempo passou, mas o direito e a dignidade desses servidores continuam merecendo resposta.",
-  "A categoria ex-FAEP não pede favor: espera o reconhecimento justo de sua história funcional.",
-  "Persistir com responsabilidade mantém a causa presente onde as decisões são tomadas.",
-  "Transparência fortalece a luta: cada despacho aberto ajuda todos a entender o caminho.",
-];
-
-const previousPhraseIndex = Number(
-  localStorage.getItem(PHRASE_STORAGE_KEY) ?? -1,
-);
-let visitPhraseIndex = Math.floor(
-  Math.random() * (MOTIVATIONAL_PHRASES.length - 1),
-);
-if (visitPhraseIndex >= previousPhraseIndex) visitPhraseIndex += 1;
-localStorage.setItem(PHRASE_STORAGE_KEY, String(visitPhraseIndex));
-const visitPhrase = MOTIVATIONAL_PHRASES[visitPhraseIndex];
-ui.transitionMessage.textContent = visitPhrase;
+const SHARE_MESSAGE =
+  "Compartilhe este painel com seus colegas ex-FAEP. Assim todos podem acompanhar o processo diretamente, com informação clara, sem depender apenas de mensagens em grupos.";
+ui.transitionMessage.textContent = SHARE_MESSAGE;
 
 const UNIT_NAMES = {
   "SEPLAG/SUPEFIS": "Estudos Fiscais",
@@ -471,6 +444,60 @@ function showTransition() {
   }, 1000);
 }
 
+function buildDiagnosis(data) {
+  const latest = data?.movements?.[0];
+  const latestDocument = data?.documents?.at(-1);
+  const unit = latest?.unit || "";
+  const description = (latest?.description || "").toLowerCase();
+  const documentNumber = latestDocument?.number || "";
+  const documentText = (latestDocument?.excerpt || "").toLowerCase();
+  const documentIsOpen = Boolean(latestDocument?.publicUrl && latestDocument?.excerpt);
+
+  if (!latest) {
+    return "Ainda não há andamento suficiente para formar um diagnóstico seguro. O painel continuará acompanhando o SEI.";
+  }
+
+  if (unit.includes("SEPLAG/CHEGAB")) {
+    const seeducHint = documentText.includes("secretaria de estado de educação")
+      ? " O despacho anterior aponta possível envio à SEEDUC para novas providências."
+      : "";
+    if (description.includes("recebido")) {
+      return `É um andamento pequeno, mas confirma que o processo não ficou perdido. A bola está agora no gabinete da SEPLAG para formalizar o encaminhamento. Ainda não é aprovação, mas também não é negativa. É a transição da análise orçamentária para uma decisão administrativa superior.${seeducHint}`;
+    }
+    return `O gabinete da SEPLAG movimentou o processo. Isso costuma significar que a análise técnica saiu da área responsável e precisa de encaminhamento formal para o próximo setor.${seeducHint}`;
+  }
+
+  if (unit.includes("SEPLAG/SUBORC") || unit.includes("SEPLAG/SUBAORC")) {
+    return "O processo está na área de Orçamento. Esta é a etapa em que o governo olha fonte de recursos, impacto financeiro e forma de implantação. É uma fase decisiva, porque o direito pode estar bem fundamentado, mas ainda precisa caber no planejamento financeiro do Estado.";
+  }
+
+  if (unit.includes("SEPLAG/SUPEFIS")) {
+    return "O processo está na área fiscal. Aqui a análise tende a verificar se a despesa respeita limites, regras fiscais e capacidade financeira. É um sinal de que o assunto está sendo tratado como decisão de impacto real, não apenas como protocolo parado.";
+  }
+
+  if (unit.includes("SEPLAG/SUBGEP") || unit.includes("SEPLAG/SUPDP")) {
+    return "O processo está na área de gestão de pessoas. Essa passagem costuma tratar de quantitativo de servidores, ativos, aposentados, pensionistas, enquadramento, folha e projeção do impacto. É onde os números precisam ficar bem amarrados para o Orçamento decidir.";
+  }
+
+  if (unit.includes("SEEDUC")) {
+    return "O processo está na Educação. Isso indica que a SEEDUC pode precisar complementar informação, validar dados ou receber de volta a orientação da SEPLAG. O ponto central é saber se a volta veio para ajuste técnico ou para encaminhamento político.";
+  }
+
+  if (unit.includes("FAETEC")) {
+    return "O processo passou pela FAETEC. Essa etapa costuma envolver manifestação sobre vínculo, enquadramento e impacto na estrutura da fundação. Como a causa trata de servidores ex-FAEP/FAETEC, a passagem pela fundação é relevante.";
+  }
+
+  if (latestDocument && !documentIsOpen) {
+    return `Há documento novo listado no SEI (${documentNumber}), mas o texto ainda não está aberto ao público. Por enquanto, dá para afirmar que houve movimentação; a conclusão só fica segura quando o despacho puder ser lido.`;
+  }
+
+  if (documentText.includes("encaminh")) {
+    return `O documento mais recente (${documentNumber}) parece ser de encaminhamento. Isso normalmente não resolve o mérito, mas mostra qual setor deve dar o próximo passo. O importante agora é acompanhar se o processo vai para decisão superior, correção técnica ou nova análise orçamentária.`;
+  }
+
+  return "O processo teve movimentação administrativa. Ainda não há sinal público de aprovação final, negativa ou arquivamento. A leitura segura depende do próximo despacho e do setor para onde ele será encaminhado.";
+}
+
 function render(data, old) {
   currentData = data;
   const latest = data.movements[0];
@@ -491,6 +518,9 @@ function render(data, old) {
     : "Situação atual";
   ui.analysisMode.textContent = hasAi ? "IA" : "Automática";
   ui.analysisText.textContent = hasAi ? analysis.aiText : analysis.summary;
+  const diagnosis = buildDiagnosis(data);
+  ui.diagnosisText.textContent = diagnosis;
+  ui.diagnosisBox.classList.toggle("hidden", !diagnosis);
   renderKeyNumbers(analysis.numbers);
   renderDeepExplanation(data);
   fillList(ui.signals, analysis.signals);

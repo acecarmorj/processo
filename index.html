@@ -9,7 +9,7 @@
       content="Painel público de acompanhamento do processo dos servidores ex-FAEP/FAETEC."
     />
     <title>Painel ex-FAEP / FAETEC</title>
-    <link rel="stylesheet" href="./styles.css?v=20260706-1" />
+    <link rel="stylesheet" href="./styles.css?v=20260708-1" />
   </head>
   <body>
     <header class="topbar">
@@ -78,6 +78,10 @@
           <span id="analysisMode" class="mode-badge">Automática</span>
         </div>
         <p id="analysisText" class="analysis-text">Carregando análise.</p>
+        <div id="diagnosisBox" class="diagnosis-box hidden">
+          <p class="label">Diagnóstico</p>
+          <p id="diagnosisText"></p>
+        </div>
         <div id="keyNumbers" class="key-numbers hidden"></div>
 
         <div class="analysis-grid">
@@ -212,8 +216,9 @@
       <div class="transition-card">
         <p class="label">Nossa luta continua</p>
         <p id="transitionMessage" class="transition-message">
-          Há mais de 30 anos essa categoria espera. Cada despacho lido é mais
-          um passo para transformar espera em justiça.
+          Compartilhe este painel com seus colegas ex-FAEP. Assim todos podem
+          acompanhar o processo diretamente, com informação clara, sem depender
+          apenas de mensagens em grupos.
         </p>
         <p class="transition-countdown">
           <span>O painel será exibido em</span>
@@ -264,6 +269,6 @@
       </details>
     </template>
 
-    <script type="module" src="./app.js?v=20260706-1"></script>
+    <script type="module" src="./app.js?v=20260708-1"></script>
   </body>
 </html>
