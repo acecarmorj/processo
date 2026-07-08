@@ -94,6 +94,13 @@ h3 {
   color: #d9edf5;
 }
 
+.header-credit {
+  margin: 7px 0 0;
+  color: #d9edf5;
+  font-size: 0.78rem;
+  font-weight: 650;
+}
+
 .label {
   color: var(--blue);
 }
@@ -587,14 +594,29 @@ li + li {
 
 .site-footer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 9px;
+  gap: 10px;
   margin-top: 22px;
   padding: 18px 8px 0;
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 0.82rem;
+}
+
+.access-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+}
+
+.footer-credit {
+  margin: 0;
+  color: var(--blue-dark);
+  font-size: 0.78rem;
+  font-weight: 700;
 }
 
 .site-footer a,
