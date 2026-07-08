@@ -2,9 +2,14 @@
   "schemaVersion": 6,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-07-08T18:00:07.508Z",
-  "sourceHash": "db03f7534cf02e6e1921a3a5ad5e8f80dc776c65e22c401e14bc0851c898d0ce",
+  "generatedAt": "2026-07-08T20:15:02.605Z",
+  "sourceHash": "c05403fe5246386f939799d8d86ac13ce1b07e4de4c4d20787d75b56fad952e5",
   "movements": [
+    {
+      "dateTime": "08/07/2026 15:25",
+      "unit": "SEEDUC/CHEGAB",
+      "description": "Processo recebido na unidade"
+    },
     {
       "dateTime": "08/07/2026 14:46",
       "unit": "SEEDUC/CHEGAB",
@@ -4634,7 +4639,7 @@
         "Definição do instrumento final"
       ]
     },
-    "summary": "Em 08/07/2026 14:46, o processo saiu de SEPLAG/CHEGAB e foi enviado para SEEDUC/CHEGAB. Também foi criado o documento 136041260, mas seu texto ainda não está aberto ao público. Por enquanto, não é possível saber se ele aprova, corrige ou apenas encaminha o pedido.",
+    "summary": "Em 08/07/2026 15:25, o processo chegou ao setor SEEDUC/CHEGAB. Também foi criado o documento 136041260, mas seu texto ainda não está aberto ao público. Por enquanto, não é possível saber se ele aprova, corrige ou apenas encaminha o pedido.",
     "numbers": [
       {
         "value": "R$ 207,02 milhões",
@@ -4680,7 +4685,7 @@
     },
     {
       "period": "Situação atual",
-      "text": "O registro público mais recente é de 08/07/2026 14:46, em SEEDUC/CHEGAB. O documento mais recente é 136041260, de SEPLAG/CHEGAB. Ainda não existe publicação definitiva do enquadramento."
+      "text": "O registro público mais recente é de 08/07/2026 15:25, em SEEDUC/CHEGAB. O documento mais recente é 136041260, de SEPLAG/CHEGAB. Ainda não existe publicação definitiva do enquadramento."
     }
   ]
 }
