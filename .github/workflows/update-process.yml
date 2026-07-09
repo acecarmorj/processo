@@ -5,6 +5,10 @@ on:
     # Horários em UTC: 00:10 e, de hora em hora, das 08:00 às 20:00 em Brasília.
     - cron: "10 3 * * *"
     - cron: "0 11-23 * * *"
+  push:
+    branches: ["main"]
+    paths:
+      - ".github/workflows/update-process.yml"
   workflow_dispatch:
 
 permissions:
@@ -29,6 +33,9 @@ jobs:
 
       - name: Instalar dependências
         run: npm ci
+
+      - name: Forçar releitura dos documentos públicos
+        run: rm -f data/processo.json
 
       - name: Consultar processo e gerar relatório
         run: npm run update
