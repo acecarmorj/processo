@@ -2,8 +2,8 @@
   "schemaVersion": 6,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-07-08T21:00:07.287Z",
-  "sourceHash": "d10b0b6bba9a5095bc3d7d96e1c5d8e0a10c252602cada3d54bdea47b4d22944",
+  "generatedAt": "2026-07-09T03:12:16.687Z",
+  "sourceHash": "d76a5bae0504fc9cf04f5dfdba5aa0f8f9243046cc2680620782f81fc327c3f0",
   "movements": [
     {
       "dateTime": "08/07/2026 17:47",
@@ -4627,20 +4627,20 @@
       "type": "Despacho de Encaminhamento de Processo",
       "date": "08/07/2026",
       "unit": "SEPLAG/CHEGAB",
-      "publicUrl": null,
-      "excerpt": "",
+      "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNPsEDrAJ9aOl5Yyk4norivyObGeEXQ2EzZd_QtVq54MS9hdamm5--ujc5tAagzj_LcwrWYGiUHvD_0RLOqPEL8B",
+      "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de Planejamento e GestãoGabinete do Secretário À Chefia de Gabinete da Secretaria de Estado de Educação - SEEDUC/CHEGAB, Cumprimentando-o cordialmente, em atenção ao despacho (135780300) proveniente da Subsecretaria de Orçamento (SUBORC), encaminhamos o presente adminstrativo para apreciação das informações prestadas pela Subsecretaria Adjunta de Orçamento da referida Subsecretaria no Despacho SEI nº 135635411. Atenciosamente, DEBORA SADERChefe de GabineteID Funcional n.º 5007702-3 Rio de Janeiro, na data da assinatura",
       "excerptVersion": 2,
-      "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
+      "simpleExplanation": "Documento produzido por SEPLAG/CHEGAB. A explicação completa depende da leitura do trecho oficial abaixo."
     },
     {
       "number": "136143524",
       "type": "Despacho de Encaminhamento de Processo",
       "date": "08/07/2026",
       "unit": "SEEDUC/CHEGAB",
-      "publicUrl": null,
-      "excerpt": "",
+      "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNN0iwaM8pLA7f5v3PxL-FB_QgFF3Hikp2leciRD2ivNVMGq_ZNBdXN6H9FM4-jnYIrq9-5wPuDbCSggQmuu09GB",
+      "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de EducaçãoGabinete do Secretário À SUPOFConsiderando a manifestação de id 136041260, encaminho o p.a. tendo em vista o impacto orçamentário. Rio de Janeiro, na data da assinatura",
       "excerptVersion": 2,
-      "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
+      "simpleExplanation": "O documento envia o processo para outro setor analisar ou tomar providências. Sozinho, esse ato não significa aprovação."
     }
   ],
   "analysis": {
@@ -4654,7 +4654,7 @@
         "Decisão superior"
       ]
     },
-    "summary": "Em 08/07/2026 17:47, o processo saiu de SEEDUC/CHEGAB e foi enviado para SEEDUC/SUPOF. Também foi criado o documento 136143524, mas seu texto ainda não está aberto ao público. Por enquanto, não é possível saber se ele aprova, corrige ou apenas encaminha o pedido.",
+    "summary": "Em 08/07/2026 17:47, o processo saiu de SEEDUC/CHEGAB e foi enviado para SEEDUC/SUPOF. O documento 136143524 encaminha o processo para outro setor continuar a análise. Ele mostra que o pedido segue tramitando, mas não traz uma aprovação final.",
     "numbers": [
       {
         "value": "R$ 207,02 milhões",
@@ -4673,11 +4673,11 @@
       }
     ],
     "signals": [
-      "O novo documento 136143524 já aparece na lista oficial do processo.",
+      "O processo foi enviado para novas providências, sem ordem de arquivamento.",
       "A análise anterior fixou o custo em R$ 207,02 milhões por ano; esse valor continua como referência até surgir novo cálculo."
     ],
     "risks": [
-      "O conteúdo do documento mais recente ainda precisa ser liberado para uma conclusão segura.",
+      "Um simples encaminhamento não garante que a proposta será aceita.",
       "Uma movimentação no SEI mostra que o processo andou, mas não significa aprovação por si só."
     ]
   },
