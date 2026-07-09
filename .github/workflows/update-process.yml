@@ -9,6 +9,8 @@ on:
     branches: ["main"]
     paths:
       - ".github/workflows/update-process.yml"
+      - "scripts/update-process-v2.mjs"
+      - "package.json"
   workflow_dispatch:
 
 permissions:
@@ -33,9 +35,6 @@ jobs:
 
       - name: Instalar dependências
         run: npm ci
-
-      - name: Forçar releitura dos documentos públicos
-        run: rm -f data/processo.json
 
       - name: Consultar processo e gerar relatório
         run: npm run update
