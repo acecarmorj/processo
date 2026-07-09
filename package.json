@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "update": "node scripts/update-process.mjs",
+    "update": "node scripts/update-process-v2.mjs",
     "serve": "npx --yes serve ."
   },
   "dependencies": {
