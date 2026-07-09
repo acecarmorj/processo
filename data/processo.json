@@ -2,9 +2,14 @@
   "schemaVersion": 6,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-07-09T03:12:16.687Z",
-  "sourceHash": "d76a5bae0504fc9cf04f5dfdba5aa0f8f9243046cc2680620782f81fc327c3f0",
+  "generatedAt": "2026-07-09T15:00:09.126Z",
+  "sourceHash": "bdc8ae8011cc7defe12b2b96c8f6464dbf8a097a72adfd469d0afe9633c682a1",
   "movements": [
+    {
+      "dateTime": "09/07/2026 11:56",
+      "unit": "SEEDUC/SUPOF",
+      "description": "Processo recebido na unidade"
+    },
     {
       "dateTime": "08/07/2026 17:47",
       "unit": "SEEDUC/SUPOF",
@@ -4654,7 +4659,7 @@
         "Decisão superior"
       ]
     },
-    "summary": "Em 08/07/2026 17:47, o processo saiu de SEEDUC/CHEGAB e foi enviado para SEEDUC/SUPOF. O documento 136143524 encaminha o processo para outro setor continuar a análise. Ele mostra que o pedido segue tramitando, mas não traz uma aprovação final.",
+    "summary": "Em 09/07/2026 11:56, o processo chegou ao setor SEEDUC/SUPOF. O documento 136143524 encaminha o processo para outro setor continuar a análise. Ele mostra que o pedido segue tramitando, mas não traz uma aprovação final.",
     "numbers": [
       {
         "value": "R$ 207,02 milhões",
@@ -4700,7 +4705,7 @@
     },
     {
       "period": "Situação atual",
-      "text": "O registro público mais recente é de 08/07/2026 17:47, em SEEDUC/SUPOF. O documento mais recente é 136143524, de SEEDUC/CHEGAB. Ainda não existe publicação definitiva do enquadramento."
+      "text": "O registro público mais recente é de 09/07/2026 11:56, em SEEDUC/SUPOF. O documento mais recente é 136143524, de SEEDUC/CHEGAB. Ainda não existe publicação definitiva do enquadramento."
     }
   ]
 }
