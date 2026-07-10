@@ -21,7 +21,7 @@ try {
   Set-Location -LiteralPath $repository
   Add-Content -LiteralPath $logPath -Value "$(Get-Date -Format s) - Iniciando consulta."
 
-  & node "scripts\update-process.mjs" 2>&1 |
+  & node "scripts\update-process-v2.mjs" 2>&1 |
     ForEach-Object { Add-Content -LiteralPath $logPath -Value $_ }
 
   if ($LASTEXITCODE -ne 0) {
