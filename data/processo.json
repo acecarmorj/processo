@@ -2,9 +2,19 @@
   "schemaVersion": 7,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-07-10T15:01:26.292Z",
-  "sourceHash": "8ed76b9f78ede5d8493d6532c690f02e0c7d6161efaa85d52c013cecb755b04f",
+  "generatedAt": "2026-07-10T18:57:29.597Z",
+  "sourceHash": "844ccc08a4238d9032c6cf84df9bc4b1c536ac34ec807bfa50447fd9c5b5bbad",
   "movements": [
+    {
+      "dateTime": "10/07/2026 14:39",
+      "unit": "SEEDUC/ASSUPOF",
+      "description": "Processo recebido na unidade"
+    },
+    {
+      "dateTime": "10/07/2026 14:14",
+      "unit": "SEEDUC/ASSUPOF",
+      "description": "Processo remetido pela unidade SEEDUC/SUPOF"
+    },
     {
       "dateTime": "09/07/2026 11:56",
       "unit": "SEEDUC/SUPOF",
@@ -4646,6 +4656,16 @@
       "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de EducaçãoGabinete do Secretário À SUPOFConsiderando a manifestação de id 136041260, encaminho o p.a. tendo em vista o impacto orçamentário. Rio de Janeiro, na data da assinatura",
       "excerptVersion": 3,
       "simpleExplanation": "É despacho de encaminhamento: manda o processo para outro setor tomar ciência ou providências. Sozinho, não aprova nem nega."
+    },
+    {
+      "number": "136321484",
+      "type": "Despacho de Encaminhamento de Processo",
+      "date": "10/07/2026",
+      "unit": "SEEDUC/SUPOF",
+      "publicUrl": null,
+      "excerpt": "",
+      "excerptVersion": 3,
+      "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
     }
   ],
   "analysis": {
@@ -4659,7 +4679,7 @@
         "Retorno à SEPLAG ou encaminhamento superior"
       ]
     },
-    "summary": "Em 09/07/2026 11:56, o processo chegou ao setor SEEDUC/SUPOF. O documento 136143524 encaminha o processo para outro setor continuar a análise. Mostra movimentação, mas não aprovação final.",
+    "summary": "Em 10/07/2026 14:39, o processo chegou ao setor SEEDUC/ASSUPOF. Também foi criado o documento 136321484, mas seu texto ainda não está aberto ou não foi extraído pelo painel.",
     "numbers": [
       {
         "value": "R$ 207,02 milhões",
@@ -4678,11 +4698,11 @@
       }
     ],
     "signals": [
-      "O processo foi enviado para novas providências, sem sinal público de arquivamento no trecho lido.",
+      "O documento 136321484 aparece na lista oficial do processo.",
       "A estimativa mais recente de impacto continua em R$ 207,02 milhões por ano até surgir novo cálculo."
     ],
     "risks": [
-      "Um simples encaminhamento não garante que a proposta será aceita.",
+      "Sem o texto do despacho, não é seguro afirmar aprovação, negativa ou exigência.",
       "Movimentação no SEI mostra que o processo andou, mas não significa aprovação por si só."
     ]
   },
@@ -4705,7 +4725,7 @@
     },
     {
       "period": "Situação atual",
-      "text": "O registro público mais recente é de 09/07/2026 11:56, em SEEDUC/SUPOF. O documento mais recente é 136143524, de SEEDUC/CHEGAB. Ainda não existe publicação definitiva do enquadramento."
+      "text": "O registro público mais recente é de 10/07/2026 14:39, em SEEDUC/ASSUPOF. O documento mais recente é 136321484, de SEEDUC/SUPOF. Ainda não existe publicação definitiva do enquadramento."
     }
   ]
 }
