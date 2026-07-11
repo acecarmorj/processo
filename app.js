@@ -61,6 +61,74 @@ const UNIT_NAMES = {
   "FAETEC/PRESI": "Presidência da FAETEC",
 };
 
+Object.assign(UNIT_NAMES, {
+  "FAETEC/ASSJUR": "Assessoria Juridica da FAETEC",
+  "FAETEC/CHEGAB": "Chefia de Gabinete da FAETEC",
+  "FAETEC/DIVRH": "Divisao de Recursos Humanos da FAETEC",
+  "FAETEC/PRESI": "Presidencia da FAETEC",
+  "FAETEC/SECPRES": "Secretaria da Presidencia da FAETEC",
+  "PGE/CHEGAB": "Chefia de Gabinete da Procuradoria-Geral do Estado",
+  "PGE/PG": "Procuradoria-Geral do Estado",
+  "RIOPREV/DIRSE": "Diretoria de Seguridade do Rioprevidencia",
+  "RIOPREV/GERBE": "Gerencia de Beneficios do Rioprevidencia",
+  "RIOPREV/GERCAP": "Gerencia de Cadastro e Pagamento do Rioprevidencia",
+  "RIOPREV/GERPA": "Gerencia de Pagamento do Rioprevidencia",
+  "RIOPREV/PRESI": "Presidencia do Rioprevidencia",
+  "SECC/ASSAL": "Assessoria da Casa Civil",
+  "SECC/ASSOC": "Assessoria da Casa Civil",
+  "SECC/CHEGAB": "Chefia de Gabinete da Casa Civil",
+  "SECC/COGIC": "Coordenacao da Casa Civil",
+  "SECC/COPRE": "Coordenacao da Casa Civil",
+  "SECC/SUBG": "Subsecretaria-Geral da Casa Civil",
+  "SECC/SUBGEP": "Subsecretaria de Gestao de Pessoas da Casa Civil",
+  "SECC/SUBJUR": "Subsecretaria Juridica da Casa Civil",
+  "SECC/SUBTEX": "Subsecretaria de Texto e Expediente da Casa Civil",
+  "SECC/SUPDP": "Superintendencia de Planejamento e Desenvolvimento de Pessoas da Casa Civil",
+  "SECC/SUPTEX": "Superintendencia de Texto e Expediente da Casa Civil",
+  "SECTI/ASSJUR": "Assessoria Juridica da Secretaria de Ciencia, Tecnologia e Inovacao",
+  "SECTI/CHEGAB": "Chefia de Gabinete da Secretaria de Ciencia, Tecnologia e Inovacao",
+  "SECTI/GABSEC": "Gabinete da Secretaria de Ciencia, Tecnologia e Inovacao",
+  "SEEDUC/ARQDOC": "Arquivo e Documentacao da Secretaria de Educacao",
+  "SEEDUC/ASPLO": "Assessoria de Planejamento e Orcamento da Secretaria de Educacao",
+  "SEEDUC/ASSCONT": "Assessoria de Controle e Contabilidade da Secretaria de Educacao",
+  "SEEDUC/ASSJUR": "Assessoria Juridica da Secretaria de Educacao",
+  "SEEDUC/ASSPLAG": "Assessoria de Planejamento e Gestao da Secretaria de Educacao",
+  "SEEDUC/ASSUPOF": "Assessoria de Orcamento e Financas da Secretaria de Educacao",
+  "SEEDUC/CHEGAB": "Chefia de Gabinete da Secretaria de Educacao",
+  "SEEDUC/GABSEC": "Gabinete da Secretaria de Educacao",
+  "SEEDUC/NUCALC": "Nucleo de Calculos da Secretaria de Educacao",
+  "SEEDUC/NUCSPEA": "Nucleo da Secretaria de Educacao ligado ao processo",
+  "SEEDUC/PROTPUB": "Protocolo e Publicacao da Secretaria de Educacao",
+  "SEEDUC/SUBAD": "Subsecretaria Administrativa da Secretaria de Educacao",
+  "SEEDUC/SUBEXE": "Subsecretaria Executiva da Secretaria de Educacao",
+  "SEEDUC/SUPGP": "Superintendencia de Gestao de Pessoas da Secretaria de Educacao",
+  "SEEDUC/SUPOF": "Superintendencia de Orcamento e Financas da Secretaria de Educacao",
+  "SEEDUC/SUPTA": "Superintendencia da Secretaria de Educacao",
+  "SEFAZ/CHEGAB": "Chefia de Gabinete da Secretaria de Fazenda",
+  "SEFAZ/COMISARRF": "Comissao do Regime de Recuperacao Fiscal da Secretaria de Fazenda",
+  "SEFAZ/GABSEC": "Gabinete da Secretaria de Fazenda",
+  "SEFAZ/SUBAPOF": "Subsecretaria Adjunta de Politica Orcamentaria e Financeira da Fazenda",
+  "SEFAZ/SUBTES": "Subsecretaria do Tesouro da Secretaria de Fazenda",
+  "SEPLAG/CHEGAB": "Chefia de Gabinete da SEPLAG",
+  "SEPLAG/SUBAORC": "Subsecretaria Adjunta de Orcamento",
+  "SEPLAG/SUBGEP": "Subsecretaria de Gestao de Pessoas",
+  "SEPLAG/SUBORC": "Subsecretaria de Orcamento",
+  "SEPLAG/SUBPLO": "Subsecretaria de Planejamento e Orcamento",
+  "SEPLAG/SUPDP": "Superintendencia de Planejamento e Desenvolvimento de Pessoas",
+  "SEPLAG/SUPEFIS": "Superintendencia de Estudos Fiscais",
+});
+
+const ORG_NAMES = {
+  FAETEC: "Fundacao de Apoio a Escola Tecnica",
+  PGE: "Procuradoria-Geral do Estado",
+  RIOPREV: "Rioprevidencia",
+  SECC: "Secretaria de Estado da Casa Civil",
+  SECTI: "Secretaria de Ciencia, Tecnologia e Inovacao",
+  SEEDUC: "Secretaria de Estado de Educacao",
+  SEFAZ: "Secretaria de Estado de Fazenda",
+  SEPLAG: "Secretaria de Estado de Planejamento e Gestao",
+};
+
 function movementKey(item) {
   return `${item.dateTime}|${item.unit}|${item.description}`;
 }
@@ -103,9 +171,25 @@ function formatGeneratedAt(value) {
   return `${exact} — há ${elapsedDays} dia${elapsedDays > 1 ? "s" : ""}`;
 }
 
-function readableUnit(unit) {
-  const name = UNIT_NAMES[unit];
-  return name ? `${unit} — ${name}` : unit;
+function readableUnit(unit = "") {
+  const cleanUnit = String(unit || "").trim();
+  if (!cleanUnit) return "";
+
+  const name = UNIT_NAMES[cleanUnit];
+  if (name) return `${cleanUnit} - ${name}`;
+
+  const [org, sector] = cleanUnit.split("/");
+  const orgName = ORG_NAMES[org];
+  if (orgName && sector) return `${cleanUnit} - ${sector} da ${orgName}`;
+
+  return cleanUnit;
+}
+
+function expandUnitsInText(text = "") {
+  return String(text || "").replace(
+    /\b([A-Z]{2,12}\/[A-Z0-9]{2,14})\b/g,
+    (unit) => readableUnit(unit),
+  );
 }
 
 function originFromDescription(description = "") {
@@ -120,18 +204,18 @@ function describeLatestMovement(movement) {
   const lowerDescription = movement.description.toLowerCase();
   const origin = originFromDescription(movement.description);
   if (origin && lowerDescription.includes("remetido")) {
-    return `O ultimo andamento mostra que o processo saiu de ${origin} e foi enviado para ${movement.unit}, em ${movement.dateTime}.`;
+    return `O ultimo andamento mostra que o processo saiu de ${readableUnit(origin)} e foi enviado para ${readableUnit(movement.unit)}, em ${movement.dateTime}.`;
   }
   if (lowerDescription.includes("recebido")) {
-    return `O ultimo andamento mostra que o processo chegou em ${movement.unit}, em ${movement.dateTime}.`;
+    return `O ultimo andamento mostra que o processo chegou em ${readableUnit(movement.unit)}, em ${movement.dateTime}.`;
   }
   if (lowerDescription.includes("reabertura")) {
-    return `O ultimo andamento mostra uma reabertura em ${movement.unit}, em ${movement.dateTime}. Isso costuma indicar retomada da analise naquele setor.`;
+    return `O ultimo andamento mostra uma reabertura em ${readableUnit(movement.unit)}, em ${movement.dateTime}. Isso costuma indicar retomada da analise naquele setor.`;
   }
   if (lowerDescription.includes("conclus")) {
-    return `O ultimo andamento mostra conclusao de etapa em ${movement.unit}, em ${movement.dateTime}. Isso encerra a analise daquele setor, nao o processo inteiro.`;
+    return `O ultimo andamento mostra conclusao de etapa em ${readableUnit(movement.unit)}, em ${movement.dateTime}. Isso encerra a analise daquele setor, nao o processo inteiro.`;
   }
-  return `O ultimo andamento foi em ${movement.dateTime}, na unidade ${movement.unit}: ${movement.description}.`;
+  return `O ultimo andamento foi em ${movement.dateTime}, na unidade ${readableUnit(movement.unit)}: ${expandUnitsInText(movement.description)}.`;
 }
 
 function unitMeaningText(unit = "") {
@@ -275,9 +359,11 @@ function renderDeepExplanation(data) {
   const latest = data.movements[0];
   const latestDocument = data.documents.at(-1);
 
-  ui.deepIntro.textContent = `${describeLatestMovement(latest)} Em linguagem simples: o SEI mostra o caminho oficial do processo, mas a conclusao depende do texto do despacho e do setor que recebeu a demanda.`;
-  ui.unitMeaning.textContent = unitMeaningText(latest?.unit);
-  ui.documentMeaning.textContent = documentMeaningText(latestDocument);
+  ui.deepIntro.textContent = expandUnitsInText(
+    `${describeLatestMovement(latest)} Em linguagem simples: o SEI mostra o caminho oficial do processo, mas a conclusao depende do texto do despacho e do setor que recebeu a demanda.`,
+  );
+  ui.unitMeaning.textContent = expandUnitsInText(unitMeaningText(latest?.unit));
+  ui.documentMeaning.textContent = expandUnitsInText(documentMeaningText(latestDocument));
 
   ui.scenarioCards.replaceChildren();
   for (const scenario of scenarioList(data)) {
@@ -285,8 +371,8 @@ function renderDeepExplanation(data) {
     card.className = "scenario-card";
     const title = document.createElement("h4");
     const text = document.createElement("p");
-    title.textContent = scenario.title;
-    text.textContent = scenario.text;
+    title.textContent = expandUnitsInText(scenario.title);
+    text.textContent = expandUnitsInText(scenario.text);
     card.append(title, text);
     ui.scenarioCards.append(card);
   }
@@ -298,7 +384,7 @@ function fillList(element, values) {
   element.replaceChildren();
   for (const value of values) {
     const item = document.createElement("li");
-    item.textContent = value;
+    item.textContent = expandUnitsInText(value);
     element.append(item);
   }
 }
@@ -366,9 +452,9 @@ function renderTimeline(data, newKeys) {
     if (newKeys.has(movementKey(movement))) article.classList.add("new");
     fragment.querySelector("time").textContent = movement.dateTime;
     const unit = fragment.querySelector(".unit");
-    unit.textContent = movement.unit;
-    unit.title = UNIT_NAMES[movement.unit] || movement.unit;
-    fragment.querySelector("p").textContent = movement.description;
+    unit.textContent = readableUnit(movement.unit);
+    unit.title = readableUnit(movement.unit);
+    fragment.querySelector("p").textContent = expandUnitsInText(movement.description);
     ui.timeline.append(fragment);
   }
 
@@ -392,13 +478,17 @@ function renderDocuments(data, newNumbers) {
     fragment.querySelector(".document-number").textContent =
       `Documento ${documentData.number}`;
     fragment.querySelector(".document-type").textContent = documentData.type;
-    fragment.querySelector(".document-unit").textContent = documentData.unit;
+    fragment.querySelector(".document-unit").textContent = readableUnit(documentData.unit);
     fragment.querySelector("time").textContent = documentData.date;
     fragment.querySelector(".document-explanation").textContent =
       documentData.simpleExplanation ||
       "Documento oficial incluído no processo.";
     fragment.querySelector(".document-excerpt").textContent =
       documentData.excerpt || "Documento disponível no SEI.";
+    const explanation = fragment.querySelector(".document-explanation");
+    const excerpt = fragment.querySelector(".document-excerpt");
+    explanation.textContent = expandUnitsInText(explanation.textContent);
+    excerpt.textContent = expandUnitsInText(excerpt.textContent);
     const link = fragment.querySelector(".document-link");
     if (documentData.publicUrl) link.href = documentData.publicUrl;
     ui.documents.append(fragment);
@@ -413,7 +503,7 @@ function renderHistory(data) {
     const title = document.createElement("h3");
     title.textContent = section.period;
     const text = document.createElement("p");
-    text.textContent = section.text;
+    text.textContent = expandUnitsInText(section.text);
     article.append(title, text);
     ui.historyContent.append(article);
   }
@@ -506,7 +596,7 @@ function render(data, old) {
 
   ui.status.textContent = "Atualizado";
   ui.phaseTitle.textContent = analysis.phase.title;
-  ui.phaseExplanation.textContent = analysis.phase.explanation;
+  ui.phaseExplanation.textContent = expandUnitsInText(analysis.phase.explanation);
   ui.currentUnit.textContent = latest?.unit ? readableUnit(latest.unit) : "-";
   ui.lastMovement.textContent = latest?.dateTime || "-";
   ui.generatedAt.textContent = formatGeneratedAt(data.generatedAt);
@@ -517,9 +607,9 @@ function render(data, old) {
     ? "Análise do painel"
     : "Situação atual";
   ui.analysisMode.textContent = hasAi ? "IA" : "Automática";
-  ui.analysisText.textContent = hasAi ? analysis.aiText : analysis.summary;
+  ui.analysisText.textContent = expandUnitsInText(hasAi ? analysis.aiText : analysis.summary);
   const diagnosis = buildDiagnosis(data);
-  ui.diagnosisText.textContent = diagnosis;
+  ui.diagnosisText.textContent = expandUnitsInText(diagnosis);
   ui.diagnosisBox.classList.toggle("hidden", !diagnosis);
   renderKeyNumbers(analysis.numbers);
   renderDeepExplanation(data);
