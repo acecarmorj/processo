@@ -93,6 +93,7 @@ Object.assign(UNIT_NAMES, {
   "SEEDUC/ASSCONT": "Assessoria de Controle e Contabilidade da Secretaria de Educacao",
   "SEEDUC/ASSJUR": "Assessoria Juridica da Secretaria de Educacao",
   "SEEDUC/ASSPLAG": "Assessoria de Planejamento e Gestao da Secretaria de Educacao",
+  "SEEDUC/ASSUBEXE": "Assessoria da Subsecretaria Executiva da Secretaria de Educacao",
   "SEEDUC/ASSUPOF": "Assessoria de Orcamento e Financas da Secretaria de Educacao",
   "SEEDUC/CHEGAB": "Chefia de Gabinete da Secretaria de Educacao",
   "SEEDUC/GABSEC": "Gabinete da Secretaria de Educacao",
