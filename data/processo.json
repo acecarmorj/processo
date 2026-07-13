@@ -2,9 +2,19 @@
   "schemaVersion": 7,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-07-11T03:10:05.797Z",
-  "sourceHash": "e4f9a2eefc403e7ba645ef86a8bd9bd36bf0d68e59f999504bba2b6bbc107e14",
+  "generatedAt": "2026-07-13T15:16:06.200Z",
+  "sourceHash": "dc77dda8c729fa2cf8e7d976e73889c7d757552ac7756f43971055c1cbdb9f9b",
   "movements": [
+    {
+      "dateTime": "13/07/2026 12:08",
+      "unit": "SEEDUC/ASSUBEXE",
+      "description": "Processo recebido na unidade"
+    },
+    {
+      "dateTime": "13/07/2026 12:07",
+      "unit": "SEEDUC/ASSUBEXE",
+      "description": "Processo remetido pela unidade SEEDUC/ASSUPOF"
+    },
     {
       "dateTime": "10/07/2026 14:39",
       "unit": "SEEDUC/ASSUPOF",
@@ -4666,20 +4676,30 @@
       "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de EducaçãoSubsecretaria Executiva À Assessoria de Orçamento e Finanças- (SEEDUC/ASSUPOF), Encaminhamos o presente processo para ciência e as providências que couberem, tendo em vista o contido no despacho SEEDUC/CHEGAB nº 136143524. Pamela CruzAssessoria SUPOFID 51404281 Rio de Janeiro, na data da assinatura",
       "excerptVersion": 3,
       "simpleExplanation": "É despacho de encaminhamento: manda o processo para outro setor tomar ciência ou providências. Sozinho, não aprova nem nega."
+    },
+    {
+      "number": "136413580",
+      "type": "Despacho de Encaminhamento de Processo",
+      "date": "13/07/2026",
+      "unit": "SEEDUC/ASSUPOF",
+      "publicUrl": null,
+      "excerpt": "",
+      "excerptVersion": 3,
+      "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
     }
   ],
   "analysis": {
     "mode": "automatic",
     "phase": {
-      "title": "Análise orçamentária na Educação",
-      "explanation": "O processo chegou à área de orçamento/planejamento financeiro da SEEDUC, que pode avaliar impacto, fonte de recursos e viabilidade dentro da pasta.",
+      "title": "Tramitação administrativa",
+      "explanation": "O processo continua em análise dentro da administração estadual.",
       "nextSteps": [
-        "Manifestação técnica da SEEDUC",
-        "Resposta à chefia de gabinete",
-        "Retorno à SEPLAG ou encaminhamento superior"
+        "Novo despacho",
+        "Remessa técnica",
+        "Decisão superior"
       ]
     },
-    "summary": "Em 10/07/2026 14:39, o processo chegou ao setor SEEDUC/ASSUPOF. O documento 136321484 encaminha o processo para outro setor continuar a análise. Mostra movimentação, mas não aprovação final.",
+    "summary": "Em 13/07/2026 12:08, o processo chegou ao setor SEEDUC/ASSUBEXE. Também foi criado o documento 136413580, mas seu texto ainda não está aberto ou não foi extraído pelo painel.",
     "numbers": [
       {
         "value": "R$ 207,02 milhões",
@@ -4698,11 +4718,11 @@
       }
     ],
     "signals": [
-      "O processo foi enviado para novas providências, sem sinal público de arquivamento no trecho lido.",
+      "O documento 136413580 aparece na lista oficial do processo.",
       "A estimativa mais recente de impacto continua em R$ 207,02 milhões por ano até surgir novo cálculo."
     ],
     "risks": [
-      "Um simples encaminhamento não garante que a proposta será aceita.",
+      "Sem o texto do despacho, não é seguro afirmar aprovação, negativa ou exigência.",
       "Movimentação no SEI mostra que o processo andou, mas não significa aprovação por si só."
     ]
   },
@@ -4725,7 +4745,7 @@
     },
     {
       "period": "Situação atual",
-      "text": "O registro público mais recente é de 10/07/2026 14:39, em SEEDUC/ASSUPOF. O documento mais recente é 136321484, de SEEDUC/SUPOF. Ainda não existe publicação definitiva do enquadramento."
+      "text": "O registro público mais recente é de 13/07/2026 12:08, em SEEDUC/ASSUBEXE. O documento mais recente é 136413580, de SEEDUC/ASSUPOF. Ainda não existe publicação definitiva do enquadramento."
     }
   ]
 }
