@@ -1,10 +1,20 @@
 {
-  "schemaVersion": 8,
+  "schemaVersion": 9,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-07-14T15:01:09.761Z",
-  "sourceHash": "7c3a3712d74aef897a0a563ea732475b05c8ed45a98672a066f53516d06a7aa9",
+  "generatedAt": "2026-07-14T15:18:41.607Z",
+  "sourceHash": "13fb775507a4e58bda47881582e0114e35aa50f5a6d24c7c48c62a191d640bd3",
   "movements": [
+    {
+      "dateTime": "14/07/2026 12:13",
+      "unit": "FAETEC/CHEGAB",
+      "description": "Processo remetido pela unidade SEEDUC/GABSEC"
+    },
+    {
+      "dateTime": "14/07/2026 12:11",
+      "unit": "SEEDUC/GABSEC",
+      "description": "Reabertura do processo na unidade"
+    },
     {
       "dateTime": "14/07/2026 11:52",
       "unit": "SEEDUC/CHEGAB",
@@ -4706,6 +4716,16 @@
       "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de EducaçãoSubsecretaria ExecutivaÀ Chefia de Gabinete,Para ciência da análise técnica proferida pela SUPOF (), acerca das respostas a solicitação da SEEDUC, visando análise da viabilidade e instrumentalização da migração/transferência de servidores concursados da extinta FAEP para a estrutura da FAETEC. José Mauro BrazAssessor/SUBEXEID.: 5114243-0 Rio de Janeiro, 13 julho de 2026",
       "excerptVersion": 3,
       "simpleExplanation": "Documento produzido por SEEDUC/ASSUBEXE. A leitura deve ser combinada com o movimento seguinte do SEI."
+    },
+    {
+      "number": "136546268",
+      "type": "Despacho de Encaminhamento de Processo",
+      "date": "14/07/2026",
+      "unit": "SEEDUC/GABSEC",
+      "publicUrl": null,
+      "excerpt": "",
+      "excerptVersion": 3,
+      "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
     }
   ],
   "analysis": {
@@ -4721,9 +4741,9 @@
     },
     "result": "O documento é ruim para a categoria, mas não encerra o processo.",
     "resultLevel": "warning",
-    "summary": "O documento 136413580, da área de Orçamento e Finanças da Educação, registrou que não há disponibilidade orçamentária neste momento. Depois disso, o documento 136500728 encaminhou essa análise à Chefia de Gabinete da Educação.",
-    "practicalReading": "A principal trava agora é financeira. A área técnica não disse que o pedido é ilegal nem mandou arquivar; disse que a Educação não tem recursos disponíveis hoje. A solução depende de encontrar fonte de dinheiro, implantação por etapas ou decisão política superior.",
-    "conclusion": "O processo não morreu, mas sofreu uma trava séria. O problema deixou de ser apenas técnico: agora precisa de solução orçamentária e decisão política para avançar.",
+    "summary": "O documento 136413580, da área de Orçamento e Finanças da Educação, registrou que não há disponibilidade orçamentária neste momento. Depois dessa manifestação, o processo passou pela Chefia de Gabinete e pelo Gabinete da Secretária de Educação. Em 14/07/2026 12:13, saiu do Gabinete da Secretária e foi enviado à Chefia de Gabinete da FAETEC. O documento 136546268 foi criado, mas seu texto ainda não está aberto ao público.",
+    "practicalReading": "A trava financeira continua existindo, mas o processo não parou nela. O envio à FAETEC indica que a fundação deverá tomar ciência, complementar informação ou adotar alguma providência. Como o novo despacho ainda está fechado, não é seguro dizer se houve pedido de correção, concordância ou apenas encaminhamento administrativo.",
+    "conclusion": "O processo continua vivo e chegou novamente à FAETEC, mas a trava orçamentária ainda não foi superada. O conteúdo do novo despacho dirá se a fundação recebeu uma tarefa concreta ou apenas tomou ciência da situação.",
     "numbers": [
       {
         "value": "R$ 207,02 milhões",
@@ -4742,12 +4762,12 @@
       }
     ],
     "signals": [
-      "O processo subiu para a Chefia de Gabinete da Educação, setor capaz de levar a questão à secretária, negociar com a SEPLAG ou buscar decisão do governo."
+      "O processo passou pelo Gabinete da Secretária de Educação e foi encaminhado à FAETEC, sem arquivamento nem negativa final."
     ],
     "risks": [
       "A falta de disponibilidade orçamentária ficou registrada oficialmente e pode ser usada para adiar a implantação."
     ],
-    "nextMovement": "Saída da Chefia de Gabinete para o gabinete da secretária, SEPLAG, Casa Civil ou setor encarregado de indicar recursos"
+    "nextMovement": "Abertura do documento 136546268 e manifestação da FAETEC sobre a providência solicitada pelo Gabinete da Secretária de Educação"
   },
   "history": [
     {
@@ -4768,7 +4788,7 @@
     },
     {
       "period": "Situação atual",
-      "text": "O registro público mais recente é de 14/07/2026 11:52, em SEEDUC/CHEGAB. O documento mais recente é 136500728, de SEEDUC/ASSUBEXE. Ainda não existe publicação definitiva do enquadramento."
+      "text": "O registro público mais recente é de 14/07/2026 12:13, em FAETEC/CHEGAB. O documento mais recente é 136546268, de SEEDUC/GABSEC. Ainda não existe publicação definitiva do enquadramento."
     }
   ]
 }

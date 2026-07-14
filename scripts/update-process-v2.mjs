@@ -12,7 +12,7 @@ const PROCESS_URL =
   "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x";
 const SEI_BASE = "https://sei.rj.gov.br/sei/modulos/pesquisa/";
 const MODEL = process.env.OPENAI_MODEL || "gpt-5.4-mini";
-const DATA_SCHEMA_VERSION = 8;
+const DATA_SCHEMA_VERSION = 9;
 const EXCERPT_VERSION = 3;
 const RECENT_DOCUMENTS_TO_RECHECK = 24;
 const SEI_AGENT = new Agent({ connect: { timeout: 30_000 } });
@@ -33,11 +33,15 @@ async function fetchText(url, timeout = 60_000, attempts = 3) {
   let lastError;
   for (let attempt = 1; attempt <= attempts; attempt += 1) {
     try {
-      const response = await undiciFetch(url, {
+      const separator = url.includes("?") ? "&" : "?";
+      const requestUrl = `${url}${separator}_=${Date.now()}-${attempt}`;
+      const response = await undiciFetch(requestUrl, {
         dispatcher: SEI_AGENT,
         headers: {
           "User-Agent": "Mozilla/5.0 (Painel público FAEP-FAETEC)",
           Referer: PROCESS_URL,
+          "Cache-Control": "no-cache, no-store, max-age=0",
+          Pragma: "no-cache",
         },
         signal: AbortSignal.timeout(timeout),
       });
@@ -419,16 +423,28 @@ function buildAutomaticAnalysis(movements, documents) {
     conclusion = "A situação ficou desfavorável, mas o efeito definitivo depende do fundamento e de eventual decisão superior posterior.";
   } else if (budgetBlock) {
     const movedToCabinet = latest?.unit?.includes("CHEGAB") || latestDocument?.unit?.includes("ASSUBEXE");
+    const movedToFaetec = latest?.unit?.startsWith("FAETEC/");
+    const latestDocumentClosed = latestDocument && (!latestDocument.publicUrl || !latestDocument.excerpt);
     result = "O documento é ruim para a categoria, mas não encerra o processo.";
     resultLevel = "warning";
-    summary = `O documento ${budgetBlock.number}, da área de Orçamento e Finanças da Educação, registrou que não há disponibilidade orçamentária neste momento. Depois disso, o documento ${latestDocument?.number || "mais recente"} encaminhou essa análise à Chefia de Gabinete da Educação.`;
-    practicalReading = "A principal trava agora é financeira. A área técnica não disse que o pedido é ilegal nem mandou arquivar; disse que a Educação não tem recursos disponíveis hoje. A solução depende de encontrar fonte de dinheiro, implantação por etapas ou decisão política superior.";
-    positive = movedToCabinet
-      ? "O processo subiu para a Chefia de Gabinete da Educação, setor capaz de levar a questão à secretária, negociar com a SEPLAG ou buscar decisão do governo."
-      : "O processo não foi arquivado e continua tramitando depois da manifestação orçamentária.";
+    summary = movedToFaetec
+      ? `O documento ${budgetBlock.number}, da área de Orçamento e Finanças da Educação, registrou que não há disponibilidade orçamentária neste momento. Depois dessa manifestação, o processo passou pela Chefia de Gabinete e pelo Gabinete da Secretária de Educação. Em ${latest?.dateTime}, saiu do Gabinete da Secretária e foi enviado à Chefia de Gabinete da FAETEC. O documento ${latestDocument?.number || "mais recente"} foi criado, mas seu texto ainda não está aberto ao público.`
+      : `O documento ${budgetBlock.number}, da área de Orçamento e Finanças da Educação, registrou que não há disponibilidade orçamentária neste momento. Depois disso, ${movementInPlainLanguage(latest)}${latestDocumentClosed ? ` O documento ${latestDocument.number} ainda está fechado ao público.` : ""}`;
+    practicalReading = movedToFaetec
+      ? "A trava financeira continua existindo, mas o processo não parou nela. O envio à FAETEC indica que a fundação deverá tomar ciência, complementar informação ou adotar alguma providência. Como o novo despacho ainda está fechado, não é seguro dizer se houve pedido de correção, concordância ou apenas encaminhamento administrativo."
+      : "A principal trava agora é financeira. A área técnica não disse que o pedido é ilegal nem mandou arquivar; disse que a Educação não tem recursos disponíveis hoje. A solução depende de encontrar fonte de dinheiro, implantação por etapas ou decisão política superior.";
+    positive = movedToFaetec
+      ? "O processo passou pelo Gabinete da Secretária de Educação e foi encaminhado à FAETEC, sem arquivamento nem negativa final."
+      : movedToCabinet
+        ? "O processo subiu para a Chefia de Gabinete da Educação, setor capaz de levar a questão à secretária, negociar com a SEPLAG ou buscar decisão do governo."
+        : "O processo não foi arquivado e continua tramitando depois da manifestação orçamentária.";
     negative = "A falta de disponibilidade orçamentária ficou registrada oficialmente e pode ser usada para adiar a implantação.";
-    nextMovement = "Saída da Chefia de Gabinete para o gabinete da secretária, SEPLAG, Casa Civil ou setor encarregado de indicar recursos";
-    conclusion = "O processo não morreu, mas sofreu uma trava séria. O problema deixou de ser apenas técnico: agora precisa de solução orçamentária e decisão política para avançar.";
+    nextMovement = movedToFaetec
+      ? `Abertura do documento ${latestDocument?.number || "novo"} e manifestação da FAETEC sobre a providência solicitada pelo Gabinete da Secretária de Educação`
+      : "Saída da Chefia de Gabinete para o gabinete da secretária, SEPLAG, Casa Civil ou setor encarregado de indicar recursos";
+    conclusion = movedToFaetec
+      ? "O processo continua vivo e chegou novamente à FAETEC, mas a trava orçamentária ainda não foi superada. O conteúdo do novo despacho dirá se a fundação recebeu uma tarefa concreta ou apenas tomou ciência da situação."
+      : "O processo não morreu, mas sofreu uma trava séria. O problema deixou de ser apenas técnico: agora precisa de solução orçamentária e decisão política para avançar.";
   } else if (positiveDocument) {
     result = "Há sinal favorável de continuidade, mas ainda não é aprovação final.";
     resultLevel = "positive";
