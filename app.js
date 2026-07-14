@@ -1,5 +1,8 @@
 const DATA_URL = "./data/processo.json";
 const STORAGE_KEY = "painel-faep-faetec-v1";
+const UNIQUE_VISITOR_KEY = "painel-faep-visitante-contado-v1";
+const UNIQUE_COUNTER_URL =
+  "https://api.counterapi.dev/v1/acecarmorj-processo/visitantes-unicos";
 const PUBLIC_PANEL_URL = "https://acecarmorj.github.io/processo/";
 
 const ui = {
@@ -41,6 +44,7 @@ const ui = {
   transitionMessage: document.querySelector("#transitionMessage"),
   transitionSeconds: document.querySelector("#transitionSeconds"),
   whatsappShare: document.querySelector("#whatsappShare"),
+  uniqueVisitorCount: document.querySelector("#uniqueVisitorCount"),
 };
 
 let currentData = null;
@@ -48,7 +52,7 @@ let movementLimit = 12;
 let transitionTimer = null;
 
 const SHARE_MESSAGE =
-  "Cada colega bem informado fortalece nossa causa. Compartilhe este painel agora com pelo menos um ex-FAEP/FAETEC: em poucos segundos, você ajuda mais uma pessoa a acompanhar os fatos diretamente, sem boatos nem informações desencontradas. Quanto mais colegas acompanharem, mais unida e preparada estará a categoria.";
+  "Compartilhe com um colega ex-FAEP/FAETEC. Mais pessoas acompanhando os fatos direto no SEI deixam a categoria mais unida e bem informada.";
 ui.transitionMessage.textContent = SHARE_MESSAGE;
 ui.whatsappShare.href = `https://wa.me/?text=${encodeURIComponent(
   `Olá! Quero compartilhar este painel que acompanha o processo dos servidores ex-FAEP/FAETEC de forma clara e atualizada. Assim, podemos acompanhar os fatos diretamente e manter a categoria bem informada. Abra e compartilhe também com outro colega:\n\n${PUBLIC_PANEL_URL}`,
@@ -156,6 +160,31 @@ function saveState(data) {
       documents: data.documents.map((document) => document.number),
     }),
   );
+}
+
+async function loadUniqueVisitorCount() {
+  if (!ui.uniqueVisitorCount) return;
+
+  let firstAccess = false;
+  try {
+    firstAccess = !localStorage.getItem(UNIQUE_VISITOR_KEY);
+    if (firstAccess) localStorage.setItem(UNIQUE_VISITOR_KEY, "registrando");
+  } catch {
+    firstAccess = false;
+  }
+
+  const endpoint = firstAccess ? `${UNIQUE_COUNTER_URL}/up` : `${UNIQUE_COUNTER_URL}/`;
+  try {
+    const response = await fetch(`${endpoint}?v=${Date.now()}`, { cache: "no-store" });
+    if (!response.ok) throw new Error(`contador indisponível (${response.status})`);
+    const data = await response.json();
+    const count = Number(data.count);
+    if (!Number.isFinite(count)) throw new Error("resposta inválida do contador");
+    ui.uniqueVisitorCount.textContent = new Intl.NumberFormat("pt-BR").format(count);
+    if (firstAccess) localStorage.setItem(UNIQUE_VISITOR_KEY, "contado");
+  } catch {
+    ui.uniqueVisitorCount.textContent = "indisponível";
+  }
 }
 
 function formatGeneratedAt(value) {
@@ -710,3 +739,4 @@ ui.showMore.addEventListener("click", () => {
 });
 
 loadData();
+loadUniqueVisitorCount();

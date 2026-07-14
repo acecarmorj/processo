@@ -528,7 +528,7 @@ async function generateAiAnalysis(data) {
         {
           role: "system",
           content:
-            "Analise este processo administrativo em português brasileiro para pessoas leigas. Use frases simples. Diferencie fatos, inferências e hipóteses. Explique situação atual, mudança recente, sinais positivos, riscos e próximos passos. Nunca trate movimentação como aprovação.",
+            "Analise este processo administrativo em português brasileiro para pessoas leigas. Use frases simples. Diferencie fatos, inferências e hipóteses. Explique situação atual, mudança recente, sinais positivos, riscos e próximos passos. Nunca trate movimentação como aprovação. Nunca atribua conteúdo a documento fechado ou sem trecho extraído. Quando o texto não estiver disponível, diga apenas que o documento está fechado ao público e aguarde a leitura oficial.",
         },
         { role: "user", content: openAiInput(data) },
       ],
@@ -545,6 +545,9 @@ async function main() {
   let html;
   try {
     html = await fetchText(PROCESS_URL);
+    if (!html.includes(PROCESS_NUMBER) && !html.includes(PROCESS_NUMBER.replace("SEI-", ""))) {
+      throw new Error(`a página recebida não corresponde ao processo ${PROCESS_NUMBER}`);
+    }
   } catch (error) {
     if (process.env.CI === "true") {
       throw new Error(`O portal SEI bloqueou a consulta do GitHub: ${error.message}`);
