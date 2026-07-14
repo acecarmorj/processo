@@ -9,7 +9,7 @@
       content="Painel público de acompanhamento do processo dos servidores ex-FAEP/FAETEC."
     />
     <title>Painel ex-FAEP / FAETEC</title>
-    <link rel="stylesheet" href="./styles.css?v=20260714-3" />
+    <link rel="stylesheet" href="./styles.css?v=20260714-4" />
   </head>
   <body>
     <header class="topbar">
@@ -78,25 +78,37 @@
           </div>
           <span class="fact-badge">Fato do SEI</span>
         </div>
+        <div id="verdictBox" class="verdict-box">
+          <p class="label">Resultado direto</p>
+          <div class="verdict-line">
+            <span id="verdictBadge" class="verdict-badge">Analisando</span>
+            <strong id="verdictText">Aguarde a leitura dos documentos.</strong>
+          </div>
+        </div>
+        <p class="label analysis-label">O que aconteceu</p>
         <p id="analysisText" class="analysis-text">Carregando análise.</p>
         <div id="diagnosisBox" class="diagnosis-box hidden">
-          <p class="label">O que isso significa</p>
+          <p class="label">Leitura prática</p>
           <p id="diagnosisText"></p>
         </div>
 
         <div class="analysis-grid">
           <div>
-            <h3>Sinais favoráveis</h3>
+            <h3>Ponto positivo</h3>
             <ul id="signalsList"></ul>
           </div>
           <div>
-            <h3>Pontos de atenção</h3>
+            <h3>Ponto negativo</h3>
             <ul id="risksList"></ul>
           </div>
           <div>
-            <h3>Próximos passos prováveis</h3>
+            <h3>Próximo movimento esperado</h3>
             <ul id="nextStepsList"></ul>
           </div>
+        </div>
+        <div id="conclusionBox" class="conclusion-box">
+          <p class="label">Conclusão</p>
+          <p id="conclusionText">Aguardando a análise mais recente.</p>
         </div>
       </section>
 
@@ -261,6 +273,6 @@
       </details>
     </template>
 
-    <script type="module" src="./app.js?v=20260714-3"></script>
+    <script type="module" src="./app.js?v=20260714-4"></script>
   </body>
 </html>

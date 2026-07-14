@@ -18,8 +18,12 @@ const ui = {
   generatedAt: document.querySelector("#generatedAt"),
   analysisTitle: document.querySelector("#analysisTitle"),
   analysisText: document.querySelector("#analysisText"),
+  verdictBox: document.querySelector("#verdictBox"),
+  verdictBadge: document.querySelector("#verdictBadge"),
+  verdictText: document.querySelector("#verdictText"),
   diagnosisBox: document.querySelector("#diagnosisBox"),
   diagnosisText: document.querySelector("#diagnosisText"),
+  conclusionText: document.querySelector("#conclusionText"),
   unitMeaning: document.querySelector("#unitMeaning"),
   documentMeaning: document.querySelector("#documentMeaning"),
   scenarioCards: document.querySelector("#scenarioCards"),
@@ -630,16 +634,30 @@ function render(data, old) {
   ui.generatedAt.textContent = formatGeneratedAt(data.generatedAt);
   ui.officialLink.href = data.officialUrl;
 
-  const hasAi = analysis.mode === "openai" && analysis.aiText;
   ui.analysisTitle.textContent = "O que aconteceu";
-  ui.analysisText.textContent = expandUnitsInText(hasAi ? analysis.aiText : analysis.summary);
-  const diagnosis = buildDiagnosis(data);
+  ui.verdictBadge.textContent =
+    analysis.resultLevel === "critical"
+      ? "Alerta"
+      : analysis.resultLevel === "warning"
+        ? "Preocupante"
+        : analysis.resultLevel === "positive"
+          ? "Favorável"
+          : "Em análise";
+  ui.verdictBox.dataset.level = analysis.resultLevel || "neutral";
+  ui.verdictText.textContent = expandUnitsInText(
+    analysis.result || "O processo andou, mas ainda não existe uma decisão final.",
+  );
+  ui.analysisText.textContent = expandUnitsInText(analysis.summary);
+  const diagnosis = analysis.practicalReading || buildDiagnosis(data);
   ui.diagnosisText.textContent = expandUnitsInText(diagnosis);
   ui.diagnosisBox.classList.toggle("hidden", !diagnosis);
+  ui.conclusionText.textContent = expandUnitsInText(
+    analysis.conclusion || "O processo continua em tramitação e ainda depende de decisão concreta da administração.",
+  );
   renderDeepExplanation(data);
-  fillList(ui.signals, currentSignals(analysis.signals).slice(0, 3));
-  fillList(ui.risks, analysis.risks.slice(0, 3));
-  fillList(ui.nextSteps, analysis.phase.nextSteps.slice(0, 3));
+  fillList(ui.signals, currentSignals(analysis.signals).slice(0, 1));
+  fillList(ui.risks, analysis.risks.slice(0, 1));
+  fillList(ui.nextSteps, [analysis.nextMovement || analysis.phase.nextSteps[0]]);
 
   renderNews(news);
   renderTimeline(data, news.movements);

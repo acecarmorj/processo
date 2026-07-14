@@ -12,7 +12,7 @@ const PROCESS_URL =
   "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x";
 const SEI_BASE = "https://sei.rj.gov.br/sei/modulos/pesquisa/";
 const MODEL = process.env.OPENAI_MODEL || "gpt-5.4-mini";
-const DATA_SCHEMA_VERSION = 7;
+const DATA_SCHEMA_VERSION = 8;
 const EXCERPT_VERSION = 3;
 const RECENT_DOCUMENTS_TO_RECHECK = 24;
 const SEI_AGENT = new Agent({ connect: { timeout: 30_000 } });
@@ -371,18 +371,88 @@ function buildAutomaticAnalysis(movements, documents) {
   const latest = movements[0];
   const latestDocument = documents.at(-1);
   const phase = phaseFor(latest?.unit);
-  const documentReading = latestDocumentReading(latestDocument);
   const numbers = budgetNumbers(documents);
-  const summary = `${movementInPlainLanguage(latest)} ${documentReading.summary}`;
-  const signals = [
-    documentReading.signal,
-    numbers.length ? "A estimativa mais recente de impacto continua em R$ 207,02 milhões por ano até surgir novo cálculo." : "",
-  ].filter(Boolean);
-  const risks = [
-    documentReading.risk,
-    "Movimentação no SEI mostra que o processo andou, mas não significa aprovação por si só.",
-  ].filter(Boolean);
-  return { mode: "automatic", phase, summary, numbers, signals, risks };
+  const recentDocuments = documents.slice(-12);
+  const normalized = (value = "") =>
+    String(value)
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase();
+  const findRecent = (test) =>
+    [...recentDocuments].reverse().find((document) => test(normalized(document.excerpt)));
+  const budgetBlock = findRecent(
+    (text) => text.includes("nao ha disponibilidade orcamentaria") || text.includes("sem disponibilidade orcamentaria"),
+  );
+  const archiveDocument = findRecent((text) => text.includes("arquiv"));
+  const deniedDocument = findRecent((text) => text.includes("indefer"));
+  const positiveDocument = findRecent(
+    (text) => text.includes("de acordo") || text.includes("acolho") || text.includes("autorizo o prosseguimento"),
+  );
+  const latestReading = latestDocumentReading(latestDocument);
+
+  let result = "O processo andou, mas ainda não existe uma decisão final.";
+  let resultLevel = "neutral";
+  let summary = `${movementInPlainLanguage(latest)} ${latestReading.summary}`;
+  let practicalReading = "O andamento confirma atividade no processo, mas ainda não permite afirmar aprovação ou negativa.";
+  let positive = latestReading.signal || "O processo continua com movimentação registrada no SEI.";
+  let negative = latestReading.risk || "Ainda falta uma decisão expressa sobre o pedido.";
+  let nextMovement = phase.nextSteps[0];
+  let conclusion = "O processo continua vivo, mas a categoria ainda precisa aguardar uma decisão concreta da administração.";
+
+  if (archiveDocument) {
+    result = "O documento mais recente traz sinal de arquivamento e exige atenção imediata.";
+    resultLevel = "critical";
+    summary = `O documento ${archiveDocument.number} menciona arquivamento. É preciso conferir se ele encerra o pedido, apenas uma etapa ou uma unidade do processo.`;
+    practicalReading = "Arquivamento pode significar paralisação ou encerramento. O efeito real depende das palavras exatas do despacho e da existência de remessa posterior.";
+    positive = "O teor está público e permite identificar o fundamento usado pela administração.";
+    negative = "Existe risco real de o processo ter sido interrompido ou encerrado.";
+    nextMovement = "Verificar eventual reabertura, recurso, pedido de reconsideração ou nova remessa";
+    conclusion = "Este é um sinal negativo. A prioridade passa a ser entender o tipo de arquivamento e a forma administrativa ou política de reverter a decisão.";
+  } else if (deniedDocument) {
+    result = "O documento traz sinal de negativa formal ao pedido.";
+    resultLevel = "critical";
+    summary = `O documento ${deniedDocument.number} contém linguagem de indeferimento. A decisão precisa ser lida junto com seu fundamento e com os movimentos posteriores.`;
+    practicalReading = "A administração apresentou uma negativa nesta etapa. Isso pode exigir correção da proposta, reconsideração ou atuação política e jurídica.";
+    positive = "O motivo oficial da negativa pode ser conhecido e enfrentado de forma objetiva.";
+    negative = "Há uma manifestação contrária registrada no processo.";
+    nextMovement = "Identificar se haverá reconsideração, correção da proposta ou encaminhamento superior";
+    conclusion = "A situação ficou desfavorável, mas o efeito definitivo depende do fundamento e de eventual decisão superior posterior.";
+  } else if (budgetBlock) {
+    const movedToCabinet = latest?.unit?.includes("CHEGAB") || latestDocument?.unit?.includes("ASSUBEXE");
+    result = "O documento é ruim para a categoria, mas não encerra o processo.";
+    resultLevel = "warning";
+    summary = `O documento ${budgetBlock.number}, da área de Orçamento e Finanças da Educação, registrou que não há disponibilidade orçamentária neste momento. Depois disso, o documento ${latestDocument?.number || "mais recente"} encaminhou essa análise à Chefia de Gabinete da Educação.`;
+    practicalReading = "A principal trava agora é financeira. A área técnica não disse que o pedido é ilegal nem mandou arquivar; disse que a Educação não tem recursos disponíveis hoje. A solução depende de encontrar fonte de dinheiro, implantação por etapas ou decisão política superior.";
+    positive = movedToCabinet
+      ? "O processo subiu para a Chefia de Gabinete da Educação, setor capaz de levar a questão à secretária, negociar com a SEPLAG ou buscar decisão do governo."
+      : "O processo não foi arquivado e continua tramitando depois da manifestação orçamentária.";
+    negative = "A falta de disponibilidade orçamentária ficou registrada oficialmente e pode ser usada para adiar a implantação.";
+    nextMovement = "Saída da Chefia de Gabinete para o gabinete da secretária, SEPLAG, Casa Civil ou setor encarregado de indicar recursos";
+    conclusion = "O processo não morreu, mas sofreu uma trava séria. O problema deixou de ser apenas técnico: agora precisa de solução orçamentária e decisão política para avançar.";
+  } else if (positiveDocument) {
+    result = "Há sinal favorável de continuidade, mas ainda não é aprovação final.";
+    resultLevel = "positive";
+    summary = `O documento ${positiveDocument.number} usa linguagem favorável ao prosseguimento. ${movementInPlainLanguage(latest)}`;
+    practicalReading = "Uma área ou autoridade concordou com a continuidade do processo. Ainda podem faltar definição orçamentária, jurídica ou política.";
+    positive = "O pedido venceu uma etapa e recebeu autorização para continuar.";
+    negative = "Prosseguimento não significa que o enquadramento já foi aprovado ou publicado.";
+    nextMovement = phase.nextSteps[0];
+    conclusion = "O sinal é favorável, mas a confirmação depende do próximo setor e de uma decisão expressa sobre o mérito.";
+  }
+
+  return {
+    mode: "automatic",
+    phase,
+    result,
+    resultLevel,
+    summary,
+    practicalReading,
+    conclusion,
+    numbers,
+    signals: [positive],
+    risks: [negative],
+    nextMovement,
+  };
 }
 
 function historicalSections(latestMovement, latestDocument) {

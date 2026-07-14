@@ -1,8 +1,8 @@
 {
-  "schemaVersion": 7,
+  "schemaVersion": 8,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-07-14T03:01:06.327Z",
+  "generatedAt": "2026-07-14T11:02:25.567Z",
   "sourceHash": "59c51716d0fdaa09687a5bf364cf730d9d5f25b4c397b940c61eb338251aae33",
   "movements": [
     {
@@ -4714,7 +4714,11 @@
         "Definição do instrumento final"
       ]
     },
-    "summary": "Em 13/07/2026 21:31, o processo saiu de SEEDUC/ASSUBEXE e foi enviado para SEEDUC/CHEGAB. O documento 136500728 está aberto, mas não contém palavra clara de aprovação, negativa ou arquivamento. A leitura deve ser feita junto com o destino do processo.",
+    "result": "O documento é ruim para a categoria, mas não encerra o processo.",
+    "resultLevel": "warning",
+    "summary": "O documento 136413580, da área de Orçamento e Finanças da Educação, registrou que não há disponibilidade orçamentária neste momento. Depois disso, o documento 136500728 encaminhou essa análise à Chefia de Gabinete da Educação.",
+    "practicalReading": "A principal trava agora é financeira. A área técnica não disse que o pedido é ilegal nem mandou arquivar; disse que a Educação não tem recursos disponíveis hoje. A solução depende de encontrar fonte de dinheiro, implantação por etapas ou decisão política superior.",
+    "conclusion": "O processo não morreu, mas sofreu uma trava séria. O problema deixou de ser apenas técnico: agora precisa de solução orçamentária e decisão política para avançar.",
     "numbers": [
       {
         "value": "R$ 207,02 milhões",
@@ -4733,13 +4737,12 @@
       }
     ],
     "signals": [
-      "O texto oficial já pode ser consultado.",
-      "A estimativa mais recente de impacto continua em R$ 207,02 milhões por ano até surgir novo cálculo."
+      "O processo subiu para a Chefia de Gabinete da Educação, setor capaz de levar a questão à secretária, negociar com a SEPLAG ou buscar decisão do governo."
     ],
     "risks": [
-      "O despacho não apresenta decisão final de forma clara.",
-      "Movimentação no SEI mostra que o processo andou, mas não significa aprovação por si só."
-    ]
+      "A falta de disponibilidade orçamentária ficou registrada oficialmente e pode ser usada para adiar a implantação."
+    ],
+    "nextMovement": "Saída da Chefia de Gabinete para o gabinete da secretária, SEPLAG, Casa Civil ou setor encarregado de indicar recursos"
   },
   "history": [
     {
