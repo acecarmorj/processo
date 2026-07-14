@@ -2,9 +2,14 @@
   "schemaVersion": 7,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-07-13T15:16:06.200Z",
-  "sourceHash": "dc77dda8c729fa2cf8e7d976e73889c7d757552ac7756f43971055c1cbdb9f9b",
+  "generatedAt": "2026-07-14T01:12:31.448Z",
+  "sourceHash": "1ec05f3c2f0d4d4c7190f5c63d8b52b5dd3120a1a3362696505a70c46fce1b58",
   "movements": [
+    {
+      "dateTime": "13/07/2026 21:31",
+      "unit": "SEEDUC/CHEGAB",
+      "description": "Processo remetido pela unidade SEEDUC/ASSUBEXE"
+    },
     {
       "dateTime": "13/07/2026 12:08",
       "unit": "SEEDUC/ASSUBEXE",
@@ -4686,20 +4691,30 @@
       "excerpt": "",
       "excerptVersion": 3,
       "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
+    },
+    {
+      "number": "136500728",
+      "type": "Despacho",
+      "date": "13/07/2026",
+      "unit": "SEEDUC/ASSUBEXE",
+      "publicUrl": null,
+      "excerpt": "",
+      "excerptVersion": 3,
+      "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
     }
   ],
   "analysis": {
     "mode": "automatic",
     "phase": {
-      "title": "Tramitação administrativa",
-      "explanation": "O processo continua em análise dentro da administração estadual.",
+      "title": "Decisão administrativa superior",
+      "explanation": "O processo chegou a gabinete ou presidência para definição do encaminhamento seguinte.",
       "nextSteps": [
-        "Novo despacho",
-        "Remessa técnica",
-        "Decisão superior"
+        "Despacho da autoridade",
+        "Encaminhamento jurídico ou político",
+        "Definição do instrumento final"
       ]
     },
-    "summary": "Em 13/07/2026 12:08, o processo chegou ao setor SEEDUC/ASSUBEXE. Também foi criado o documento 136413580, mas seu texto ainda não está aberto ou não foi extraído pelo painel.",
+    "summary": "Em 13/07/2026 21:31, o processo saiu de SEEDUC/ASSUBEXE e foi enviado para SEEDUC/CHEGAB. Também foi criado o documento 136500728, mas seu texto ainda não está aberto ou não foi extraído pelo painel.",
     "numbers": [
       {
         "value": "R$ 207,02 milhões",
@@ -4718,7 +4733,7 @@
       }
     ],
     "signals": [
-      "O documento 136413580 aparece na lista oficial do processo.",
+      "O documento 136500728 aparece na lista oficial do processo.",
       "A estimativa mais recente de impacto continua em R$ 207,02 milhões por ano até surgir novo cálculo."
     ],
     "risks": [
@@ -4745,7 +4760,7 @@
     },
     {
       "period": "Situação atual",
-      "text": "O registro público mais recente é de 13/07/2026 12:08, em SEEDUC/ASSUBEXE. O documento mais recente é 136413580, de SEEDUC/ASSUPOF. Ainda não existe publicação definitiva do enquadramento."
+      "text": "O registro público mais recente é de 13/07/2026 21:31, em SEEDUC/CHEGAB. O documento mais recente é 136500728, de SEEDUC/ASSUBEXE. Ainda não existe publicação definitiva do enquadramento."
     }
   ]
 }
