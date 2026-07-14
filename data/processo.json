@@ -2,8 +2,8 @@
   "schemaVersion": 7,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-07-14T01:12:31.448Z",
-  "sourceHash": "1ec05f3c2f0d4d4c7190f5c63d8b52b5dd3120a1a3362696505a70c46fce1b58",
+  "generatedAt": "2026-07-14T03:01:06.327Z",
+  "sourceHash": "59c51716d0fdaa09687a5bf364cf730d9d5f25b4c397b940c61eb338251aae33",
   "movements": [
     {
       "dateTime": "13/07/2026 21:31",
@@ -4687,20 +4687,20 @@
       "type": "Despacho de Encaminhamento de Processo",
       "date": "13/07/2026",
       "unit": "SEEDUC/ASSUPOF",
-      "publicUrl": null,
-      "excerpt": "",
+      "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNPFB9Sqzp7CblQc9lauvCjEYmIXrFKS5pIGBZEuW7HMkM_vb66bTRDcYBmSwhFmnIw1BXZFfITHnhm-SM7HhIoM",
+      "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de EducaçãoSubsecretaria Executiva À Assessoria da Subsecretaria Executiva - ASSUBEXE, Trata-se de solicitação da Secretaria de Estado de Educação - SEEDUC, visando análise da viabilidade e instrumentalização da migração/transferência de servidores concursados da extinta Fundação de Apoio à Escola Pública – FAEP, que fazem parte atualmente do quadro de pessoal da SEEDUC, para a estrutura da Fundação de Apoio à Escola Técnica – FAETEC. No ínterim do processo consta a solicitação desta Subsecretaria (134225890) para a Subsecretaria de Gestão de Pessoas - SUBGEP encaminhar o demonstrativo de impacto orçamentário da proposta com a adequada segregação dos efeitos financeiros relativos aos servidores ativos, inativos e pensionistas, acompanhada da discriminação dos respectivos quantitativos de cada grupo.Em atenção ao informado pela SEPLAG, por meio do doc. SEI 135635411, ressalta-se, que no momento não há disponibilidade orçamentária para atendimento da presente demanda, entretanto estaremos acompanhando o orçamento da SEEDUC quanto ao atendimento ao pleito, conforme reforçando o posicionamento ao doc. SEI 133607874. Dessa forma, encaminhamos o p.p. para essa Assessoria para providências. Gilvania Amaral Superintendente de Orçamento e FinançasID 5108551-8Rio de Janeiro, na data da assinatura",
       "excerptVersion": 3,
-      "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
+      "simpleExplanation": "O documento aponta problema de disponibilidade orçamentária. Isso é obstáculo financeiro, não necessariamente negativa jurídica do pedido."
     },
     {
       "number": "136500728",
       "type": "Despacho",
       "date": "13/07/2026",
       "unit": "SEEDUC/ASSUBEXE",
-      "publicUrl": null,
-      "excerpt": "",
+      "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNPLs80XliHgrpD1YoDNI_W6ddn7kr9xHk7IWk4Qv7c2QW2ERtowapFtBC5cy4sij8M3M68LNLO27zhqMkmCb53I",
+      "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de EducaçãoSubsecretaria ExecutivaÀ Chefia de Gabinete,Para ciência da análise técnica proferida pela SUPOF (), acerca das respostas a solicitação da SEEDUC, visando análise da viabilidade e instrumentalização da migração/transferência de servidores concursados da extinta FAEP para a estrutura da FAETEC. José Mauro BrazAssessor/SUBEXEID.: 5114243-0 Rio de Janeiro, 13 julho de 2026",
       "excerptVersion": 3,
-      "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
+      "simpleExplanation": "Documento produzido por SEEDUC/ASSUBEXE. A leitura deve ser combinada com o movimento seguinte do SEI."
     }
   ],
   "analysis": {
@@ -4714,7 +4714,7 @@
         "Definição do instrumento final"
       ]
     },
-    "summary": "Em 13/07/2026 21:31, o processo saiu de SEEDUC/ASSUBEXE e foi enviado para SEEDUC/CHEGAB. Também foi criado o documento 136500728, mas seu texto ainda não está aberto ou não foi extraído pelo painel.",
+    "summary": "Em 13/07/2026 21:31, o processo saiu de SEEDUC/ASSUBEXE e foi enviado para SEEDUC/CHEGAB. O documento 136500728 está aberto, mas não contém palavra clara de aprovação, negativa ou arquivamento. A leitura deve ser feita junto com o destino do processo.",
     "numbers": [
       {
         "value": "R$ 207,02 milhões",
@@ -4733,11 +4733,11 @@
       }
     ],
     "signals": [
-      "O documento 136500728 aparece na lista oficial do processo.",
+      "O texto oficial já pode ser consultado.",
       "A estimativa mais recente de impacto continua em R$ 207,02 milhões por ano até surgir novo cálculo."
     ],
     "risks": [
-      "Sem o texto do despacho, não é seguro afirmar aprovação, negativa ou exigência.",
+      "O despacho não apresenta decisão final de forma clara.",
       "Movimentação no SEI mostra que o processo andou, mas não significa aprovação por si só."
     ]
   },
