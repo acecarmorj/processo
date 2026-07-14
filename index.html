@@ -9,7 +9,7 @@
       content="Painel público de acompanhamento do processo dos servidores ex-FAEP/FAETEC."
     />
     <title>Painel ex-FAEP / FAETEC</title>
-    <link rel="stylesheet" href="./styles.css?v=20260708-2" />
+    <link rel="stylesheet" href="./styles.css?v=20260714-1" />
   </head>
   <body>
     <header class="topbar">
@@ -73,84 +73,61 @@
       <section class="panel" aria-labelledby="analysisTitle">
         <div class="section-header">
           <div>
-            <p class="label">Resumo do momento</p>
-            <h2 id="analysisTitle">Situação atual</h2>
+            <p class="label">Última novidade oficial</p>
+            <h2 id="analysisTitle">O que aconteceu</h2>
           </div>
-          <span id="analysisMode" class="mode-badge">Automática</span>
+          <span class="fact-badge">Fato do SEI</span>
         </div>
         <p id="analysisText" class="analysis-text">Carregando análise.</p>
         <div id="diagnosisBox" class="diagnosis-box hidden">
-          <p class="label">Diagnóstico</p>
+          <p class="label">O que isso significa</p>
           <p id="diagnosisText"></p>
         </div>
-        <div id="keyNumbers" class="key-numbers hidden"></div>
 
         <div class="analysis-grid">
           <div>
-            <h3>O que é favorável</h3>
+            <h3>Sinais favoráveis</h3>
             <ul id="signalsList"></ul>
           </div>
           <div>
-            <h3>O que preocupa</h3>
+            <h3>Pontos de atenção</h3>
             <ul id="risksList"></ul>
           </div>
           <div>
-            <h3>O que pode acontecer agora</h3>
+            <h3>Próximos passos prováveis</h3>
             <ul id="nextStepsList"></ul>
           </div>
         </div>
       </section>
 
-      <section class="panel explain-panel" aria-labelledby="explainTitle">
-        <div class="section-header">
+      <details class="panel explain-panel">
+        <summary class="explain-summary">
           <div>
-            <p class="label">Entenda melhor</p>
-            <h2 id="explainTitle">Possibilidades</h2>
+            <p class="label">Para quem deseja entender mais</p>
+            <h2>Possibilidades e sinais a observar</h2>
+          </div>
+          <span class="explain-action">Abrir análise completa</span>
+        </summary>
+        <div class="explain-content">
+          <div class="explain-grid">
+            <article class="explain-card">
+              <h3>Por que esse setor importa</h3>
+              <p id="unitMeaning"></p>
+            </article>
+            <article class="explain-card">
+              <h3>O que o documento mais novo pode indicar</h3>
+              <p id="documentMeaning"></p>
+            </article>
+          </div>
+          <div class="scenario-block">
+            <h3>Caminhos possíveis agora</h3>
+            <div id="scenarioCards" class="scenario-cards"></div>
+          </div>
+          <div class="watch-block">
+            <h3>O que observar no próximo despacho</h3>
+            <ul id="watchList"></ul>
           </div>
         </div>
-        <p id="deepIntro" class="analysis-text">
-          Carregando explicacao detalhada.
-        </p>
-        <div class="explain-grid">
-          <article class="explain-card">
-            <h3>Por que esse setor importa</h3>
-            <p id="unitMeaning"></p>
-          </article>
-          <article class="explain-card">
-            <h3>O que o documento indica</h3>
-            <p id="documentMeaning"></p>
-          </article>
-        </div>
-        <div class="scenario-block">
-          <h3>Caminhos possiveis agora</h3>
-          <div id="scenarioCards" class="scenario-cards"></div>
-        </div>
-        <div class="watch-block">
-          <h3>O que observar no proximo despacho</h3>
-          <ul id="watchList"></ul>
-        </div>
-      </section>
-
-      <details class="glossary">
-        <summary>Entenda as principais siglas</summary>
-        <dl>
-          <div>
-            <dt>SUPEFIS</dt>
-            <dd>Setor que analisa o impacto nas contas do Estado.</dd>
-          </div>
-          <div>
-            <dt>SUBORC / SUBAORC</dt>
-            <dd>Setores que analisam orçamento e disponibilidade de recursos.</dd>
-          </div>
-          <div>
-            <dt>SUBGEP / SUPDP</dt>
-            <dd>Setores responsáveis por servidores, carreiras e folha de pagamento.</dd>
-          </div>
-          <div>
-            <dt>CHEGAB / GABSEC</dt>
-            <dd>Gabinetes que recebem o processo para decisões superiores.</dd>
-          </div>
-        </dl>
       </details>
 
       <section class="panel" aria-labelledby="documentsTitle">
@@ -273,6 +250,6 @@
       </details>
     </template>
 
-    <script type="module" src="./app.js?v=20260713-1"></script>
+    <script type="module" src="./app.js?v=20260714-1"></script>
   </body>
 </html>

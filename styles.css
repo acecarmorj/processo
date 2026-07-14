@@ -114,6 +114,7 @@ h3 {
 
 .status-badge,
 .mode-badge,
+.fact-badge,
 .count,
 .unit {
   display: inline-flex;
@@ -306,6 +307,7 @@ main {
 }
 
 .mode-badge,
+.fact-badge,
 .count {
   min-height: 27px;
   padding: 4px 9px;
@@ -314,6 +316,15 @@ main {
 .mode-badge {
   background: var(--green-soft);
   color: var(--green);
+}
+
+.fact-badge {
+  min-height: 27px;
+  padding: 4px 9px;
+  border: 1px solid #b9d7e2;
+  background: #eaf4f8;
+  color: var(--blue-dark);
+  white-space: nowrap;
 }
 
 .count,
@@ -373,8 +384,43 @@ main {
   color: var(--muted);
 }
 
-.explain-panel .analysis-text {
-  margin-bottom: 16px;
+.explain-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.explain-summary::-webkit-details-marker {
+  display: none;
+}
+
+.explain-summary h2,
+.explain-summary .label {
+  margin-bottom: 0;
+}
+
+.explain-action {
+  color: var(--blue);
+  font-size: 0.82rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.explain-action::after {
+  content: " +";
+}
+
+.explain-panel[open] .explain-action::after {
+  content: " -";
+}
+
+.explain-content {
+  margin-top: 17px;
+  padding-top: 17px;
+  border-top: 1px solid var(--line);
 }
 
 .explain-grid,
@@ -779,5 +825,15 @@ dialog::backdrop {
   .actions .button {
     padding-inline: 6px;
     font-size: 0.82rem;
+  }
+
+  .section-header,
+  .explain-summary {
+    align-items: flex-start;
+  }
+
+  .explain-summary {
+    flex-direction: column;
+    gap: 8px;
   }
 }

@@ -16,12 +16,9 @@ const ui = {
   lastMovement: document.querySelector("#lastMovement"),
   generatedAt: document.querySelector("#generatedAt"),
   analysisTitle: document.querySelector("#analysisTitle"),
-  analysisMode: document.querySelector("#analysisMode"),
   analysisText: document.querySelector("#analysisText"),
   diagnosisBox: document.querySelector("#diagnosisBox"),
   diagnosisText: document.querySelector("#diagnosisText"),
-  keyNumbers: document.querySelector("#keyNumbers"),
-  deepIntro: document.querySelector("#deepIntro"),
   unitMeaning: document.querySelector("#unitMeaning"),
   documentMeaning: document.querySelector("#documentMeaning"),
   scenarioCards: document.querySelector("#scenarioCards"),
@@ -188,8 +185,14 @@ function readableUnit(unit = "") {
 
 function expandUnitsInText(text = "") {
   return String(text || "").replace(
-    /\b([A-Z]{2,12}\/[A-Z0-9]{2,14})\b/g,
+    /\b([A-Z]{2,12}\/[A-Z0-9]{2,14})\b(?!\s+-)/g,
     (unit) => readableUnit(unit),
+  );
+}
+
+function currentSignals(values = []) {
+  return values.filter(
+    (value) => !/estimativa mais recente de impacto continua/i.test(value),
   );
 }
 
@@ -217,6 +220,35 @@ function describeLatestMovement(movement) {
     return `O ultimo andamento mostra conclusao de etapa em ${readableUnit(movement.unit)}, em ${movement.dateTime}. Isso encerra a analise daquele setor, nao o processo inteiro.`;
   }
   return `O ultimo andamento foi em ${movement.dateTime}, na unidade ${readableUnit(movement.unit)}: ${expandUnitsInText(movement.description)}.`;
+}
+
+function buildStatusExplanation(data) {
+  const latest = data?.movements?.[0];
+  if (!latest) {
+    return "O painel ainda não conseguiu identificar a situação atual do processo.";
+  }
+
+  const unit = readableUnit(latest.unit);
+  const origin = originFromDescription(latest.description);
+  const movedFrom = origin ? `, depois de sair de ${readableUnit(origin)}` : "";
+
+  if (latest.unit.includes("CHEGAB") || latest.unit.includes("GABSEC")) {
+    return `O processo está em ${unit}${movedFrom}. Isso mostra que ele chegou a uma área de decisão e encaminhamento superior. Ainda não significa aprovação nem negativa: o gabinete precisa definir o próximo passo.`;
+  }
+  if (latest.unit.includes("ASSUBEXE") || latest.unit.includes("SUBEXE")) {
+    return `O processo está em ${unit}${movedFrom}. Essa área reúne as análises já feitas e prepara o encaminhamento para uma autoridade superior. Ainda não é a decisão final.`;
+  }
+  if (latest.unit.includes("SUBORC") || latest.unit.includes("SUBAORC")) {
+    return `O processo está em ${unit}${movedFrom}. Nessa etapa, o governo verifica como acomodar a medida no orçamento e quais providências financeiras seriam necessárias.`;
+  }
+  if (latest.unit.includes("SUPEFIS")) {
+    return `O processo está em ${unit}${movedFrom}. Essa área avalia o efeito da proposta nas contas do Estado antes de o caso seguir para decisão superior.`;
+  }
+  if (latest.unit.includes("SUBGEP") || latest.unit.includes("SUPDP")) {
+    return `O processo está em ${unit}${movedFrom}. Nessa etapa são conferidos servidores, enquadramento, folha e demais dados usados na decisão.`;
+  }
+
+  return `O processo está em ${unit}${movedFrom}. O próximo despacho deverá explicar qual providência esse setor adotou e para onde o caso seguirá.`;
 }
 
 function unitMeaningText(unit = "") {
@@ -360,9 +392,6 @@ function renderDeepExplanation(data) {
   const latest = data.movements[0];
   const latestDocument = data.documents.at(-1);
 
-  ui.deepIntro.textContent = expandUnitsInText(
-    `${describeLatestMovement(latest)} Em linguagem simples: o SEI mostra o caminho oficial do processo, mas a conclusao depende do texto do despacho e do setor que recebeu a demanda.`,
-  );
   ui.unitMeaning.textContent = expandUnitsInText(unitMeaningText(latest?.unit));
   ui.documentMeaning.textContent = expandUnitsInText(documentMeaningText(latestDocument));
 
@@ -387,24 +416,6 @@ function fillList(element, values) {
     const item = document.createElement("li");
     item.textContent = expandUnitsInText(value);
     element.append(item);
-  }
-}
-
-function renderKeyNumbers(numbers = []) {
-  ui.keyNumbers.replaceChildren();
-  ui.keyNumbers.classList.toggle("hidden", numbers.length === 0);
-
-  for (const number of numbers) {
-    const item = document.createElement("div");
-    const value = document.createElement("strong");
-    const label = document.createElement("span");
-    const detail = document.createElement("small");
-    value.textContent = number.value;
-    label.textContent = number.label;
-    detail.textContent = number.detail || "";
-    item.append(value, label);
-    if (number.detail) item.append(detail);
-    ui.keyNumbers.append(item);
   }
 }
 
@@ -570,6 +581,17 @@ function buildDiagnosis(data) {
     return "O processo está na área de gestão de pessoas. Essa passagem costuma tratar de quantitativo de servidores, ativos, aposentados, pensionistas, enquadramento, folha e projeção do impacto. É onde os números precisam ficar bem amarrados para o Orçamento decidir.";
   }
 
+  if (unit.includes("SEEDUC/CHEGAB") || unit.includes("SEEDUC/GABSEC")) {
+    if (latestDocument && !documentIsOpen) {
+      return `O processo subiu para ${readableUnit(unit)} depois de passar pelas áreas técnicas da Educação. Também existe o documento ${documentNumber}, mas seu texto ainda está fechado. O movimento indica decisão administrativa superior; não permite afirmar aprovação, negativa ou pedido de correção até o despacho abrir.`;
+    }
+    return `O processo está em ${readableUnit(unit)}, uma área que formaliza decisões e encaminhamentos superiores. O próximo movimento pode levá-lo ao secretário, devolvê-lo para ajuste ou enviá-lo a outro órgão decisório.`;
+  }
+
+  if (unit.includes("SEEDUC/ASSUBEXE") || unit.includes("SEEDUC/SUBEXE")) {
+    return "O processo chegou à estrutura da Subsecretaria Executiva da Educação. Essa área costuma reunir as manifestações técnicas e preparar uma decisão ou encaminhamento superior. É avanço de hierarquia, mas ainda não aprovação final.";
+  }
+
   if (unit.includes("SEEDUC")) {
     return "O processo está na Educação. Isso indica que a SEEDUC pode precisar complementar informação, validar dados ou receber de volta a orientação da SEPLAG. O ponto central é saber se a volta veio para ajuste técnico ou para encaminhamento político.";
   }
@@ -597,26 +619,22 @@ function render(data, old) {
 
   ui.status.textContent = "Atualizado";
   ui.phaseTitle.textContent = analysis.phase.title;
-  ui.phaseExplanation.textContent = expandUnitsInText(analysis.phase.explanation);
+  ui.phaseExplanation.textContent = expandUnitsInText(buildStatusExplanation(data));
   ui.currentUnit.textContent = latest?.unit ? readableUnit(latest.unit) : "-";
   ui.lastMovement.textContent = latest?.dateTime || "-";
   ui.generatedAt.textContent = formatGeneratedAt(data.generatedAt);
   ui.officialLink.href = data.officialUrl;
 
   const hasAi = analysis.mode === "openai" && analysis.aiText;
-  ui.analysisTitle.textContent = hasAi
-    ? "Análise do painel"
-    : "Situação atual";
-  ui.analysisMode.textContent = hasAi ? "IA" : "Automática";
+  ui.analysisTitle.textContent = "O que aconteceu";
   ui.analysisText.textContent = expandUnitsInText(hasAi ? analysis.aiText : analysis.summary);
   const diagnosis = buildDiagnosis(data);
   ui.diagnosisText.textContent = expandUnitsInText(diagnosis);
   ui.diagnosisBox.classList.toggle("hidden", !diagnosis);
-  renderKeyNumbers(analysis.numbers);
   renderDeepExplanation(data);
-  fillList(ui.signals, analysis.signals);
-  fillList(ui.risks, analysis.risks);
-  fillList(ui.nextSteps, analysis.phase.nextSteps);
+  fillList(ui.signals, currentSignals(analysis.signals).slice(0, 3));
+  fillList(ui.risks, analysis.risks.slice(0, 3));
+  fillList(ui.nextSteps, analysis.phase.nextSteps.slice(0, 3));
 
   renderNews(news);
   renderTimeline(data, news.movements);
