@@ -460,6 +460,9 @@ async function main() {
   try {
     html = await fetchText(PROCESS_URL);
   } catch (error) {
+    if (process.env.CI === "true") {
+      throw new Error(`O portal SEI bloqueou a consulta do GitHub: ${error.message}`);
+    }
     if (previous) {
       console.error(`O portal SEI não respondeu. Mantendo o último relatório válido: ${error.message}`);
       return;

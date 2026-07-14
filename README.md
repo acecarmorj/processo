@@ -4,12 +4,15 @@ Painel mobile-first para acompanhar o processo `SEI-030029/004475/2023`.
 
 ## Funcionamento
 
-- A consulta automática ocorre de hora em hora, das 08:00 às 20:00, com uma verificação extra às 00:10, no horário de Brasília.
+- O Agendador de Tarefas do Windows inicia a consulta às 00:01, 10:01, 12:01, 14:01, 16:01, 18:01, 20:01 e 22:01, no horário de Brasília.
+- O computador precisa estar ligado e conectado à internet, mas o Codex não precisa estar aberto.
 - Se encontrar mudança, atualiza `data/processo.json`.
-- O GitHub Pages publica o painel.
+- O atualizador faz um commit e envia o arquivo ao GitHub; o GitHub Pages publica o painel.
 - Ao abrir a página, o visitante recebe os dados mais recentes.
 - O navegador guarda a última visita e destaca novos documentos e movimentos.
 - O botão **Resumo histórico** apresenta a trajetória completa em linguagem simples.
+
+O GitHub Actions não faz a consulta automática porque o portal SEI bloqueia as conexões dos servidores hospedados do GitHub. A Action permanece disponível somente para testes manuais de conectividade.
 
 ## Preparar o repositório
 
@@ -17,7 +20,7 @@ Painel mobile-first para acompanhar o processo `SEI-030029/004475/2023`.
 2. Envie todo o conteúdo desta pasta para a raiz do repositório.
 3. Em **Settings > Pages**, escolha **Deploy from a branch**.
 4. Selecione a branch `main` e a pasta `/ (root)`.
-5. Em **Actions**, execute manualmente `Atualizar processo SEI` pela primeira vez.
+5. Configure o atualizador em um computador que consiga acessar o portal SEI.
 
 O endereço ficará semelhante a:
 
@@ -27,7 +30,7 @@ O endereço ficará semelhante a:
 
 Sem chave, o painel usa análise automática baseada nos setores e movimentos.
 
-Para ativar a análise da OpenAI:
+Para ativar a análise da OpenAI em um ambiente compatível:
 
 1. Abra **Settings > Secrets and variables > Actions**.
 2. Crie o secret `OPENAI_API_KEY`.

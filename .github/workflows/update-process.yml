@@ -1,16 +1,8 @@
 name: Atualizar processo SEI
 
 on:
-  schedule:
-    # Horários em UTC: 00:10 e, de hora em hora, das 08:00 às 20:00 em Brasília.
-    - cron: "10 3 * * *"
-    - cron: "0 11-23 * * *"
-  push:
-    branches: ["main"]
-    paths:
-      - ".github/workflows/update-process.yml"
-      - "scripts/update-process-v2.mjs"
-      - "package.json"
+  # O portal SEI bloqueia conexões dos servidores hospedados do GitHub.
+  # Este fluxo fica disponível apenas para testes manuais de conectividade.
   workflow_dispatch:
 
 permissions:
@@ -23,6 +15,7 @@ concurrency:
 jobs:
   atualizar:
     runs-on: ubuntu-latest
+    timeout-minutes: 6
     steps:
       - name: Baixar repositório
         uses: actions/checkout@v4
