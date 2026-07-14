@@ -759,6 +759,19 @@ dialog::backdrop {
   white-space: pre-line;
 }
 
+.whatsapp-share {
+  width: 100%;
+  margin-bottom: 16px;
+  border: 1px solid #176b50;
+  background: #176b50;
+  color: white;
+}
+
+.whatsapp-share:hover,
+.whatsapp-share:focus-visible {
+  background: #12563f;
+}
+
 .transition-countdown {
   margin: 0;
   color: var(--muted);

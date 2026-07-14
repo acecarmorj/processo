@@ -1,5 +1,6 @@
 const DATA_URL = "./data/processo.json";
 const STORAGE_KEY = "painel-faep-faetec-v1";
+const PUBLIC_PANEL_URL = "https://acecarmorj.github.io/processo/";
 
 const ui = {
   refresh: document.querySelector("#refreshButton"),
@@ -35,6 +36,7 @@ const ui = {
   documentTransition: document.querySelector("#documentTransition"),
   transitionMessage: document.querySelector("#transitionMessage"),
   transitionSeconds: document.querySelector("#transitionSeconds"),
+  whatsappShare: document.querySelector("#whatsappShare"),
 };
 
 let currentData = null;
@@ -42,8 +44,11 @@ let movementLimit = 12;
 let transitionTimer = null;
 
 const SHARE_MESSAGE =
-  "Compartilhe este painel com seus colegas ex-FAEP. Assim todos podem acompanhar o processo diretamente, com informação clara, sem depender apenas de mensagens em grupos.";
+  "Cada colega bem informado fortalece nossa causa. Compartilhe este painel agora com pelo menos um ex-FAEP/FAETEC: em poucos segundos, você ajuda mais uma pessoa a acompanhar os fatos diretamente, sem boatos nem informações desencontradas. Quanto mais colegas acompanharem, mais unida e preparada estará a categoria.";
 ui.transitionMessage.textContent = SHARE_MESSAGE;
+ui.whatsappShare.href = `https://wa.me/?text=${encodeURIComponent(
+  `Olá! Quero compartilhar este painel que acompanha o processo dos servidores ex-FAEP/FAETEC de forma clara e atualizada. Assim, podemos acompanhar os fatos diretamente e manter a categoria bem informada. Abra e compartilhe também com outro colega:\n\n${PUBLIC_PANEL_URL}`,
+)}`;
 
 const UNIT_NAMES = {
   "SEPLAG/SUPEFIS": "Estudos Fiscais",
