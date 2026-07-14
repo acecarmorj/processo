@@ -2,9 +2,14 @@
   "schemaVersion": 8,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-07-14T11:02:25.567Z",
-  "sourceHash": "59c51716d0fdaa09687a5bf364cf730d9d5f25b4c397b940c61eb338251aae33",
+  "generatedAt": "2026-07-14T15:01:09.761Z",
+  "sourceHash": "7c3a3712d74aef897a0a563ea732475b05c8ed45a98672a066f53516d06a7aa9",
   "movements": [
+    {
+      "dateTime": "14/07/2026 11:52",
+      "unit": "SEEDUC/CHEGAB",
+      "description": "Processo recebido na unidade"
+    },
     {
       "dateTime": "13/07/2026 21:31",
       "unit": "SEEDUC/CHEGAB",
@@ -4763,7 +4768,7 @@
     },
     {
       "period": "Situação atual",
-      "text": "O registro público mais recente é de 13/07/2026 21:31, em SEEDUC/CHEGAB. O documento mais recente é 136500728, de SEEDUC/ASSUBEXE. Ainda não existe publicação definitiva do enquadramento."
+      "text": "O registro público mais recente é de 14/07/2026 11:52, em SEEDUC/CHEGAB. O documento mais recente é 136500728, de SEEDUC/ASSUBEXE. Ainda não existe publicação definitiva do enquadramento."
     }
   ]
 }
