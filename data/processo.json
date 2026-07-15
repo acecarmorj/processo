@@ -1,8 +1,8 @@
 {
-  "schemaVersion": 9,
+  "schemaVersion": 10,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-07-15T03:01:09.539Z",
+  "generatedAt": "2026-07-15T03:07:11.665Z",
   "sourceHash": "cadf05bbbfc5a381f9bcdbbd9b04050302473967a772c7b9af0a9b33ee830796",
   "movements": [
     {
@@ -4741,9 +4741,9 @@
     },
     "result": "O documento é ruim para a categoria, mas não encerra o processo.",
     "resultLevel": "warning",
-    "summary": "O documento 136413580, da área de Orçamento e Finanças da Educação, registrou que não há disponibilidade orçamentária neste momento. Depois dessa manifestação, o processo passou pela Chefia de Gabinete e pelo Gabinete da Secretária de Educação. Em 14/07/2026 12:13, saiu do Gabinete da Secretária e foi enviado à Chefia de Gabinete da FAETEC. O documento 136546268 foi criado, mas seu texto ainda não está aberto ao público.",
-    "practicalReading": "A trava financeira continua existindo, mas o processo não parou nela. O envio à FAETEC indica que a fundação deverá tomar ciência, complementar informação ou adotar alguma providência. Como o novo despacho ainda está fechado, não é seguro dizer se houve pedido de correção, concordância ou apenas encaminhamento administrativo.",
-    "conclusion": "O processo continua vivo e chegou novamente à FAETEC, mas a trava orçamentária ainda não foi superada. O conteúdo do novo despacho dirá se a fundação recebeu uma tarefa concreta ou apenas tomou ciência da situação.",
+    "summary": "O documento 136413580, da área de Orçamento e Finanças da Educação, registrou que não há disponibilidade orçamentária neste momento. Depois disso, o processo passou pelo Gabinete da Secretária de Educação. O despacho 136546268, agora aberto ao público, encaminhou o processo à FAETEC para análise e manifestação.",
+    "practicalReading": "A trava financeira continua existindo, mas o processo não foi encerrado. A Secretaria de Educação pediu expressamente que a FAETEC analise o caso e se manifeste. Isso abre uma nova etapa técnica, mas ainda não significa aprovação nem superação da falta de recursos.",
+    "conclusion": "O processo continua vivo e a FAETEC recebeu uma tarefa concreta: analisar o caso e apresentar manifestação. O avanço é administrativo, enquanto a solução financeira ainda depende de decisão do governo.",
     "numbers": [
       {
         "value": "R$ 207,02 milhões",
@@ -4767,7 +4767,7 @@
     "risks": [
       "A falta de disponibilidade orçamentária ficou registrada oficialmente e pode ser usada para adiar a implantação."
     ],
-    "nextMovement": "Abertura do documento 136546268 e manifestação da FAETEC sobre a providência solicitada pelo Gabinete da Secretária de Educação"
+    "nextMovement": "Manifestação da FAETEC em resposta ao pedido da Secretaria de Educação"
   },
   "history": [
     {
