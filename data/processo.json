@@ -2,8 +2,8 @@
   "schemaVersion": 9,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-07-14T15:18:41.607Z",
-  "sourceHash": "13fb775507a4e58bda47881582e0114e35aa50f5a6d24c7c48c62a191d640bd3",
+  "generatedAt": "2026-07-15T03:01:09.539Z",
+  "sourceHash": "cadf05bbbfc5a381f9bcdbbd9b04050302473967a772c7b9af0a9b33ee830796",
   "movements": [
     {
       "dateTime": "14/07/2026 12:13",
@@ -4722,10 +4722,10 @@
       "type": "Despacho de Encaminhamento de Processo",
       "date": "14/07/2026",
       "unit": "SEEDUC/GABSEC",
-      "publicUrl": null,
-      "excerpt": "",
+      "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNPRxzNcxMnnMjRbqRKc_kSyTyDD4iErkZvlfR7C9buANc5ByuI3wkdjNQuAu25YgCs1QbnO5fvfPUZVxVW-92Za",
+      "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de EducaçãoGabinete do Secretário À FAETECConsiderando o despacho de ID 136500728 sobre a viabilidade e instrumentalização da migração/transferência de servidores concursados da extinta FAEP para a estrutura da FAETEC encaminho o p.a. para analise e manifestação. Atenciosamente, Rafaela Fontes Rio de Janeiro, na data da assinatura",
       "excerptVersion": 3,
-      "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
+      "simpleExplanation": "É despacho de encaminhamento: manda o processo para outro setor tomar ciência ou providências. Sozinho, não aprova nem nega."
     }
   ],
   "analysis": {
