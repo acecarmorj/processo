@@ -2,9 +2,24 @@
   "schemaVersion": 10,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-07-15T03:07:11.665Z",
-  "sourceHash": "cadf05bbbfc5a381f9bcdbbd9b04050302473967a772c7b9af0a9b33ee830796",
+  "generatedAt": "2026-07-19T19:44:57.420Z",
+  "sourceHash": "8a4d1c91680f0757c0acf6fc9a0321057b25aaf0f1da56c5f997f794a74142a5",
   "movements": [
+    {
+      "dateTime": "18/07/2026 14:48",
+      "unit": "FAETEC/SECPRES",
+      "description": "Conclus�o do processo na unidade"
+    },
+    {
+      "dateTime": "18/07/2026 14:47",
+      "unit": "FAETEC/SECPRES",
+      "description": "Processo recebido na unidade"
+    },
+    {
+      "dateTime": "18/07/2026 14:44",
+      "unit": "FAETEC/CHEGAB",
+      "description": "Processo recebido na unidade"
+    },
     {
       "dateTime": "14/07/2026 12:13",
       "unit": "FAETEC/CHEGAB",
@@ -4731,12 +4746,12 @@
   "analysis": {
     "mode": "automatic",
     "phase": {
-      "title": "Decisão administrativa superior",
-      "explanation": "O processo chegou a gabinete ou presidência para definição do encaminhamento seguinte.",
+      "title": "Tramitação administrativa",
+      "explanation": "O processo continua em análise dentro da administração estadual.",
       "nextSteps": [
-        "Despacho da autoridade",
-        "Encaminhamento jurídico ou político",
-        "Definição do instrumento final"
+        "Novo despacho",
+        "Remessa técnica",
+        "Decisão superior"
       ]
     },
     "result": "O documento é ruim para a categoria, mas não encerra o processo.",
@@ -4788,7 +4803,7 @@
     },
     {
       "period": "Situação atual",
-      "text": "O registro público mais recente é de 14/07/2026 12:13, em FAETEC/CHEGAB. O documento mais recente é 136546268, de SEEDUC/GABSEC. Ainda não existe publicação definitiva do enquadramento."
+      "text": "O registro público mais recente é de 18/07/2026 14:48, em FAETEC/SECPRES. O documento mais recente é 136546268, de SEEDUC/GABSEC. Ainda não existe publicação definitiva do enquadramento."
     }
   ]
 }
