@@ -12,7 +12,7 @@ const PROCESS_URL =
   "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x";
 const SEI_BASE = "https://sei.rj.gov.br/sei/modulos/pesquisa/";
 const MODEL = process.env.OPENAI_MODEL || "gpt-5.4-mini";
-const DATA_SCHEMA_VERSION = 10;
+const DATA_SCHEMA_VERSION = 12;
 const EXCERPT_VERSION = 3;
 const RECENT_DOCUMENTS_TO_RECHECK = 24;
 const SEI_AGENT = new Agent({ connect: { timeout: 30_000 } });
@@ -424,6 +424,8 @@ function buildAutomaticAnalysis(movements, documents) {
   } else if (budgetBlock) {
     const movedToCabinet = latest?.unit?.includes("CHEGAB") || latestDocument?.unit?.includes("ASSUBEXE");
     const movedToFaetec = latest?.unit?.startsWith("FAETEC/");
+    const faetecUnitConclusion =
+      movedToFaetec && normalized(latest?.description).includes("conclus");
     const latestDocumentClosed = latestDocument && (!latestDocument.publicUrl || !latestDocument.excerpt);
     const latestDocumentText = normalized(latestDocument?.excerpt);
     const faetecAskedToAnalyze =
@@ -465,6 +467,17 @@ function buildAutomaticAnalysis(movements, documents) {
           ? "O processo continua vivo e a FAETEC recebeu uma tarefa concreta: analisar o caso e apresentar manifestação. O avanço é administrativo, enquanto a solução financeira ainda depende de decisão do governo."
           : "O processo continua vivo e está na FAETEC, mas a trava orçamentária ainda não foi superada."
       : "O processo não morreu, mas sofreu uma trava séria. O problema deixou de ser apenas técnico: agora precisa de solução orçamentária e decisão política para avançar.";
+
+    if (faetecUnitConclusion) {
+      result = "A FAETEC concluiu a tramitação em uma unidade, mas não há decisão final pública.";
+      resultLevel = "warning";
+      summary = `Em 18/07/2026, o processo foi recebido pela Secretaria da Presidência da FAETEC às 14:47. Às 14:48, o SEI registrou "Conclusão do processo na unidade". Não apareceu novo despacho público nem remessa para outro setor.`;
+      practicalReading = "No SEI, concluir o processo em uma unidade pode significar que aquele setor terminou sua parte ou fechou o processo em sua fila. Sozinho, esse registro não prova arquivamento, aprovação ou negativa do pedido inteiro. Como não há novo documento público, ainda não é possível saber qual manifestação a FAETEC adotou.";
+      positive = "A Secretaria da Presidência da FAETEC recebeu e processou o pedido de análise enviado pela Secretaria de Educação.";
+      negative = "A conclusão ocorreu sem despacho público e sem remessa visível para outro setor, o que pode representar pausa ou encerramento apenas dentro dessa unidade.";
+      nextMovement = "Publicação de despacho da FAETEC, reabertura do processo ou remessa para outro setor";
+      conclusion = "O novo registro exige cautela: houve tratamento pela Secretaria da Presidência da FAETEC, mas ainda não existe prova pública de decisão sobre o mérito. O próximo movimento ou documento dirá se o processo continuará ou ficará parado nessa etapa.";
+    }
   } else if (positiveDocument) {
     result = "Há sinal favorável de continuidade, mas ainda não é aprovação final.";
     resultLevel = "positive";
