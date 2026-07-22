@@ -2,9 +2,14 @@
   "schemaVersion": 12,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-07-19T19:47:44.040Z",
-  "sourceHash": "8a4d1c91680f0757c0acf6fc9a0321057b25aaf0f1da56c5f997f794a74142a5",
+  "generatedAt": "2026-07-22T21:01:07.480Z",
+  "sourceHash": "4a955f30d46fa22ee79ba6a1626649cc3828a1602998949ef3de11aff756338d",
   "movements": [
+    {
+      "dateTime": "22/07/2026 17:25",
+      "unit": "FAETEC/PRESI",
+      "description": "Reabertura do processo na unidade"
+    },
     {
       "dateTime": "18/07/2026 14:48",
       "unit": "FAETEC/SECPRES",
@@ -4746,19 +4751,19 @@
   "analysis": {
     "mode": "automatic",
     "phase": {
-      "title": "Tramitação administrativa",
-      "explanation": "O processo continua em análise dentro da administração estadual.",
+      "title": "Decisão administrativa superior",
+      "explanation": "O processo chegou a gabinete ou presidência para definição do encaminhamento seguinte.",
       "nextSteps": [
-        "Novo despacho",
-        "Remessa técnica",
-        "Decisão superior"
+        "Despacho da autoridade",
+        "Encaminhamento jurídico ou político",
+        "Definição do instrumento final"
       ]
     },
-    "result": "A FAETEC concluiu a tramitação em uma unidade, mas não há decisão final pública.",
+    "result": "O documento é ruim para a categoria, mas não encerra o processo.",
     "resultLevel": "warning",
-    "summary": "Em 18/07/2026, o processo foi recebido pela Secretaria da Presidência da FAETEC às 14:47. Às 14:48, o SEI registrou \"Conclusão do processo na unidade\". Não apareceu novo despacho público nem remessa para outro setor.",
-    "practicalReading": "No SEI, concluir o processo em uma unidade pode significar que aquele setor terminou sua parte ou fechou o processo em sua fila. Sozinho, esse registro não prova arquivamento, aprovação ou negativa do pedido inteiro. Como não há novo documento público, ainda não é possível saber qual manifestação a FAETEC adotou.",
-    "conclusion": "O novo registro exige cautela: houve tratamento pela Secretaria da Presidência da FAETEC, mas ainda não existe prova pública de decisão sobre o mérito. O próximo movimento ou documento dirá se o processo continuará ou ficará parado nessa etapa.",
+    "summary": "O documento 136413580, da área de Orçamento e Finanças da Educação, registrou que não há disponibilidade orçamentária neste momento. Depois disso, o processo passou pelo Gabinete da Secretária de Educação. O despacho 136546268, agora aberto ao público, encaminhou o processo à FAETEC para análise e manifestação.",
+    "practicalReading": "A trava financeira continua existindo, mas o processo não foi encerrado. A Secretaria de Educação pediu expressamente que a FAETEC analise o caso e se manifeste. Isso abre uma nova etapa técnica, mas ainda não significa aprovação nem superação da falta de recursos.",
+    "conclusion": "O processo continua vivo e a FAETEC recebeu uma tarefa concreta: analisar o caso e apresentar manifestação. O avanço é administrativo, enquanto a solução financeira ainda depende de decisão do governo.",
     "numbers": [
       {
         "value": "R$ 207,02 milhões",
@@ -4777,12 +4782,12 @@
       }
     ],
     "signals": [
-      "A Secretaria da Presidência da FAETEC recebeu e processou o pedido de análise enviado pela Secretaria de Educação."
+      "O processo passou pelo Gabinete da Secretária de Educação e foi encaminhado à FAETEC, sem arquivamento nem negativa final."
     ],
     "risks": [
-      "A conclusão ocorreu sem despacho público e sem remessa visível para outro setor, o que pode representar pausa ou encerramento apenas dentro dessa unidade."
+      "A falta de disponibilidade orçamentária ficou registrada oficialmente e pode ser usada para adiar a implantação."
     ],
-    "nextMovement": "Publicação de despacho da FAETEC, reabertura do processo ou remessa para outro setor"
+    "nextMovement": "Manifestação da FAETEC em resposta ao pedido da Secretaria de Educação"
   },
   "history": [
     {
@@ -4803,7 +4808,7 @@
     },
     {
       "period": "Situação atual",
-      "text": "O registro público mais recente é de 18/07/2026 14:48, em FAETEC/SECPRES. O documento mais recente é 136546268, de SEEDUC/GABSEC. Ainda não existe publicação definitiva do enquadramento."
+      "text": "O registro público mais recente é de 22/07/2026 17:25, em FAETEC/PRESI. O documento mais recente é 136546268, de SEEDUC/GABSEC. Ainda não existe publicação definitiva do enquadramento."
     }
   ]
 }
