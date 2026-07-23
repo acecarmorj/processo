@@ -12,7 +12,7 @@ const PROCESS_URL =
   "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x";
 const SEI_BASE = "https://sei.rj.gov.br/sei/modulos/pesquisa/";
 const MODEL = process.env.OPENAI_MODEL || "gpt-5.4-mini";
-const DATA_SCHEMA_VERSION = 13;
+const DATA_SCHEMA_VERSION = 12;
 const EXCERPT_VERSION = 3;
 const RECENT_DOCUMENTS_TO_RECHECK = 24;
 const SEI_AGENT = new Agent({ connect: { timeout: 30_000 } });
@@ -46,11 +46,7 @@ async function fetchText(url, timeout = 60_000, attempts = 3) {
         signal: AbortSignal.timeout(timeout),
       });
       if (!response.ok) throw new Error(`Consulta falhou: HTTP ${response.status}`);
-      const buffer = Buffer.from(await response.arrayBuffer());
-      const contentType = response.headers.get("content-type") || "";
-      const charset = contentType.match(/charset=([^;]+)/i)?.[1]?.trim().toLowerCase();
-      const decoder = charset && !charset.includes("utf-8") ? new TextDecoder("windows-1252") : new TextDecoder("utf-8");
-      return decoder.decode(buffer);
+      return await response.text();
     } catch (error) {
       lastError = error;
       if (attempt < attempts) {
@@ -256,13 +252,6 @@ function explainDocument(document) {
 }
 
 function phaseFor(unit = "") {
-  if (unit.includes("ASSJUR") || unit.includes("SUBJUR") || unit.includes("PGE")) {
-    return {
-      title: "Análise jurídica",
-      explanation: "O processo está em área jurídica. Essa etapa pode avaliar se o caminho escolhido é decreto, projeto de lei, parecer, ajuste de minuta ou devolução para correção.",
-      nextSteps: ["Parecer ou despacho jurídico", "Retorno ao gabinete da SEEDUC", "Envio para SEPLAG, Casa Civil ou FAETEC"],
-    };
-  }
   if (unit.includes("SUPOF")) {
     return {
       title: "Análise orçamentária na Educação",
@@ -435,65 +424,66 @@ function buildAutomaticAnalysis(movements, documents) {
   } else if (budgetBlock) {
     const movedToCabinet = latest?.unit?.includes("CHEGAB") || latestDocument?.unit?.includes("ASSUBEXE");
     const movedToFaetec = latest?.unit?.startsWith("FAETEC/");
+    const movedToAssjurAfterFaetec =
+      latest?.unit === "SEEDUC/ASSJUR" && normalized(latest?.description).includes("faetec/presi");
+    const latestDocumentFromFaetec = latestDocument?.unit === "FAETEC/PRESI";
     const faetecUnitConclusion =
       movedToFaetec && normalized(latest?.description).includes("conclus");
     const latestDocumentClosed = latestDocument && (!latestDocument.publicUrl || !latestDocument.excerpt);
     const latestDocumentText = normalized(latestDocument?.excerpt);
-    const movedToSeeducAssjur = latest?.unit === "SEEDUC/ASSJUR";
-    const latestFaetecOfficeClosed =
-      movedToSeeducAssjur && latestDocument?.unit === "FAETEC/PRESI" && latestDocumentClosed;
     const faetecAskedToAnalyze =
       movedToFaetec &&
       !latestDocumentClosed &&
       latestDocumentText.includes("faetec") &&
       latestDocumentText.includes("analise e manifestacao");
-    result = "O documento é ruim para a categoria, mas não encerra o processo.";
-    resultLevel = "warning";
-    summary = movedToFaetec
-      ? latestDocumentClosed
-        ? `O documento ${budgetBlock.number}, da área de Orçamento e Finanças da Educação, registrou que não há disponibilidade orçamentária neste momento. Depois dessa manifestação, o processo passou pela Chefia de Gabinete e pelo Gabinete da Secretária de Educação. Em ${latest?.dateTime}, saiu do Gabinete da Secretária e foi enviado à Chefia de Gabinete da FAETEC. O documento ${latestDocument?.number || "mais recente"} foi criado, mas seu texto ainda não está aberto ao público.`
-        : faetecAskedToAnalyze
-          ? `O documento ${budgetBlock.number}, da área de Orçamento e Finanças da Educação, registrou que não há disponibilidade orçamentária neste momento. Depois disso, o processo passou pelo Gabinete da Secretária de Educação. O despacho ${latestDocument.number}, agora aberto ao público, encaminhou o processo à FAETEC para análise e manifestação.`
-          : `O documento ${budgetBlock.number} registrou falta de disponibilidade orçamentária neste momento. Depois disso, o processo foi encaminhado à FAETEC. O despacho ${latestDocument.number} está aberto e deve ser lido junto com a manifestação que a fundação apresentar.`
-      : `O documento ${budgetBlock.number}, da área de Orçamento e Finanças da Educação, registrou que não há disponibilidade orçamentária neste momento. Depois disso, ${movementInPlainLanguage(latest)}${latestDocumentClosed ? ` O documento ${latestDocument.number} ainda está fechado ao público.` : ""}`;
-    practicalReading = movedToFaetec
-      ? latestDocumentClosed
-        ? "A trava financeira continua existindo, mas o processo não parou nela. O envio à FAETEC indica que a fundação deverá tomar ciência ou adotar alguma providência. Como o novo despacho ainda está fechado, não é seguro atribuir a ele uma decisão."
-        : faetecAskedToAnalyze
-          ? "A trava financeira continua existindo, mas o processo não foi encerrado. A Secretaria de Educação pediu expressamente que a FAETEC analise o caso e se manifeste. Isso abre uma nova etapa técnica, mas ainda não significa aprovação nem superação da falta de recursos."
-          : "A trava financeira continua existindo e o processo está na FAETEC. O efeito prático dependerá da manifestação oficial que a fundação produzir."
-      : "A principal trava agora é financeira. A área técnica não disse que o pedido é ilegal nem mandou arquivar; disse que a Educação não tem recursos disponíveis hoje. A solução depende de encontrar fonte de dinheiro, implantação por etapas ou decisão política superior.";
-    positive = movedToFaetec
-      ? "O processo passou pelo Gabinete da Secretária de Educação e foi encaminhado à FAETEC, sem arquivamento nem negativa final."
-      : movedToCabinet
-        ? "O processo subiu para a Chefia de Gabinete da Educação, setor capaz de levar a questão à secretária, negociar com a SEPLAG ou buscar decisão do governo."
-        : "O processo não foi arquivado e continua tramitando depois da manifestação orçamentária.";
-    negative = "A falta de disponibilidade orçamentária ficou registrada oficialmente e pode ser usada para adiar a implantação.";
-    nextMovement = movedToFaetec
-      ? latestDocumentClosed
-        ? `Abertura do documento ${latestDocument?.number || "novo"} e manifestação da FAETEC`
-        : "Manifestação da FAETEC em resposta ao pedido da Secretaria de Educação"
-      : "Saída da Chefia de Gabinete para o gabinete da secretária, SEPLAG, Casa Civil ou setor encarregado de indicar recursos";
-    conclusion = movedToFaetec
-      ? latestDocumentClosed
-        ? "O processo continua vivo e chegou novamente à FAETEC, mas a trava orçamentária ainda não foi superada. É preciso aguardar a abertura do despacho e a resposta da fundação."
-        : faetecAskedToAnalyze
-          ? "O processo continua vivo e a FAETEC recebeu uma tarefa concreta: analisar o caso e apresentar manifestação. O avanço é administrativo, enquanto a solução financeira ainda depende de decisão do governo."
-          : "O processo continua vivo e está na FAETEC, mas a trava orçamentária ainda não foi superada."
-      : "O processo não morreu, mas sofreu uma trava séria. O problema deixou de ser apenas técnico: agora precisa de solução orçamentária e decisão política para avançar.";
-
-    if (movedToSeeducAssjur) {
-      result = "Melhorou juridicamente, mas a trava orçamentária continua.";
-      resultLevel = "warning";
-      summary = latestFaetecOfficeClosed
-        ? `Depois da manifestação de Orçamento e Finanças da Educação informando falta de disponibilidade orçamentária, a Presidência da FAETEC criou o ofício ${latestDocument.number} e enviou o processo para a Assessoria Jurídica da SEEDUC em ${latest.dateTime}. O texto do ofício ainda não está aberto ao público.`
-        : `Depois da manifestação de Orçamento e Finanças da Educação informando falta de disponibilidade orçamentária, ${movementInPlainLanguage(latest)} ${latestReading.summary}`;
-      practicalReading = "A FAETEC não segurou nem arquivou o processo: respondeu por ofício e devolveu a bola para a área jurídica da Educação. Isso é avanço de tramitação e pode preparar um parecer ou novo encaminhamento superior. Mas a falta de orçamento registrada anteriormente continua sendo a principal trava.";
-      positive = "A FAETEC se manifestou formalmente e o processo voltou para análise jurídica da SEEDUC, em vez de ficar parado na Presidência da fundação.";
-      negative = "O ofício da FAETEC ainda não está aberto e a falta de disponibilidade orçamentária continua registrada no processo.";
-      nextMovement = "SEEDUC/ASSJUR emitir parecer ou despacho e devolver para SEEDUC/GABSEC, SEPLAG ou Casa Civil";
-      conclusion = "O processo ganhou fôlego jurídico, mas ainda não venceu a barreira do dinheiro. O próximo despacho da ASSJUR vai mostrar se o governo quer viabilizar o caminho ou apenas continuar empurrando a decisão.";
-    }
+    result = movedToAssjurAfterFaetec
+      ? "O processo avançou para análise jurídica após manifestação da FAETEC, mas ainda depende de solução orçamentária."
+      : "O documento é ruim para a categoria, mas não encerra o processo.";
+    resultLevel = movedToAssjurAfterFaetec ? "neutral" : "warning";
+    summary = movedToAssjurAfterFaetec
+      ? `A FAETEC/PRESI criou o documento ${latestDocument?.number || "mais recente"} em ${latestDocument?.date || "data recente"} e, em ${latest?.dateTime}, o processo foi enviado para a SEEDUC/ASSJUR. O conteúdo do ofício ainda ${latestDocumentClosed ? "não está aberto ao público" : "precisa ser lido com atenção"}. A leitura segura é que a FAETEC fez uma manifestação formal e levou o caso para análise jurídica da Educação; isso não é aprovação final, mas também não é arquivamento.`
+      : movedToFaetec
+        ? latestDocumentClosed
+          ? `O documento ${budgetBlock.number}, da área de Orçamento e Finanças da Educação, registrou que não há disponibilidade orçamentária neste momento. Depois dessa manifestação, o processo passou pela Chefia de Gabinete e pelo Gabinete da Secretária de Educação. Em ${latest?.dateTime}, saiu do Gabinete da Secretária e foi enviado à Chefia de Gabinete da FAETEC. O documento ${latestDocument?.number || "mais recente"} foi criado, mas seu texto ainda não está aberto ao público.`
+          : faetecAskedToAnalyze
+            ? `O documento ${budgetBlock.number}, da área de Orçamento e Finanças da Educação, registrou que não há disponibilidade orçamentária neste momento. Depois disso, o processo passou pelo Gabinete da Secretária de Educação. O despacho ${latestDocument.number}, agora aberto ao público, encaminhou o processo à FAETEC para análise e manifestação.`
+            : `O documento ${budgetBlock.number} registrou falta de disponibilidade orçamentária neste momento. Depois disso, o processo foi encaminhado à FAETEC. O despacho ${latestDocument.number} está aberto e deve ser lido junto com a manifestação que a fundação apresentar.`
+        : `O documento ${budgetBlock.number}, da área de Orçamento e Finanças da Educação, registrou que não há disponibilidade orçamentária neste momento. Depois disso, ${movementInPlainLanguage(latest)}${latestDocumentClosed ? ` O documento ${latestDocument.number} ainda está fechado ao público.` : ""}`;
+    practicalReading = movedToAssjurAfterFaetec
+      ? "A ida para a ASSJUR é relevante porque pode servir para validar o instrumento jurídico da migração/transferência, inclusive diante da restrição orçamentária já apontada pela SUPOF. A trava financeira permanece, mas o processo saiu da FAETEC com ofício e ganhou uma nova etapa jurídica."
+      : movedToFaetec
+        ? latestDocumentClosed
+          ? "A trava financeira continua existindo, mas o processo não parou nela. O envio à FAETEC indica que a fundação deverá tomar ciência ou adotar alguma providência. Como o novo despacho ainda está fechado, não é seguro atribuir a ele uma decisão."
+          : faetecAskedToAnalyze
+            ? "A trava financeira continua existindo, mas o processo não foi encerrado. A Secretaria de Educação pediu expressamente que a FAETEC analise o caso e se manifeste. Isso abre uma nova etapa técnica, mas ainda não significa aprovação nem superação da falta de recursos."
+            : "A trava financeira continua existindo e o processo está na FAETEC. O efeito prático dependerá da manifestação oficial que a fundação produzir."
+        : "A principal trava agora é financeira. A área técnica não disse que o pedido é ilegal nem mandou arquivar; disse que a Educação não tem recursos disponíveis hoje. A solução depende de encontrar fonte de dinheiro, implantação por etapas ou decisão política superior.";
+    positive = movedToAssjurAfterFaetec
+      ? "A FAETEC se manifestou por ofício e enviou o processo para a Assessoria Jurídica da SEEDUC, sem arquivamento."
+      : movedToFaetec
+        ? "O processo passou pelo Gabinete da Secretária de Educação e foi encaminhado à FAETEC, sem arquivamento nem negativa final."
+        : movedToCabinet
+          ? "O processo subiu para a Chefia de Gabinete da Educação, setor capaz de levar a questão à secretária, negociar com a SEPLAG ou buscar decisão do governo."
+          : "O processo não foi arquivado e continua tramitando depois da manifestação orçamentária.";
+    negative = movedToAssjurAfterFaetec
+      ? "O Ofício da FAETEC ainda pode trazer ressalvas, pedido de ajuste ou simples ciência da falta de orçamento."
+      : "A falta de disponibilidade orçamentária ficou registrada oficialmente e pode ser usada para adiar a implantação.";
+    nextMovement = movedToAssjurAfterFaetec
+      ? `Abertura do documento ${latestDocument?.number || "novo"} e manifestação da SEEDUC/ASSJUR; depois, remessa para GABSEC, SEPLAG ou Casa Civil`
+      : movedToFaetec
+        ? latestDocumentClosed
+          ? `Abertura do documento ${latestDocument?.number || "novo"} e manifestação da FAETEC`
+          : "Manifestação da FAETEC em resposta ao pedido da Secretaria de Educação"
+        : "Saída da Chefia de Gabinete para o gabinete da secretária, SEPLAG, Casa Civil ou setor encarregado de indicar recursos";
+    conclusion = movedToAssjurAfterFaetec
+      ? "O processo ganhou um passo jurídico importante. Agora o conteúdo do Ofício da FAETEC e a manifestação da ASSJUR dirão se a fundação apoiou a migração com ressalvas, pediu ajustes ou apenas devolveu o tema para nova análise."
+      : movedToFaetec
+        ? latestDocumentClosed
+          ? "O processo continua vivo e chegou novamente à FAETEC, mas a trava orçamentária ainda não foi superada. É preciso aguardar a abertura do despacho e a resposta da fundação."
+          : faetecAskedToAnalyze
+            ? "O processo continua vivo e a FAETEC recebeu uma tarefa concreta: analisar o caso e apresentar manifestação. O avanço é administrativo, enquanto a solução financeira ainda depende de decisão do governo."
+            : "O processo continua vivo e está na FAETEC, mas a trava orçamentária ainda não foi superada."
+        : "O processo não morreu, mas sofreu uma trava séria. O problema deixou de ser apenas técnico: agora precisa de solução orçamentária e decisão política para avançar.";
 
     if (faetecUnitConclusion) {
       result = "A FAETEC concluiu a tramitação em uma unidade, mas não há decisão final pública.";
@@ -588,7 +578,7 @@ async function generateAiAnalysis(data) {
         {
           role: "system",
           content:
-            "Analise este processo administrativo em português brasileiro para pessoas leigas, de forma direta, crítica e prática. Sempre use a estrutura: Resultado direto, O que aconteceu, Leitura prática, Ponto positivo, Ponto negativo, Próximo movimento esperado e Conclusão. Diferencie fato, inferência e hipótese. Nunca trate movimentação como aprovação. Nunca atribua conteúdo a documento fechado ou sem trecho extraído. Destaque orçamento, impacto financeiro, SEPLAG, Casa Civil, Governadoria, PGE e minuta de projeto de lei. Quando houver falta de disponibilidade orçamentária, trate como trava séria. Quando subir para CHEGAB, GABSEC, ASSJUR, SEPLAG ou Casa Civil, explique se é avanço real ou apenas burocrático.",
+            "Analise este processo administrativo em português brasileiro para pessoas leigas. Use frases simples. Diferencie fatos, inferências e hipóteses. Explique situação atual, mudança recente, sinais positivos, riscos e próximos passos. Nunca trate movimentação como aprovação. Nunca atribua conteúdo a documento fechado ou sem trecho extraído. Quando o texto não estiver disponível, diga apenas que o documento está fechado ao público e aguarde a leitura oficial.",
         },
         { role: "user", content: openAiInput(data) },
       ],

@@ -270,11 +270,11 @@ function buildStatusExplanation(data) {
   const origin = originFromDescription(latest.description);
   const movedFrom = origin ? `, depois de sair de ${readableUnit(origin)}` : "";
 
+  if (latest.unit.includes("ASSJUR")) {
+    return `O processo está em ${unit}${movedFrom}. Isso mostra que o caso voltou para análise jurídica. É uma etapa relevante, mas ainda não significa aprovação final nem superação automática da questão orçamentária.`;
+  }
   if (latest.unit.includes("CHEGAB") || latest.unit.includes("GABSEC")) {
     return `O processo está em ${unit}${movedFrom}. Isso mostra que ele chegou a uma área de decisão e encaminhamento superior. Ainda não significa aprovação nem negativa: o gabinete precisa definir o próximo passo.`;
-  }
-  if (latest.unit.includes("ASSJUR") || latest.unit.includes("SUBJUR") || latest.unit.includes("PGE")) {
-    return `O processo está em ${unit}${movedFrom}. Isso indica análise jurídica: o setor pode dizer se o caminho é parecer, projeto de lei, ajuste de minuta ou novo encaminhamento superior. Ainda não é aprovação final.`;
   }
   if (latest.unit.includes("ASSUBEXE") || latest.unit.includes("SUBEXE")) {
     return `O processo está em ${unit}${movedFrom}. Essa área reúne as análises já feitas e prepara o encaminhamento para uma autoridade superior. Ainda não é a decisão final.`;
@@ -294,7 +294,7 @@ function buildStatusExplanation(data) {
 
 function unitMeaningText(unit = "") {
   if (unit.includes("ASSJUR") || unit.includes("SUBJUR") || unit.includes("PGE")) {
-    return "Quando vai para o jurídico, a pergunta deixa de ser só movimentação: o setor pode validar o caminho legal, pedir ajuste, indicar projeto de lei, ou devolver para decisão superior. É avanço se vier seguido de encaminhamento para gabinete, SEPLAG ou Casa Civil.";
+    return "Quando o processo chega à área jurídica, a pergunta principal passa a ser se o instrumento usado está correto: projeto de lei, minuta, enquadramento, competência do governador e forma de seguir mesmo com ressalvas orçamentárias.";
   }
   if (unit.includes("CHEGAB") || unit.includes("GABSEC")) {
     return "Quando o processo chega a gabinete, normalmente ele deixa de ser apenas conta tecnica e passa para decisao de encaminhamento: mandar ao secretario, devolver para ajuste, enviar a Casa Civil ou pedir uma definicao superior.";
@@ -322,8 +322,8 @@ function documentMeaningText(documentData) {
     return "Ainda nao ha documento recente identificado para leitura.";
   }
   if (!documentData.publicUrl || !documentData.excerpt) {
-    if (documentData.unit === "FAETEC/PRESI" && /of/i.test(documentData.type || "")) {
-      return `O documento ${documentData.number} e um oficio da Presidencia da FAETEC, mas o texto ainda nao abriu para leitura publica. Ele e importante porque deve explicar a posicao da fundacao antes do envio para a juridica da SEEDUC.`;
+    if (documentData.number === "137308944" || documentData.unit === "FAETEC/PRESI") {
+      return `O documento ${documentData.number} ja foi criado pela FAETEC/PRESI, mas ainda nao abriu para leitura publica. Como o processo saiu dele para a SEEDUC/ASSJUR, a leitura equilibrada e que houve uma manifestacao formal da FAETEC e agora o tema foi para analise juridica. Ate abrir, nao da para dizer se foi concordancia, concordancia com ressalvas ou pedido de ajuste.`;
     }
     return `O documento ${documentData.number} ja foi criado, mas ainda nao abriu para leitura publica. Isso e comum no SEI: primeiro aparece o numero, depois o conteudo fica visivel. Ate abrir, nao da para afirmar se ele aprovou, pediu ajuste ou apenas encaminhou.`;
   }
@@ -360,7 +360,22 @@ function scenarioList(data) {
     });
   }
 
-  if (unit.includes("CHEGAB") || unit.includes("GABSEC")) {
+  if (unit.includes("ASSJUR") || unit.includes("SUBJUR") || unit.includes("PGE")) {
+    scenarios.push(
+      {
+        title: "Parecer ou orientação jurídica",
+        text: "A área jurídica pode dizer qual instrumento é adequado: projeto de lei, ajuste de minuta, nova manifestação técnica ou encaminhamento superior.",
+      },
+      {
+        title: "Concordância com ressalvas",
+        text: "Um cenário possível é a jurídica reconhecer que o caminho é viável, mas condicionado à solução orçamentária ou a ajustes no texto.",
+      },
+      {
+        title: "Pedido de correção",
+        text: "Também pode pedir complemento de informações, ajuste de fundamento ou nova manifestação de orçamento/pessoal antes de seguir.",
+      },
+    );
+  } else if (unit.includes("CHEGAB") || unit.includes("GABSEC")) {
     scenarios.push(
       {
         title: "Subir para decisao do secretario",
@@ -430,6 +445,9 @@ function watchItems(data) {
     items.unshift(
       `O documento ${latestDocument?.number || "mais recente"} ainda precisa abrir para leitura publica.`,
     );
+    if (latestDocument?.unit === "FAETEC/PRESI") {
+      items.unshift("Quando o Ofício NA 629 abrir, verifique se a FAETEC concordou, concordou com ressalvas ou apenas pediu ajuste.");
+    }
   }
 
   return items;
@@ -637,6 +655,10 @@ function buildDiagnosis(data) {
 
   if (unit.includes("SEEDUC/ASSUBEXE") || unit.includes("SEEDUC/SUBEXE")) {
     return "O processo chegou à estrutura da Subsecretaria Executiva da Educação. Essa área costuma reunir as manifestações técnicas e preparar uma decisão ou encaminhamento superior. É avanço de hierarquia, mas ainda não aprovação final.";
+  }
+
+  if (unit.includes("SEEDUC/ASSJUR")) {
+    return "O processo voltou para a Assessoria Jurídica da Educação depois de manifestação da FAETEC. É uma movimentação relevante: a discussão pode estar saindo do simples vai-e-volta administrativo para validar o instrumento jurídico e os próximos encaminhamentos. A restrição orçamentária continua, mas não houve arquivamento.";
   }
 
   if (unit.includes("SEEDUC")) {

@@ -2,7 +2,7 @@
   "schemaVersion": 13,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-07-23T21:49:26.091916Z",
+  "generatedAt": "2026-07-23T22:05:00.000Z",
   "sourceHash": "de74cb3ffbd0ee856b227c711a4f45e4f5b81c8a78f8a35e832a3d9988728828",
   "movements": [
     {
@@ -18,7 +18,7 @@
     {
       "dateTime": "18/07/2026 14:48",
       "unit": "FAETEC/SECPRES",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "18/07/2026 14:47",
@@ -193,7 +193,7 @@
     {
       "dateTime": "26/06/2026 10:01",
       "unit": "SEPLAG/SUPDP",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "26/06/2026 09:56",
@@ -613,7 +613,7 @@
     {
       "dateTime": "24/04/2026 18:29",
       "unit": "SEEDUC/SUBAD",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "16/04/2026 10:49",
@@ -658,7 +658,7 @@
     {
       "dateTime": "08/04/2026 14:32",
       "unit": "SEEDUC/SUPGP",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "08/04/2026 11:20",
@@ -688,7 +688,7 @@
     {
       "dateTime": "26/03/2026 17:10",
       "unit": "SECC/ASSAL",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "18/03/2026 10:11",
@@ -778,7 +778,7 @@
     {
       "dateTime": "10/02/2026 16:54",
       "unit": "SECC/SUBGEP",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "10/02/2026 16:53",
@@ -818,12 +818,12 @@
     {
       "dateTime": "31/07/2025 10:52",
       "unit": "SECC/ASSAL",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "06/05/2025 16:30",
       "unit": "RIOPREV/GERCAP",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "24/10/2024 15:04",
@@ -1158,7 +1158,7 @@
     {
       "dateTime": "17/05/2024 16:58",
       "unit": "SEEDUC/SUPGP",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "17/05/2024 16:58",
@@ -1258,7 +1258,7 @@
     {
       "dateTime": "19/04/2024 12:54",
       "unit": "SEEDUC/CHEGAB",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "18/04/2024 15:15",
@@ -1388,7 +1388,7 @@
     {
       "dateTime": "17/01/2024 14:24",
       "unit": "FAETEC/ASSJUR",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "12/12/2023 17:59",
@@ -1463,12 +1463,12 @@
     {
       "dateTime": "29/11/2023 15:27",
       "unit": "SECC/ASSOC",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "29/11/2023 12:00",
       "unit": "SEEDUC/SUBEXE",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "29/11/2023 11:04",
@@ -1513,7 +1513,7 @@
     {
       "dateTime": "21/11/2023 12:21",
       "unit": "SEEDUC/SUPOF",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "21/11/2023 12:20",
@@ -1528,7 +1528,7 @@
     {
       "dateTime": "08/11/2023 15:00",
       "unit": "SEEDUC/ASPLO",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "08/11/2023 12:38",
@@ -1553,7 +1553,7 @@
     {
       "dateTime": "07/11/2023 12:12",
       "unit": "SEEDUC/SUBAD",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "07/11/2023 10:46",
@@ -1588,17 +1588,17 @@
     {
       "dateTime": "01/11/2023 13:05",
       "unit": "SEEDUC/SUBAD",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "31/10/2023 10:49",
       "unit": "SEEDUC/SUPGP",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "27/10/2023 14:44",
       "unit": "SEEDUC/SUBEXE",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "27/10/2023 14:26",
@@ -1623,12 +1623,12 @@
     {
       "dateTime": "26/10/2023 15:51",
       "unit": "SECC/SUPDP",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "26/10/2023 14:32",
       "unit": "SEEDUC/SUBEXE",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "26/10/2023 14:32",
@@ -1683,7 +1683,7 @@
     {
       "dateTime": "24/10/2023 11:41",
       "unit": "SEEDUC/GABSEC",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "24/10/2023 11:38",
@@ -1828,7 +1828,7 @@
     {
       "dateTime": "28/09/2023 19:23",
       "unit": "RIOPREV/DIRSE",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "28/09/2023 18:12",
@@ -1838,7 +1838,7 @@
     {
       "dateTime": "20/09/2023 12:10",
       "unit": "FAETEC/CHEGAB",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "18/09/2023 11:26",
@@ -1898,7 +1898,7 @@
     {
       "dateTime": "23/08/2023 15:51",
       "unit": "RIOPREV/DIRSE",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "17/08/2023 12:03",
@@ -1933,7 +1933,7 @@
     {
       "dateTime": "08/08/2023 17:48",
       "unit": "RIOPREV/GERPA",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "08/08/2023 08:26",
@@ -2048,7 +2048,7 @@
     {
       "dateTime": "30/06/2023 14:01",
       "unit": "SEEDUC/SUPGP",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "30/06/2023 11:12",
@@ -2123,7 +2123,7 @@
     {
       "dateTime": "29/06/2023 08:29",
       "unit": "FAETEC/CHEGAB",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "29/06/2023 08:28",
@@ -2308,7 +2308,7 @@
     {
       "dateTime": "01/06/2023 12:45",
       "unit": "SEEDUC/CHEGAB",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "01/06/2023 12:06",
@@ -2323,7 +2323,7 @@
     {
       "dateTime": "29/05/2023 12:32",
       "unit": "FAETEC/PRESI",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "29/05/2023 12:30",
@@ -2333,7 +2333,7 @@
     {
       "dateTime": "24/05/2023 16:10",
       "unit": "SECC/SUBG",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "24/05/2023 12:05",
@@ -2348,12 +2348,12 @@
     {
       "dateTime": "22/05/2023 09:50",
       "unit": "SEEDUC/SUPGP",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "19/05/2023 10:34",
       "unit": "SEEDUC/SUBEXE",
-      "description": "Conclusão do processo na unidade"
+      "description": "Conclus�o do processo na unidade"
     },
     {
       "dateTime": "17/05/2023 15:07",
@@ -4754,31 +4754,31 @@
     },
     {
       "number": "137308944",
-      "type": "Ofício - NA 629",
+      "type": "Of�cio - NA 629",
       "date": "23/07/2026",
       "unit": "FAETEC/PRESI",
       "publicUrl": null,
       "excerpt": "",
       "excerptVersion": 3,
-      "simpleExplanation": "Ofício novo da Presidência da FAETEC. O conteúdo ainda não está aberto, mas o processo foi encaminhado em seguida para a Assessoria Jurídica da SEEDUC."
+      "simpleExplanation": "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública."
     }
   ],
   "analysis": {
     "mode": "automatic",
     "phase": {
       "title": "Análise jurídica na SEEDUC",
-      "explanation": "O processo saiu da Presidência da FAETEC e chegou à Assessoria Jurídica da Educação. A etapa pode avaliar o caminho legal e preparar novo despacho para gabinete, SEPLAG ou Casa Civil.",
+      "explanation": "Depois da manifestação da FAETEC, o processo está na Assessoria Jurídica da Educação.",
       "nextSteps": [
-        "Parecer ou despacho da ASSJUR",
-        "Retorno para SEEDUC/GABSEC ou CHEGAB",
-        "Envio para SEPLAG ou Casa Civil"
+        "Abrir Ofício NA 629",
+        "Manifestação da ASSJUR",
+        "Remessa para GABSEC, SEPLAG ou Casa Civil"
       ]
     },
-    "result": "Melhorou juridicamente, mas a trava orçamentária continua.",
-    "resultLevel": "warning",
-    "summary": "A Presidência da FAETEC criou o Ofício NA 629, documento 137308944, em 23/07/2026. No mesmo dia, às 15:37, o processo saiu da FAETEC/PRESI e foi para a SEEDUC/ASSJUR. O texto do ofício ainda não está aberto ao público.",
-    "practicalReading": "A FAETEC não segurou nem arquivou o processo: respondeu por ofício e devolveu a análise para a jurídica da Educação. Isso é avanço de tramitação, porque pode preparar parecer ou novo encaminhamento superior. Mas a falta de disponibilidade orçamentária registrada pela SUPOF em 13/07 continua sendo a principal trava.",
-    "conclusion": "O processo ganhou fôlego jurídico, mas ainda não venceu a barreira do dinheiro. O próximo despacho da ASSJUR vai mostrar se o governo quer viabilizar o caminho ou apenas continuar empurrando a decisão.",
+    "result": "O processo avançou para análise jurídica após manifestação da FAETEC, mas ainda depende de solução orçamentária.",
+    "resultLevel": "neutral",
+    "summary": "A FAETEC/PRESI criou o Ofício NA 629 em 23/07/2026 e, no mesmo dia, o processo foi enviado para a SEEDUC/ASSJUR. O conteúdo do ofício ainda não está aberto ao público. A leitura segura é que a FAETEC fez uma manifestação formal e levou o caso para análise jurídica da Educação; isso não é aprovação final, mas também não é arquivamento.",
+    "practicalReading": "A ida para a ASSJUR é relevante porque pode servir para validar o instrumento jurídico da migração/transferência, inclusive diante da restrição orçamentária já apontada pela SUPOF. A trava financeira permanece, mas o processo saiu da FAETEC com ofício e ganhou uma nova etapa jurídica.",
+    "conclusion": "O processo ganhou um passo jurídico importante. Agora o conteúdo do Ofício NA 629 e a manifestação da ASSJUR dirão se a FAETEC apoiou a migração com ressalvas, pediu ajustes ou apenas devolveu o tema para nova análise.",
     "numbers": [
       {
         "value": "R$ 207,02 milhões",
@@ -4797,12 +4797,12 @@
       }
     ],
     "signals": [
-      "A FAETEC se manifestou formalmente e o processo voltou para análise jurídica da SEEDUC, em vez de ficar parado na Presidência da fundação."
+      "A FAETEC se manifestou por ofício e enviou o processo para a Assessoria Jurídica da SEEDUC, sem arquivamento."
     ],
     "risks": [
-      "O Ofício NA 629 ainda não está aberto e a falta de disponibilidade orçamentária continua registrada no processo."
+      "O Ofício NA 629 ainda está fechado e a restrição orçamentária anterior continua sem solução pública."
     ],
-    "nextMovement": "SEEDUC/ASSJUR emitir parecer ou despacho e devolver para SEEDUC/GABSEC, SEPLAG ou Casa Civil"
+    "nextMovement": "Abertura do Ofício NA 629 e manifestação da SEEDUC/ASSJUR; depois, remessa para GABSEC, SEPLAG ou Casa Civil"
   },
   "history": [
     {
@@ -4823,7 +4823,7 @@
     },
     {
       "period": "Situação atual",
-      "text": "O registro público mais recente é de 23/07/2026 15:37, em SEEDUC/ASSJUR. O documento mais recente é 137308944, Ofício NA 629 da FAETEC/PRESI. Ainda não existe publicação definitiva do enquadramento."
+      "text": "O registro público mais recente é de 23/07/2026 15:37, em SEEDUC/ASSJUR, após ofício emitido pela FAETEC/PRESI. O conteúdo do Ofício NA 629 ainda não está aberto ao público. Ainda não existe publicação definitiva do enquadramento."
     }
   ]
 }
