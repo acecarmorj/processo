@@ -12,7 +12,7 @@ const PROCESS_URL =
   "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x";
 const SEI_BASE = "https://sei.rj.gov.br/sei/modulos/pesquisa/";
 const MODEL = process.env.OPENAI_MODEL || "gpt-5.4-mini";
-const DATA_SCHEMA_VERSION = 12;
+const DATA_SCHEMA_VERSION = 13;
 const EXCERPT_VERSION = 3;
 const RECENT_DOCUMENTS_TO_RECHECK = 24;
 const SEI_AGENT = new Agent({ connect: { timeout: 30_000 } });
@@ -46,7 +46,11 @@ async function fetchText(url, timeout = 60_000, attempts = 3) {
         signal: AbortSignal.timeout(timeout),
       });
       if (!response.ok) throw new Error(`Consulta falhou: HTTP ${response.status}`);
-      return await response.text();
+      const buffer = Buffer.from(await response.arrayBuffer());
+      const contentType = response.headers.get("content-type") || "";
+      const charset = contentType.match(/charset=([^;]+)/i)?.[1]?.trim().toLowerCase();
+      const decoder = charset && !charset.includes("utf-8") ? new TextDecoder("windows-1252") : new TextDecoder("utf-8");
+      return decoder.decode(buffer);
     } catch (error) {
       lastError = error;
       if (attempt < attempts) {
@@ -252,6 +256,13 @@ function explainDocument(document) {
 }
 
 function phaseFor(unit = "") {
+  if (unit.includes("ASSJUR") || unit.includes("SUBJUR") || unit.includes("PGE")) {
+    return {
+      title: "Análise jurídica",
+      explanation: "O processo está em área jurídica. Essa etapa pode avaliar se o caminho escolhido é decreto, projeto de lei, parecer, ajuste de minuta ou devolução para correção.",
+      nextSteps: ["Parecer ou despacho jurídico", "Retorno ao gabinete da SEEDUC", "Envio para SEPLAG, Casa Civil ou FAETEC"],
+    };
+  }
   if (unit.includes("SUPOF")) {
     return {
       title: "Análise orçamentária na Educação",
@@ -428,6 +439,9 @@ function buildAutomaticAnalysis(movements, documents) {
       movedToFaetec && normalized(latest?.description).includes("conclus");
     const latestDocumentClosed = latestDocument && (!latestDocument.publicUrl || !latestDocument.excerpt);
     const latestDocumentText = normalized(latestDocument?.excerpt);
+    const movedToSeeducAssjur = latest?.unit === "SEEDUC/ASSJUR";
+    const latestFaetecOfficeClosed =
+      movedToSeeducAssjur && latestDocument?.unit === "FAETEC/PRESI" && latestDocumentClosed;
     const faetecAskedToAnalyze =
       movedToFaetec &&
       !latestDocumentClosed &&
@@ -467,6 +481,19 @@ function buildAutomaticAnalysis(movements, documents) {
           ? "O processo continua vivo e a FAETEC recebeu uma tarefa concreta: analisar o caso e apresentar manifestação. O avanço é administrativo, enquanto a solução financeira ainda depende de decisão do governo."
           : "O processo continua vivo e está na FAETEC, mas a trava orçamentária ainda não foi superada."
       : "O processo não morreu, mas sofreu uma trava séria. O problema deixou de ser apenas técnico: agora precisa de solução orçamentária e decisão política para avançar.";
+
+    if (movedToSeeducAssjur) {
+      result = "Melhorou juridicamente, mas a trava orçamentária continua.";
+      resultLevel = "warning";
+      summary = latestFaetecOfficeClosed
+        ? `Depois da manifestação de Orçamento e Finanças da Educação informando falta de disponibilidade orçamentária, a Presidência da FAETEC criou o ofício ${latestDocument.number} e enviou o processo para a Assessoria Jurídica da SEEDUC em ${latest.dateTime}. O texto do ofício ainda não está aberto ao público.`
+        : `Depois da manifestação de Orçamento e Finanças da Educação informando falta de disponibilidade orçamentária, ${movementInPlainLanguage(latest)} ${latestReading.summary}`;
+      practicalReading = "A FAETEC não segurou nem arquivou o processo: respondeu por ofício e devolveu a bola para a área jurídica da Educação. Isso é avanço de tramitação e pode preparar um parecer ou novo encaminhamento superior. Mas a falta de orçamento registrada anteriormente continua sendo a principal trava.";
+      positive = "A FAETEC se manifestou formalmente e o processo voltou para análise jurídica da SEEDUC, em vez de ficar parado na Presidência da fundação.";
+      negative = "O ofício da FAETEC ainda não está aberto e a falta de disponibilidade orçamentária continua registrada no processo.";
+      nextMovement = "SEEDUC/ASSJUR emitir parecer ou despacho e devolver para SEEDUC/GABSEC, SEPLAG ou Casa Civil";
+      conclusion = "O processo ganhou fôlego jurídico, mas ainda não venceu a barreira do dinheiro. O próximo despacho da ASSJUR vai mostrar se o governo quer viabilizar o caminho ou apenas continuar empurrando a decisão.";
+    }
 
     if (faetecUnitConclusion) {
       result = "A FAETEC concluiu a tramitação em uma unidade, mas não há decisão final pública.";
@@ -561,7 +588,7 @@ async function generateAiAnalysis(data) {
         {
           role: "system",
           content:
-            "Analise este processo administrativo em português brasileiro para pessoas leigas. Use frases simples. Diferencie fatos, inferências e hipóteses. Explique situação atual, mudança recente, sinais positivos, riscos e próximos passos. Nunca trate movimentação como aprovação. Nunca atribua conteúdo a documento fechado ou sem trecho extraído. Quando o texto não estiver disponível, diga apenas que o documento está fechado ao público e aguarde a leitura oficial.",
+            "Analise este processo administrativo em português brasileiro para pessoas leigas, de forma direta, crítica e prática. Sempre use a estrutura: Resultado direto, O que aconteceu, Leitura prática, Ponto positivo, Ponto negativo, Próximo movimento esperado e Conclusão. Diferencie fato, inferência e hipótese. Nunca trate movimentação como aprovação. Nunca atribua conteúdo a documento fechado ou sem trecho extraído. Destaque orçamento, impacto financeiro, SEPLAG, Casa Civil, Governadoria, PGE e minuta de projeto de lei. Quando houver falta de disponibilidade orçamentária, trate como trava séria. Quando subir para CHEGAB, GABSEC, ASSJUR, SEPLAG ou Casa Civil, explique se é avanço real ou apenas burocrático.",
         },
         { role: "user", content: openAiInput(data) },
       ],

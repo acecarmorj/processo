@@ -1,0 +1,29 @@
+ATUALIZAÇÕES DO PAINEL EX-FAEP / FAETEC — 23/07/2026
+
+1. Análise mais direta
+- Ajustei o texto principal para ficar mais parecido com a análise objetiva feita no chat.
+- O painel agora separa melhor: resultado direto, o que aconteceu, leitura prática, ponto positivo, ponto negativo, próximo movimento esperado e conclusão.
+
+2. Situação atual atualizada
+- Incluído o andamento mais recente informado no SEI:
+  23/07/2026 15:37 — SEEDUC/ASSJUR — processo remetido pela unidade FAETEC/PRESI.
+- Incluído o documento mais recente:
+  137308944 — Ofício NA 629 — 23/07/2026 — FAETEC/PRESI.
+
+3. Nova leitura exibida no painel
+- Resultado direto: "Melhorou juridicamente, mas a trava orçamentária continua."
+- O painel passa a explicar que a FAETEC se manifestou por ofício e mandou o processo para a Assessoria Jurídica da SEEDUC.
+- Também destaca que o Ofício NA 629 ainda está fechado e que a falta de disponibilidade orçamentária continua sendo a principal trava.
+
+4. Melhorias no atualizador automático
+- O script passa a reconhecer melhor etapas jurídicas como SEEDUC/ASSJUR, SECC/SUBJUR e PGE.
+- O script recebeu regra específica para o cenário FAETEC/PRESI → SEEDUC/ASSJUR após manifestação orçamentária negativa.
+- Melhorado o tratamento de codificação do SEI para reduzir problemas como "Of�cio" e "Conclus�o".
+- Atualizada a versão do esquema de dados para forçar nova geração da análise.
+
+5. Cache do navegador
+- Atualizei a versão dos arquivos CSS e JS no index.html para o navegador carregar a versão nova.
+
+Como publicar:
+- Substitua os arquivos do repositório GitHub por esta versão.
+- Faça commit e aguarde o GitHub Pages atualizar.

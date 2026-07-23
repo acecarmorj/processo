@@ -273,6 +273,9 @@ function buildStatusExplanation(data) {
   if (latest.unit.includes("CHEGAB") || latest.unit.includes("GABSEC")) {
     return `O processo está em ${unit}${movedFrom}. Isso mostra que ele chegou a uma área de decisão e encaminhamento superior. Ainda não significa aprovação nem negativa: o gabinete precisa definir o próximo passo.`;
   }
+  if (latest.unit.includes("ASSJUR") || latest.unit.includes("SUBJUR") || latest.unit.includes("PGE")) {
+    return `O processo está em ${unit}${movedFrom}. Isso indica análise jurídica: o setor pode dizer se o caminho é parecer, projeto de lei, ajuste de minuta ou novo encaminhamento superior. Ainda não é aprovação final.`;
+  }
   if (latest.unit.includes("ASSUBEXE") || latest.unit.includes("SUBEXE")) {
     return `O processo está em ${unit}${movedFrom}. Essa área reúne as análises já feitas e prepara o encaminhamento para uma autoridade superior. Ainda não é a decisão final.`;
   }
@@ -290,6 +293,9 @@ function buildStatusExplanation(data) {
 }
 
 function unitMeaningText(unit = "") {
+  if (unit.includes("ASSJUR") || unit.includes("SUBJUR") || unit.includes("PGE")) {
+    return "Quando vai para o jurídico, a pergunta deixa de ser só movimentação: o setor pode validar o caminho legal, pedir ajuste, indicar projeto de lei, ou devolver para decisão superior. É avanço se vier seguido de encaminhamento para gabinete, SEPLAG ou Casa Civil.";
+  }
   if (unit.includes("CHEGAB") || unit.includes("GABSEC")) {
     return "Quando o processo chega a gabinete, normalmente ele deixa de ser apenas conta tecnica e passa para decisao de encaminhamento: mandar ao secretario, devolver para ajuste, enviar a Casa Civil ou pedir uma definicao superior.";
   }
@@ -316,6 +322,9 @@ function documentMeaningText(documentData) {
     return "Ainda nao ha documento recente identificado para leitura.";
   }
   if (!documentData.publicUrl || !documentData.excerpt) {
+    if (documentData.unit === "FAETEC/PRESI" && /of/i.test(documentData.type || "")) {
+      return `O documento ${documentData.number} e um oficio da Presidencia da FAETEC, mas o texto ainda nao abriu para leitura publica. Ele e importante porque deve explicar a posicao da fundacao antes do envio para a juridica da SEEDUC.`;
+    }
     return `O documento ${documentData.number} ja foi criado, mas ainda nao abriu para leitura publica. Isso e comum no SEI: primeiro aparece o numero, depois o conteudo fica visivel. Ate abrir, nao da para afirmar se ele aprovou, pediu ajuste ou apenas encaminhou.`;
   }
 
