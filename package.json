@@ -1,14 +1,2 @@
-{
-  "name": "painel-faep-faetec",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "update": "node scripts/update-process-v2.mjs",
-    "serve": "npx --yes serve ."
-  },
-  "dependencies": {
-    "cheerio": "^1.1.2",
-    "undici": "^8.6.0"
-  }
-}
+node_modules/
+.env

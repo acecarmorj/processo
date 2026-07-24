@@ -1,279 +1,51 @@
-<!doctype html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#075a7c" />
-    <meta
-      name="description"
-      content="Painel público de acompanhamento do processo dos servidores ex-FAEP/FAETEC."
-    />
-    <title>Painel ex-FAEP / FAETEC</title>
-    <link rel="stylesheet" href="./styles.css?v=20260723-2" />
-  </head>
-  <body>
-    <header class="topbar">
-      <div class="topbar-inner">
-        <div>
-          <p class="process-number">SEI-030029/004475/2023</p>
-          <h1>Painel ex-FAEP / FAETEC</h1>
-          <p class="header-credit">Desenvolvido por @almir.lk</p>
-        </div>
-        <span id="statusBadge" class="status-badge">Carregando</span>
-      </div>
-    </header>
+$ErrorActionPreference = "Stop"
 
-    <main>
-      <nav class="actions" aria-label="Ações do painel">
-        <button id="refreshButton" class="button primary" type="button">
-          Recarregar painel
-        </button>
-        <button id="historyButton" class="button secondary" type="button">
-          Resumo histórico
-        </button>
-        <a
-          id="officialLink"
-          class="button secondary"
-          href="#"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Consultar no SEI
-        </a>
-      </nav>
+$repository = "F:\acomp"
+$logDirectory = Join-Path $env:LOCALAPPDATA "PainelFaetec"
+$logPath = Join-Path $logDirectory "atualizador.log"
+$lockPath = Join-Path $env:TEMP "painel-faetec-atualizador.lock"
 
-      <div id="errorMessage" class="message error hidden" role="alert"></div>
-      <div id="newsMessage" class="message news hidden" aria-live="polite"></div>
+New-Item -ItemType Directory -Path $logDirectory -Force | Out-Null
 
-      <section class="current-status" aria-labelledby="phaseTitle">
-        <div>
-          <p class="label">Situação atual</p>
-          <h2 id="phaseTitle">Consultando dados</h2>
-          <p id="phaseExplanation" class="lead">
-            Aguarde enquanto o relatório mais recente é carregado.
-          </p>
-        </div>
-        <dl class="facts">
-          <div>
-            <dt>Setor onde o processo está</dt>
-            <dd id="currentUnit">-</dd>
-          </div>
-          <div>
-            <dt>Última movimentação no SEI</dt>
-            <dd id="lastMovement">-</dd>
-          </div>
-          <div>
-            <dt>Última novidade encontrada no SEI</dt>
-            <dd id="generatedAt">-</dd>
-            <small>O painel procura novos movimentos e documentos automaticamente.</small>
-          </div>
-        </dl>
-      </section>
+if (Test-Path -LiteralPath $lockPath) {
+  $lockAge = (Get-Date) - (Get-Item -LiteralPath $lockPath).LastWriteTime
+  if ($lockAge.TotalMinutes -lt 10) {
+    exit 0
+  }
+  Remove-Item -LiteralPath $lockPath -Force
+}
 
-      <section class="panel" aria-labelledby="analysisTitle">
-        <div class="section-header">
-          <div>
-            <p class="label">Última novidade oficial</p>
-            <h2 id="analysisTitle">O que aconteceu</h2>
-          </div>
-          <span class="fact-badge">Fato do SEI</span>
-        </div>
-        <div id="verdictBox" class="verdict-box">
-          <p class="label">Resultado direto</p>
-          <div class="verdict-line">
-            <span id="verdictBadge" class="verdict-badge">Analisando</span>
-            <strong id="verdictText">Aguarde a leitura dos documentos.</strong>
-          </div>
-        </div>
-        <p class="label analysis-label">O que aconteceu</p>
-        <p id="analysisText" class="analysis-text">Carregando análise.</p>
-        <div id="diagnosisBox" class="diagnosis-box hidden">
-          <p class="label">Leitura prática</p>
-          <p id="diagnosisText"></p>
-        </div>
+New-Item -ItemType File -Path $lockPath -Force | Out-Null
 
-        <div class="analysis-grid">
-          <div>
-            <h3>Ponto positivo</h3>
-            <ul id="signalsList"></ul>
-          </div>
-          <div>
-            <h3>Ponto negativo</h3>
-            <ul id="risksList"></ul>
-          </div>
-          <div>
-            <h3>Próximo movimento esperado</h3>
-            <ul id="nextStepsList"></ul>
-          </div>
-        </div>
-        <div id="conclusionBox" class="conclusion-box">
-          <p class="label">Conclusão</p>
-          <p id="conclusionText">Aguardando a análise mais recente.</p>
-        </div>
-      </section>
+try {
+  Set-Location -LiteralPath $repository
+  Add-Content -LiteralPath $logPath -Value "$(Get-Date -Format s) - Iniciando consulta."
 
-      <details class="panel explain-panel">
-        <summary class="explain-summary">
-          <div>
-            <p class="label">Para quem deseja entender mais</p>
-            <h2>Possibilidades e sinais a observar</h2>
-          </div>
-          <span class="explain-action">Abrir análise completa</span>
-        </summary>
-        <div class="explain-content">
-          <div class="explain-grid">
-            <article class="explain-card">
-              <h3>Por que esse setor importa</h3>
-              <p id="unitMeaning"></p>
-            </article>
-            <article class="explain-card">
-              <h3>O que o documento mais novo pode indicar</h3>
-              <p id="documentMeaning"></p>
-            </article>
-          </div>
-          <div class="scenario-block">
-            <h3>Caminhos possíveis agora</h3>
-            <div id="scenarioCards" class="scenario-cards"></div>
-          </div>
-          <div class="watch-block">
-            <h3>O que observar no próximo despacho</h3>
-            <ul id="watchList"></ul>
-          </div>
-        </div>
-      </details>
+  & node "scripts\update-process-v2.mjs" 2>&1 |
+    ForEach-Object { Add-Content -LiteralPath $logPath -Value $_ }
 
-      <section class="panel" aria-labelledby="documentsTitle">
-        <div class="section-header">
-          <div>
-            <p class="label">Documentos oficiais</p>
-            <h2 id="documentsTitle">Despachos e pareceres</h2>
-            <p class="section-hint">(clique para visualizar)</p>
-          </div>
-          <span id="documentCount" class="count"></span>
-        </div>
-        <div id="documents" class="documents"></div>
-      </section>
+  if ($LASTEXITCODE -ne 0) {
+    throw "A consulta terminou com código $LASTEXITCODE."
+  }
 
-      <section class="panel" aria-labelledby="timelineTitle">
-        <div class="section-header">
-          <div>
-            <p class="label">Linha do tempo</p>
-            <h2 id="timelineTitle">Últimos andamentos</h2>
-          </div>
-          <span id="movementCount" class="count"></span>
-        </div>
-        <div id="timeline" class="timeline"></div>
-        <button id="showMoreButton" class="button text-button" type="button">
-          Mostrar mais andamentos
-        </button>
-      </section>
+  $dataChanged = git status --porcelain -- "data/processo.json"
+  if (-not $dataChanged) {
+    Add-Content -LiteralPath $logPath -Value "$(Get-Date -Format s) - Nenhuma novidade."
+    exit 0
+  }
 
-      <footer class="site-footer">
-        <div class="access-counter">
-          <span>Acessos ao painel</span>
-          <a
-            href="https://hits.sh/acecarmorj.github.io/processo/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Ver estatísticas públicas de acesso"
-          >
-            <img
-              src="https://hits.sh/acecarmorj.github.io/processo.svg?view=total&style=flat-square&label=acessos&color=0b6686&labelColor=093f57"
-              alt="Contador de acessos ao painel"
-            />
-          </a>
-        </div>
-        <div class="unique-counter" title="Estimativa: cada navegador e aparelho conta uma vez">
-          <span>Visitantes únicos estimados</span>
-          <strong id="uniqueVisitorCount" aria-live="polite">Carregando...</strong>
-        </div>
-        <p class="footer-credit">Desenvolvido por @almir.lk</p>
-      </footer>
-    </main>
+  git add -- "data/processo.json"
+  git commit -m "Atualiza andamento do processo SEI"
+  git push origin main
 
-    <dialog id="historyDialog">
-      <header class="dialog-header">
-        <div>
-          <p class="label">Do início até agora</p>
-          <h2>Resumo histórico</h2>
-        </div>
-        <button id="closeHistoryButton" class="button close" type="button">
-          Fechar
-        </button>
-      </header>
-      <div id="historyContent" class="history-content"></div>
-    </dialog>
+  if ($LASTEXITCODE -ne 0) {
+    throw "Não foi possível publicar a atualização."
+  }
 
-    <div
-      id="documentTransition"
-      class="transition-overlay hidden"
-      role="status"
-      aria-live="polite"
-    >
-      <div class="transition-card">
-        <p class="label">Nossa luta continua</p>
-        <p id="transitionMessage" class="transition-message">
-          Compartilhe com um colega ex-FAEP/FAETEC. Mais pessoas acompanhando
-          os fatos direto no SEI deixam a categoria mais unida e bem informada.
-        </p>
-        <a
-          id="whatsappShare"
-          class="button whatsapp-share"
-          href="#"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Compartilhar com um colega
-        </a>
-        <p class="transition-countdown">
-          <span>O painel será exibido em</span>
-          <strong id="transitionSeconds">6</strong>
-          segundos...
-        </p>
-      </div>
-    </div>
-
-    <template id="movementTemplate">
-      <article class="movement">
-        <span class="movement-dot"></span>
-        <div>
-          <div class="movement-heading">
-            <time></time>
-            <span class="unit"></span>
-          </div>
-          <p></p>
-        </div>
-      </article>
-    </template>
-
-    <template id="documentTemplate">
-      <details class="document">
-        <summary>
-          <div>
-            <strong class="document-number"></strong>
-            <span class="document-type"></span>
-          </div>
-          <div class="document-meta">
-            <span class="document-unit"></span>
-            <time></time>
-          </div>
-        </summary>
-        <div class="document-content">
-          <p class="document-explanation"></p>
-          <details class="original-text">
-            <summary>Ver trecho original</summary>
-            <p class="document-excerpt"></p>
-          </details>
-          <a class="document-link" target="_blank" rel="noreferrer">
-            Abrir documento no SEI
-          </a>
-          <span class="locked-message">
-            Documento ainda não liberado para leitura pública.
-          </span>
-        </div>
-      </details>
-    </template>
-
-    <script type="module" src="./app.js?v=20260723-2"></script>
-  </body>
-</html>
+  Add-Content -LiteralPath $logPath -Value "$(Get-Date -Format s) - Atualização publicada."
+} catch {
+  Add-Content -LiteralPath $logPath -Value "$(Get-Date -Format s) - Erro: $($_.Exception.Message)"
+  exit 1
+} finally {
+  Remove-Item -LiteralPath $lockPath -Force -ErrorAction SilentlyContinue
+}
