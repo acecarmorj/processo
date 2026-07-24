@@ -1,10 +1,15 @@
 {
-  "schemaVersion": 13,
+  "schemaVersion": 14,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-07-23T22:15:00.000Z",
-  "sourceHash": "647bcd3454cdfddfd607d9a3cc8b8fdc7f133210c6b4de560499ad69d7d86816",
+  "generatedAt": "2026-07-24T14:17:00.000Z",
+  "sourceHash": "44cfbae5451e83ff304729b689d3593566d305f1c18c47dbb3b13b3c9a27e9e5",
   "movements": [
+    {
+      "dateTime": "24/07/2026 11:17",
+      "unit": "SEEDUC/ASSJUR",
+      "description": "Processo recebido na unidade"
+    },
     {
       "dateTime": "23/07/2026 15:37",
       "unit": "SEEDUC/ASSJUR",
@@ -4766,19 +4771,19 @@
   "analysis": {
     "mode": "automatic",
     "phase": {
-      "title": "Análise jurídica estratégica",
-      "explanation": "Depois do Ofício NA 629 da FAETEC/PRESI, o processo está na Assessoria Jurídica da SEEDUC para avaliar o caminho legal da migração e o possível uso do PROPAG.",
+      "title": "Aguardando parecer da Jurídica da Educação",
+      "explanation": "Depois do Ofício NA 629 da FAETEC/PRESI, o processo foi recebido pela SEEDUC/ASSJUR em 24/07/2026 às 11:17. A etapa agora é a análise jurídica sobre migração, necessidade de lei e possível uso do PROPAG.",
       "nextSteps": [
         "Parecer da SEEDUC/ASSJUR",
-        "Definição sobre necessidade de lei",
-        "Remessa para SEEDUC/GABSEC, SEPLAG ou Casa Civil"
+        "Definição sobre necessidade de lei e uso do PROPAG",
+        "Remessa para SEEDUC/GABSEC, SEPLAG, PGE ou Casa Civil"
       ]
     },
-    "result": "O processo ganhou fôlego: a FAETEC pediu parecer jurídico sobre a migração, a necessidade de lei e o uso do PROPAG.",
+    "result": "Avançou mais um passo: o processo foi recebido pela SEEDUC/ASSJUR para análise jurídica do Ofício NA 629, da FAETEC.",
     "resultLevel": "positive",
-    "summary": "O Ofício NA 629, da FAETEC/PRESI, foi aberto. Ele não rejeita a migração. Ao contrário: pede parecer jurídico sobre a possibilidade de migração/transferência dos servidores ex-FAEP para a estrutura da FAETEC, sobre a necessidade ou não de lei e sobre o uso do PROPAG como instrumento jurídico-administrativo para resolver a demanda. O ofício também registra que a Nota Técnica nº 2026-02 concluiu que os servidores mantêm vínculo jurídico com a FAETEC, mesmo estando em exercício na SEEDUC.",
-    "practicalReading": "A falta de disponibilidade orçamentária continua sendo uma trava séria, mas o processo mudou de patamar. A FAETEC assumiu uma postura ativa: reconheceu a tese do vínculo jurídico, não usou a falta de orçamento para encerrar o caso e pediu que a jurídica avalie uma saída pelo PROPAG. A discussão agora não é só “tem dinheiro ou não”; passou a ser “qual instrumento jurídico e orçamentário pode viabilizar”.",
-    "conclusion": "O processo não está resolvido, mas o Ofício NA 629 é um avanço real. A próxima peça decisiva será o parecer da SEEDUC/ASSJUR sobre lei, PROPAG e caminho jurídico para viabilizar a migração.",
+    "summary": "Em 24/07/2026 às 11:17, o processo foi recebido na SEEDUC/ASSJUR. Isso confirma que o Ofício NA 629, da FAETEC/PRESI, saiu da fase de simples envio e entrou efetivamente na Assessoria Jurídica da Educação. O documento da FAETEC pediu parecer sobre a possibilidade jurídica de migração/transferência dos servidores ex-FAEP para a FAETEC, sobre a necessidade ou não de lei e sobre o possível uso do PROPAG como instrumento jurídico-administrativo para ajudar a resolver a demanda.",
+    "practicalReading": "A novidade é positiva, mas ainda não é decisão final. O processo agora está no setor que pode apontar o caminho legal: se precisa de projeto de lei, se deve ir à PGE ou Casa Civil, se o PROPAG pode ser usado e como tratar a trava orçamentária. A falta de disponibilidade orçamentária continua sendo o principal risco, mas a tramitação mostra busca de solução jurídica, não arquivamento.",
+    "conclusion": "O processo ganhou fôlego e agora está oficialmente na análise jurídica da SEEDUC. O próximo documento da ASSJUR será decisivo para dizer se a migração pode seguir por lei, PROPAG, PGE/Casa Civil ou se haverá novo pedido de ajuste.",
     "numbers": [
       {
         "value": "R$ 207,02 milhões",
@@ -4797,12 +4802,12 @@
       }
     ],
     "signals": [
-      "A FAETEC/PRESI reconheceu a importância da tese do vínculo jurídico com a FAETEC e pediu parecer para encontrar caminho jurídico, inclusive pelo PROPAG."
+      "O processo foi recebido pela SEEDUC/ASSJUR em 24/07, confirmando que o Ofício NA 629 entrou na etapa jurídica e não ficou parado na FAETEC."
     ],
     "risks": [
-      "A ASSJUR pode concluir que a migração exige projeto de lei e que o PROPAG não resolve sozinho a falta de disponibilidade orçamentária."
+      "A ASSJUR pode concluir que é necessário projeto de lei, manifestação da PGE/Casa Civil ou nova solução orçamentária antes de qualquer avanço concreto."
     ],
-    "nextMovement": "Parecer da SEEDUC/ASSJUR; se favorável, o processo pode seguir para SEEDUC/GABSEC, SEPLAG, Casa Civil ou PGE."
+    "nextMovement": "Aguardar o parecer da SEEDUC/ASSJUR; se for favorável, o melhor caminho seria seguir para SEEDUC/GABSEC, SEPLAG, PGE ou Casa Civil."
   },
   "history": [
     {
@@ -4824,6 +4829,10 @@
     {
       "period": "Situação atual",
       "text": "O registro público mais recente mostra o processo em SEEDUC/ASSJUR, após o Ofício NA 629 da FAETEC/PRESI. O ofício foi aberto e pede parecer sobre migração para a FAETEC, necessidade de lei e possível uso do PROPAG. A situação melhorou juridicamente, mas ainda depende de solução orçamentária e decisão política superior."
+    },
+    {
+      "period": "Julho de 2026",
+      "text": "A FAETEC/PRESI emitiu o Ofício NA 629 e o processo foi recebido pela SEEDUC/ASSJUR em 24/07/2026 para análise jurídica da migração, da necessidade de lei e do possível uso do PROPAG."
     }
   ]
 }

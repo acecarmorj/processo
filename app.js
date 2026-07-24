@@ -1,675 +1,794 @@
-import * as cheerio from "cheerio";
-import { createHash } from "node:crypto";
-import { readFile, writeFile, mkdir } from "node:fs/promises";
-import { dirname, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
-import { Agent, fetch as undiciFetch } from "undici";
+const DATA_URL = "./data/processo.json";
+const STORAGE_KEY = "painel-faep-faetec-v1";
+const UNIQUE_VISITOR_KEY = "painel-faep-visitante-contado-v1";
+const UNIQUE_COUNTER_URL =
+  "https://api.counterapi.dev/v1/acecarmorj-processo/visitantes-unicos";
+const PUBLIC_PANEL_URL = "https://acecarmorj.github.io/processo/";
 
-const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const DATA_PATH = resolve(ROOT, "data", "processo.json");
-const PROCESS_NUMBER = "SEI-030029/004475/2023";
-const PROCESS_URL =
-  "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x";
-const SEI_BASE = "https://sei.rj.gov.br/sei/modulos/pesquisa/";
-const MODEL = process.env.OPENAI_MODEL || "gpt-5.4-mini";
-const DATA_SCHEMA_VERSION = 6;
-const EXCERPT_VERSION = 2;
-const SEI_AGENT = new Agent({
-  connect: {
-    timeout: 30_000,
-  },
+const ui = {
+  refresh: document.querySelector("#refreshButton"),
+  history: document.querySelector("#historyButton"),
+  historyDialog: document.querySelector("#historyDialog"),
+  closeHistory: document.querySelector("#closeHistoryButton"),
+  historyContent: document.querySelector("#historyContent"),
+  status: document.querySelector("#statusBadge"),
+  error: document.querySelector("#errorMessage"),
+  news: document.querySelector("#newsMessage"),
+  phaseTitle: document.querySelector("#phaseTitle"),
+  phaseExplanation: document.querySelector("#phaseExplanation"),
+  currentUnit: document.querySelector("#currentUnit"),
+  lastMovement: document.querySelector("#lastMovement"),
+  generatedAt: document.querySelector("#generatedAt"),
+  analysisTitle: document.querySelector("#analysisTitle"),
+  analysisText: document.querySelector("#analysisText"),
+  verdictBox: document.querySelector("#verdictBox"),
+  verdictBadge: document.querySelector("#verdictBadge"),
+  verdictText: document.querySelector("#verdictText"),
+  diagnosisBox: document.querySelector("#diagnosisBox"),
+  diagnosisText: document.querySelector("#diagnosisText"),
+  conclusionText: document.querySelector("#conclusionText"),
+  unitMeaning: document.querySelector("#unitMeaning"),
+  documentMeaning: document.querySelector("#documentMeaning"),
+  scenarioCards: document.querySelector("#scenarioCards"),
+  watchList: document.querySelector("#watchList"),
+  signals: document.querySelector("#signalsList"),
+  risks: document.querySelector("#risksList"),
+  nextSteps: document.querySelector("#nextStepsList"),
+  movementCount: document.querySelector("#movementCount"),
+  timeline: document.querySelector("#timeline"),
+  showMore: document.querySelector("#showMoreButton"),
+  documentCount: document.querySelector("#documentCount"),
+  documents: document.querySelector("#documents"),
+  officialLink: document.querySelector("#officialLink"),
+  documentTransition: document.querySelector("#documentTransition"),
+  transitionMessage: document.querySelector("#transitionMessage"),
+  transitionSeconds: document.querySelector("#transitionSeconds"),
+  whatsappShare: document.querySelector("#whatsappShare"),
+  uniqueVisitorCount: document.querySelector("#uniqueVisitorCount"),
+};
+
+let currentData = null;
+let movementLimit = 12;
+let transitionTimer = null;
+
+const SHARE_MESSAGE =
+  "Compartilhe com um colega ex-FAEP/FAETEC. Mais pessoas acompanhando os fatos direto no SEI deixam a categoria mais unida e bem informada.";
+ui.transitionMessage.textContent = SHARE_MESSAGE;
+ui.whatsappShare.href = `https://wa.me/?text=${encodeURIComponent(
+  `Olá! Quero compartilhar este painel que acompanha o processo dos servidores ex-FAEP/FAETEC de forma clara e atualizada. Assim, podemos acompanhar os fatos diretamente e manter a categoria bem informada. Abra e compartilhe também com outro colega:\n\n${PUBLIC_PANEL_URL}`,
+)}`;
+
+const UNIT_NAMES = {
+  "SEPLAG/SUPEFIS": "Estudos Fiscais",
+  "SEPLAG/SUBORC": "Subsecretaria de Orçamento",
+  "SEPLAG/SUBAORC": "Subsecretaria Adjunta de Orçamento",
+  "SEPLAG/SUBGEP": "Gestão de Pessoas",
+  "SEPLAG/SUPDP": "Planejamento e Desenvolvimento de Pessoas",
+  "SEPLAG/SUBPLO": "Planejamento e Orçamento",
+  "SEPLAG/CHEGAB": "Chefia de Gabinete da SEPLAG",
+  "SEEDUC/CHEGAB": "Chefia de Gabinete da Educação",
+  "SEEDUC/GABSEC": "Gabinete da Secretaria de Educação",
+  "FAETEC/PRESI": "Presidência da FAETEC",
+};
+
+Object.assign(UNIT_NAMES, {
+  "FAETEC/ASSJUR": "Assessoria Juridica da FAETEC",
+  "FAETEC/CHEGAB": "Chefia de Gabinete da FAETEC",
+  "FAETEC/DIVRH": "Divisao de Recursos Humanos da FAETEC",
+  "FAETEC/PRESI": "Presidencia da FAETEC",
+  "FAETEC/SECPRES": "Secretaria da Presidencia da FAETEC",
+  "PGE/CHEGAB": "Chefia de Gabinete da Procuradoria-Geral do Estado",
+  "PGE/PG": "Procuradoria-Geral do Estado",
+  "RIOPREV/DIRSE": "Diretoria de Seguridade do Rioprevidencia",
+  "RIOPREV/GERBE": "Gerencia de Beneficios do Rioprevidencia",
+  "RIOPREV/GERCAP": "Gerencia de Cadastro e Pagamento do Rioprevidencia",
+  "RIOPREV/GERPA": "Gerencia de Pagamento do Rioprevidencia",
+  "RIOPREV/PRESI": "Presidencia do Rioprevidencia",
+  "SECC/ASSAL": "Assessoria da Casa Civil",
+  "SECC/ASSOC": "Assessoria da Casa Civil",
+  "SECC/CHEGAB": "Chefia de Gabinete da Casa Civil",
+  "SECC/COGIC": "Coordenacao da Casa Civil",
+  "SECC/COPRE": "Coordenacao da Casa Civil",
+  "SECC/SUBG": "Subsecretaria-Geral da Casa Civil",
+  "SECC/SUBGEP": "Subsecretaria de Gestao de Pessoas da Casa Civil",
+  "SECC/SUBJUR": "Subsecretaria Juridica da Casa Civil",
+  "SECC/SUBTEX": "Subsecretaria de Texto e Expediente da Casa Civil",
+  "SECC/SUPDP": "Superintendencia de Planejamento e Desenvolvimento de Pessoas da Casa Civil",
+  "SECC/SUPTEX": "Superintendencia de Texto e Expediente da Casa Civil",
+  "SECTI/ASSJUR": "Assessoria Juridica da Secretaria de Ciencia, Tecnologia e Inovacao",
+  "SECTI/CHEGAB": "Chefia de Gabinete da Secretaria de Ciencia, Tecnologia e Inovacao",
+  "SECTI/GABSEC": "Gabinete da Secretaria de Ciencia, Tecnologia e Inovacao",
+  "SEEDUC/ARQDOC": "Arquivo e Documentacao da Secretaria de Educacao",
+  "SEEDUC/ASPLO": "Assessoria de Planejamento e Orcamento da Secretaria de Educacao",
+  "SEEDUC/ASSCONT": "Assessoria de Controle e Contabilidade da Secretaria de Educacao",
+  "SEEDUC/ASSJUR": "Assessoria Juridica da Secretaria de Educacao",
+  "SEEDUC/ASSPLAG": "Assessoria de Planejamento e Gestao da Secretaria de Educacao",
+  "SEEDUC/ASSUBEXE": "Assessoria da Subsecretaria Executiva da Secretaria de Educacao",
+  "SEEDUC/ASSUPOF": "Assessoria de Orcamento e Financas da Secretaria de Educacao",
+  "SEEDUC/CHEGAB": "Chefia de Gabinete da Secretaria de Educacao",
+  "SEEDUC/GABSEC": "Gabinete da Secretaria de Educacao",
+  "SEEDUC/NUCALC": "Nucleo de Calculos da Secretaria de Educacao",
+  "SEEDUC/NUCSPEA": "Nucleo da Secretaria de Educacao ligado ao processo",
+  "SEEDUC/PROTPUB": "Protocolo e Publicacao da Secretaria de Educacao",
+  "SEEDUC/SUBAD": "Subsecretaria Administrativa da Secretaria de Educacao",
+  "SEEDUC/SUBEXE": "Subsecretaria Executiva da Secretaria de Educacao",
+  "SEEDUC/SUPGP": "Superintendencia de Gestao de Pessoas da Secretaria de Educacao",
+  "SEEDUC/SUPOF": "Superintendencia de Orcamento e Financas da Secretaria de Educacao",
+  "SEEDUC/SUPTA": "Superintendencia da Secretaria de Educacao",
+  "SEFAZ/CHEGAB": "Chefia de Gabinete da Secretaria de Fazenda",
+  "SEFAZ/COMISARRF": "Comissao do Regime de Recuperacao Fiscal da Secretaria de Fazenda",
+  "SEFAZ/GABSEC": "Gabinete da Secretaria de Fazenda",
+  "SEFAZ/SUBAPOF": "Subsecretaria Adjunta de Politica Orcamentaria e Financeira da Fazenda",
+  "SEFAZ/SUBTES": "Subsecretaria do Tesouro da Secretaria de Fazenda",
+  "SEPLAG/CHEGAB": "Chefia de Gabinete da SEPLAG",
+  "SEPLAG/SUBAORC": "Subsecretaria Adjunta de Orcamento",
+  "SEPLAG/SUBGEP": "Subsecretaria de Gestao de Pessoas",
+  "SEPLAG/SUBORC": "Subsecretaria de Orcamento",
+  "SEPLAG/SUBPLO": "Subsecretaria de Planejamento e Orcamento",
+  "SEPLAG/SUPDP": "Superintendencia de Planejamento e Desenvolvimento de Pessoas",
+  "SEPLAG/SUPEFIS": "Superintendencia de Estudos Fiscais",
 });
 
-function clean(value = "") {
-  return value.replace(/\u00a0/g, " ").replace(/\s+/g, " ").trim();
+const ORG_NAMES = {
+  FAETEC: "Fundacao de Apoio a Escola Tecnica",
+  PGE: "Procuradoria-Geral do Estado",
+  RIOPREV: "Rioprevidencia",
+  SECC: "Secretaria de Estado da Casa Civil",
+  SECTI: "Secretaria de Ciencia, Tecnologia e Inovacao",
+  SEEDUC: "Secretaria de Estado de Educacao",
+  SEFAZ: "Secretaria de Estado de Fazenda",
+  SEPLAG: "Secretaria de Estado de Planejamento e Gestao",
+};
+
+function movementKey(item) {
+  return `${item.dateTime}|${item.unit}|${item.description}`;
 }
 
-async function loadPrevious() {
+function previousState() {
   try {
-    return JSON.parse(await readFile(DATA_PATH, "utf8"));
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
   } catch {
     return null;
   }
 }
 
-async function fetchText(url, timeout = 60_000, attempts = 3) {
-  let lastError;
-
-  for (let attempt = 1; attempt <= attempts; attempt += 1) {
-    try {
-      const response = await undiciFetch(url, {
-        dispatcher: SEI_AGENT,
-        headers: {
-          "User-Agent": "Mozilla/5.0 (Painel público FAEP-FAETEC)",
-          Referer: PROCESS_URL,
-        },
-        signal: AbortSignal.timeout(timeout),
-      });
-      if (!response.ok) {
-        throw new Error(`Consulta falhou: HTTP ${response.status}`);
-      }
-      return response.text();
-    } catch (error) {
-      lastError = error;
-      if (attempt < attempts) {
-        console.error(
-          `SEI indisponível na tentativa ${attempt}/${attempts}; tentando novamente.`,
-        );
-        await new Promise((resolvePromise) =>
-          setTimeout(resolvePromise, attempt * 5_000),
-        );
-      }
-    }
-  }
-
-  throw lastError;
-}
-
-function documentUrl(row, $) {
-  const link = $(row)
-    .find("a")
-    .filter((_, element) => {
-      const href = $(element).attr("href") || "";
-      const onclick = $(element).attr("onclick") || "";
-      return `${href} ${onclick}`.includes(
-        "md_pesq_documento_consulta_externa.php",
-      );
-    });
-
-  if (!link.length) return null;
-  const href = link.attr("href");
-  if (href?.includes("md_pesq_documento_consulta_externa.php")) {
-    return new URL(href, SEI_BASE).href;
-  }
-
-  const onclick = link.attr("onclick") || "";
-  const match = onclick.match(
-    /window\.open\(['"](?<url>md_pesq_documento_consulta_externa\.php\?[^'"]+)['"]\)/,
+function saveState(data) {
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify({
+      movements: data.movements.map(movementKey),
+      documents: data.documents.map((document) => document.number),
+    }),
   );
-  return match?.groups?.url ? new URL(match.groups.url, SEI_BASE).href : null;
 }
 
-function parseDocuments(html) {
-  const marker = html.indexOf("Lista de Andamentos");
-  const $ = cheerio.load(marker >= 0 ? html.slice(0, marker) : html);
-  const result = [];
-  const seen = new Set();
+async function loadUniqueVisitorCount() {
+  if (!ui.uniqueVisitorCount) return;
 
-  $("tr").each((_, row) => {
-    const cells = $(row)
-      .find("td")
-      .map((__, cell) => clean($(cell).text()))
-      .get()
-      .filter(Boolean);
-    const rowText = cells.join(" | ");
-    const number = rowText.match(/\b(\d{8,10})\b/)?.[1];
-    const dates = rowText.match(/\b\d{2}\/\d{2}\/\d{4}\b/g) || [];
-    const unit = cells.find((cell) => /^[A-ZÇ]+\/[A-ZÇ]+$/.test(cell));
-    if (!number || !unit || seen.has(number)) return;
-
-    seen.add(number);
-    const numberIndex = cells.findIndex((cell) => cell.includes(number));
-    const unitIndex = cells.findIndex((cell) => cell === unit);
-    const type = cells
-      .slice(numberIndex + 1, unitIndex)
-      .find((cell) => !/^\d{2}\/\d{2}\/\d{4}$/.test(cell));
-
-    result.push({
-      number,
-      type: type || "Documento",
-      date: dates.at(-1) || dates[0] || "",
-      unit,
-      publicUrl: documentUrl(row, $),
-    });
-  });
-
-  return result;
-}
-
-function parseMovements(html) {
-  const $ = cheerio.load(html);
-  const result = [];
-
-  $("#tblHistorico tr").each((_, row) => {
-    const cells = $(row)
-      .find("td")
-      .map((__, cell) => clean($(cell).text()))
-      .get()
-      .filter(Boolean);
-    const rowText = cells.join(" | ");
-    const dateTime = rowText.match(
-      /\b\d{2}\/\d{2}\/\d{4}(?:\s+\d{2}:\d{2})?\b/,
-    )?.[0];
-    const unit = cells.find((cell) => /^[A-ZÇ]+\/[A-ZÇ]+$/.test(cell));
-    if (!dateTime || !unit) return;
-
-    const unitIndex = cells.findIndex((cell) => cell === unit);
-    result.push({
-      dateTime,
-      unit,
-      description:
-        cells.slice(unitIndex + 1).join(" ") || "Movimentação registrada",
-    });
-  });
-
-  if (!result.length) {
-    throw new Error("Lista de andamentos não encontrada no SEI");
+  let firstAccess = false;
+  try {
+    firstAccess = !localStorage.getItem(UNIQUE_VISITOR_KEY);
+    if (firstAccess) localStorage.setItem(UNIQUE_VISITOR_KEY, "registrando");
+  } catch {
+    firstAccess = false;
   }
-  return result;
+
+  const endpoint = firstAccess ? `${UNIQUE_COUNTER_URL}/up` : `${UNIQUE_COUNTER_URL}/`;
+  try {
+    const response = await fetch(`${endpoint}?v=${Date.now()}`, { cache: "no-store" });
+    if (!response.ok) throw new Error(`contador indisponível (${response.status})`);
+    const data = await response.json();
+    const count = Number(data.count);
+    if (!Number.isFinite(count)) throw new Error("resposta inválida do contador");
+    ui.uniqueVisitorCount.textContent = new Intl.NumberFormat("pt-BR").format(count);
+    if (firstAccess) localStorage.setItem(UNIQUE_VISITOR_KEY, "contado");
+  } catch {
+    ui.uniqueVisitorCount.textContent = "indisponível";
+  }
 }
 
-function coreText(html, number) {
-  const $ = cheerio.load(html);
-  $("script, style, noscript").remove();
-  return clean($("body").text())
-    .replace(new RegExp(`^.*?${number}\\s*[-–]\\s*`, "i"), "")
-    .replace(/Documento assinado eletronicamente por.*$/i, "")
-    .slice(0, 12_000)
-    .trim();
+function formatGeneratedAt(value) {
+  const date = new Date(value);
+  const exact = new Intl.DateTimeFormat("pt-BR", {
+    dateStyle: "short",
+    timeStyle: "short",
+  }).format(date);
+  const elapsedMinutes = Math.max(0, Math.floor((Date.now() - date) / 60_000));
+
+  if (elapsedMinutes < 1) return `${exact} — agora`;
+  if (elapsedMinutes < 60) {
+    return `${exact} — há ${elapsedMinutes} minuto${elapsedMinutes > 1 ? "s" : ""}`;
+  }
+  const elapsedHours = Math.floor(elapsedMinutes / 60);
+  if (elapsedHours < 24) {
+    return `${exact} — há ${elapsedHours} hora${elapsedHours > 1 ? "s" : ""}`;
+  }
+  const elapsedDays = Math.floor(elapsedHours / 24);
+  return `${exact} — há ${elapsedDays} dia${elapsedDays > 1 ? "s" : ""}`;
 }
 
-async function enrichDocuments(documents, previous) {
-  const previousByNumber = new Map(
-    (previous?.documents || []).map((document) => [document.number, document]),
+function readableUnit(unit = "") {
+  const cleanUnit = String(unit || "").trim();
+  if (!cleanUnit) return "";
+
+  const name = UNIT_NAMES[cleanUnit];
+  if (name) return `${cleanUnit} - ${name}`;
+
+  const [org, sector] = cleanUnit.split("/");
+  const orgName = ORG_NAMES[org];
+  if (orgName && sector) return `${cleanUnit} - ${sector} da ${orgName}`;
+
+  return cleanUnit;
+}
+
+function expandUnitsInText(text = "") {
+  return String(text || "").replace(
+    /\b([A-Z]{2,12}\/[A-Z0-9]{2,14})\b(?!\s+-)/g,
+    (unit) => readableUnit(unit),
   );
-  const recentNumbers = new Set(documents.slice(-18).map((item) => item.number));
-  const enriched = [];
-
-  for (const document of documents) {
-    const old = previousByNumber.get(document.number);
-    if (!recentNumbers.has(document.number)) {
-      enriched.push({
-        ...document,
-        excerpt: old?.excerpt || "",
-        excerptVersion: old?.excerptVersion || 1,
-      });
-      continue;
-    }
-    if (
-      old?.excerpt &&
-      old.publicUrl === document.publicUrl &&
-      old.excerptVersion === EXCERPT_VERSION
-    ) {
-      enriched.push({
-        ...document,
-        excerpt: old.excerpt,
-        excerptVersion: EXCERPT_VERSION,
-      });
-      continue;
-    }
-    if (!document.publicUrl) {
-      enriched.push({ ...document, excerpt: "", excerptVersion: EXCERPT_VERSION });
-      continue;
-    }
-
-    try {
-      const html = await fetchText(document.publicUrl, 30_000);
-      enriched.push({
-        ...document,
-        excerpt: coreText(html, document.number),
-        excerptVersion: EXCERPT_VERSION,
-      });
-    } catch {
-      enriched.push({
-        ...document,
-        excerpt: old?.excerpt || "",
-        excerptVersion: old?.excerptVersion || 1,
-      });
-    }
-  }
-
-  return enriched;
 }
 
-function explainDocument(document) {
-  if (!document.publicUrl) {
-    return "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública.";
-  }
-
-  const text = (document.excerpt || "").toLowerCase();
-  if (
-    document.number === "135635411" ||
-    (text.includes("rioprevidência") &&
-      (text.includes("207,02") || text.includes("r$ 207")))
-  ) {
-    return "Este é o parecer orçamentário mais importante até agora. Ele não nega o pedido: aponta um custo de cerca de R$ 207,02 milhões por ano e mostra que os órgãos não têm folga no orçamento atual. Agora o governo precisa decidir como financiar ou ajustar a proposta.";
-  }
-  if (text.includes("207,02") || text.includes("r$ 207")) {
-    return "A área de pessoal atualizou o cálculo do enquadramento para aproximadamente R$ 207,02 milhões por ano e devolveu o processo ao orçamento.";
-  }
-  if (text.includes("não há disponibilidade orçamentária")) {
-    return "O documento informa que, naquele momento, o órgão não encontrou dinheiro disponível no próprio orçamento para atender integralmente ao pedido.";
-  }
-  if (
-    text.includes("autoriza o prosseguimento") ||
-    text.includes("acolho o encaminhamento")
-  ) {
-    return "A autoridade concordou com o encaminhamento e autorizou que o processo continuasse.";
-  }
-  if (
-    text.includes("conhecimento e providências") ||
-    text.includes("conhecimento e as providências")
-  ) {
-    return "É um despacho de encaminhamento: o setor recebeu as informações e enviou o processo para a área responsável pelas próximas providências. Não é aprovação final.";
-  }
-  if (text.includes("restituo") || text.includes("retorno")) {
-    return "O setor respondeu ao que havia sido solicitado e devolveu o processo para continuidade da análise.";
-  }
-  if (text.includes("encaminho")) {
-    return "O documento envia o processo para outro setor analisar ou tomar providências. Sozinho, esse ato não significa aprovação.";
-  }
-  return `Documento produzido por ${document.unit}. A explicação completa depende da leitura do trecho oficial abaixo.`;
+function currentSignals(values = []) {
+  return values.filter(
+    (value) => !/estimativa mais recente de impacto continua/i.test(value),
+  );
 }
 
-function phaseFor(unit = "") {
-  if (unit.includes("SUPEFIS")) {
-    return {
-      title: "Análise fiscal",
-      explanation:
-        "A área de estudos fiscais avalia capacidade financeira, limites e condições para implantação.",
-      nextSteps: [
-        "Despacho fiscal",
-        "Retorno à estrutura de orçamento",
-        "Decisão superior da SEPLAG",
-      ],
-    };
+function originFromDescription(description = "") {
+  return description.match(/unidade\s+([A-ZÇ]+\/[A-ZÇ]+)/i)?.[1] || "";
+}
+
+function describeLatestMovement(movement) {
+  if (!movement) {
+    return "Ainda nao foi possivel identificar o ultimo andamento publico.";
+  }
+
+  const lowerDescription = movement.description.toLowerCase();
+  const origin = originFromDescription(movement.description);
+  if (origin && lowerDescription.includes("remetido")) {
+    return `O ultimo andamento mostra que o processo saiu de ${readableUnit(origin)} e foi enviado para ${readableUnit(movement.unit)}, em ${movement.dateTime}.`;
+  }
+  if (lowerDescription.includes("recebido")) {
+    return `O ultimo andamento mostra que o processo chegou em ${readableUnit(movement.unit)}, em ${movement.dateTime}.`;
+  }
+  if (lowerDescription.includes("reabertura")) {
+    return `O ultimo andamento mostra uma reabertura em ${readableUnit(movement.unit)}, em ${movement.dateTime}. Isso costuma indicar retomada da analise naquele setor.`;
+  }
+  if (lowerDescription.includes("conclus")) {
+    return `O ultimo andamento mostra conclusao de etapa em ${readableUnit(movement.unit)}, em ${movement.dateTime}. Isso encerra a analise daquele setor, nao o processo inteiro.`;
+  }
+  return `O ultimo andamento foi em ${movement.dateTime}, na unidade ${readableUnit(movement.unit)}: ${expandUnitsInText(movement.description)}.`;
+}
+
+function buildStatusExplanation(data) {
+  const latest = data?.movements?.[0];
+  if (!latest) {
+    return "O painel ainda não conseguiu identificar a situação atual do processo.";
+  }
+
+  const unit = readableUnit(latest.unit);
+  const origin = originFromDescription(latest.description);
+  const movedFrom = origin ? `, depois de sair de ${readableUnit(origin)}` : "";
+
+  if (latest.unit.includes("ASSJUR")) {
+    return `O processo está em ${unit}${movedFrom}. Isso mostra que o caso voltou para análise jurídica. É uma etapa relevante, mas ainda não significa aprovação final nem superação automática da questão orçamentária.`;
+  }
+  if (latest.unit.includes("CHEGAB") || latest.unit.includes("GABSEC")) {
+    return `O processo está em ${unit}${movedFrom}. Isso mostra que ele chegou a uma área de decisão e encaminhamento superior. Ainda não significa aprovação nem negativa: o gabinete precisa definir o próximo passo.`;
+  }
+  if (latest.unit.includes("ASSUBEXE") || latest.unit.includes("SUBEXE")) {
+    return `O processo está em ${unit}${movedFrom}. Essa área reúne as análises já feitas e prepara o encaminhamento para uma autoridade superior. Ainda não é a decisão final.`;
+  }
+  if (latest.unit.includes("SUBORC") || latest.unit.includes("SUBAORC")) {
+    return `O processo está em ${unit}${movedFrom}. Nessa etapa, o governo verifica como acomodar a medida no orçamento e quais providências financeiras seriam necessárias.`;
+  }
+  if (latest.unit.includes("SUPEFIS")) {
+    return `O processo está em ${unit}${movedFrom}. Essa área avalia o efeito da proposta nas contas do Estado antes de o caso seguir para decisão superior.`;
+  }
+  if (latest.unit.includes("SUBGEP") || latest.unit.includes("SUPDP")) {
+    return `O processo está em ${unit}${movedFrom}. Nessa etapa são conferidos servidores, enquadramento, folha e demais dados usados na decisão.`;
+  }
+
+  return `O processo está em ${unit}${movedFrom}. O próximo despacho deverá explicar qual providência esse setor adotou e para onde o caso seguirá.`;
+}
+
+function unitMeaningText(unit = "") {
+  if (unit.includes("ASSJUR") || unit.includes("SUBJUR") || unit.includes("PGE")) {
+    return "Quando o processo chega à área jurídica, a pergunta principal passa a ser se o instrumento usado está correto: projeto de lei, minuta, enquadramento, competência do governador e forma de seguir mesmo com ressalvas orçamentárias.";
+  }
+  if (unit.includes("CHEGAB") || unit.includes("GABSEC")) {
+    return "Quando o processo chega a gabinete, normalmente ele deixa de ser apenas conta tecnica e passa para decisao de encaminhamento: mandar ao secretario, devolver para ajuste, enviar a Casa Civil ou pedir uma definicao superior.";
   }
   if (unit.includes("SUBORC") || unit.includes("SUBAORC")) {
-    return {
-      title: "Aguardando decisão sobre o dinheiro",
-      explanation:
-        "Os cálculos foram concluídos. Agora o setor de Orçamento precisa dizer se há dinheiro, remanejamento possível ou necessidade de ajustar a proposta.",
-      nextSteps: [
-        "Indicar de onde virá o dinheiro",
-        "Propor implantação por etapas ou pedir ajustes",
-        "Encaminhar a decisão para os gabinetes responsáveis",
-      ],
-    };
+    return "Orcamento e o setor que olha se a despesa cabe, se precisa de fonte de recurso, remanejamento ou implantacao por etapas. E onde o governo transforma o calculo em possibilidade pratica.";
+  }
+  if (unit.includes("SUPEFIS")) {
+    return "Estudos Fiscais analisa o impacto nas contas do Estado. Esse setor nao decide sozinho a causa, mas mostra o tamanho da despesa e os riscos fiscais.";
   }
   if (unit.includes("SUBGEP") || unit.includes("SUPDP")) {
-    return {
-      title: "Gestão de pessoas",
-      explanation:
-        "A área de pessoal analisa vínculos, enquadramento, quantitativos e repercussão na folha.",
-      nextSteps: [
-        "Validar os cálculos",
-        "Retornar ao orçamento",
-        "Solicitar eventual ajuste",
-      ],
-    };
+    return "Gestao de Pessoas olha quantidade de servidores, enquadramento, folha, ativos, aposentados e impacto funcional. E a area que ajuda a conferir quem entra e quanto custaria.";
   }
-  if (
-    unit.includes("CHEGAB") ||
-    unit.includes("GABSEC") ||
-    unit.includes("PRESI")
-  ) {
-    return {
-      title: "Decisão administrativa superior",
-      explanation:
-        "O processo chegou a gabinete ou presidência para definição do encaminhamento seguinte.",
-      nextSteps: [
-        "Despacho da autoridade",
-        "Encaminhamento jurídico ou à Casa Civil",
-        "Definição do instrumento final",
-      ],
-    };
+  if (unit.includes("FAETEC")) {
+    return "Quando passa pela FAETEC, o processo toca no orgao de origem da carreira. Isso pode servir para ciencia, manifestacao institucional ou alinhamento sobre o enquadramento.";
   }
-  if (unit.includes("ARQDOC")) {
-    return {
-      title: "Arquivo e documentação",
-      explanation:
-        "É necessário ler o despacho anterior para saber se houve guarda temporária, conclusão ou arquivamento.",
-      nextSteps: [
-        "Verificar o motivo formal",
-        "Distinguir conclusão de sobrestamento",
-        "Acompanhar eventual reabertura",
-      ],
-    };
+  if (unit.includes("ASSJUR")) {
+    return "Quando o processo vai para a assessoria juridica, o ponto central passa a ser o caminho legal: se precisa de lei, se pode seguir por ato administrativo, se deve ir para PGE/Casa Civil e como enfrentar as travas orcamentarias.";
   }
-  return {
-    title: "Tramitação administrativa",
-    explanation:
-      "O processo continua em análise dentro da administração estadual.",
-    nextSteps: ["Novo despacho", "Remessa técnica", "Decisão superior"],
-  };
+  if (unit.includes("SEEDUC")) {
+    return "Quando passa pela SEEDUC, o processo volta ao orgao onde muitos servidores ainda estao em exercicio. Ali podem ser pedidos dados, validacoes ou posicionamento do secretario.";
+  }
+  return "Esse setor faz parte da tramitacao administrativa. Para entender melhor, o mais importante e observar o texto do despacho e o proximo destino do processo.";
 }
 
-function movementInPlainLanguage(movement) {
-  if (!movement) return "Não foi encontrada uma movimentação recente.";
-
-  const description = movement.description.toLowerCase();
-  const origin = movement.description.match(
-    /unidade\s+([A-ZÇ]+\/[A-ZÇ]+)/i,
-  )?.[1];
-
-  if (description.includes("processo remetido") && origin) {
-    return `Em ${movement.dateTime}, o processo saiu de ${origin} e foi enviado para ${movement.unit}.`;
+function documentMeaningText(documentData) {
+  if (!documentData) {
+    return "Ainda nao ha documento recente identificado para leitura.";
   }
-  if (description.includes("processo recebido")) {
-    return `Em ${movement.dateTime}, o processo chegou ao setor ${movement.unit}.`;
-  }
-  if (description.includes("reabertura")) {
-    return `Em ${movement.dateTime}, o processo foi reaberto no setor ${movement.unit}.`;
-  }
-  if (description.includes("conclusão")) {
-    return `Em ${movement.dateTime}, o setor ${movement.unit} encerrou sua etapa de análise. Isso não significa que todo o processo terminou.`;
-  }
-  return `Em ${movement.dateTime}, houve nova movimentação no setor ${movement.unit}: ${movement.description}.`;
-}
-
-function readLatestDocument(document) {
-  if (!document) {
-    return {
-      summary: "Ainda não apareceu um novo despacho público para explicar.",
-      signal: "",
-      risk: "É necessário aguardar o próximo documento ou movimento.",
-    };
-  }
-  if (!document.publicUrl || !document.excerpt) {
-    return {
-      summary: `Também foi criado o documento ${document.number}, mas seu texto ainda não está aberto ao público. Por enquanto, não é possível saber se ele aprova, corrige ou apenas encaminha o pedido.`,
-      signal: `O novo documento ${document.number} já aparece na lista oficial do processo.`,
-      risk: "O conteúdo do documento mais recente ainda precisa ser liberado para uma conclusão segura.",
-    };
-  }
-
-  const text = document.excerpt.toLowerCase();
-  if (text.includes("arquiv")) {
-    return {
-      summary: `O documento ${document.number} menciona arquivamento. É um sinal de alerta e será necessário verificar se o encerramento é definitivo, temporário ou apenas referente a uma etapa.`,
-      signal: "O texto do despacho está aberto e permite identificar a decisão tomada.",
-      risk: "A menção a arquivamento pode significar paralisação ou encerramento do pedido.",
-    };
-  }
-  if (text.includes("indefer")) {
-    return {
-      summary: `O documento ${document.number} contém indicação de indeferimento. Em linguagem simples, o pedido pode ter sido negado nessa etapa, embora ainda seja preciso verificar se cabe correção ou nova análise.`,
-      signal: "O motivo da decisão pode ser conhecido pelo texto oficial.",
-      risk: "Há sinal de negativa formal do pedido.",
-    };
-  }
-  if (
-    text.includes("autoriza o prosseguimento") ||
-    text.includes("acolho o encaminhamento") ||
-    text.includes("de acordo")
-  ) {
-    return {
-      summary: `O documento ${document.number} concorda com o encaminhamento e permite que o processo continue. É um avanço, mas ainda não representa a aprovação final do enquadramento.`,
-      signal: "Uma autoridade concordou com a continuidade da proposta.",
-      risk: "Ainda podem faltar orçamento, análise jurídica ou decisão superior.",
-    };
-  }
-  if (
-    /(retific|corrig|complement|ajuste|saneamento|revisão)/.test(text)
-  ) {
-    return {
-      summary: `O documento ${document.number} pede correção ou complementação das informações. Isso não encerra o pedido: o processo deve voltar ao setor responsável, ser ajustado e seguir novamente.`,
-      signal: "O problema apontado pode ser corrigido dentro do próprio processo.",
-      risk: "A correção pode atrasar a decisão se não for atendida rapidamente.",
-    };
-  }
-  if (text.includes("não há disponibilidade orçamentária")) {
-    return {
-      summary: `O documento ${document.number} informa que o órgão não encontrou dinheiro disponível em seu orçamento atual. Isso não é o mesmo que declarar o pedido ilegal, mas exige remanejamento, implantação por etapas ou decisão política para avançar.`,
-      signal: "O obstáculo foi identificado com clareza: falta indicar a fonte do dinheiro.",
-      risk: "Sem solução orçamentária, o processo pode ficar parado ou voltar para ajustes.",
-    };
-  }
-  if (
-    text.includes("encaminho") ||
-    text.includes("restituo") ||
-    text.includes("providências")
-  ) {
-    return {
-      summary: `O documento ${document.number} encaminha o processo para outro setor continuar a análise. Ele mostra que o pedido segue tramitando, mas não traz uma aprovação final.`,
-      signal: "O processo foi enviado para novas providências, sem ordem de arquivamento.",
-      risk: "Um simples encaminhamento não garante que a proposta será aceita.",
-    };
-  }
-
-  return {
-    summary: `O documento ${document.number} está aberto. Ele foi produzido por ${document.unit}, mas não contém palavras que indiquem aprovação, negativa ou arquivamento de forma clara. A leitura deve ser feita junto com o próximo movimento.`,
-    signal: "O texto oficial do documento mais recente já pode ser consultado.",
-    risk: "O despacho não apresenta uma decisão final de forma clara.",
-  };
-}
-
-function buildAutomaticAnalysis(movements, documents) {
-  const latest = movements[0];
-  const latestDocument = documents.at(-1);
-  const phase = phaseFor(latest?.unit);
-  const latestText = (latestDocument?.excerpt || "").toLowerCase();
-  const isCurrentBudgetReport =
-    latestDocument?.number === "135635411" ||
-    (latestText.includes("rioprevidência") &&
-      latestText.includes("207,02"));
-  const budgetReport = [...documents].reverse().find((document) => {
-    const text = (document.excerpt || "").toLowerCase();
-    return (
-      document.number === "135635411" ||
-      (text.includes("rioprevidência") && text.includes("207,02"))
-    );
-  });
-  const numbers = budgetReport
-    ? [
-        {
-          value: "R$ 207,02 milhões",
-          label: "Custo total por ano",
-          detail: "R$ 160,09 mi para ativos e R$ 46,93 mi para aposentados",
-        },
-        {
-          value: "R$ 17,25 milhões",
-          label: "Custo aproximado por mês",
-          detail: "R$ 13,34 mi para ativos e R$ 3,91 mi para aposentados",
-        },
-        {
-          value: "6.745 pessoas",
-          label: "Total alcançado pela proposta",
-          detail: "3.700 ativos e 3.045 aposentados",
-        },
-      ]
-    : [];
-
-  if (isCurrentBudgetReport) {
-    return {
-      mode: "automatic",
-      phase,
-      summary: `${movementInPlainLanguage(latest)} Agora o cenário ficou mais claro. O documento 135635411 não negou nem arquivou o pedido. Ele confirma o custo da proposta e mostra que os orçamentos atuais não têm folga para absorver tudo. Em outras palavras: o problema apontado agora é dinheiro, não uma decisão final contra os servidores. O processo voltou ao Orçamento para o governo decidir como pagar, ajustar ou implantar a medida.`,
-      numbers,
-      signals: [
-        "O pedido continua vivo: o despacho não manda negar nem arquivar o processo.",
-        "O custo estimado caiu de R$ 275,30 milhões em 2023 para R$ 207,02 milhões em 2026.",
-        "A tese de que os cargos mantêm vínculo com a FAETEC continua registrada no processo.",
-      ],
-      risks: [
-        "Os órgãos envolvidos já trabalham com orçamento apertado ou saldo projetado negativo.",
-        "Sem indicar uma fonte de dinheiro, o governo pode pedir correções, dividir a implantação em etapas ou adiar a decisão.",
-        "O despacho é uma análise financeira, não a aprovação final do enquadramento.",
-      ],
-    };
-  }
-
-  const movementSummary = movementInPlainLanguage(latest);
-  const documentReading = readLatestDocument(latestDocument);
-  const signals = [
-    documentReading.signal,
-    budgetReport
-      ? "A análise anterior fixou o custo em R$ 207,02 milhões por ano; esse valor continua como referência até surgir novo cálculo."
-      : "",
-  ].filter(Boolean);
-  const risks = [
-    documentReading.risk,
-    "Uma movimentação no SEI mostra que o processo andou, mas não significa aprovação por si só.",
-  ].filter(Boolean);
-
-  return {
-    mode: "automatic",
-    phase,
-    summary: `${movementSummary} ${documentReading.summary}`,
-    numbers,
-    signals,
-    risks,
-  };
-}
-
-function historicalSections(latestMovement, latestDocument) {
-  return [
-    {
-      period: "Origem",
-      text: "Os servidores ingressaram por concurso da antiga FAEP. Após reorganizações administrativas, permaneceram em exercício na SEEDUC, enquanto a categoria sustenta que o vínculo jurídico e a evolução funcional deveriam acompanhar a estrutura da FAETEC.",
-    },
-    {
-      period: "2010 a 2022",
-      text: "A Lei estadual 5.766/2010 transferiu determinados servidores da SEEDUC para a FAETEC, mas não resolveu automaticamente todo o grupo ex-FAEP. Em 2022, uma proposta de extensão foi aprovada pela ALERJ, mas acabou vetada porque esse tipo de proposta precisava ter sido apresentado pelo governador.",
-    },
-    {
-      period: "2023",
-      text: "Foi aberto o processo SEI-030029/004475/2023 para examinar a regularização funcional e remuneratória. Os estudos iniciais trabalharam com impacto anual próximo de R$ 275,30 milhões.",
-    },
-    {
-      period: "Abril a junho de 2026",
-      text: "O processo recebeu Nota Técnica, justificativa e minuta de projeto de lei. A tese técnica reconheceu a permanência do vínculo originário com a FAETEC. O impacto anual foi atualizado para R$ 207,02 milhões, abrangendo 3.700 ativos e 3.045 aposentados.",
-    },
-    {
-      period: "Situação atual",
-      text: `O registro público mais recente é de ${latestMovement?.dateTime || "data não identificada"}, em ${latestMovement?.unit || "unidade não identificada"}. O documento mais recente é ${latestDocument?.number || "não identificado"}, de ${latestDocument?.unit || "unidade não identificada"}. Ainda não existe publicação definitiva do enquadramento.`,
-    },
-  ];
-}
-
-function sourceHash(documents, movements) {
-  const publicState = documents.map((document) => [
-    document.number,
-    document.date,
-    document.unit,
-    document.type,
-    Boolean(document.publicUrl),
-  ]);
-  return createHash("sha256")
-    .update(JSON.stringify({ publicState, movements }))
-    .digest("hex");
-}
-
-function openAiInput(data) {
-  return JSON.stringify(
-    {
-      processo: PROCESS_NUMBER,
-      movimentos: data.movements.slice(0, 20),
-      documentos: data.documents.slice(-15).map((document) => ({
-        numero: document.number,
-        data: document.date,
-        unidade: document.unit,
-        tipo: document.type,
-        trecho: document.excerpt,
-      })),
-      analiseAutomatica: data.analysis,
-    },
-    null,
-    2,
-  );
-}
-
-async function generateAiAnalysis(data) {
-  if (!process.env.OPENAI_API_KEY) return null;
-  const response = await fetch("https://api.openai.com/v1/responses", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      model: MODEL,
-      reasoning: { effort: "low" },
-      max_output_tokens: 850,
-      input: [
-        {
-          role: "system",
-          content:
-            "Analise este processo administrativo em português brasileiro para pessoas leigas. Use frases simples, explique as siglas e evite linguagem jurídica sem tradução. Diferencie fatos, inferências e hipóteses. Explique situação atual, mudança recente, sinais positivos, riscos e próximos passos. Nunca trate movimentação como aprovação.",
-        },
-        { role: "user", content: openAiInput(data) },
-      ],
-    }),
-    signal: AbortSignal.timeout(60_000),
-  });
-  if (!response.ok) throw new Error(`OpenAI respondeu HTTP ${response.status}`);
-  const payload = await response.json();
-  return (
-    payload.output_text ||
-    payload.output
-      ?.flatMap((item) => item.content || [])
-      .find((item) => item.type === "output_text")?.text ||
-    null
-  );
-}
-
-async function main() {
-  const previous = await loadPrevious();
-  let html;
-  try {
-    html = await fetchText(PROCESS_URL);
-  } catch (error) {
-    if (previous) {
-      console.error(
-        `O portal SEI não respondeu. Mantendo o último relatório válido: ${error.message}`,
-      );
-      return;
+  if (!documentData.publicUrl || !documentData.excerpt) {
+    if (documentData.number === "137308944" || documentData.unit === "FAETEC/PRESI") {
+      return `O documento ${documentData.number} ja foi criado pela FAETEC/PRESI, mas ainda nao abriu para leitura publica. Como o processo saiu dele para a SEEDUC/ASSJUR, a leitura equilibrada e que houve uma manifestacao formal da FAETEC e agora o tema foi para analise juridica. Ate abrir, nao da para dizer se foi concordancia, concordancia com ressalvas ou pedido de ajuste.`;
     }
-    throw error;
+    return `O documento ${documentData.number} ja foi criado, mas ainda nao abriu para leitura publica. Isso e comum no SEI: primeiro aparece o numero, depois o conteudo fica visivel. Ate abrir, nao da para afirmar se ele aprovou, pediu ajuste ou apenas encaminhou.`;
   }
-  const rawDocuments = parseDocuments(html);
-  const movements = parseMovements(html);
-  const hash = sourceHash(rawDocuments, movements);
 
-  const needsAi =
-    Boolean(process.env.OPENAI_API_KEY) &&
-    previous?.analysis?.mode !== "openai";
-  if (
-    previous?.sourceHash === hash &&
-    previous?.schemaVersion === DATA_SCHEMA_VERSION &&
-    !needsAi
-  ) {
-    console.log("Nenhuma mudança pública desde a última atualização.");
+  const text = documentData.excerpt.toLowerCase();
+  if (text.includes("propag") && text.includes("vínculo jurídico")) {
+    return `O documento ${documentData.number} e um ofício estratégico da FAETEC. Ele reconhece a tese de que os servidores mantêm vínculo jurídico com a FAETEC e pede parecer sobre migração, necessidade de lei e uso do PROPAG como possível saída jurídico-orçamentária. Isso é avanço real, embora ainda dependa da resposta da jurídica e da solução de orçamento.`;
+  }
+  if (text.includes("propag") && text.includes("vinculo juridico")) {
+    return `O documento ${documentData.number} e um ofício estratégico da FAETEC. Ele reconhece a tese de vínculo jurídico com a FAETEC e pede parecer sobre migração, necessidade de lei e uso do PROPAG como possível saída jurídico-orçamentária. Isso é avanço real, embora ainda dependa da resposta da jurídica e da solução de orçamento.`;
+  }
+  if (text.includes("rioprevid") && text.includes("207,02")) {
+    return `O documento ${documentData.number} e uma peca forte de orcamento. Ele confirmou o impacto anual aproximado de R$ 207,02 milhoes e separou ativos, aposentados e orgaos envolvidos. Isso nao aprova, mas tira a discussao do campo da duvida e coloca o custo oficialmente na mesa.`;
+  }
+  if (text.includes("nao ha disponibilidade") || text.includes("não há disponibilidade")) {
+    return `O documento ${documentData.number} aponta falta de disponibilidade no orcamento atual. Isso e obstaculo importante, mas nao significa automaticamente que o direito foi negado. Pode exigir fonte, faseamento ou decisao politica.`;
+  }
+  if (text.includes("de acordo") || text.includes("prosseguimento")) {
+    return `O documento ${documentData.number} tem linguagem de concordancia ou continuidade. Isso e positivo porque autoriza o processo a seguir, mas ainda nao e a publicacao final do enquadramento.`;
+  }
+  if (/(retific|corrig|complement|ajuste|saneamento|revis)/.test(text)) {
+    return `O documento ${documentData.number} parece pedir correcao ou complementacao. Isso atrasa, mas normalmente e corrigivel: o setor responsavel ajusta e devolve para nova analise.`;
+  }
+  if (text.includes("encaminho") || text.includes("restituo") || text.includes("provid")) {
+    return `O documento ${documentData.number} e principalmente um encaminhamento. Em linguagem simples: o processo nao parou; ele foi mandado para outro setor tomar ciencia ou dar o proximo passo.`;
+  }
+  return `O documento ${documentData.number} esta aberto, mas nao traz uma palavra clara de aprovacao, negativa ou arquivamento. A melhor leitura vem combinando esse texto com o setor para onde o processo foi enviado.`;
+}
+
+function scenarioList(data) {
+  const latest = data.movements[0];
+  const unit = latest?.unit || "";
+  const latestDocument = data.documents.at(-1);
+  const scenarios = [];
+
+  if (!latestDocument?.publicUrl) {
+    scenarios.push({
+      title: "Documento fechado abrir",
+      text: "O primeiro passo e o despacho mais novo ficar visivel. So com o texto aberto da para saber se foi encaminhamento simples, pedido de ajuste ou decisao mais forte.",
+    });
+  }
+
+  if (unit.includes("ASSJUR") || unit.includes("SUBJUR") || unit.includes("PGE")) {
+    scenarios.push(
+      {
+        title: "Parecer ou orientação jurídica",
+        text: "A área jurídica pode dizer qual instrumento é adequado: projeto de lei, ajuste de minuta, nova manifestação técnica ou encaminhamento superior.",
+      },
+      {
+        title: "Concordância com ressalvas",
+        text: "Um cenário possível é a jurídica reconhecer que o caminho é viável, mas condicionado à solução orçamentária ou a ajustes no texto.",
+      },
+      {
+        title: "Pedido de correção",
+        text: "Também pode pedir complemento de informações, ajuste de fundamento ou nova manifestação de orçamento/pessoal antes de seguir.",
+      },
+    );
+  } else if (unit.includes("CHEGAB") || unit.includes("GABSEC")) {
+    scenarios.push(
+      {
+        title: "Subir para decisao do secretario",
+        text: "O gabinete pode levar o caso ao secretario da pasta para definir se segue para Casa Civil, SEEDUC ou outro setor decisorio.",
+      },
+      {
+        title: "Pedir ajuste antes de decidir",
+        text: "O gabinete pode devolver para orcamento, pessoal, SEEDUC ou FAETEC corrigirem detalhe de fonte, impacto, minuta ou grupo de servidores.",
+      },
+      {
+        title: "Preparar caminho para ato final",
+        text: "Se a decisao politica estiver madura, o processo pode caminhar para Casa Civil ou para o instrumento juridico escolhido pelo governo.",
+      },
+    );
+  } else if (unit.includes("SUBORC") || unit.includes("SUBAORC")) {
+    scenarios.push(
+      {
+        title: "Indicar fonte ou remanejamento",
+        text: "O orcamento pode dizer de onde viria o dinheiro ou quais ajustes seriam necessarios para acomodar a despesa.",
+      },
+      {
+        title: "Sugerir implantacao gradual",
+        text: "Uma saida possivel e fasear a implantacao para reduzir impacto imediato e permitir decisao politica com menor risco fiscal.",
+      },
+      {
+        title: "Encaminhar ao gabinete",
+        text: "Depois da analise tecnica, o caminho natural e subir para gabinete, onde a decisao deixa de ser so conta e vira escolha administrativa.",
+      },
+    );
+  } else if (unit.includes("SUBGEP") || unit.includes("SUPDP")) {
+    scenarios.push(
+      {
+        title: "Revisar numeros e grupos",
+        text: "A area de pessoas pode separar ativos, aposentados, pensionistas, cargos e regras de enquadramento.",
+      },
+      {
+        title: "Atualizar impacto da folha",
+        text: "Se houver duvida no valor, esse setor pode refazer ou confirmar o calculo antes do retorno ao orcamento.",
+      },
+    );
+  } else {
+    scenarios.push(
+      {
+        title: "Novo despacho de encaminhamento",
+        text: "O mais comum e aparecer um despacho dizendo para qual setor o processo deve seguir e qual providencia foi pedida.",
+      },
+      {
+        title: "Pedido de complementacao",
+        text: "Se faltar alguma informacao, o processo pode voltar para quem tem os dados corrigir e enviar novamente.",
+      },
+    );
+  }
+
+  return scenarios.slice(0, 4);
+}
+
+function watchItems(data) {
+  const latestDocument = data.documents.at(-1);
+  const items = [
+    "Se aparecer 'de acordo', 'acolho' ou 'prosseguimento', e sinal de continuidade.",
+    "Se aparecer 'fonte', 'remanejamento' ou 'adequacao orcamentaria', o debate virou como pagar.",
+    "Se aparecer 'faseamento' ou 'implantacao gradual', pode ser tentativa de viabilizar por etapas.",
+    "Se aparecer 'Casa Civil', 'Governador' ou 'Secretario', o processo subiu para decisao politica.",
+  ];
+
+  const latestText = String(latestDocument?.excerpt || "").toLowerCase();
+  if (latestText.includes("propag")) {
+    items.unshift("Agora o ponto decisivo é o parecer da SEEDUC/ASSJUR: ele deve dizer se precisa de lei e se o PROPAG pode ser usado como caminho de solução.");
+  }
+
+  if (!latestDocument?.publicUrl) {
+    items.unshift(
+      `O documento ${latestDocument?.number || "mais recente"} ainda precisa abrir para leitura publica.`,
+    );
+    if (latestDocument?.unit === "FAETEC/PRESI") {
+      items.unshift("Quando o Ofício NA 629 abrir, verifique se a FAETEC concordou, concordou com ressalvas ou apenas pediu ajuste.");
+    }
+  }
+
+  return items;
+}
+
+function renderDeepExplanation(data) {
+  const latest = data.movements[0];
+  const latestDocument = data.documents.at(-1);
+
+  ui.unitMeaning.textContent = expandUnitsInText(unitMeaningText(latest?.unit));
+  ui.documentMeaning.textContent = expandUnitsInText(documentMeaningText(latestDocument));
+
+  ui.scenarioCards.replaceChildren();
+  for (const scenario of scenarioList(data)) {
+    const card = document.createElement("article");
+    card.className = "scenario-card";
+    const title = document.createElement("h4");
+    const text = document.createElement("p");
+    title.textContent = expandUnitsInText(scenario.title);
+    text.textContent = expandUnitsInText(scenario.text);
+    card.append(title, text);
+    ui.scenarioCards.append(card);
+  }
+
+  fillList(ui.watchList, watchItems(data));
+}
+
+function fillList(element, values) {
+  element.replaceChildren();
+  for (const value of values) {
+    const item = document.createElement("li");
+    item.textContent = expandUnitsInText(value);
+    element.append(item);
+  }
+}
+
+function detectNews(data, old) {
+  if (!old) return { movements: new Set(), documents: new Set() };
+  const oldMovements = new Set(old.movements || []);
+  const oldDocuments = new Set(old.documents || []);
+  return {
+    movements: new Set(
+      data.movements
+        .filter((item) => !oldMovements.has(movementKey(item)))
+        .map(movementKey),
+    ),
+    documents: new Set(
+      data.documents
+        .filter((item) => !oldDocuments.has(item.number))
+        .map((item) => item.number),
+    ),
+  };
+}
+
+function renderNews(news) {
+  const parts = [];
+  if (news.movements.size) {
+    parts.push(`${news.movements.size} novo(s) andamento(s)`);
+  }
+  if (news.documents.size) {
+    parts.push(`${news.documents.size} novo(s) documento(s)`);
+  }
+  if (!parts.length) {
+    ui.news.classList.add("hidden");
     return;
   }
+  ui.news.textContent = `Novidade desde sua última visita: ${parts.join(" e ")}.`;
+  ui.news.classList.remove("hidden");
+}
 
-  const enrichedDocuments = await enrichDocuments(rawDocuments, previous);
-  const documents = enrichedDocuments.map((document) => ({
-    ...document,
-    simpleExplanation: explainDocument(document),
-  }));
-  const latestMovement = movements[0];
-  const latestDocument = documents.at(-1);
-  const analysis = buildAutomaticAnalysis(movements, documents);
-  const data = {
-    schemaVersion: DATA_SCHEMA_VERSION,
-    processNumber: PROCESS_NUMBER,
-    officialUrl: PROCESS_URL,
-    generatedAt: new Date().toISOString(),
-    sourceHash: hash,
-    movements,
-    documents,
-    analysis,
-    history: historicalSections(latestMovement, latestDocument),
-  };
+function renderTimeline(data, newKeys) {
+  const template = document.querySelector("#movementTemplate");
+  ui.timeline.replaceChildren();
+  ui.movementCount.textContent = `${data.movements.length} registros`;
 
-  try {
-    const aiText = await generateAiAnalysis(data);
-    if (aiText) {
-      data.analysis = { ...analysis, mode: "openai", aiText };
-    }
-  } catch (error) {
-    console.error(`Análise por IA indisponível: ${error.message}`);
+  for (const movement of data.movements.slice(0, movementLimit)) {
+    const fragment = template.content.cloneNode(true);
+    const article = fragment.querySelector(".movement");
+    if (newKeys.has(movementKey(movement))) article.classList.add("new");
+    fragment.querySelector("time").textContent = movement.dateTime;
+    const unit = fragment.querySelector(".unit");
+    unit.textContent = readableUnit(movement.unit);
+    unit.title = readableUnit(movement.unit);
+    fragment.querySelector("p").textContent = expandUnitsInText(movement.description);
+    ui.timeline.append(fragment);
   }
 
-  await mkdir(dirname(DATA_PATH), { recursive: true });
-  await writeFile(DATA_PATH, `${JSON.stringify(data, null, 2)}\n`, "utf8");
-  console.log(
-    `Atualizado: ${movements.length} movimentos e ${documents.length} documentos.`,
+  ui.showMore.classList.toggle(
+    "hidden",
+    movementLimit >= Math.min(data.movements.length, 50),
   );
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
+function renderDocuments(data, newNumbers) {
+  const template = document.querySelector("#documentTemplate");
+  ui.documents.replaceChildren();
+  ui.documentCount.textContent = `${data.documents.length} documentos`;
+
+  for (const documentData of data.documents.slice(-20).reverse()) {
+    const fragment = template.content.cloneNode(true);
+    const item = fragment.querySelector(".document");
+    if (newNumbers.has(documentData.number)) item.classList.add("new");
+    if (!documentData.publicUrl) item.classList.add("locked");
+
+    fragment.querySelector(".document-number").textContent =
+      `Documento ${documentData.number}`;
+    fragment.querySelector(".document-type").textContent = documentData.type;
+    fragment.querySelector(".document-unit").textContent = readableUnit(documentData.unit);
+    fragment.querySelector("time").textContent = documentData.date;
+    fragment.querySelector(".document-explanation").textContent =
+      documentData.simpleExplanation ||
+      "Documento oficial incluído no processo.";
+    fragment.querySelector(".document-excerpt").textContent =
+      documentData.excerpt || "Documento disponível no SEI.";
+    const explanation = fragment.querySelector(".document-explanation");
+    const excerpt = fragment.querySelector(".document-excerpt");
+    explanation.textContent = expandUnitsInText(explanation.textContent);
+    excerpt.textContent = expandUnitsInText(excerpt.textContent);
+    const link = fragment.querySelector(".document-link");
+    if (documentData.publicUrl) link.href = documentData.publicUrl;
+    ui.documents.append(fragment);
+  }
+}
+
+function renderHistory(data) {
+  ui.historyContent.replaceChildren();
+  for (const section of data.history) {
+    const article = document.createElement("article");
+    article.className = "history-item";
+    const title = document.createElement("h3");
+    title.textContent = section.period;
+    const text = document.createElement("p");
+    text.textContent = expandUnitsInText(section.text);
+    article.append(title, text);
+    ui.historyContent.append(article);
+  }
+}
+
+function hideTransition() {
+  ui.documentTransition.classList.add("hidden");
+  document.body.style.overflow = "";
+}
+
+function showTransition() {
+  if (transitionTimer) clearInterval(transitionTimer);
+
+  let seconds = 6;
+  ui.transitionSeconds.textContent = seconds;
+  ui.documentTransition.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+
+  transitionTimer = setInterval(() => {
+    seconds -= 1;
+    ui.transitionSeconds.textContent = Math.max(seconds, 0);
+
+    if (seconds <= 0) {
+      clearInterval(transitionTimer);
+      transitionTimer = null;
+      hideTransition();
+    }
+  }, 1000);
+}
+
+function buildDiagnosis(data) {
+  const latest = data?.movements?.[0];
+  const latestDocument = data?.documents?.at(-1);
+  const unit = latest?.unit || "";
+  const description = (latest?.description || "").toLowerCase();
+  const documentNumber = latestDocument?.number || "";
+  const documentText = (latestDocument?.excerpt || "").toLowerCase();
+  const documentIsOpen = Boolean(latestDocument?.publicUrl && latestDocument?.excerpt);
+
+  if (!latest) {
+    return "Ainda não há andamento suficiente para formar um diagnóstico seguro. O painel continuará acompanhando o SEI.";
+  }
+
+  if (unit.includes("SEPLAG/CHEGAB")) {
+    const seeducHint = documentText.includes("secretaria de estado de educação")
+      ? " O despacho anterior aponta possível envio à SEEDUC para novas providências."
+      : "";
+    if (description.includes("recebido")) {
+      return `É um andamento pequeno, mas confirma que o processo não ficou perdido. A bola está agora no gabinete da SEPLAG para formalizar o encaminhamento. Ainda não é aprovação, mas também não é negativa. É a transição da análise orçamentária para uma decisão administrativa superior.${seeducHint}`;
+    }
+    return `O gabinete da SEPLAG movimentou o processo. Isso costuma significar que a análise técnica saiu da área responsável e precisa de encaminhamento formal para o próximo setor.${seeducHint}`;
+  }
+
+  if (unit.includes("SEPLAG/SUBORC") || unit.includes("SEPLAG/SUBAORC")) {
+    return "O processo está na área de Orçamento. Esta é a etapa em que o governo olha fonte de recursos, impacto financeiro e forma de implantação. É uma fase decisiva, porque o direito pode estar bem fundamentado, mas ainda precisa caber no planejamento financeiro do Estado.";
+  }
+
+  if (unit.includes("SEPLAG/SUPEFIS")) {
+    return "O processo está na área fiscal. Aqui a análise tende a verificar se a despesa respeita limites, regras fiscais e capacidade financeira. É um sinal de que o assunto está sendo tratado como decisão de impacto real, não apenas como protocolo parado.";
+  }
+
+  if (unit.includes("SEPLAG/SUBGEP") || unit.includes("SEPLAG/SUPDP")) {
+    return "O processo está na área de gestão de pessoas. Essa passagem costuma tratar de quantitativo de servidores, ativos, aposentados, pensionistas, enquadramento, folha e projeção do impacto. É onde os números precisam ficar bem amarrados para o Orçamento decidir.";
+  }
+
+  if (unit.includes("SEEDUC/CHEGAB") || unit.includes("SEEDUC/GABSEC")) {
+    if (latestDocument && !documentIsOpen) {
+      return `O processo subiu para ${readableUnit(unit)} depois de passar pelas áreas técnicas da Educação. Também existe o documento ${documentNumber}, mas seu texto ainda está fechado. O movimento indica decisão administrativa superior; não permite afirmar aprovação, negativa ou pedido de correção até o despacho abrir.`;
+    }
+    return `O processo está em ${readableUnit(unit)}, uma área que formaliza decisões e encaminhamentos superiores. O próximo movimento pode levá-lo ao secretário, devolvê-lo para ajuste ou enviá-lo a outro órgão decisório.`;
+  }
+
+  if (unit.includes("SEEDUC/ASSUBEXE") || unit.includes("SEEDUC/SUBEXE")) {
+    return "O processo chegou à estrutura da Subsecretaria Executiva da Educação. Essa área costuma reunir as manifestações técnicas e preparar uma decisão ou encaminhamento superior. É avanço de hierarquia, mas ainda não aprovação final.";
+  }
+
+  if (unit.includes("SEEDUC/ASSJUR")) {
+    return "O processo voltou para a Assessoria Jurídica da Educação depois de manifestação da FAETEC. É uma movimentação relevante: a discussão pode estar saindo do simples vai-e-volta administrativo para validar o instrumento jurídico e os próximos encaminhamentos. A restrição orçamentária continua, mas não houve arquivamento.";
+  }
+
+  if (unit.includes("SEEDUC/ASSJUR")) {
+    if (documentText.includes("propag") || documentText.includes("vínculo jurídico") || documentText.includes("vinculo juridico")) {
+      return "O processo está na jurídica da Educação depois de um ofício forte da FAETEC. A etapa agora é definir o caminho legal da migração, se precisa de lei e se o PROPAG pode ajudar a superar a trava orçamentária. É avanço jurídico, mas ainda não é aprovação final.";
+    }
+    return "O processo está na Assessoria Jurídica da Educação. Essa etapa pode definir se a migração exige lei, parecer da PGE, ida à Casa Civil ou outro instrumento formal. É uma fase importante para transformar a tese em caminho legal.";
+  }
+
+  if (unit.includes("SEEDUC")) {
+    return "O processo está na Educação. Isso indica que a SEEDUC pode precisar complementar informação, validar dados ou receber de volta a orientação da SEPLAG. O ponto central é saber se a volta veio para ajuste técnico ou para encaminhamento político.";
+  }
+
+  if (unit.includes("FAETEC")) {
+    return "O processo passou pela FAETEC. Essa etapa costuma envolver manifestação sobre vínculo, enquadramento e impacto na estrutura da fundação. Como a causa trata de servidores ex-FAEP/FAETEC, a passagem pela fundação é relevante.";
+  }
+
+  if (latestDocument && !documentIsOpen) {
+    return `Há documento novo listado no SEI (${documentNumber}), mas o texto ainda não está aberto ao público. Por enquanto, dá para afirmar que houve movimentação; a conclusão só fica segura quando o despacho puder ser lido.`;
+  }
+
+  if (documentText.includes("encaminh")) {
+    return `O documento mais recente (${documentNumber}) parece ser de encaminhamento. Isso normalmente não resolve o mérito, mas mostra qual setor deve dar o próximo passo. O importante agora é acompanhar se o processo vai para decisão superior, correção técnica ou nova análise orçamentária.`;
+  }
+
+  return "O processo teve movimentação administrativa. Ainda não há sinal público de aprovação final, negativa ou arquivamento. A leitura segura depende do próximo despacho e do setor para onde ele será encaminhado.";
+}
+
+function render(data, old) {
+  currentData = data;
+  const latest = data.movements[0];
+  const news = detectNews(data, old);
+  const analysis = data.analysis;
+
+  ui.status.textContent = "Atualizado";
+  ui.phaseTitle.textContent = analysis.phase.title;
+  ui.phaseExplanation.textContent = expandUnitsInText(buildStatusExplanation(data));
+  ui.currentUnit.textContent = latest?.unit ? readableUnit(latest.unit) : "-";
+  ui.lastMovement.textContent = latest?.dateTime || "-";
+  ui.generatedAt.textContent = formatGeneratedAt(data.generatedAt);
+  ui.officialLink.href = data.officialUrl;
+
+  ui.analysisTitle.textContent = "O que aconteceu";
+  ui.verdictBadge.textContent =
+    analysis.resultLevel === "critical"
+      ? "Alerta"
+      : analysis.resultLevel === "warning"
+        ? "Preocupante"
+        : analysis.resultLevel === "positive"
+          ? "Favorável"
+          : "Em análise";
+  ui.verdictBox.dataset.level = analysis.resultLevel || "neutral";
+  ui.verdictText.textContent = expandUnitsInText(
+    analysis.result || "O processo andou, mas ainda não existe uma decisão final.",
+  );
+  ui.analysisText.textContent = expandUnitsInText(analysis.summary);
+  const diagnosis = analysis.practicalReading || buildDiagnosis(data);
+  ui.diagnosisText.textContent = expandUnitsInText(diagnosis);
+  ui.diagnosisBox.classList.toggle("hidden", !diagnosis);
+  ui.conclusionText.textContent = expandUnitsInText(
+    analysis.conclusion || "O processo continua em tramitação e ainda depende de decisão concreta da administração.",
+  );
+  renderDeepExplanation(data);
+  fillList(ui.signals, currentSignals(analysis.signals).slice(0, 1));
+  fillList(ui.risks, analysis.risks.slice(0, 1));
+  fillList(ui.nextSteps, [analysis.nextMovement || analysis.phase.nextSteps[0]]);
+
+  renderNews(news);
+  renderTimeline(data, news.movements);
+  renderDocuments(data, news.documents);
+  renderHistory(data);
+  saveState(data);
+}
+
+async function loadData() {
+  ui.refresh.disabled = true;
+  ui.refresh.textContent = "Carregando...";
+  ui.status.textContent = "Consultando";
+  ui.error.classList.add("hidden");
+
+  try {
+    const old = previousState();
+    const response = await fetch(`${DATA_URL}?v=${Date.now()}`, {
+      cache: "no-store",
+    });
+    if (!response.ok) throw new Error(`arquivo de dados indisponível (${response.status})`);
+    const data = await response.json();
+    render(data, old);
+  } catch (error) {
+    ui.status.textContent = "Falha";
+    ui.error.textContent = `Não foi possível carregar o painel: ${error.message}`;
+    ui.error.classList.remove("hidden");
+  } finally {
+    ui.refresh.disabled = false;
+    ui.refresh.textContent = "Recarregar painel";
+  }
+}
+
+ui.refresh.addEventListener("click", loadData);
+ui.history.addEventListener("click", () => {
+  if (currentData) ui.historyDialog.showModal();
 });
+ui.closeHistory.addEventListener("click", () => ui.historyDialog.close());
+ui.historyDialog.addEventListener("click", (event) => {
+  if (event.target === ui.historyDialog) ui.historyDialog.close();
+});
+window.addEventListener("load", () => showTransition(), { once: true });
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) hideTransition();
+});
+ui.showMore.addEventListener("click", () => {
+  movementLimit = Math.min(movementLimit + 15, 50);
+  if (currentData) {
+    renderTimeline(currentData, new Set());
+  }
+});
+
+loadData();
+loadUniqueVisitorCount();

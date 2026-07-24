@@ -1,0 +1,15 @@
+COMO PUBLICAR NO GITHUB PAGES
+
+1. Abra o repositório processo no GitHub.
+2. Apague ou substitua o index.html errado que está mostrando código PowerShell.
+3. Envie estes arquivos para a raiz do repositório:
+   - index.html
+   - app.js
+   - styles.css
+   - data/processo.json
+   - .nojekyll
+4. Não coloque scripts/update-and-publish.ps1 como index.html.
+5. Depois clique em Commit changes.
+6. Aguarde alguns minutos e abra: https://acecarmorj.github.io/processo/?v=20260724fix
+
+Esta versão limpa não inclui scripts PowerShell nem workflows para evitar que o site publique o arquivo errado.
