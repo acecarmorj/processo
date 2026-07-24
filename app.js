@@ -311,6 +311,9 @@ function unitMeaningText(unit = "") {
   if (unit.includes("FAETEC")) {
     return "Quando passa pela FAETEC, o processo toca no orgao de origem da carreira. Isso pode servir para ciencia, manifestacao institucional ou alinhamento sobre o enquadramento.";
   }
+  if (unit.includes("ASSJUR")) {
+    return "Quando o processo vai para a assessoria juridica, o ponto central passa a ser o caminho legal: se precisa de lei, se pode seguir por ato administrativo, se deve ir para PGE/Casa Civil e como enfrentar as travas orcamentarias.";
+  }
   if (unit.includes("SEEDUC")) {
     return "Quando passa pela SEEDUC, o processo volta ao orgao onde muitos servidores ainda estao em exercicio. Ali podem ser pedidos dados, validacoes ou posicionamento do secretario.";
   }
@@ -329,6 +332,12 @@ function documentMeaningText(documentData) {
   }
 
   const text = documentData.excerpt.toLowerCase();
+  if (text.includes("propag") && text.includes("vínculo jurídico")) {
+    return `O documento ${documentData.number} e um ofício estratégico da FAETEC. Ele reconhece a tese de que os servidores mantêm vínculo jurídico com a FAETEC e pede parecer sobre migração, necessidade de lei e uso do PROPAG como possível saída jurídico-orçamentária. Isso é avanço real, embora ainda dependa da resposta da jurídica e da solução de orçamento.`;
+  }
+  if (text.includes("propag") && text.includes("vinculo juridico")) {
+    return `O documento ${documentData.number} e um ofício estratégico da FAETEC. Ele reconhece a tese de vínculo jurídico com a FAETEC e pede parecer sobre migração, necessidade de lei e uso do PROPAG como possível saída jurídico-orçamentária. Isso é avanço real, embora ainda dependa da resposta da jurídica e da solução de orçamento.`;
+  }
   if (text.includes("rioprevid") && text.includes("207,02")) {
     return `O documento ${documentData.number} e uma peca forte de orcamento. Ele confirmou o impacto anual aproximado de R$ 207,02 milhoes e separou ativos, aposentados e orgaos envolvidos. Isso nao aprova, mas tira a discussao do campo da duvida e coloca o custo oficialmente na mesa.`;
   }
@@ -440,6 +449,11 @@ function watchItems(data) {
     "Se aparecer 'faseamento' ou 'implantacao gradual', pode ser tentativa de viabilizar por etapas.",
     "Se aparecer 'Casa Civil', 'Governador' ou 'Secretario', o processo subiu para decisao politica.",
   ];
+
+  const latestText = String(latestDocument?.excerpt || "").toLowerCase();
+  if (latestText.includes("propag")) {
+    items.unshift("Agora o ponto decisivo é o parecer da SEEDUC/ASSJUR: ele deve dizer se precisa de lei e se o PROPAG pode ser usado como caminho de solução.");
+  }
 
   if (!latestDocument?.publicUrl) {
     items.unshift(
@@ -659,6 +673,13 @@ function buildDiagnosis(data) {
 
   if (unit.includes("SEEDUC/ASSJUR")) {
     return "O processo voltou para a Assessoria Jurídica da Educação depois de manifestação da FAETEC. É uma movimentação relevante: a discussão pode estar saindo do simples vai-e-volta administrativo para validar o instrumento jurídico e os próximos encaminhamentos. A restrição orçamentária continua, mas não houve arquivamento.";
+  }
+
+  if (unit.includes("SEEDUC/ASSJUR")) {
+    if (documentText.includes("propag") || documentText.includes("vínculo jurídico") || documentText.includes("vinculo juridico")) {
+      return "O processo está na jurídica da Educação depois de um ofício forte da FAETEC. A etapa agora é definir o caminho legal da migração, se precisa de lei e se o PROPAG pode ajudar a superar a trava orçamentária. É avanço jurídico, mas ainda não é aprovação final.";
+    }
+    return "O processo está na Assessoria Jurídica da Educação. Essa etapa pode definir se a migração exige lei, parecer da PGE, ida à Casa Civil ou outro instrumento formal. É uma fase importante para transformar a tese em caminho legal.";
   }
 
   if (unit.includes("SEEDUC")) {

@@ -231,6 +231,9 @@ function explainDocument(document) {
   if (!document.publicUrl) return "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública.";
   const text = (document.excerpt || "").toLowerCase();
   if (!document.excerpt) return "O documento já possui link público, mas o painel ainda não conseguiu extrair seu texto.";
+  if (text.includes("propag") && (text.includes("vínculo jurídico") || text.includes("vinculo juridico") || text.includes("migração") || text.includes("migracao"))) {
+    return "Ofício estratégico da FAETEC: pede parecer jurídico sobre a migração, necessidade de lei e possibilidade de uso do PROPAG para enfrentar a trava orçamentária.";
+  }
   if (text.includes("207,02") || text.includes("r$ 207") || text.includes("rioprevid")) {
     return "Este é um despacho orçamentário importante: confirma o impacto financeiro da proposta e trata da capacidade do Estado para absorver a despesa.";
   }
@@ -392,6 +395,12 @@ function buildAutomaticAnalysis(movements, documents) {
   const positiveDocument = findRecent(
     (text) => text.includes("de acordo") || text.includes("acolho") || text.includes("autorizo o prosseguimento"),
   );
+  const strategicLegalDocument = findRecent(
+    (text) =>
+      text.includes("propag") &&
+      (text.includes("vinculo juridico") || text.includes("vínculo jurídico") || text.includes("necessidade ou nao de lei") || text.includes("necessidade ou não de lei")) &&
+      (text.includes("migracao") || text.includes("migração") || text.includes("transferencia") || text.includes("transferência")),
+  );
   const latestReading = latestDocumentReading(latestDocument);
 
   let result = "O processo andou, mas ainda não existe uma decisão final.";
@@ -421,6 +430,15 @@ function buildAutomaticAnalysis(movements, documents) {
     negative = "Há uma manifestação contrária registrada no processo.";
     nextMovement = "Identificar se haverá reconsideração, correção da proposta ou encaminhamento superior";
     conclusion = "A situação ficou desfavorável, mas o efeito definitivo depende do fundamento e de eventual decisão superior posterior.";
+  } else if (strategicLegalDocument) {
+    result = "O processo ganhou fôlego: a FAETEC pediu parecer jurídico sobre migração, necessidade de lei e uso do PROPAG.";
+    resultLevel = "positive";
+    summary = `O documento ${strategicLegalDocument.number}, da FAETEC/PRESI, está aberto e pede parecer jurídico sobre a migração/transferência dos ex-FAEP para a estrutura da FAETEC, a necessidade ou não de lei e a possibilidade de uso do PROPAG como instrumento jurídico-administrativo. O documento também registra a tese de vínculo jurídico dos servidores com a FAETEC.`;
+    practicalReading = "A restrição orçamentária continua relevante, mas o processo não parou nela. A FAETEC assumiu postura ativa e pediu uma saída jurídica, inclusive pelo PROPAG. A discussão agora é qual instrumento legal e orçamentário pode viabilizar a migração.";
+    positive = "A FAETEC/PRESI levou a tese para análise jurídica e incluiu o PROPAG como possível caminho de solução.";
+    negative = "A jurídica pode concluir que será necessário projeto de lei, manifestação da PGE/Casa Civil e solução orçamentária específica.";
+    nextMovement = "Parecer da SEEDUC/ASSJUR; depois, remessa para SEEDUC/GABSEC, SEPLAG, Casa Civil ou PGE";
+    conclusion = "O ofício é um avanço real, mas ainda não resolve o mérito. A próxima peça decisiva será o parecer jurídico sobre lei, PROPAG e caminho formal da migração.";
   } else if (budgetBlock) {
     const movedToCabinet = latest?.unit?.includes("CHEGAB") || latestDocument?.unit?.includes("ASSUBEXE");
     const movedToFaetec = latest?.unit?.startsWith("FAETEC/");
