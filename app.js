@@ -19,6 +19,7 @@ const ui = {
   currentUnit: document.querySelector("#currentUnit"),
   lastMovement: document.querySelector("#lastMovement"),
   generatedAt: document.querySelector("#generatedAt"),
+  lastCheckedAt: document.querySelector("#lastCheckedAt"),
   analysisTitle: document.querySelector("#analysisTitle"),
   analysisText: document.querySelector("#analysisText"),
   verdictBox: document.querySelector("#verdictBox"),
@@ -713,6 +714,7 @@ function render(data, old) {
   ui.currentUnit.textContent = latest?.unit ? readableUnit(latest.unit) : "-";
   ui.lastMovement.textContent = latest?.dateTime || "-";
   ui.generatedAt.textContent = formatGeneratedAt(data.generatedAt);
+  ui.lastCheckedAt.textContent = formatGeneratedAt(data.lastCheckedAt || data.generatedAt);
   ui.officialLink.href = data.officialUrl;
 
   ui.analysisTitle.textContent = "O que aconteceu";
