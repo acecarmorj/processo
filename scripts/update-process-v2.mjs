@@ -12,7 +12,7 @@ const PROCESS_URL =
   "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x";
 const SEI_BASE = "https://sei.rj.gov.br/sei/modulos/pesquisa/";
 const MODEL = process.env.OPENAI_MODEL || "gpt-5.4-mini";
-const DATA_SCHEMA_VERSION = 12;
+const DATA_SCHEMA_VERSION = 13;
 const EXCERPT_VERSION = 3;
 const RECENT_DOCUMENTS_TO_RECHECK = 24;
 const SEI_AGENT = new Agent({ connect: { timeout: 30_000 } });
@@ -431,14 +431,14 @@ function buildAutomaticAnalysis(movements, documents) {
     nextMovement = "Identificar se haverá reconsideração, correção da proposta ou encaminhamento superior";
     conclusion = "A situação ficou desfavorável, mas o efeito definitivo depende do fundamento e de eventual decisão superior posterior.";
   } else if (strategicLegalDocument) {
-    result = "O processo ganhou fôlego: a FAETEC pediu parecer jurídico sobre migração, necessidade de lei e uso do PROPAG.";
-    resultLevel = "positive";
-    summary = `O documento ${strategicLegalDocument.number}, da FAETEC/PRESI, está aberto e pede parecer jurídico sobre a migração/transferência dos ex-FAEP para a estrutura da FAETEC, a necessidade ou não de lei e a possibilidade de uso do PROPAG como instrumento jurídico-administrativo. O documento também registra a tese de vínculo jurídico dos servidores com a FAETEC.`;
-    practicalReading = "A restrição orçamentária continua relevante, mas o processo não parou nela. A FAETEC assumiu postura ativa e pediu uma saída jurídica, inclusive pelo PROPAG. A discussão agora é qual instrumento legal e orçamentário pode viabilizar a migração.";
-    positive = "A FAETEC/PRESI levou a tese para análise jurídica e incluiu o PROPAG como possível caminho de solução.";
-    negative = "A jurídica pode concluir que será necessário projeto de lei, manifestação da PGE/Casa Civil e solução orçamentária específica.";
-    nextMovement = "Parecer da SEEDUC/ASSJUR; depois, remessa para SEEDUC/GABSEC, SEPLAG, Casa Civil ou PGE";
-    conclusion = "O ofício é um avanço real, mas ainda não resolve o mérito. A próxima peça decisiva será o parecer jurídico sobre lei, PROPAG e caminho formal da migração.";
+    result = "O processo entrou em uma etapa jurídica decisiva, mas a trava financeira permanece.";
+    resultLevel = "warning";
+    summary = `O Ofício ${strategicLegalDocument.number}, da Presidência da FAETEC, pediu parecer à Assessoria Jurídica da Secretaria de Educação sobre dois pontos: se a migração exige lei e se o PROPAG pode ser usado como caminho jurídico-administrativo. Em ${latest?.dateTime || "data não identificada"}, o processo foi recebido pela Assessoria Jurídica da Secretaria de Educação.`;
+    practicalReading = "A demora atual tem um motivo oficial identificado: a área jurídica precisa definir qual instrumento legal pode ser usado e examinar o PROPAG diante das restrições orçamentárias. O pedido de parecer não aprova nem rejeita a migração.";
+    positive = "A FAETEC formalizou uma consulta para buscar uma solução jurídica para o caso; o processo não foi arquivado.";
+    negative = "Mesmo que a solução jurídica seja considerada possível, a falta de disponibilidade orçamentária registrada no processo ainda precisa ser enfrentada.";
+    nextMovement = "Parecer da Assessoria Jurídica da Secretaria de Educação ou pedido de informações complementares à FAETEC, à Secretaria de Educação ou à Secretaria de Planejamento e Gestão";
+    conclusion = "A fase atual não é uma simples espera sem explicação: o processo aguarda orientação jurídica sobre a necessidade de lei e sobre o possível uso do PROPAG. Ainda assim, não há prazo público para esse parecer e a questão financeira continua sem solução oficial.";
   } else if (budgetBlock) {
     const movedToCabinet = latest?.unit?.includes("CHEGAB") || latestDocument?.unit?.includes("ASSUBEXE");
     const movedToFaetec = latest?.unit?.startsWith("FAETEC/");
@@ -633,7 +633,10 @@ async function main() {
   const needsAi = Boolean(process.env.OPENAI_API_KEY) && previous?.analysis?.mode !== "openai";
   const needsDocumentRead = hasRecentDocumentNeedingRead(rawDocuments, previous);
 
+  const checkedAt = new Date().toISOString();
   if (previous?.sourceHash === hash && previous?.schemaVersion === DATA_SCHEMA_VERSION && !needsAi && !needsDocumentRead) {
+    previous.lastCheckedAt = checkedAt;
+    await writeFile(DATA_PATH, `${JSON.stringify(previous, null, 2)}\n`, "utf8");
     console.log("Nenhuma mudança pública desde a última atualização e nenhum despacho recente pendente de releitura.");
     return;
   }
@@ -648,6 +651,7 @@ async function main() {
     processNumber: PROCESS_NUMBER,
     officialUrl: PROCESS_URL,
     generatedAt: new Date().toISOString(),
+    lastCheckedAt: checkedAt,
     sourceHash: hash,
     movements,
     documents,

@@ -1,9 +1,10 @@
 {
-  "schemaVersion": 14,
+  "schemaVersion": 13,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-07-24T14:17:00.000Z",
-  "sourceHash": "44cfbae5451e83ff304729b689d3593566d305f1c18c47dbb3b13b3c9a27e9e5",
+  "generatedAt": "2026-07-30T21:39:10.683Z",
+  "lastCheckedAt": "2026-07-30T21:39:10.514Z",
+  "sourceHash": "aac64103d3edcb9e46fdf69d14b20c55ebdb14dd7f1fd4c8f4b0dbf9965d209c",
   "movements": [
     {
       "dateTime": "24/07/2026 11:17",
@@ -4759,31 +4760,31 @@
     },
     {
       "number": "137308944",
-      "type": "Ofício - NA 629",
+      "type": "Of�cio - NA 629",
       "date": "23/07/2026",
       "unit": "FAETEC/PRESI",
-      "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?G1lOGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNPPJaYigKgT37xBxDUmSLkckiK1Zbg_PFlQazNHrL8rM4ZSfMOPKhicrhvx72gp22VAVsX5fXu5_Z-azLuE3ck",
-      "excerpt": "Of.FAETEC/PRESI Nº629\nAssunto: Avaliação da possibilidade jurídica da migração para a FAETEC e da possibilidade de uso do PROPAG na resolução da solicitação da FAEP.\n\nA Presidência da FAETEC solicita parecer da Procuradoria/ASSJUR-SEEDUC nos termos expostos. O processo trata da regularização da situação jurídico-funcional dos servidores de apoio técnico-administrativo oriundos do concurso público realizado pela antiga Fundação de Apoio à Escola Pública - FAEP, no ano de 1993.\n\nO ofício registra que a Nota Técnica nº 2026-02 (doc. SEI 130528267), da SUPGP/SEEDUC, concluiu que os servidores concursados da FAEP, cujos cargos foram instituídos pela Lei nº 2.162/1993, mantêm vínculo jurídico com a FAETEC, ainda que em exercício na SEEDUC, razão pela qual a análise do impacto orçamentário considerou tanto o orçamento da SEEDUC quanto o da FAETEC.\n\nTambém menciona a solicitação da SEEDUC sobre a viabilidade e instrumentalização da migração/transferência desses servidores para a estrutura da FAETEC; o pedido da SEPLAG/SUPEFIS para demonstrativo de impacto orçamentário segregado por ativos, inativos e pensionistas; e o posicionamento da SEPLAG (doc. SEI 135635411), que ressalta não haver, no momento, disponibilidade orçamentária para atendimento da demanda, embora o orçamento da SEEDUC esteja sendo monitorado.\n\nDiante disso, a FAETEC solicita à Procuradoria Geral do Estado/ASSJUR-SEEDUC: 1) avaliar a necessidade ou não de lei para a migração/transferência dos servidores da FAEP para a estrutura da FAETEC; 2) avaliar a possibilidade de utilização do PROPAG como instrumento jurídico-administrativo para a resolução da solicitação da FAEP, aliado à expansão de matrículas para atender às metas do PROPAG, considerando os aspectos legais e orçamentários já apontados; 3) avaliar outras questões jurídicas relevantes para a solução da questão.\n\nAssina Eduardo Chow de Martino Tostes, Presidente da FAETEC, em 23 de julho de 2026.",
-      "excerptVersion": 4,
-      "simpleExplanation": "Ofício positivo e estratégico: a Presidência da FAETEC pede parecer jurídico sobre a migração para a FAETEC, a necessidade de lei e a possibilidade de usar o PROPAG como caminho jurídico-administrativo para superar a trava orçamentária."
+      "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?GL1OGpA1t27_rOtfzN4oyNSeqE5NT-gftYuXYZb2oNPPJjaYigKgT37xBxDUmSLkckiK1Zbg_PFIQazNHrL8rM4ZSfMOPKhicrhvx72gp22VAVsX5fXu5_Z-azLuE3ck",
+      "excerpt": "Governo do Estado do Rio de JaneiroFundação de Apoio à Escola TécnicaPresidênciaOf.FAETEC/PRESI Nº629 Rio de Janeiro, 23 de julho de 2026 Dra. Marcella de Oliveira RibeiroAssessora Chefe da ASSJUR/SEEDUC (PROPAG) Assunto: Avaliação da possibilidade jurídica da migração para a FAETEC e da possibilidade de uso do PROPAG na resolução da solicitação da FAEP Senhora Procuradora, Cumprimentando-o cordialmente, venho por meio deste solicitar PARECER dessa Procuradoria, nos termos a seguir expostos.O presente processo trata da regularização da situação jurídico-funcional dos servidores de apoio técnico-administrativo, oriundos do concurso público realizado pela Fundação de Apoio à Escola Pública – FAEP, no ano de 1993.Constam nos autos:A Nota Técnica nº 2026-02 (doc. SEI 130528267), da Superintendência de Gestão de Pessoas/ SUPGP/SEEDUC, que conclui que os servidores concursados da FAEP, cujos cargos foram instituídos pela Lei nº 2.162/1993, mantêm vínculo jurídico com a FAETEC, ainda que em exercício na SEEDUC, razão pela qual a análise do impacto orçamentário considerou tanto o orçamento da SEEDUC quanto o da FAETEC;A solicitação da SEEDUC, visando análise da viabilidade e instrumentalização da migração/transferência desses servidores para a estrutura da FAETEC;A solicitação registrada no doc. SEI 134225890 da SEPLG/SUPEFIS para que a Subsecretaria de Gestão de Pessoas – SUBGEP encaminhe demonstrativo de impacto orçamentário da proposta, com segregação dos efeitos financeiros relativos a servidores ativos, inativos e pensionistas, acompanhada da discriminação dos respectivos quantitativos;O posicionamento da SEPLAG (doc. SEI 135635411), que ressalta não haver, no momento, disponibilidade orçamentária para atendimento da demanda, ainda que o monitoramento do orçamento da SEEDUC esteja sendo realizado, conforme reforçado no doc. SEI 133607874. Diante do exposto, a FAETEC solicita a esta Procuradoria Geral do Estado:1- que avalie a necessidade ou não de Lei, para a migração/transferência desses servidores da FAEP para a estrutura da FAETEC.2- que avalie a possibilidade de utilização do PROPAG como instrumento jurídico-administrativo para a resolução da solicitação da FAEP, aliado à expansão de matrículas para atender às metas do PROPAG, considerando os aspectos legais e orçamentários já apontados.3- outras questões jurídicas que entender relevantes e pertinentes para a resolução da questão. Estamos à disposição para quaisquer esclarecimentos adicionais e para colaborar no que for necessário. Atenciosamente, Eduardo Chow de Martino TostesPresidente da FAETECID 4396733-7",
+      "excerptVersion": 3,
+      "simpleExplanation": "Ofício estratégico da FAETEC: pede parecer jurídico sobre a migração, necessidade de lei e possibilidade de uso do PROPAG para enfrentar a trava orçamentária."
     }
   ],
   "analysis": {
     "mode": "automatic",
     "phase": {
-      "title": "Aguardando parecer da Jurídica da Educação",
-      "explanation": "Depois do Ofício NA 629 da FAETEC/PRESI, o processo foi recebido pela SEEDUC/ASSJUR em 24/07/2026 às 11:17. A etapa agora é a análise jurídica sobre migração, necessidade de lei e possível uso do PROPAG.",
+      "title": "Tramitação administrativa",
+      "explanation": "O processo continua em análise dentro da administração estadual.",
       "nextSteps": [
-        "Parecer da SEEDUC/ASSJUR",
-        "Definição sobre necessidade de lei e uso do PROPAG",
-        "Remessa para SEEDUC/GABSEC, SEPLAG, PGE ou Casa Civil"
+        "Novo despacho",
+        "Remessa técnica",
+        "Decisão superior"
       ]
     },
-    "result": "Avançou mais um passo: o processo foi recebido pela SEEDUC/ASSJUR para análise jurídica do Ofício NA 629, da FAETEC.",
-    "resultLevel": "positive",
-    "summary": "Em 24/07/2026 às 11:17, o processo foi recebido na SEEDUC/ASSJUR. Isso confirma que o Ofício NA 629, da FAETEC/PRESI, saiu da fase de simples envio e entrou efetivamente na Assessoria Jurídica da Educação. O documento da FAETEC pediu parecer sobre a possibilidade jurídica de migração/transferência dos servidores ex-FAEP para a FAETEC, sobre a necessidade ou não de lei e sobre o possível uso do PROPAG como instrumento jurídico-administrativo para ajudar a resolver a demanda.",
-    "practicalReading": "A novidade é positiva, mas ainda não é decisão final. O processo agora está no setor que pode apontar o caminho legal: se precisa de projeto de lei, se deve ir à PGE ou Casa Civil, se o PROPAG pode ser usado e como tratar a trava orçamentária. A falta de disponibilidade orçamentária continua sendo o principal risco, mas a tramitação mostra busca de solução jurídica, não arquivamento.",
-    "conclusion": "O processo ganhou fôlego e agora está oficialmente na análise jurídica da SEEDUC. O próximo documento da ASSJUR será decisivo para dizer se a migração pode seguir por lei, PROPAG, PGE/Casa Civil ou se haverá novo pedido de ajuste.",
+    "result": "O processo entrou em uma etapa jurídica decisiva, mas a trava financeira permanece.",
+    "resultLevel": "warning",
+    "summary": "O Ofício 137308944, da Presidência da FAETEC, pediu parecer à Assessoria Jurídica da Secretaria de Educação sobre dois pontos: se a migração exige lei e se o PROPAG pode ser usado como caminho jurídico-administrativo. Em 24/07/2026 11:17, o processo foi recebido pela Assessoria Jurídica da Secretaria de Educação.",
+    "practicalReading": "A demora atual tem um motivo oficial identificado: a área jurídica precisa definir qual instrumento legal pode ser usado e examinar o PROPAG diante das restrições orçamentárias. O pedido de parecer não aprova nem rejeita a migração.",
+    "conclusion": "A fase atual não é uma simples espera sem explicação: o processo aguarda orientação jurídica sobre a necessidade de lei e sobre o possível uso do PROPAG. Ainda assim, não há prazo público para esse parecer e a questão financeira continua sem solução oficial.",
     "numbers": [
       {
         "value": "R$ 207,02 milhões",
@@ -4802,12 +4803,12 @@
       }
     ],
     "signals": [
-      "O processo foi recebido pela SEEDUC/ASSJUR em 24/07, confirmando que o Ofício NA 629 entrou na etapa jurídica e não ficou parado na FAETEC."
+      "A FAETEC formalizou uma consulta para buscar uma solução jurídica para o caso; o processo não foi arquivado."
     ],
     "risks": [
-      "A ASSJUR pode concluir que é necessário projeto de lei, manifestação da PGE/Casa Civil ou nova solução orçamentária antes de qualquer avanço concreto."
+      "Mesmo que a solução jurídica seja considerada possível, a falta de disponibilidade orçamentária registrada no processo ainda precisa ser enfrentada."
     ],
-    "nextMovement": "Aguardar o parecer da SEEDUC/ASSJUR; se for favorável, o melhor caminho seria seguir para SEEDUC/GABSEC, SEPLAG, PGE ou Casa Civil."
+    "nextMovement": "Parecer da Assessoria Jurídica da Secretaria de Educação ou pedido de informações complementares à FAETEC, à Secretaria de Educação ou à Secretaria de Planejamento e Gestão"
   },
   "history": [
     {
@@ -4828,11 +4829,7 @@
     },
     {
       "period": "Situação atual",
-      "text": "O registro público mais recente mostra o processo em SEEDUC/ASSJUR, após o Ofício NA 629 da FAETEC/PRESI. O ofício foi aberto e pede parecer sobre migração para a FAETEC, necessidade de lei e possível uso do PROPAG. A situação melhorou juridicamente, mas ainda depende de solução orçamentária e decisão política superior."
-    },
-    {
-      "period": "Julho de 2026",
-      "text": "A FAETEC/PRESI emitiu o Ofício NA 629 e o processo foi recebido pela SEEDUC/ASSJUR em 24/07/2026 para análise jurídica da migração, da necessidade de lei e do possível uso do PROPAG."
+      "text": "O registro público mais recente é de 24/07/2026 11:17, em SEEDUC/ASSJUR. O documento mais recente é 137308944, de FAETEC/PRESI. Ainda não existe publicação definitiva do enquadramento."
     }
   ]
 }
