@@ -2,8 +2,8 @@
   "schemaVersion": 13,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-08-06T20:38:00Z",
-  "lastCheckedAt": "2026-08-06T20:38:00Z",
+  "generatedAt": "2026-08-06T20:00:00-03:00",
+  "lastCheckedAt": "2026-08-06T17:30:00-03:00",
   "sourceHash": "aac64103d3edcb9e46fdf69d14b20c55ebdb14dd7f1fd4c8f4b0dbf9965d209c",
   "movements": [
     {
@@ -4782,9 +4782,9 @@
     },
     "result": "O processo entrou em uma etapa jurídica decisiva, mas a trava financeira permanece.",
     "resultLevel": "warning",
-    "summary": "Verificação realizada em 06/08/2026: não foram identificadas novas movimentações ou documentos após o recebimento do processo pela SEEDUC/ASSJUR em 24/07/2026. O processo permanece aguardando manifestação jurídica.",
-    "practicalReading": "A ausência de novos registros no SEI não indica arquivamento. O processo continua em análise jurídica na ASSJUR da SEEDUC.",
-    "conclusion": "Até 06/08/2026 não houve novas movimentações públicas. O acompanhamento permanece ativo e novas publicações serão incorporadas assim que ocorrerem.",
+    "summary": "A verificação realizada nesta data confirmou que o processo permanece sob responsabilidade da Assessoria Jurídica da SEEDUC. Até o encerramento da consulta não houve inclusão de novos documentos, despachos ou movimentações públicas posteriores ao recebimento do processo em 24/07/2026.",
+    "practicalReading": "A ausência de novas publicações indica que a análise jurídica continua em desenvolvimento. Esse intervalo é comum em processos administrativos complexos e não representa, por si só, arquivamento ou decisão desfavorável.",
+    "conclusion": "O cenário permanece estável. O processo continua em fase de manifestação jurídica e segue sendo acompanhado continuamente. Qualquer novo despacho ou documento será incorporado ao histórico assim que for disponibilizado.",
     "numbers": [
       {
         "value": "R$ 207,02 milhões",
@@ -4812,6 +4812,10 @@
   },
   "history": [
     {
+      "period": "06 de agosto de 2026",
+      "text": "Nova consulta ao processo confirmou que a tramitação permanece na Assessoria Jurídica da SEEDUC. Não foram publicados novos documentos ou despachos desde o recebimento do processo em 24/07/2026. O monitoramento continua ativo para identificar prontamente qualquer alteração."
+    },
+    {
       "period": "Origem",
       "text": "Os servidores ingressaram por concurso da antiga FAEP. Após reorganizações administrativas, permaneceram em exercício na SEEDUC, enquanto a categoria sustenta que o vínculo jurídico e a evolução funcional deveriam acompanhar a estrutura da FAETEC."
     },
@@ -4830,10 +4834,6 @@
     {
       "period": "Situação atual",
       "text": "O registro público mais recente é de 24/07/2026 11:17, em SEEDUC/ASSJUR. O documento mais recente é 137308944, de FAETEC/PRESI. Ainda não existe publicação definitiva do enquadramento."
-    },
-    {
-      "period": "06 de agosto de 2026",
-      "text": "Verificação realizada sem identificação de novas movimentações ou novos documentos no SEI. O processo permanece na SEEDUC/ASSJUR desde 24/07/2026, aguardando manifestação jurídica."
     }
   ]
 }
