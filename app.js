@@ -262,9 +262,6 @@ function describeLatestMovement(movement) {
 }
 
 function buildStatusExplanation(data) {
-  const fromAnalysis = data?.analysis?.phase?.explanation;
-  if (fromAnalysis) return fromAnalysis;
-
   const latest = data?.movements?.[0];
   if (!latest) {
     return "O painel ainda não conseguiu identificar a situação atual do processo.";
@@ -294,38 +291,6 @@ function buildStatusExplanation(data) {
   }
 
   return `O processo está em ${unit}${movedFrom}. O próximo despacho deverá explicar qual providência esse setor adotou e para onde o caso seguirá.`;
-}
-
-const ANALYSIS_TITLE_VARIANTS = [
-  "Situação do Processo",
-  "Panorama da verificação",
-  "Leitura da conferência",
-  "Acompanhamento atualizado",
-  "Monitoramento do SEI",
-];
-
-const IDLE_MONITORING_MESSAGES = [
-  "Acompanhamento ativo: a última conferência ao SEI não identificou andamento novo, e o painel segue monitorando a tramitação.",
-  "Verificação concluída sem alteração pública. O processo permanece sob análise e novas informações serão publicadas assim que aparecerem no SEI.",
-  "Nesta rodada não surgiu despacho ou remessa nova. O monitoramento continua para evitar qualquer lacuna de informação.",
-  "Consulta ao portal oficial encerrada sem movimento adicional. A ausência de publicação nova não significa arquivamento.",
-  "O painel reconfirmou a situação atual. Enquanto o SEI não registrar mudança, o acompanhamento permanece em curso.",
-  "Checagem periódica concluída. O expediente segue na mesma fase, e este canal continuará registrando cada verificação.",
-];
-
-function dayRotationIndex(seed = "", size = 1) {
-  if (!size) return 0;
-  const day = new Date().toLocaleDateString("en-CA", { timeZone: "America/Sao_Paulo" });
-  const raw = `${day}|${seed}`;
-  let hash = 0;
-  for (let i = 0; i < raw.length; i += 1) {
-    hash = (hash * 31 + raw.charCodeAt(i)) >>> 0;
-  }
-  return hash % size;
-}
-
-function pickRotated(list, seed = "") {
-  return list[dayRotationIndex(seed, list.length)];
 }
 
 function unitMeaningText(unit = "") {
@@ -552,7 +517,7 @@ function detectNews(data, old) {
   };
 }
 
-function renderNews(news, data) {
+function renderNews(news) {
   const parts = [];
   if (news.movements.size) {
     parts.push(`${news.movements.size} novo(s) andamento(s)`);
@@ -560,14 +525,11 @@ function renderNews(news, data) {
   if (news.documents.size) {
     parts.push(`${news.documents.size} novo(s) documento(s)`);
   }
-  if (parts.length) {
-    ui.news.textContent = `Novidade desde sua última visita: ${parts.join(" e ")}.`;
-    ui.news.classList.remove("hidden");
+  if (!parts.length) {
+    ui.news.classList.add("hidden");
     return;
   }
-
-  const seed = data?.lastCheckedAt || data?.generatedAt || data?.sourceHash || "";
-  ui.news.textContent = pickRotated(IDLE_MONITORING_MESSAGES, seed);
+  ui.news.textContent = `Novidade desde sua última visita: ${parts.join(" e ")}.`;
   ui.news.classList.remove("hidden");
 }
 
@@ -755,10 +717,7 @@ function render(data, old) {
   ui.lastCheckedAt.textContent = formatGeneratedAt(data.lastCheckedAt || data.generatedAt);
   ui.officialLink.href = data.officialUrl;
 
-  ui.analysisTitle.textContent = pickRotated(
-    ANALYSIS_TITLE_VARIANTS,
-    data.lastCheckedAt || data.generatedAt || "",
-  );
+  ui.analysisTitle.textContent = "O que aconteceu";
   ui.verdictBadge.textContent =
     analysis.resultLevel === "critical"
       ? "Alerta"
@@ -783,7 +742,7 @@ function render(data, old) {
   fillList(ui.risks, analysis.risks.slice(0, 1));
   fillList(ui.nextSteps, [analysis.nextMovement || analysis.phase.nextSteps[0]]);
 
-  renderNews(news, data);
+  renderNews(news);
   renderTimeline(data, news.movements);
   renderDocuments(data, news.documents);
   renderHistory(data);
