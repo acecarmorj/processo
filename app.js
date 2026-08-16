@@ -24,7 +24,6 @@ const ui = {
   whatItMeans: document.querySelector("#whatItMeans"),
   whatIsMissing: document.querySelector("#whatIsMissing"),
   nextStepShort: document.querySelector("#nextStepShort"),
-  keyNumbers: document.querySelector("#keyNumbers"),
   milestones: document.querySelector("#milestones"),
   keyDocuments: document.querySelector("#keyDocuments"),
   keyDocumentCount: document.querySelector("#keyDocumentCount"),
@@ -59,7 +58,7 @@ const KEY_DOCUMENTS = {
   "135348861": {
     title: "Cálculo atualizado",
     meaning:
-      "Atualizou a estimativa para 6.745 pessoas e impacto aproximado de R$ 207,02 milhões por ano.",
+      "Consolidou o cálculo oficial necessário para a análise administrativa e orçamentária.",
   },
   "135635411": {
     title: "Obstáculo orçamentário",
@@ -92,7 +91,7 @@ const MILESTONES = [
   {
     date: "30/06/2026",
     title: "Impacto atualizado",
-    text: "O governo calculou 6.745 pessoas e custo anual aproximado de R$ 207,02 milhões.",
+    text: "O governo concluiu uma atualização dos cálculos necessários para analisar a proposta.",
   },
   {
     date: "03/07/2026",
@@ -249,39 +248,6 @@ function renderNews(data, old) {
   ui.news.classList.add("hidden");
 }
 
-function renderNumbers(data) {
-  const numbers = data.analysis?.numbers?.length
-    ? data.analysis.numbers
-    : [
-        {
-          value: "6.745",
-          label: "pessoas",
-          detail: "3.700 ativos e 3.045 aposentados",
-        },
-        {
-          value: "R$ 207,02 mi",
-          label: "estimativa por ano",
-          detail: "valor calculado no processo",
-        },
-        {
-          value: "R$ 17,25 mi",
-          label: "estimativa por mês",
-          detail: "valor aproximado",
-        },
-      ];
-
-  ui.keyNumbers.replaceChildren();
-  for (const item of numbers) {
-    const card = document.createElement("article");
-    card.innerHTML = `
-      <strong>${item.value}</strong>
-      <span>${item.label}</span>
-      <small>${item.detail || ""}</small>
-    `;
-    ui.keyNumbers.append(card);
-  }
-}
-
 function renderMilestones() {
   ui.milestones.replaceChildren();
   for (const item of MILESTONES) {
@@ -369,7 +335,6 @@ function render(data, old) {
   ui.officialLink.href = data.officialUrl;
   renderCurrentStatus(data);
   renderNews(data, old);
-  renderNumbers(data);
   renderMilestones();
   renderKeyDocuments(data);
   renderTimeline(data);
