@@ -1,11 +1,21 @@
 {
-  "schemaVersion": 13,
+  "schemaVersion": 14,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-08-10T18:00:00-03:00",
-  "lastCheckedAt": "2026-08-10T18:00:00-03:00",
-  "sourceHash": "aac64103d3edcb9e46fdf69d14b20c55ebdb14dd7f1fd4c8f4b0dbf9965d209c",
+  "generatedAt": "2026-08-16T08:50:00-03:00",
+  "lastCheckedAt": "2026-08-16T08:50:00-03:00",
+  "sourceHash": "f568dfaf67d371fce8cc470b298e4df652dbe4075cc956b58dfc25b6f4a0675f",
   "movements": [
+    {
+      "dateTime": "15/08/2026 18:04",
+      "unit": "PGE/PG02/SECEXEC/PROPAG",
+      "description": "Processo recebido na unidade"
+    },
+    {
+      "dateTime": "15/08/2026 18:04",
+      "unit": "PGE/PG02/SECEXEC/PROPAG",
+      "description": "Processo remetido pela unidade SEEDUC/ASSJUR"
+    },
     {
       "dateTime": "24/07/2026 11:17",
       "unit": "SEEDUC/ASSJUR",
@@ -4797,24 +4807,41 @@
       "excerpt": "Governo do Estado do Rio de JaneiroFundação de Apoio à Escola TécnicaPresidênciaOf.FAETEC/PRESI Nº629 Rio de Janeiro, 23 de julho de 2026 Dra. Marcella de Oliveira RibeiroAssessora Chefe da ASSJUR/SEEDUC (PROPAG) Assunto: Avaliação da possibilidade jurídica da migração para a FAETEC e da possibilidade de uso do PROPAG na resolução da solicitação da FAEP Senhora Procuradora, Cumprimentando-o cordialmente, venho por meio deste solicitar PARECER dessa Procuradoria, nos termos a seguir expostos.O presente processo trata da regularização da situação jurídico-funcional dos servidores de apoio técnico-administrativo, oriundos do concurso público realizado pela Fundação de Apoio à Escola Pública – FAEP, no ano de 1993.Constam nos autos:A Nota Técnica nº 2026-02 (doc. SEI 130528267), da Superintendência de Gestão de Pessoas/ SUPGP/SEEDUC, que conclui que os servidores concursados da FAEP, cujos cargos foram instituídos pela Lei nº 2.162/1993, mantêm vínculo jurídico com a FAETEC, ainda que em exercício na SEEDUC, razão pela qual a análise do impacto orçamentário considerou tanto o orçamento da SEEDUC quanto o da FAETEC;A solicitação da SEEDUC, visando análise da viabilidade e instrumentalização da migração/transferência desses servidores para a estrutura da FAETEC;A solicitação registrada no doc. SEI 134225890 da SEPLG/SUPEFIS para que a Subsecretaria de Gestão de Pessoas – SUBGEP encaminhe demonstrativo de impacto orçamentário da proposta, com segregação dos efeitos financeiros relativos a servidores ativos, inativos e pensionistas, acompanhada da discriminação dos respectivos quantitativos;O posicionamento da SEPLAG (doc. SEI 135635411), que ressalta não haver, no momento, disponibilidade orçamentária para atendimento da demanda, ainda que o monitoramento do orçamento da SEEDUC esteja sendo realizado, conforme reforçado no doc. SEI 133607874. Diante do exposto, a FAETEC solicita a esta Procuradoria Geral do Estado:1- que avalie a necessidade ou não de Lei, para a migração/transferência desses servidores da FAEP para a estrutura da FAETEC.2- que avalie a possibilidade de utilização do PROPAG como instrumento jurídico-administrativo para a resolução da solicitação da FAEP, aliado à expansão de matrículas para atender às metas do PROPAG, considerando os aspectos legais e orçamentários já apontados.3- outras questões jurídicas que entender relevantes e pertinentes para a resolução da questão. Estamos à disposição para quaisquer esclarecimentos adicionais e para colaborar no que for necessário. Atenciosamente, Eduardo Chow de Martino TostesPresidente da FAETECID 4396733-7",
       "excerptVersion": 3,
       "simpleExplanation": "Ofício estratégico da FAETEC: pede parecer jurídico sobre a migração, necessidade de lei e possibilidade de uso do PROPAG para enfrentar a trava orçamentária."
+    },
+    {
+      "id": "138771402",
+      "title": "Termo de Cancelamento de Documento",
+      "unit": "SEEDUC/ASSJUR",
+      "date": "2026-08-11",
+      "summary": "Registro de termo de cancelamento de documento produzido pela Assessoria Jurídica da SEEDUC."
+    },
+    {
+      "number": "139135021",
+      "type": "Despacho de Encaminhamento de Processo - ASSJUR",
+      "date": "15/08/2026",
+      "unit": "SEEDUC/ASSJUR",
+      "publicUrl": "",
+      "excerpt": "A ASSJUR/SEEDUC encaminha o processo à Secretaria Executiva de Apoio ao PROPAG da PGE-RJ, em conformidade com a Resolução PGE 5.424, de 15 de julho de 2026, por pertinência.",
+      "excerptVersion": 1,
+      "simpleExplanation": "Despacho da Assessoria Jurídica da SEEDUC que encaminha formalmente o processo à estrutura da PGE-RJ responsável pelo PROPAG."
     }
   ],
   "analysis": {
     "mode": "automatic",
     "phase": {
-      "title": "Tramitação administrativa",
-      "explanation": "O processo continua em análise dentro da administração estadual.",
+      "title": "Análise pela PGE-RJ / PROPAG",
+      "explanation": "A Assessoria Jurídica da SEEDUC formalizou o envio do processo à Secretaria Executiva de Apoio ao PROPAG da PGE-RJ.",
       "nextSteps": [
-        "Novo despacho",
-        "Remessa técnica",
-        "Decisão superior"
+        "Análise pela PGE/PROPAG",
+        "Manifestação jurídica",
+        "Eventual retorno à SEEDUC e aos órgãos envolvidos"
       ]
     },
-    "result": "O processo entrou em uma etapa jurídica decisiva, mas a trava financeira permanece.",
-    "resultLevel": "warning",
-    "summary": "A consulta realizada em 10 de agosto de 2026 identificou movimentação interna recente na Assessoria Jurídica da SEEDUC. Foram incluídos um e-mail institucional e dois documentos anexos, demonstrando continuidade da instrução jurídica do processo.",
-    "practicalReading": "A ausência de novas publicações indica que a análise jurídica continua em desenvolvimento. Esse intervalo é comum em processos administrativos complexos e não representa, por si só, arquivamento ou decisão desfavorável.",
-    "conclusion": "A tramitação apresentou evolução administrativa em 10/08/2026. Embora o conteúdo dos documentos não esteja disponível publicamente, a movimentação da ASSJUR reforça que o processo continua ativo e em análise jurídica.",
+    "result": "Houve um avanço processual relevante: a ASSJUR/SEEDUC encaminhou o caso à estrutura da PGE-RJ responsável pelo PROPAG.",
+    "resultLevel": "positive",
+    "summary": "Em 15/08/2026, a Assessoria Jurídica da SEEDUC assinou o Despacho 139135021 e encaminhou o processo à Secretaria Executiva de Apoio ao PROPAG da PGE-RJ. O próprio despacho cita a Resolução PGE 5.424, de 15 de julho de 2026, como fundamento do encaminhamento por pertinência.",
+    "practicalReading": "Este é um avanço mais concreto do que as movimentações anteriores na ASSJUR: a discussão deixou a fase de instrução interna da SEEDUC e foi direcionada à unidade da Procuradoria criada para apoiar o PROPAG. Isso mostra que o enquadramento jurídico do caso está sendo levado à PGE, embora o despacho não represente aprovação da migração nem garanta a utilização do PROPAG.",
+    "conclusion": "A movimentação de 15/08/2026 reforça a importância da análise jurídica do pedido dos ex-FAEP/FAETEC e abre uma nova etapa perante a PGE-RJ/PROPAG. O próximo marco relevante tende a ser a manifestação dessa estrutura da Procuradoria. A questão orçamentária continua sendo um ponto de atenção, e ainda não existe decisão final sobre a solução funcional.",
     "numbers": [
       {
         "value": "R$ 207,02 milhões",
@@ -4833,26 +4860,48 @@
       }
     ],
     "signals": [
-      "A FAETEC formalizou uma consulta para buscar uma solução jurídica para o caso; o processo não foi arquivado."
+      "A ASSJUR/SEEDUC encaminhou formalmente o processo à Secretaria Executiva de Apoio ao PROPAG da PGE-RJ.",
+      "O despacho 139135021 invoca expressamente a Resolução PGE 5.424, de 15/07/2026, como fundamento do encaminhamento.",
+      "O processo foi recebido na unidade PGE/PG02/SECEXEC/PROPAG em 15/08/2026."
     ],
     "risks": [
-      "O conteúdo dos documentos não é público.",
-      "A análise pode gerar novas diligências antes de uma decisão."
+      "O envio à PGE não equivale a parecer favorável nem à aprovação da migração.",
+      "A Procuradoria ainda poderá apontar exigências jurídicas ou necessidade de novas providências.",
+      "A restrição orçamentária permanece como questão relevante para a implementação da medida."
     ],
-    "nextMovement": "Parecer da Assessoria Jurídica da Secretaria de Educação ou pedido de informações complementares à FAETEC, à Secretaria de Educação ou à Secretaria de Planejamento e Gestão",
-    "reading": "O processo permanece na SEEDUC/ASSJUR, mas houve produção documental após o Ofício NA 629. A inclusão desses registros indica que a área jurídica está atuando na preparação dos próximos encaminhamentos.",
+    "nextMovement": "Análise da PGE/PROPAG, com possível manifestação jurídica e eventual devolução do processo à SEEDUC ou encaminhamento a outras áreas do Governo",
+    "reading": "O processo avançou da Assessoria Jurídica da SEEDUC para a unidade da PGE-RJ dedicada ao apoio do PROPAG. É a primeira movimentação que coloca formalmente o caso dentro dessa estrutura da Procuradoria após o Ofício NA 629.",
     "positive": [
-      "Foram juntados três novos documentos em 10/08/2026.",
-      "A ASSJUR registrou atividade processual recente.",
-      "O processo permanece em andamento na área jurídica."
+      "O processo foi remetido pela ASSJUR/SEEDUC à PGE/PROPAG em 15/08/2026.",
+      "A nova unidade destinatária é específica para o apoio ao PROPAG.",
+      "Houve despacho jurídico formal sustentando o encaminhamento por pertinência."
     ],
     "nextStep": [
-      "Manifestação jurídica da ASSJUR.",
-      "Possível encaminhamento à PGE.",
-      "Retorno à SEPLAG ou à Casa Civil após conclusão da análise."
-    ]
+      "Análise do processo pela PGE/PROPAG.",
+      "Possível manifestação jurídica sobre a migração e o uso do PROPAG.",
+      "Eventual retorno à SEEDUC, SEPLAG, FAETEC ou outras instâncias conforme a conclusão da PGE."
+    ],
+    "currentStatus": "Encaminhado à PGE-RJ/PG02/SECEXEC/PROPAG para análise, após despacho da ASSJUR/SEEDUC em 15/08/2026.",
+    "positiveSigns": [
+      "A ASSJUR/SEEDUC concluiu uma etapa interna e remeteu o caso à estrutura da PGE ligada ao PROPAG.",
+      "A PGE/PG02/SECEXEC/PROPAG registrou o recebimento do processo em 15/08/2026.",
+      "O encaminhamento foi formalmente justificado pela Resolução PGE 5.424/2026."
+    ],
+    "nextLikelyStep": "Análise da PGE/PROPAG e eventual manifestação jurídica sobre a viabilidade da solução e do uso do PROPAG."
   },
   "history": [
+    {
+      "date": "15 de agosto de 2026",
+      "title": "Encaminhamento à PGE/PROPAG",
+      "description": "A ASSJUR/SEEDUC emitiu o Despacho 139135021 e encaminhou o processo à Secretaria Executiva de Apoio ao PROPAG da PGE-RJ. O despacho fundamenta o envio na Resolução PGE 5.424, de 15/07/2026. O processo foi recebido na unidade PGE/PG02/SECEXEC/PROPAG na mesma data.",
+      "period": "15 de agosto de 2026",
+      "text": "Novo marco da tramitação: a Assessoria Jurídica da SEEDUC remeteu o processo para a unidade da PGE-RJ responsável pelo apoio ao PROPAG. O encaminhamento, feito por pertinência e com referência expressa à Resolução PGE 5.424/2026, coloca o caso em uma etapa jurídica mais avançada, sem representar ainda uma decisão favorável ou definitiva."
+    },
+    {
+      "date": "11 de agosto de 2026",
+      "title": "Novo registro documental na ASSJUR",
+      "description": "Foi identificado um Termo de Cancelamento de Documento registrado pela SEEDUC/ASSJUR em 11/08/2026. O processo permanece em análise jurídica, com atividade administrativa recente na unidade responsável."
+    },
     {
       "period": "10 de agosto de 2026",
       "text": "A SEEDUC/ASSJUR incluiu um e-mail institucional e dois anexos no processo. A movimentação indica atividade interna recente e continuidade da análise jurídica."

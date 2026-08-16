@@ -27,3 +27,9 @@ ATUALIZAÇÕES DO PAINEL EX-FAEP / FAETEC — 23/07/2026
 Como publicar:
 - Substitua os arquivos do repositório GitHub por esta versão.
 - Faça commit e aguarde o GitHub Pages atualizar.
+
+ATUALIZAÇÃO DE 15/08/2026
+- Documento 139135021 (SEEDUC/ASSJUR): Despacho de Encaminhamento de Processo - ASSJUR.
+- A ASSJUR/SEEDUC encaminhou o processo à Secretaria Executiva de Apoio ao PROPAG da PGE-RJ, por pertinência, com fundamento na Resolução PGE 5.424, de 15 de julho de 2026.
+- O processo foi recebido na unidade PGE/PG02/SECEXEC/PROPAG em 15/08/2026 às 18:04.
+- Leitura: avanço processual relevante e início de nova etapa perante a PGE/PROPAG. Não há, ainda, decisão final nem aprovação da migração.
