@@ -1,0 +1,37 @@
+ATUALIZAÇÃO DO PAINEL EX-FAEP / FAETEC — 16/08/2026
+
+1. NOVO MARCO PROCESSUAL — 15/08/2026
+- Documento 139135021 — Despacho de Encaminhamento de Processo - ASSJUR.
+- Unidade de origem: SEEDUC/ASSJUR.
+- Destino: Secretaria Executiva de Apoio ao PROPAG da PGE-RJ.
+- Fundamento citado no despacho: Resolução PGE 5.424, de 15/07/2026.
+- O andamento do SEI registra o recebimento pela PGE/PG02/SECEXEC/PROPAG em 15/08/2026 às 18:04.
+
+2. LEITURA PRÁTICA EXIBIDA NO PAINEL
+- O processo mudou de esfera de análise: deixou a etapa interna da ASSJUR/SEEDUC e passou para a unidade da PGE-RJ relacionada ao PROPAG.
+- Isso é um avanço processual concreto, mas não equivale a aprovação da migração para a FAETEC.
+- A próxima peça decisiva tende a ser uma manifestação da PGE/PROPAG sobre viabilidade jurídica e providências necessárias.
+
+3. O QUE O PAINEL NÃO AFIRMA
+- Não informa que a migração foi aprovada.
+- Não afirma que haverá reenquadramento automático.
+- Não afirma que o impacto financeiro de R$ 207,02 milhões foi autorizado.
+- Não afirma que haverá pagamento retroativo.
+
+4. PONTOS DE ATENÇÃO
+- A análise jurídica da PGE pode exigir documentos adicionais, ajustes ou outro instrumento administrativo/legislativo.
+- A questão orçamentária continua relevante, com impacto estimado em R$ 207,02 milhões por ano.
+- Ainda não existe decisão final sobre a solução funcional dos ex-FAEP/FAETEC.
+
+5. HISTÓRICO RECENTE
+- 10/08/2026: e-mail e dois anexos incluídos pela ASSJUR.
+- 11/08/2026: Termo de Cancelamento de Documento 138771402 na ASSJUR; motivo e conteúdo não estavam públicos.
+- 15/08/2026: Despacho 139135021 da ASSJUR encaminha o processo à PGE/PROPAG.
+- 15/08/2026: PGE/PG02/SECEXEC/PROPAG registra o recebimento às 18:04.
+
+6. CONCLUSÃO
+O processo entrou em uma etapa jurídica mais relevante. A mudança concreta é a chegada do caso à estrutura da PGE ligada ao PROPAG. O próximo documento que poderá alterar significativamente a avaliação será a manifestação da PGE/PROPAG.
+
+Como publicar:
+- Substitua os arquivos do repositório GitHub pela versão deste pacote.
+- Faça commit e aguarde a atualização do GitHub Pages.
