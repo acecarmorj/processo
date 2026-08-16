@@ -6,172 +6,151 @@
     <meta name="theme-color" content="#075a7c" />
     <meta
       name="description"
-      content="Painel público de acompanhamento do processo dos servidores ex-FAEP/FAETEC."
+      content="Acompanhamento simples e objetivo do processo dos servidores ex-FAEP/FAETEC."
     />
-    <title>Painel ex-FAEP / FAETEC</title>
-    <link rel="stylesheet" href="./styles.css?v=20260724-1" />
+    <title>Processo ex-FAEP / FAETEC</title>
+    <link rel="stylesheet" href="./styles.css?v=20260816-3" />
   </head>
   <body>
-    <header class="topbar">
-      <div class="topbar-inner">
+    <header class="site-header">
+      <div class="wrap header-content">
         <div>
-          <p class="process-number">SEI-030029/004475/2023</p>
-          <h1>Painel ex-FAEP / FAETEC</h1>
-          <p class="header-credit">Desenvolvido por @almir.lk</p>
+          <p class="eyebrow">SEI-030029/004475/2023</p>
+          <h1>Processo ex-FAEP / FAETEC</h1>
+          <p class="subtitle">Entenda rapidamente onde o processo está e o que falta acontecer.</p>
         </div>
         <span id="statusBadge" class="status-badge">Carregando</span>
       </div>
     </header>
 
-    <main>
-      <nav class="actions" aria-label="Ações do painel">
-        <button id="refreshButton" class="button primary" type="button">
-          Recarregar painel
-        </button>
-        <button id="historyButton" class="button secondary" type="button">
-          Resumo histórico
-        </button>
-        <a
-          id="officialLink"
-          class="button secondary"
-          href="#"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Consultar no SEI
+    <main class="wrap">
+      <nav class="actions" aria-label="Ações">
+        <button id="refreshButton" class="button primary" type="button">Atualizar</button>
+        <a id="officialLink" class="button secondary" href="#" target="_blank" rel="noreferrer">
+          Ver no SEI
+        </a>
+        <a id="whatsappShare" class="button secondary" href="#" target="_blank" rel="noreferrer">
+          Compartilhar
         </a>
       </nav>
 
-      <div id="errorMessage" class="message error hidden" role="alert"></div>
-      <div id="newsMessage" class="message news hidden" aria-live="polite"></div>
+      <div id="errorMessage" class="notice error hidden" role="alert"></div>
+      <div id="newsMessage" class="notice hidden" aria-live="polite"></div>
 
-      <section class="current-status" aria-labelledby="phaseTitle">
-        <div>
-          <p class="label">Situação atual</p>
-          <h2 id="phaseTitle">Consultando dados</h2>
-          <p id="phaseExplanation" class="lead">
-            Aguarde enquanto o relatório mais recente é carregado.
-          </p>
+      <section class="hero-card" aria-labelledby="currentTitle">
+        <div class="hero-topline">
+          <p class="eyebrow">Situação atual</p>
+          <span id="verdictBadge" class="stage-badge">Em análise</span>
         </div>
-        <dl class="facts">
+        <h2 id="currentTitle">Consultando o processo</h2>
+        <p id="currentSummary" class="hero-summary">Aguarde um instante.</p>
+        <div class="answer-box">
+          <strong id="directAnswer">Ainda não há decisão final.</strong>
+          <span id="directAnswerDetail"></span>
+        </div>
+        <dl class="status-facts">
           <div>
-            <dt>Setor onde o processo está</dt>
-            <dd id="currentUnit">-</dd>
+            <dt>Onde está</dt>
+            <dd id="currentUnit">—</dd>
           </div>
           <div>
-            <dt>Última movimentação no SEI</dt>
-            <dd id="lastMovement">-</dd>
+            <dt>Último movimento</dt>
+            <dd id="lastMovement">—</dd>
           </div>
           <div>
-            <dt>Última novidade encontrada no SEI</dt>
-            <dd id="generatedAt">-</dd>
-            <small>O painel procura novos movimentos e documentos automaticamente.</small>
-          </div>
-          <div>
-            <dt>Última verificação no SEI</dt>
-            <dd id="lastCheckedAt">-</dd>
-            <small>Horário da consulta mais recente ao portal oficial, mesmo sem andamento novo.</small>
+            <dt>Última conferência</dt>
+            <dd id="lastCheckedAt">—</dd>
           </div>
         </dl>
       </section>
 
-      <section class="panel" aria-labelledby="analysisTitle">
-        <div class="section-header">
-          <div>
-            <p class="label">Última novidade oficial</p>
-            <h2 id="analysisTitle">O que aconteceu</h2>
-          </div>
-          <span class="fact-badge">Fato do SEI</span>
-        </div>
-        <div id="verdictBox" class="verdict-box">
-          <p class="label">Resultado direto</p>
-          <div class="verdict-line">
-            <span id="verdictBadge" class="verdict-badge">Analisando</span>
-            <strong id="verdictText">Aguarde a leitura dos documentos.</strong>
-          </div>
-        </div>
-        <p class="label analysis-label">O que aconteceu</p>
-        <p id="analysisText" class="analysis-text">Carregando análise.</p>
-        <div id="diagnosisBox" class="diagnosis-box hidden">
-          <p class="label">Leitura prática</p>
-          <p id="diagnosisText"></p>
-        </div>
+      <section class="three-answers" aria-label="Resumo em três pontos">
+        <article class="answer-card happened">
+          <span class="card-number">1</span>
+          <h2>O que aconteceu?</h2>
+          <p id="whatHappened">Carregando.</p>
+        </article>
+        <article class="answer-card meaning">
+          <span class="card-number">2</span>
+          <h2>O que isso significa?</h2>
+          <p id="whatItMeans">Carregando.</p>
+        </article>
+        <article class="answer-card pending">
+          <span class="card-number">3</span>
+          <h2>O que falta?</h2>
+          <p id="whatIsMissing">Carregando.</p>
+        </article>
+      </section>
 
-        <div class="analysis-grid">
+      <section class="panel" aria-labelledby="quickAnswersTitle">
+        <div class="section-heading">
           <div>
-            <h3>Ponto positivo</h3>
-            <ul id="signalsList"></ul>
-          </div>
-          <div>
-            <h3>Ponto negativo</h3>
-            <ul id="risksList"></ul>
-          </div>
-          <div>
-            <h3>Próximo movimento esperado</h3>
-            <ul id="nextStepsList"></ul>
+            <p class="eyebrow">Resposta rápida</p>
+            <h2 id="quickAnswersTitle">Sem juridiquês</h2>
           </div>
         </div>
-        <div id="conclusionBox" class="conclusion-box">
-          <p class="label">Conclusão</p>
-          <p id="conclusionText">Aguardando a análise mais recente.</p>
+        <div class="quick-grid">
+          <div><span>A migração foi aprovada?</span><strong class="no">Ainda não.</strong></div>
+          <div><span>O processo avançou?</span><strong>Sim. Chegou à PGE.</strong></div>
+          <div><span>Foi arquivado ou negado?</span><strong>Não.</strong></div>
+          <div><span>Qual é o próximo passo?</span><strong id="nextStepShort">Manifestação da PGE.</strong></div>
         </div>
       </section>
 
-      <details class="panel explain-panel">
-        <summary class="explain-summary">
+      <section class="panel" aria-labelledby="numbersTitle">
+        <div class="section-heading">
           <div>
-            <p class="label">Para quem deseja entender mais</p>
-            <h2>Possibilidades e sinais a observar</h2>
+            <p class="eyebrow">Números já calculados</p>
+            <h2 id="numbersTitle">Tamanho da proposta</h2>
           </div>
-          <span class="explain-action">Abrir análise completa</span>
-        </summary>
-        <div class="explain-content">
-          <div class="explain-grid">
-            <article class="explain-card">
-              <h3>Por que esse setor importa</h3>
-              <p id="unitMeaning"></p>
-            </article>
-            <article class="explain-card">
-              <h3>O que o documento mais novo pode indicar</h3>
-              <p id="documentMeaning"></p>
-            </article>
-          </div>
-          <div class="scenario-block">
-            <h3>Caminhos possíveis agora</h3>
-            <div id="scenarioCards" class="scenario-cards"></div>
-          </div>
-          <div class="watch-block">
-            <h3>O que observar no próximo despacho</h3>
-            <ul id="watchList"></ul>
+          <span class="source-label">Dados do processo</span>
+        </div>
+        <div id="keyNumbers" class="number-grid"></div>
+        <p class="section-note">
+          Esses valores são estimativas registradas no processo. Não significam que o gasto foi autorizado.
+        </p>
+      </section>
+
+      <section class="panel" aria-labelledby="milestonesTitle">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Datas importantes</p>
+            <h2 id="milestonesTitle">O caminho até aqui</h2>
           </div>
         </div>
-      </details>
+        <div id="milestones" class="milestones"></div>
+      </section>
 
       <section class="panel" aria-labelledby="documentsTitle">
-        <div class="section-header">
+        <div class="section-heading">
           <div>
-            <p class="label">Documentos oficiais</p>
-            <h2 id="documentsTitle">Despachos e pareceres</h2>
-            <p class="section-hint">(clique para visualizar)</p>
+            <p class="eyebrow">Leitura selecionada</p>
+            <h2 id="documentsTitle">Documentos que realmente mudaram o processo</h2>
           </div>
-          <span id="documentCount" class="count"></span>
+          <span id="keyDocumentCount" class="source-label"></span>
         </div>
-        <div id="documents" class="documents"></div>
+        <div id="keyDocuments" class="key-documents"></div>
       </section>
 
-      <section class="panel" aria-labelledby="timelineTitle">
-        <div class="section-header">
+      <details class="panel details-panel">
+        <summary>
           <div>
-            <p class="label">Linha do tempo</p>
-            <h2 id="timelineTitle">Últimos andamentos</h2>
+            <p class="eyebrow">Consulta completa</p>
+            <h2>Ver todos os andamentos e documentos</h2>
           </div>
-          <span id="movementCount" class="count"></span>
+          <span>abrir</span>
+        </summary>
+        <div class="details-content">
+          <h3>Andamentos do SEI</h3>
+          <div id="timeline" class="timeline"></div>
+          <button id="showMoreButton" class="button secondary full" type="button">
+            Mostrar mais andamentos
+          </button>
+
+          <h3 class="documents-heading">Todos os documentos públicos recentes</h3>
+          <div id="allDocuments" class="all-documents"></div>
         </div>
-        <div id="timeline" class="timeline"></div>
-        <button id="showMoreButton" class="button text-button" type="button">
-          Mostrar mais andamentos
-        </button>
-      </section>
+      </details>
 
       <footer class="site-footer">
         <div class="access-counter">
@@ -192,60 +171,17 @@
           <span>Visitantes únicos estimados</span>
           <strong id="uniqueVisitorCount" aria-live="polite">Carregando...</strong>
         </div>
+        <p>Resumo informativo baseado nos documentos públicos do SEI. Não substitui decisão oficial.</p>
         <p class="footer-credit">Desenvolvido por @almir.lk</p>
       </footer>
     </main>
-
-    <dialog id="historyDialog">
-      <header class="dialog-header">
-        <div>
-          <p class="label">Do início até agora</p>
-          <h2>Resumo histórico</h2>
-        </div>
-        <button id="closeHistoryButton" class="button close" type="button">
-          Fechar
-        </button>
-      </header>
-      <div id="historyContent" class="history-content"></div>
-    </dialog>
-
-    <div
-      id="documentTransition"
-      class="transition-overlay hidden"
-      role="status"
-      aria-live="polite"
-    >
-      <div class="transition-card">
-        <p class="label">Nossa luta continua</p>
-        <p id="transitionMessage" class="transition-message">
-          Compartilhe com um colega ex-FAEP/FAETEC. Mais pessoas acompanhando
-          os fatos direto no SEI deixam a categoria mais unida e bem informada.
-        </p>
-        <a
-          id="whatsappShare"
-          class="button whatsapp-share"
-          href="#"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Compartilhar com um colega
-        </a>
-        <p class="transition-countdown">
-          <span>O painel será exibido em</span>
-          <strong id="transitionSeconds">6</strong>
-          segundos...
-        </p>
-      </div>
-    </div>
 
     <template id="movementTemplate">
       <article class="movement">
         <span class="movement-dot"></span>
         <div>
-          <div class="movement-heading">
-            <time></time>
-            <span class="unit"></span>
-          </div>
+          <time></time>
+          <strong class="unit"></strong>
           <p></p>
         </div>
       </article>
@@ -255,30 +191,22 @@
       <details class="document">
         <summary>
           <div>
-            <strong class="document-number"></strong>
-            <span class="document-type"></span>
-          </div>
-          <div class="document-meta">
-            <span class="document-unit"></span>
-            <time></time>
+            <strong class="document-title"></strong>
+            <span class="document-meta"></span>
           </div>
         </summary>
         <div class="document-content">
           <p class="document-explanation"></p>
           <details class="original-text">
-            <summary>Ver trecho original</summary>
+            <summary>Ver trecho do documento</summary>
             <p class="document-excerpt"></p>
           </details>
-          <a class="document-link" target="_blank" rel="noreferrer">
-            Abrir documento no SEI
-          </a>
-          <span class="locked-message">
-            Documento ainda não liberado para leitura pública.
-          </span>
+          <a class="document-link" target="_blank" rel="noreferrer">Abrir documento no SEI</a>
+          <span class="locked-message">Conteúdo não disponível para leitura pública.</span>
         </div>
       </details>
     </template>
 
-    <script type="module" src="./app.js?v=20260724-1"></script>
+    <script type="module" src="./app.js?v=20260816-3"></script>
   </body>
 </html>

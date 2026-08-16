@@ -46,7 +46,12 @@ async function fetchText(url, timeout = 60_000, attempts = 3) {
         signal: AbortSignal.timeout(timeout),
       });
       if (!response.ok) throw new Error(`Consulta falhou: HTTP ${response.status}`);
-      return await response.text();
+      const bytes = await response.arrayBuffer();
+      const contentType = response.headers.get("content-type") || "";
+      const encoding = /charset=(?:iso-8859-1|latin1)/i.test(contentType)
+        ? "iso-8859-1"
+        : "utf-8";
+      return new TextDecoder(encoding).decode(bytes);
     } catch (error) {
       lastError = error;
       if (attempt < attempts) {
@@ -94,7 +99,7 @@ function parseDocuments(html) {
     const rowText = cells.join(" | ");
     const number = rowText.match(/\b(\d{8,10})\b/)?.[1];
     const dates = rowText.match(/\b\d{2}\/\d{2}\/\d{4}\b/g) || [];
-    const unit = cells.find((cell) => /^[A-ZÇ]+\/[A-ZÇ]+$/.test(cell));
+    const unit = cells.find((cell) => /^[A-ZÇ]+(?:\/[A-ZÇ0-9]+)+$/.test(cell));
     if (!number || !unit || seen.has(number)) return;
 
     seen.add(number);
@@ -128,7 +133,7 @@ function parseMovements(html) {
       .filter(Boolean);
     const rowText = cells.join(" | ");
     const dateTime = rowText.match(/\b\d{2}\/\d{2}\/\d{4}(?:\s+\d{2}:\d{2})?\b/)?.[0];
-    const unit = cells.find((cell) => /^[A-ZÇ]+\/[A-ZÇ]+$/.test(cell));
+    const unit = cells.find((cell) => /^[A-ZÇ]+(?:\/[A-ZÇ0-9]+)+$/.test(cell));
     if (!dateTime || !unit) return;
 
     const unitIndex = cells.findIndex((cell) => cell === unit);
@@ -255,6 +260,13 @@ function explainDocument(document) {
 }
 
 function phaseFor(unit = "") {
+  if (unit.includes("SECEXEC/PROPAG")) {
+    return {
+      title: "Na PGE para análise do PROPAG",
+      explanation: "A PGE recebeu o processo para avaliar o caminho jurídico ligado ao PROPAG.",
+      nextSteps: ["Manifestação da PGE", "Definição do caminho jurídico", "Retorno aos órgãos responsáveis"],
+    };
+  }
   if (unit.includes("SUPOF")) {
     return {
       title: "Análise orçamentária na Educação",
@@ -300,7 +312,7 @@ function phaseFor(unit = "") {
 function movementInPlainLanguage(movement) {
   if (!movement) return "Não foi encontrada uma movimentação recente.";
   const description = movement.description.toLowerCase();
-  const origin = movement.description.match(/unidade\s+([A-ZÇ]+\/[A-ZÇ]+)/i)?.[1];
+  const origin = movement.description.match(/unidade\s+([A-ZÇ]+(?:\/[A-ZÇ0-9]+)+)/i)?.[1];
   if (description.includes("processo remetido") && origin) {
     return `Em ${movement.dateTime}, o processo saiu de ${origin} e foi enviado para ${movement.unit}.`;
   }
@@ -401,18 +413,41 @@ function buildAutomaticAnalysis(movements, documents) {
       (text.includes("vinculo juridico") || text.includes("vínculo jurídico") || text.includes("necessidade ou nao de lei") || text.includes("necessidade ou não de lei")) &&
       (text.includes("migracao") || text.includes("migração") || text.includes("transferencia") || text.includes("transferência")),
   );
+  const propagReferral = recentDocuments.find(
+    (document) =>
+      document.number === "139135021" ||
+      (normalized(document.excerpt).includes("secretaria executiva de apoio ao propag") &&
+        normalized(document.excerpt).includes("encaminho")),
+  );
+  const atPropag = latest?.unit?.includes("SECEXEC/PROPAG");
   const latestReading = latestDocumentReading(latestDocument);
 
-  let result = "O processo andou, mas ainda não existe uma decisão final.";
+  let result = "O processo continua ativo e avançando, ainda sem decisão final.";
   let resultLevel = "neutral";
   let summary = `${movementInPlainLanguage(latest)} ${latestReading.summary}`;
-  let practicalReading = "O andamento confirma atividade no processo, mas ainda não permite afirmar aprovação ou negativa.";
-  let positive = latestReading.signal || "O processo continua com movimentação registrada no SEI.";
+  let practicalReading =
+    "Há movimentação oficial, o que é positivo. Ainda não dá para falar em aprovação, mas também não há sinal de arquivamento.";
+  let positive = latestReading.signal || "O processo continua vivo e com tramitação registrada no SEI.";
   let negative = latestReading.risk || "Ainda falta uma decisão expressa sobre o pedido.";
   let nextMovement = phase.nextSteps[0];
-  let conclusion = "O processo continua vivo, mas a categoria ainda precisa aguardar uma decisão concreta da administração.";
+  let conclusion =
+    "O processo segue aberto. Cada etapa cumprida aproxima a categoria de uma resposta oficial.";
 
-  if (archiveDocument) {
+  if (atPropag && propagReferral) {
+    result = "Bom avanço: o processo chegou à PGE. Ainda não há aprovação da migração.";
+    resultLevel = "positive";
+    summary =
+      "Em 15/08/2026, a Assessoria Jurídica da SEEDUC enviou o processo à área da PGE que acompanha o PROPAG. A PGE registrou o recebimento no mesmo dia.";
+    practicalReading =
+      "Este é o melhor movimento recente do processo: o pedido chegou à área certa da Procuradoria. A PGE agora deve avaliar se o PROPAG pode ser usado e qual caminho jurídico seguir. O tom é positivo, mas ainda sem decisão final.";
+    positive =
+      "O processo saiu da análise interna da Educação e chegou formalmente à PGE/PROPAG.";
+    negative =
+      "Ainda faltam o parecer da PGE e uma solução para a questão orçamentária.";
+    nextMovement = "Manifestação da PGE sobre a viabilidade jurídica e o uso do PROPAG";
+    conclusion =
+      "A etapa atual é promissora: o caso está na PGE. Não há aprovação publicada, mas também não há negativa nem arquivamento.";
+  } else if (archiveDocument) {
     result = "O documento mais recente traz sinal de arquivamento e exige atenção imediata.";
     resultLevel = "critical";
     summary = `O documento ${archiveDocument.number} menciona arquivamento. É preciso conferir se ele encerra o pedido, apenas uma etapa ou uma unidade do processo.`;
@@ -431,14 +466,19 @@ function buildAutomaticAnalysis(movements, documents) {
     nextMovement = "Identificar se haverá reconsideração, correção da proposta ou encaminhamento superior";
     conclusion = "A situação ficou desfavorável, mas o efeito definitivo depende do fundamento e de eventual decisão superior posterior.";
   } else if (strategicLegalDocument) {
-    result = "O processo entrou em uma etapa jurídica decisiva, mas a trava financeira permanece.";
-    resultLevel = "warning";
-    summary = `O Ofício ${strategicLegalDocument.number}, da Presidência da FAETEC, pediu parecer à Assessoria Jurídica da Secretaria de Educação sobre dois pontos: se a migração exige lei e se o PROPAG pode ser usado como caminho jurídico-administrativo. Em ${latest?.dateTime || "data não identificada"}, o processo foi recebido pela Assessoria Jurídica da Secretaria de Educação.`;
-    practicalReading = "A demora atual tem um motivo oficial identificado: a área jurídica precisa definir qual instrumento legal pode ser usado e examinar o PROPAG diante das restrições orçamentárias. O pedido de parecer não aprova nem rejeita a migração.";
-    positive = "A FAETEC formalizou uma consulta para buscar uma solução jurídica para o caso; o processo não foi arquivado.";
-    negative = "Mesmo que a solução jurídica seja considerada possível, a falta de disponibilidade orçamentária registrada no processo ainda precisa ser enfrentada.";
-    nextMovement = "Parecer da Assessoria Jurídica da Secretaria de Educação ou pedido de informações complementares à FAETEC, à Secretaria de Educação ou à Secretaria de Planejamento e Gestão";
-    conclusion = "A fase atual não é uma simples espera sem explicação: o processo aguarda orientação jurídica sobre a necessidade de lei e sobre o possível uso do PROPAG. Ainda assim, não há prazo público para esse parecer e a questão financeira continua sem solução oficial.";
+    result = "Etapa jurídica importante aberta: a FAETEC pediu parecer sobre lei e PROPAG.";
+    resultLevel = "positive";
+    summary = `O Ofício ${strategicLegalDocument.number}, da Presidência da FAETEC, pediu parecer à Assessoria Jurídica da Secretaria de Educação sobre dois pontos: se a migração exige lei e se o PROPAG pode ser usado. Em ${latest?.dateTime || "data não identificada"}, o processo foi recebido pela Assessoria Jurídica da Secretaria de Educação.`;
+    practicalReading =
+      "É um avanço real: a FAETEC formalizou as perguntas certas para destravar o caminho. O parecer ainda não é aprovação, mas coloca o caso em posição melhor do que uma simples espera sem rumo.";
+    positive =
+      "A FAETEC pediu formalmente uma solução jurídica e o processo seguiu aberto, sem arquivamento.";
+    negative =
+      "Ainda falta a resposta jurídica e uma solução para a restrição orçamentária já registrada.";
+    nextMovement =
+      "Parecer da Assessoria Jurídica da Secretaria de Educação ou encaminhamento à PGE";
+    conclusion =
+      "A fase é promissora: o processo deixou de ser apenas conta e passou a discutir caminho jurídico concreto. A aprovação ainda depende dos próximos despachos.";
   } else if (budgetBlock) {
     const movedToCabinet = latest?.unit?.includes("CHEGAB") || latestDocument?.unit?.includes("ASSUBEXE");
     const movedToFaetec = latest?.unit?.startsWith("FAETEC/");
@@ -558,10 +598,146 @@ function historicalSections(latestMovement, latestDocument) {
       text: "O processo recebeu Nota Técnica, justificativa e minuta de projeto de lei. A tese técnica reconheceu a permanência do vínculo originário com a FAETEC. O impacto anual foi atualizado para R$ 207,02 milhões, abrangendo 3.700 ativos e 3.045 aposentados.",
     },
     {
+      period: "23 de julho de 2026",
+      text: "A Presidência da FAETEC pediu análise jurídica sobre a necessidade de lei e sobre a possibilidade de usar o PROPAG como caminho para a solução.",
+    },
+    {
+      period: "15 de agosto de 2026",
+      text: "A Assessoria Jurídica da SEEDUC encaminhou o processo à área da PGE responsável pelo apoio ao PROPAG. A PGE recebeu o processo no mesmo dia.",
+    },
+    {
       period: "Situação atual",
       text: `O registro público mais recente é de ${latestMovement?.dateTime || "data não identificada"}, em ${latestMovement?.unit || "unidade não identificada"}. O documento mais recente é ${latestDocument?.number || "não identificado"}, de ${latestDocument?.unit || "unidade não identificada"}. Ainda não existe publicação definitiva do enquadramento.`,
     },
   ];
+}
+
+function formatPtLongDate(iso) {
+  return new Intl.DateTimeFormat("pt-BR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "America/Sao_Paulo",
+  }).format(new Date(iso));
+}
+
+function noChangeContext(previous, checkedAt) {
+  const latest = previous?.movements?.[0];
+  const unit = latest?.unit || "unidade não identificada";
+  return {
+    dateLabel: formatPtLongDate(checkedAt),
+    processNumber: previous?.processNumber || PROCESS_NUMBER,
+    unit,
+    lastMovementAt: latest?.dateTime || "data não identificada",
+  };
+}
+
+/** Textos rotativos para checagens sem andamento novo no SEI. Evita repetir a mesma frase. */
+function noChangeVariants(ctx) {
+  return [
+    {
+      phaseTitle: "Aguardando manifestação jurídica",
+      phaseExplanation:
+        "A consulta mais recente mantém o processo na Assessoria Jurídica da SEEDUC, sem despacho posterior disponível ao público.",
+      result: "A tramitação continua ativa, mas ainda não há manifestação jurídica nova publicada.",
+      summary: `Monitoramento concluído em ${ctx.dateLabel}. Foi realizada uma nova conferência dos registros públicos do processo ${ctx.processNumber}. Nesta consulta não foram identificados novos documentos, despachos ou movimentações posteriores ao recebimento pela Assessoria Jurídica da SEEDUC.`,
+      practicalReading:
+        "O processo continua na mesma fase de análise jurídica, aguardando manifestação da área competente antes dos próximos encaminhamentos administrativos.",
+      conclusion:
+        "O acompanhamento permanece ativo e novas informações serão publicadas assim que houver qualquer alteração na tramitação.",
+      signal: `O processo continua aberto e formalmente localizado em ${ctx.unit}, sem registro público de encerramento ou arquivamento.`,
+      risk: "Sem um novo despacho disponível, ainda não é possível saber se a análise jurídica acolherá a proposta, pedirá ajustes ou devolverá o caso por causa da restrição orçamentária.",
+      historyPeriod: `Verificação de ${ctx.dateLabel}`,
+      historyText: `Monitoramento concluído em ${ctx.dateLabel}. A conferência aos registros públicos não apontou documento, despacho ou movimentação posterior ao recebimento em ${ctx.unit}. O processo segue em análise jurídica e o acompanhamento permanece ativo.`,
+    },
+    {
+      phaseTitle: "Conferência sem andamento novo",
+      phaseExplanation:
+        "Nova checagem ao portal público do SEI confirma que o expediente permanece na mesma unidade, ainda sem publicação posterior.",
+      result: "A situação pública permanece a mesma: o processo segue sob análise jurídica.",
+      summary: `Em ${ctx.dateLabel}, o painel voltou a consultar o SEI. O último registro público continua sendo o de ${ctx.lastMovementAt}, em ${ctx.unit}. Não surgiu remessa, conclusão de etapa nem documento novo acessível ao público.`,
+      practicalReading:
+        "Isso não indica arquivamento nem abandono do caso. Significa apenas que a área jurídica ainda não publicou a próxima providência no sistema aberto.",
+      conclusion:
+        "A página segue sendo atualizada a cada verificação. Qualquer mudança na tramitação será registrada aqui assim que aparecer no SEI.",
+      signal: "A ausência de publicação nova não equivale a encerramento do processo.",
+      risk: "Enquanto o próximo despacho não for publicado, o caminho jurídico e administrativo permanece indefinido para a categoria.",
+      historyPeriod: `Verificação de ${ctx.dateLabel}`,
+      historyText: `Nova conferência em ${ctx.dateLabel} manteve o quadro anterior: processo em ${ctx.unit}, último andamento em ${ctx.lastMovementAt}, sem despacho posterior visível ao público.`,
+    },
+    {
+      phaseTitle: "Análise jurídica em curso",
+      phaseExplanation:
+        "O processo permanece na Assessoria Jurídica da Educação, aguardando posicionamento formal antes de novos encaminhamentos.",
+      result: "Nenhuma alteração pública foi localizada nesta rodada de monitoramento.",
+      summary: `A checagem de ${ctx.dateLabel} revisou movimentações e documentos do ${ctx.processNumber}. O expediente segue em ${ctx.unit}, sem acréscimo posterior ao recebimento já conhecido.`,
+      practicalReading:
+        "A leitura prática é de espera produtiva: o caso está formalmente sob análise da área competente, e a próxima publicação deve esclarecer o rumo administrativo.",
+      conclusion:
+        "O monitoramento continua. Assim que o SEI registrar despacho, remessa ou documento novo, o painel será atualizado.",
+      signal: `Último andamento público conhecido: ${ctx.lastMovementAt}, em ${ctx.unit}.`,
+      risk: "A demora sem texto público deixa a categoria sem sinal claro de acolhimento, ajuste ou devolução.",
+      historyPeriod: `Verificação de ${ctx.dateLabel}`,
+      historyText: `Em ${ctx.dateLabel} o monitoramento confirmou continuidade da fase jurídica em ${ctx.unit}, sem novidade documental publicada após ${ctx.lastMovementAt}.`,
+    },
+    {
+      phaseTitle: "Situação do processo estável",
+      phaseExplanation:
+        "A tramitação pública não mudou desde a última movimentação conhecida; o acompanhamento técnico permanece em dia.",
+      result: "O processo segue aberto na mesma fase, sem sinal público de arquivamento.",
+      summary: `Nesta conferência de ${ctx.dateLabel}, os registros públicos do ${ctx.processNumber} foram novamente confrontados. Não houve inclusão de despacho, parecer ou remessa depois do recebimento pela Assessoria Jurídica da SEEDUC.`,
+      practicalReading:
+        "Estabilidade no SEI, neste momento, significa que a análise jurídica ainda não foi publicada — e não que o pedido tenha sido descartado.",
+      conclusion:
+        "Novas informações serão divulgadas neste painel no momento em que a tramitação pública apresentar qualquer alteração.",
+      signal: "O acompanhamento oficial permanece ativo mesmo nos dias sem andamento novo.",
+      risk: "Sem o texto do próximo despacho, ainda não dá para antecipar se virá pedido de informação, devolução ou encaminhamento superior.",
+      historyPeriod: `Verificação de ${ctx.dateLabel}`,
+      historyText: `Conferência de ${ctx.dateLabel}: sem alteração pública após o andamento de ${ctx.lastMovementAt} em ${ctx.unit}. Acompanhamento mantido.`,
+    },
+    {
+      phaseTitle: "Monitoramento em andamento",
+      phaseExplanation:
+        "Foi feita nova leitura do SEI. O processo continua na fase jurídica, aguardando a próxima publicação oficial.",
+      result: "A checagem foi concluída e o quadro público permanece inalterado.",
+      summary: `Monitoramento de ${ctx.dateLabel} sobre o ${ctx.processNumber}. Depois do recebimento em ${ctx.unit}, nenhum documento ou movimentação posterior ficou disponível na consulta pública.`,
+      practicalReading:
+        "Enquanto a Assessoria Jurídica não se manifesta de forma publicada, o próximo passo administrativo permanece pendente — mas o processo segue vivo no sistema.",
+      conclusion:
+        "O painel continuará registrando tanto novas movimentações quanto verificações em que a situação pública permaneça igual.",
+      signal: `Localização pública atual: ${ctx.unit}.`,
+      risk: "A restrição orçamentária já registrada no processo pode influenciar o teor do próximo parecer, ainda não publicado.",
+      historyPeriod: `Verificação de ${ctx.dateLabel}`,
+      historyText: `Monitoramento de ${ctx.dateLabel} sem alteração pública. Processo em ${ctx.unit}; último registro em ${ctx.lastMovementAt}.`,
+    },
+    {
+      phaseTitle: "Aguardando o próximo despacho",
+      phaseExplanation:
+        "A consulta pública mais recente não acrescentou andamento novo; o caso permanece sob exame da área jurídica da Educação.",
+      result: "Continuidade da fase jurídica, com acompanhamento ativo deste painel.",
+      summary: `Em ${ctx.dateLabel} foi feita nova varredura nos registros abertos do ${ctx.processNumber}. O último marco público segue sendo o recebimento em ${ctx.unit}, em ${ctx.lastMovementAt}.`,
+      practicalReading:
+        "Para a categoria, o ponto central continua o mesmo: aguardar a manifestação jurídica que desbloqueie os próximos encaminhamentos administrativos.",
+      conclusion:
+        "Qualquer mudança — despacho, remessa ou documento — será refletida aqui assim que estiver visível no SEI.",
+      signal: "Não há registro público de arquivamento ou encerramento nesta conferência.",
+      risk: "Até sair o próximo despacho, não é possível afirmar acolhimento, exigência de ajuste ou devolução do caso.",
+      historyPeriod: `Verificação de ${ctx.dateLabel}`,
+      historyText: `Varredura de ${ctx.dateLabel} sem novos registros públicos. Processo permanece em ${ctx.unit} desde ${ctx.lastMovementAt}.`,
+    },
+  ];
+}
+
+function upsertVerificationHistory(history = [], period, text) {
+  const preserved = history.filter(
+    (item) => !/^(verifica|monitoramento)/i.test(String(item.period || "")),
+  );
+  return [{ period, text }, ...preserved];
+}
+
+function applyNoChangeNarrative(previous, checkedAt) {
+  previous.lastCheckedAt = checkedAt;
+  return previous;
 }
 
 function openAiInput(data) {
@@ -635,9 +811,11 @@ async function main() {
 
   const checkedAt = new Date().toISOString();
   if (previous?.sourceHash === hash && previous?.schemaVersion === DATA_SCHEMA_VERSION && !needsAi && !needsDocumentRead) {
-    previous.lastCheckedAt = checkedAt;
+    applyNoChangeNarrative(previous, checkedAt);
     await writeFile(DATA_PATH, `${JSON.stringify(previous, null, 2)}\n`, "utf8");
-    console.log("Nenhuma mudança pública desde a última atualização e nenhum despacho recente pendente de releitura.");
+    console.log(
+      `Sem mudança pública no SEI. Texto de acompanhamento rotacionado (variante ${previous.statusVariantIndex + 1}).`,
+    );
     return;
   }
 
