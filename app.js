@@ -76,9 +76,9 @@ const KEY_DOCUMENTS = {
       "A Assessoria Jurídica da Educação encaminhou o processo à área da PGE ligada ao PROPAG. É o avanço mais concreto até agora, ainda sem aprovação final.",
   },
   "139134917": {
-    title: "Despacho da PGE — abre à meia-noite",
+    title: "Resposta da PGE sobre PROPAG",
     meaning:
-      "A PGE já registrou um despacho em 17/08/2026. O texto ainda está fechado e só deve abrir à meia-noite. Até lá, não dá para afirmar o que foi decidido.",
+      "A PGE concluiu que o PROPAG não pode ser usado como solução com os documentos atuais. O processo volta à FAETEC e os quesitos sobre lei ficam com a ASSJUR/SECTI.",
   },
 };
 
@@ -115,8 +115,8 @@ const MILESTONES = [
   },
   {
     date: "17/08/2026",
-    title: "PGE já despachou",
-    text: "A Procuradoria registrou um despacho oficial. O texto ainda está fechado e só deve abrir à meia-noite.",
+    title: "PGE respondeu sobre PROPAG",
+    text: "A Procuradoria publicou despacho dizendo que o PROPAG não resolve o caso no formato atual. O processo volta à FAETEC.",
   },
 ];
 
@@ -210,43 +210,43 @@ function isAtPropag(data) {
   return data.movements[0]?.unit?.includes("SECEXEC/PROPAG");
 }
 
-function pendingPgeDispatch(data) {
-  return data.documents.find(
-    (document) =>
-      document.number === "139134917" ||
-      (document.unit?.includes("SECEXEC/PROPAG") &&
-        /despacho/i.test(document.type || "") &&
-        (!document.publicUrl || !document.excerpt)),
-  );
+function pgeDispatchDocument(data) {
+  return data.documents.find((document) => document.number === "139134917");
+}
+
+function isPgeDispatchOpen(data) {
+  const document = pgeDispatchDocument(data);
+  return Boolean(document?.publicUrl && document?.excerpt);
 }
 
 function renderCurrentStatus(data) {
   const latest = data.movements[0];
   const atPropag = isAtPropag(data);
-  const pendingDispatch = pendingPgeDispatch(data);
+  const pgeDispatch = pgeDispatchDocument(data);
+  const pgeOpen = isPgeDispatchOpen(data);
 
   ui.status.textContent = "Atualizado";
-  ui.verdictBadge.textContent = pendingDispatch
-    ? "PGE já despachou"
+  ui.verdictBadge.textContent = pgeOpen
+    ? "Resposta da PGE"
     : atPropag
       ? "Bom avanço"
       : "Em análise";
-  ui.currentTitle.textContent = pendingDispatch
-    ? "A PGE já fez um despacho. O texto abre à meia-noite."
+  ui.currentTitle.textContent = pgeOpen
+    ? "A PGE respondeu: PROPAG não resolve este caso no formato atual"
     : atPropag
       ? "Boa notícia: o processo chegou à PGE para análise do PROPAG"
       : data.analysis?.phase?.title || "O processo continua em análise";
-  ui.currentSummary.textContent = pendingDispatch
-    ? `Em 17/08/2026, a área da PGE ligada ao PROPAG registrou o Despacho ${pendingDispatch.number}. O texto ainda está fechado e só deve abrir à meia-noite.`
+  ui.currentSummary.textContent = pgeOpen
+    ? `Em 17/08/2026, a PGE publicou o Despacho ${pgeDispatch.number}. A área do PROPAG concluiu que não há como usar o programa como solução com os documentos atuais.`
     : atPropag
       ? "Em 15/08/2026, a PGE recebeu o processo. Isso coloca o caso na área certa para avaliar o uso do PROPAG. Ainda não é a decisão final, mas é um avanço concreto."
       : data.analysis?.summary || plainMovement(latest);
 
-  ui.directAnswer.textContent = pendingDispatch
-    ? "Ainda não dá para ler o conteúdo, mas a PGE já atuou."
+  ui.directAnswer.textContent = pgeOpen
+    ? "Não houve aprovação da migração."
     : "Ainda não há aprovação final, mas o processo avançou.";
-  ui.directAnswerDetail.textContent = pendingDispatch
-    ? "O processo não ficou parado. Só depois da abertura saberemos se é encaminhamento, pedido de informação ou posicionamento jurídico."
+  ui.directAnswerDetail.textContent = pgeOpen
+    ? "Mas também não é arquivamento. A PGE cortou o caminho do PROPAG neste formato e devolveu o processo à FAETEC."
     : atPropag
       ? "O pedido saiu da análise interna da Educação e chegou formalmente à PGE. O próximo marco esperado é a manifestação da Procuradoria."
       : "O processo segue aberto e em tramitação, aguardando a próxima decisão oficial.";
@@ -255,24 +255,24 @@ function renderCurrentStatus(data) {
   ui.lastMovement.textContent = latest?.dateTime || "—";
   ui.lastCheckedAt.textContent = formatCheckedAt(data.lastCheckedAt || data.generatedAt);
 
-  ui.whatHappened.textContent = pendingDispatch
-    ? "Dois dias depois de receber o processo, a PGE criou um despacho oficial. O documento já aparece na lista, mas ainda está fechado para o público."
+  ui.whatHappened.textContent = pgeOpen
+    ? "A PGE analisou a consulta da FAETEC sobre lei, PROPAG e migração. Concluiu que o PROPAG não pode ser usado como solução com os autos atuais e devolveu o processo à FAETEC."
     : atPropag
       ? "Em 15/08/2026, a Assessoria Jurídica da Educação enviou o processo para a área da PGE que acompanha o PROPAG. A PGE recebeu no mesmo dia."
       : plainMovement(latest);
-  ui.whatItMeans.textContent = pendingDispatch
-    ? "É um sinal positivo: a Procuradoria começou a trabalhar no caso. Um despacho de encaminhamento, sozinho, não aprova a migração. A leitura segura começa quando o texto abrir."
+  ui.whatItMeans.textContent = pgeOpen
+    ? "A resposta é clara sobre o PROPAG: este atalho não foi aceito. Os quesitos sobre necessidade de lei e demais questões jurídicas ficam prejudicados nesta unidade e devem ir à ASSJUR/SECTI."
     : atPropag
       ? "É um avanço relevante: a discussão chegou à Procuradoria, exatamente no setor ligado ao PROPAG. Isso não aprova a migração, mas mostra que o pedido está sendo tratado no lugar certo."
       : data.analysis?.practicalReading ||
         "O processo continua tramitando. Cada movimento oficial é um passo a mais rumo a uma definição.";
-  ui.whatIsMissing.textContent = pendingDispatch
-    ? "Abrir o despacho da PGE à meia-noite e ver o que ele realmente diz."
+  ui.whatIsMissing.textContent = pgeOpen
+    ? "A FAETEC receber a devolução e a ASSJUR/SECTI analisar os quesitos jurídicos que ficaram pendentes."
     : atPropag
       ? "Ainda falta a PGE dizer se a solução é possível dentro do PROPAG, qual instrumento jurídico usar e como enfrentar a questão orçamentária."
       : data.analysis?.nextMovement || "Uma manifestação oficial do setor responsável.";
-  ui.nextStepShort.textContent = pendingDispatch
-    ? "Ler o despacho à meia-noite."
+  ui.nextStepShort.textContent = pgeOpen
+    ? "Aguardar devolução à FAETEC e parecer da ASSJUR/SECTI."
     : atPropag
       ? "Aguardar a manifestação da PGE."
       : data.analysis?.nextMovement || "Novo despacho oficial.";

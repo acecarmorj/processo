@@ -12,8 +12,8 @@ const PROCESS_URL =
   "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x";
 const SEI_BASE = "https://sei.rj.gov.br/sei/modulos/pesquisa/";
 const MODEL = process.env.OPENAI_MODEL || "gpt-5.4-mini";
-const DATA_SCHEMA_VERSION = 14;
-const EXCERPT_VERSION = 3;
+const DATA_SCHEMA_VERSION = 15;
+const EXCERPT_VERSION = 4;
 const RECENT_DOCUMENTS_TO_RECHECK = 24;
 const SEI_AGENT = new Agent({ connect: { timeout: 30_000 } });
 
@@ -154,7 +154,7 @@ function coreText(html, number) {
   return clean($("body").text())
     .replace(new RegExp(`^.*?${number}\\s*[-–]\\s*`, "i"), "")
     .replace(/Documento assinado eletronicamente por.*$/i, "")
-    .slice(0, 12_000)
+    .slice(0, 30_000)
     .trim();
 }
 
@@ -241,6 +241,9 @@ function explainDocument(document) {
   }
   const text = (document.excerpt || "").toLowerCase();
   if (!document.excerpt) return "O documento já possui link público, mas o painel ainda não conseguiu extrair seu texto.";
+  if (document.number === "139134917") {
+    return "A PGE concluiu que o PROPAG não pode ser usado como solução com os documentos atuais. O processo volta à FAETEC e os quesitos sobre lei ficam com a ASSJUR/SECTI.";
+  }
   if (text.includes("propag") && (text.includes("vínculo jurídico") || text.includes("vinculo juridico") || text.includes("migração") || text.includes("migracao"))) {
     return "Ofício estratégico da FAETEC: pede parecer jurídico sobre a migração, necessidade de lei e possibilidade de uso do PROPAG para enfrentar a trava orçamentária.";
   }
@@ -433,6 +436,10 @@ function buildAutomaticAnalysis(movements, documents) {
   const pgeDispatchClosed = Boolean(
     pgeDispatch && (!pgeDispatch.publicUrl || !pgeDispatch.excerpt),
   );
+  const pgeDispatchOpen = Boolean(
+    pgeDispatch && pgeDispatch.publicUrl && pgeDispatch.excerpt,
+  );
+  const pgeText = normalized(pgeDispatch?.excerpt || "");
   const latestReading = latestDocumentReading(latestDocument);
 
   let result = "O processo continua ativo e avançando, ainda sem decisão final.";
@@ -446,7 +453,33 @@ function buildAutomaticAnalysis(movements, documents) {
   let conclusion =
     "O processo segue aberto. Cada etapa cumprida aproxima a categoria de uma resposta oficial.";
 
-  if (atPropag && pgeDispatchClosed) {
+  const pgeDispatchNegative =
+    pgeDispatchOpen &&
+    (pgeDispatch?.number === "139134917" ||
+      (pgeText.includes("nao se vislumbra") && pgeText.includes("propag")));
+
+  if (pgeDispatchNegative) {
+    result = "A PGE respondeu: PROPAG não serve para este caso, no formato atual.";
+    resultLevel = "neutral";
+    summary = `Em ${pgeDispatch.date || "17/08/2026"}, a PGE publicou o Despacho ${pgeDispatch.number}. A área do PROPAG concluiu que não há como usar o programa como solução com os documentos que estão no processo hoje.`;
+    practicalReading =
+      "Isso não aprova a migração, mas também não encerra o pedido. A PGE devolveu o processo à FAETEC e disse que os quesitos sobre necessidade de lei e outras questões jurídicas devem ser analisados pela ASSJUR/SECTI.";
+    positive =
+      "A Procuradoria respondeu oficialmente em dois dias. O processo não foi arquivado.";
+    negative =
+      "O caminho pelo PROPAG foi rechaçado nesta etapa. A proposta prevê manter os servidores exercendo na SEEDUC, o que enfraqueceu o argumento de expansão de matrículas.";
+    nextMovement = "Devolução à FAETEC e encaminhamento dos quesitos jurídicos à ASSJUR/SECTI";
+    conclusion =
+      "O cenário ficou mais claro, porém mais exigente: o atalho do PROPAG não foi aceito. A migração ainda depende de outro caminho jurídico e de solução orçamentária.";
+    phase.title = "Resposta da PGE sobre PROPAG";
+    phase.explanation =
+      "A Procuradoria analisou se o PROPAG poderia resolver o caso e devolveu o processo à FAETEC.";
+    phase.nextSteps = [
+      "Devolução à FAETEC",
+      "Parecer da ASSJUR/SECTI sobre lei e demais quesitos",
+      "Novo caminho jurídico e orçamentário",
+    ];
+  } else if (atPropag && pgeDispatchClosed) {
     result = "A PGE já fez um despacho. O texto abre à meia-noite.";
     resultLevel = "positive";
     summary = `Em ${pgeDispatch.date || "17/08/2026"}, a área da PGE ligada ao PROPAG registrou o Despacho ${pgeDispatch.number}. O texto ainda está fechado e só deve abrir à meia-noite.`;
@@ -633,11 +666,14 @@ function historicalSections(latestMovement, latestDocument) {
     },
     {
       period: "17 de agosto de 2026",
-      text: "A PGE registrou um despacho de encaminhamento. O texto ainda estava fechado e a abertura pública ficou prevista para a meia-noite.",
+      text: "A PGE publicou despacho concluindo que o PROPAG não pode ser usado como solução com os autos atuais. O processo foi devolvido à FAETEC e os quesitos sobre lei ficaram a cargo da ASSJUR/SECTI.",
     },
     {
       period: "Situação atual",
-      text: `O registro público mais recente é de ${latestMovement?.dateTime || "data não identificada"}, em ${latestMovement?.unit || "unidade não identificada"}. O documento mais recente é ${latestDocument?.number || "não identificado"}, de ${latestDocument?.unit || "unidade não identificada"}. Ainda não existe publicação definitiva do enquadramento.`,
+      text:
+        latestDocument?.number === "139134917"
+          ? "A PGE respondeu em 17/08/2026: o PROPAG não resolve neste formato. O processo foi devolvido à FAETEC e os quesitos sobre lei seguem para a ASSJUR/SECTI. Ainda não há aprovação da migração."
+          : `O registro público mais recente é de ${latestMovement?.dateTime || "data não identificada"}, em ${latestMovement?.unit || "unidade não identificada"}. O documento mais recente é ${latestDocument?.number || "não identificado"}, de ${latestDocument?.unit || "unidade não identificada"}. Ainda não existe publicação definitiva do enquadramento.`,
     },
   ];
 }
