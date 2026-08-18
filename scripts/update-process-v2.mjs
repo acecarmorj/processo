@@ -12,7 +12,7 @@ const PROCESS_URL =
   "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x";
 const SEI_BASE = "https://sei.rj.gov.br/sei/modulos/pesquisa/";
 const MODEL = process.env.OPENAI_MODEL || "gpt-5.4-mini";
-const DATA_SCHEMA_VERSION = 15;
+const DATA_SCHEMA_VERSION = 16;
 const EXCERPT_VERSION = 4;
 const RECENT_DOCUMENTS_TO_RECHECK = 24;
 const SEI_AGENT = new Agent({ connect: { timeout: 30_000 } });
@@ -459,18 +459,18 @@ function buildAutomaticAnalysis(movements, documents) {
       (pgeText.includes("nao se vislumbra") && pgeText.includes("propag")));
 
   if (pgeDispatchNegative) {
-    result = "A PGE respondeu: PROPAG não serve para este caso, no formato atual.";
+    result = "PGE respondeu: PROPAG não serve. Migração continua sem solução.";
     resultLevel = "neutral";
-    summary = `Em ${pgeDispatch.date || "17/08/2026"}, a PGE publicou o Despacho ${pgeDispatch.number}. A área do PROPAG concluiu que não há como usar o programa como solução com os documentos que estão no processo hoje.`;
+    summary = `Em ${pgeDispatch.date || "17/08/2026"}, a PGE publicou o Despacho ${pgeDispatch.number}. Concluiu que o PROPAG não resolve com os documentos atuais. O governador interino Ricardo Couto havia encaminhado o caso à SEPLAG e à PGE, mas a resposta jurídica fechou o atalho orçamentário.`;
     practicalReading =
-      "Isso não aprova a migração, mas também não encerra o pedido. A PGE devolveu o processo à FAETEC e disse que os quesitos sobre necessidade de lei e outras questões jurídicas devem ser analisados pela ASSJUR/SECTI.";
+      "Há diálogo com o governo (reuniões de maio/junho/2026 com Couto e minuta na Casa Civil), porém isso não virou migração. A PGE devolveu o processo à FAETEC. Os quesitos sobre lei vão à ASSJUR/SECTI. A trava de R$ 207 mi/ano permanece.";
     positive =
-      "A Procuradoria respondeu oficialmente em dois dias. O processo não foi arquivado.";
+      "O processo não foi arquivado. A Procuradoria respondeu em dois dias, o que evita paralisia.";
     negative =
-      "O caminho pelo PROPAG foi rechaçado nesta etapa. A proposta prevê manter os servidores exercendo na SEEDUC, o que enfraqueceu o argumento de expansão de matrículas.";
-    nextMovement = "Devolução à FAETEC e encaminhamento dos quesitos jurídicos à ASSJUR/SECTI";
+      "PROPAG rejeitado neste formato. Orçamento segue sem solução. Minuta de PL existe, mas não foi encaminhada à ALERJ.";
+    nextMovement = "Devolução à FAETEC, parecer da ASSJUR/SECTI e busca de novo caminho jurídico-orçamentário";
     conclusion =
-      "O cenário ficou mais claro, porém mais exigente: o atalho do PROPAG não foi aceito. A migração ainda depende de outro caminho jurídico e de solução orçamentária.";
+      "Cenário realista: processo vivo, migração completa distante. Depende de lei do Executivo, verba e parecer favorável — não só de tramitação no SEI.";
     phase.title = "Resposta da PGE sobre PROPAG";
     phase.explanation =
       "A Procuradoria analisou se o PROPAG poderia resolver o caso e devolveu o processo à FAETEC.";
@@ -657,6 +657,10 @@ function historicalSections(latestMovement, latestDocument) {
       text: "O processo recebeu Nota Técnica, justificativa e minuta de projeto de lei. A tese técnica reconheceu a permanência do vínculo originário com a FAETEC. O impacto anual foi atualizado para R$ 207,02 milhões, abrangendo 3.700 ativos e 3.045 aposentados.",
     },
     {
+      period: "Maio e junho de 2026",
+      text: "O governador interino Ricardo Couto recebeu o Sepe e representantes ex-FAEP. O sindicato apresentou minuta da Casa Civil sobre isonomia com a FAETEC. Couto encaminhou estudos à SEPLAG e prometeu resposta à categoria, sem concluir a migração.",
+    },
+    {
       period: "23 de julho de 2026",
       text: "A Presidência da FAETEC pediu análise jurídica sobre a necessidade de lei e sobre a possibilidade de usar o PROPAG como caminho para a solução.",
     },
@@ -672,7 +676,7 @@ function historicalSections(latestMovement, latestDocument) {
       period: "Situação atual",
       text:
         latestDocument?.number === "139134917"
-          ? "A PGE respondeu em 17/08/2026: o PROPAG não resolve neste formato. O processo foi devolvido à FAETEC e os quesitos sobre lei seguem para a ASSJUR/SECTI. Ainda não há aprovação da migração."
+          ? "Governador interino: Ricardo Couto. A PGE respondeu em 17/08/2026: PROPAG não resolve neste formato. Processo devolvido à FAETEC; quesitos sobre lei vão à ASSJUR/SECTI. Diálogo com o governo existe, mas migração completa ainda não saiu — trava orçamentária de R$ 207 mi/ano permanece."
           : `O registro público mais recente é de ${latestMovement?.dateTime || "data não identificada"}, em ${latestMovement?.unit || "unidade não identificada"}. O documento mais recente é ${latestDocument?.number || "não identificado"}, de ${latestDocument?.unit || "unidade não identificada"}. Ainda não existe publicação definitiva do enquadramento.`,
     },
   ];

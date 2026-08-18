@@ -104,6 +104,16 @@ const MILESTONES = [
     text: "A área fiscal informou que não havia disponibilidade orçamentária naquele momento.",
   },
   {
+    date: "19/05/2026",
+    title: "Sepe reuniu com Couto",
+    text: "O governador interino Ricardo Couto recebeu o Sepe e viu a minuta da Casa Civil sobre isonomia com a FAETEC.",
+  },
+  {
+    date: "02/06/2026",
+    title: "Ex-FAEP ouviu o governador",
+    text: "Couto recebeu três representantes no TJRJ e encaminhou o pleito à SEPLAG para estudo. Prometeu resposta, sem aprovar migração.",
+  },
+  {
     date: "23/07/2026",
     title: "FAETEC pediu parecer",
     text: "A fundação perguntou se é necessária uma lei e se o PROPAG pode ajudar na solução.",
@@ -111,12 +121,12 @@ const MILESTONES = [
   {
     date: "15/08/2026",
     title: "Processo chegou à PGE",
-    text: "A área jurídica da Educação enviou o caso à estrutura da PGE ligada ao PROPAG. É o marco mais positivo da tramitação recente.",
+    text: "A Assessoria Jurídica da Educação encaminhou o caso à área da PGE ligada ao PROPAG.",
   },
   {
     date: "17/08/2026",
-    title: "PGE respondeu sobre PROPAG",
-    text: "A Procuradoria publicou despacho dizendo que o PROPAG não resolve o caso no formato atual. O processo volta à FAETEC.",
+    title: "PGE fechou o caminho PROPAG",
+    text: "Despacho 139134917: PROPAG não resolve neste formato. Processo devolvido à FAETEC; trava orçamentária permanece.",
   },
 ];
 
@@ -227,54 +237,54 @@ function renderCurrentStatus(data) {
 
   ui.status.textContent = "Atualizado";
   ui.verdictBadge.textContent = pgeOpen
-    ? "Resposta da PGE"
+    ? "Sem solução ainda"
     : atPropag
-      ? "Bom avanço"
+      ? "Na PGE"
       : "Em análise";
   ui.currentTitle.textContent = pgeOpen
-    ? "A PGE respondeu: PROPAG não resolve este caso no formato atual"
+    ? "PGE respondeu: PROPAG não resolve. Migração segue difícil"
     : atPropag
-      ? "Boa notícia: o processo chegou à PGE para análise do PROPAG"
+      ? "Processo na PGE aguardando posicionamento"
       : data.analysis?.phase?.title || "O processo continua em análise";
   ui.currentSummary.textContent = pgeOpen
-    ? `Em 17/08/2026, a PGE publicou o Despacho ${pgeDispatch.number}. A área do PROPAG concluiu que não há como usar o programa como solução com os documentos atuais.`
+    ? `Em 17/08/2026 a PGE publicou o Despacho ${pgeDispatch.number} e fechou o atalho PROPAG. O governador interino Ricardo Couto havia encaminhado o caso, mas a migração completa ainda não saiu.`
     : atPropag
-      ? "Em 15/08/2026, a PGE recebeu o processo. Isso coloca o caso na área certa para avaliar o uso do PROPAG. Ainda não é a decisão final, mas é um avanço concreto."
+      ? "O processo está na PGE. Ainda não há decisão sobre a migração."
       : data.analysis?.summary || plainMovement(latest);
 
   ui.directAnswer.textContent = pgeOpen
-    ? "Não houve aprovação da migração."
-    : "Ainda não há aprovação final, mas o processo avançou.";
+    ? "Migração não aprovada."
+    : "Migração ainda não aprovada.";
   ui.directAnswerDetail.textContent = pgeOpen
-    ? "Mas também não é arquivamento. A PGE cortou o caminho do PROPAG neste formato e devolveu o processo à FAETEC."
+    ? "Há diálogo com Couto e minuta na Casa Civil, mas a PGE cortou o PROPAG e a trava orçamentária (R$ 207 mi/ano) continua."
     : atPropag
-      ? "O pedido saiu da análise interna da Educação e chegou formalmente à PGE. O próximo marco esperado é a manifestação da Procuradoria."
-      : "O processo segue aberto e em tramitação, aguardando a próxima decisão oficial.";
+      ? "O pedido chegou à Procuradoria. Isso não garante aprovação."
+      : "O processo segue aberto, aguardando próxima decisão oficial.";
 
   ui.currentUnit.textContent = unitName(latest?.unit);
   ui.lastMovement.textContent = latest?.dateTime || "—";
   ui.lastCheckedAt.textContent = formatCheckedAt(data.lastCheckedAt || data.generatedAt);
 
   ui.whatHappened.textContent = pgeOpen
-    ? "A PGE analisou a consulta da FAETEC sobre lei, PROPAG e migração. Concluiu que o PROPAG não pode ser usado como solução com os autos atuais e devolveu o processo à FAETEC."
+    ? "A PGE analisou lei, PROPAG e migração. Concluiu que o PROPAG não serve neste formato e devolveu o processo à FAETEC. Antes disso, Couto recebeu a categoria e encaminhou estudos à SEPLAG."
     : atPropag
-      ? "Em 15/08/2026, a Assessoria Jurídica da Educação enviou o processo para a área da PGE que acompanha o PROPAG. A PGE recebeu no mesmo dia."
+      ? "Em 15/08/2026 o processo foi encaminhado à área da PGE ligada ao PROPAG."
       : plainMovement(latest);
   ui.whatItMeans.textContent = pgeOpen
-    ? "A resposta é clara sobre o PROPAG: este atalho não foi aceito. Os quesitos sobre necessidade de lei e demais questões jurídicas ficam prejudicados nesta unidade e devem ir à ASSJUR/SECTI."
+    ? "Resposta clara sobre PROPAG: negativa. Quesitos sobre lei vão à ASSJUR/SECTI. Promessa de diálogo com o governador não substitui aprovação nem abre verba."
     : atPropag
-      ? "É um avanço relevante: a discussão chegou à Procuradoria, exatamente no setor ligado ao PROPAG. Isso não aprova a migração, mas mostra que o pedido está sendo tratado no lugar certo."
+      ? "O caso está na Procuradoria, mas ainda falta posicionamento de mérito e solução orçamentária."
       : data.analysis?.practicalReading ||
         "O processo continua tramitando. Cada movimento oficial é um passo a mais rumo a uma definição.";
   ui.whatIsMissing.textContent = pgeOpen
-    ? "A FAETEC receber a devolução e a ASSJUR/SECTI analisar os quesitos jurídicos que ficaram pendentes."
+    ? "Parecer da ASSJUR/SECTI, devolução à FAETEC, lei do Executivo e espaço no orçamento."
     : atPropag
-      ? "Ainda falta a PGE dizer se a solução é possível dentro do PROPAG, qual instrumento jurídico usar e como enfrentar a questão orçamentária."
+      ? "Manifestação da PGE e solução para a trava orçamentária."
       : data.analysis?.nextMovement || "Uma manifestação oficial do setor responsável.";
   ui.nextStepShort.textContent = pgeOpen
-    ? "Aguardar devolução à FAETEC e parecer da ASSJUR/SECTI."
+    ? "FAETEC, ASSJUR/SECTI e novo caminho jurídico-orçamentário."
     : atPropag
-      ? "Aguardar a manifestação da PGE."
+      ? "Aguardar manifestação da PGE."
       : data.analysis?.nextMovement || "Novo despacho oficial.";
 }
 
