@@ -1,10 +1,10 @@
 {
-  "schemaVersion": 13,
+  "schemaVersion": 14,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-08-16T13:17:32.445Z",
-  "lastCheckedAt": "2026-08-16T13:17:32.438Z",
-  "sourceHash": "bab8ea3f46b457f5d248ee7c66816943ef0df86788a0aeceeb6990f1107699aa",
+  "generatedAt": "2026-08-18T00:51:30.674Z",
+  "lastCheckedAt": "2026-08-18T00:51:30.670Z",
+  "sourceHash": "0f1d4d428a8db11611840a8de9c958e8c4c271f62ae43d8597186adc11f76582",
   "movements": [
     {
       "dateTime": "15/08/2026 18:04",
@@ -4797,6 +4797,16 @@
       "excerpt": "Governo do Estado do Rio de JaneiroSecretaria de Estado de EducaçãoGabinete do SecretárioDESPACHOÀ Secretaria Executiva de Apoio ao Programa de Pleno Pagamento de Dívidas dos Estados da PGE-RJ, Nos termos da Resolução PGE 5.424 de 15 de julho de 2026, encaminho o presente processo à Secretaria Executiva de Apoio ao PROPAG da PGERJ, por pertinência. Atenciosamente, MARCELLA DE OLIVEIRA RIBEIROProcuradora do EstadoAssessora Chefe da ASSJUR/SEEDUC [NOME DO AUTOR][CARGO]ID FUNCIONAL",
       "excerptVersion": 3,
       "simpleExplanation": "É despacho de encaminhamento: manda o processo para outro setor tomar ciência ou providências. Sozinho, não aprova nem nega."
+    },
+    {
+      "number": "139134917",
+      "type": "Despacho de Encaminhamento de Processo - PGE",
+      "date": "17/08/2026",
+      "unit": "PGE/PG02/SECEXEC/PROPAG",
+      "publicUrl": null,
+      "excerpt": "",
+      "excerptVersion": 3,
+      "simpleExplanation": "A PGE já registrou este despacho, mas o texto ainda está fechado. A abertura pública está prevista para a meia-noite."
     }
   ],
   "analysis": {
@@ -4810,11 +4820,11 @@
         "Retorno aos órgãos responsáveis"
       ]
     },
-    "result": "Bom avanço: o processo chegou à PGE. Ainda não há aprovação da migração.",
+    "result": "A PGE já fez um despacho. O texto abre à meia-noite.",
     "resultLevel": "positive",
-    "summary": "Em 15/08/2026, a Assessoria Jurídica da SEEDUC enviou o processo à área da PGE que acompanha o PROPAG. A PGE registrou o recebimento no mesmo dia.",
-    "practicalReading": "Este é o melhor movimento recente do processo: o pedido chegou à área certa da Procuradoria. A PGE agora deve avaliar se o PROPAG pode ser usado e qual caminho jurídico seguir. O tom é positivo, mas ainda sem decisão final.",
-    "conclusion": "A etapa atual é promissora: o caso está na PGE. Não há aprovação publicada, mas também não há negativa nem arquivamento.",
+    "summary": "Em 17/08/2026, a área da PGE ligada ao PROPAG registrou o Despacho 139134917. O texto ainda está fechado e só deve abrir à meia-noite.",
+    "practicalReading": "É um avanço concreto: a Procuradoria não deixou o processo parado. Como o despacho ainda está fechado, não dá para afirmar se é um encaminhamento interno, um pedido de informação ou um posicionamento jurídico. A leitura segura começa à meia-noite, quando o texto abrir.",
+    "conclusion": "O cenário continua positivo. A PGE já atuou. O próximo marco é a abertura do texto, prevista para a meia-noite.",
     "numbers": [
       {
         "value": "R$ 207,02 milhões",
@@ -4833,12 +4843,12 @@
       }
     ],
     "signals": [
-      "O processo saiu da análise interna da Educação e chegou formalmente à PGE/PROPAG."
+      "Dois dias após o recebimento, a PGE já produziu um despacho oficial no processo."
     ],
     "risks": [
-      "Ainda faltam o parecer da PGE e uma solução para a questão orçamentária."
+      "Enquanto o conteúdo não abrir, não é possível saber se houve avanço de mérito ou apenas tramitação interna."
     ],
-    "nextMovement": "Manifestação da PGE sobre a viabilidade jurídica e o uso do PROPAG"
+    "nextMovement": "Abertura pública do despacho da PGE à meia-noite e leitura do próximo destino do processo"
   },
   "history": [
     {
@@ -4866,8 +4876,12 @@
       "text": "A Assessoria Jurídica da SEEDUC encaminhou o processo à área da PGE responsável pelo apoio ao PROPAG. A PGE recebeu o processo no mesmo dia."
     },
     {
+      "period": "17 de agosto de 2026",
+      "text": "A PGE registrou um despacho de encaminhamento. O texto ainda estava fechado e a abertura pública ficou prevista para a meia-noite."
+    },
+    {
       "period": "Situação atual",
-      "text": "O registro público mais recente é de 15/08/2026 18:04, em PGE/PG02/SECEXEC/PROPAG. O documento mais recente é 139135021, de SEEDUC/ASSJUR. Ainda não existe publicação definitiva do enquadramento."
+      "text": "O registro público mais recente é de 15/08/2026 18:04, em PGE/PG02/SECEXEC/PROPAG. O documento mais recente é 139134917, de PGE/PG02/SECEXEC/PROPAG. Ainda não existe publicação definitiva do enquadramento."
     }
   ]
 }

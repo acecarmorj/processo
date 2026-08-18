@@ -12,7 +12,7 @@ const PROCESS_URL =
   "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x";
 const SEI_BASE = "https://sei.rj.gov.br/sei/modulos/pesquisa/";
 const MODEL = process.env.OPENAI_MODEL || "gpt-5.4-mini";
-const DATA_SCHEMA_VERSION = 13;
+const DATA_SCHEMA_VERSION = 14;
 const EXCERPT_VERSION = 3;
 const RECENT_DOCUMENTS_TO_RECHECK = 24;
 const SEI_AGENT = new Agent({ connect: { timeout: 30_000 } });
@@ -233,7 +233,12 @@ function hasRecentDocumentNeedingRead(rawDocuments, previous) {
 }
 
 function explainDocument(document) {
-  if (!document.publicUrl) return "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública.";
+  if (!document.publicUrl) {
+    if (document.number === "139134917" || document.unit?.includes("SECEXEC/PROPAG")) {
+      return "A PGE já registrou este despacho, mas o texto ainda está fechado. A abertura pública está prevista para a meia-noite.";
+    }
+    return "O documento foi criado, mas seu conteúdo ainda não está liberado para leitura pública.";
+  }
   const text = (document.excerpt || "").toLowerCase();
   if (!document.excerpt) return "O documento já possui link público, mas o painel ainda não conseguiu extrair seu texto.";
   if (text.includes("propag") && (text.includes("vínculo jurídico") || text.includes("vinculo juridico") || text.includes("migração") || text.includes("migracao"))) {
@@ -420,6 +425,14 @@ function buildAutomaticAnalysis(movements, documents) {
         normalized(document.excerpt).includes("encaminho")),
   );
   const atPropag = latest?.unit?.includes("SECEXEC/PROPAG");
+  const pgeDispatch = [...documents].reverse().find(
+    (document) =>
+      document.number === "139134917" ||
+      (document.unit?.includes("SECEXEC/PROPAG") && /despacho/i.test(document.type || "")),
+  );
+  const pgeDispatchClosed = Boolean(
+    pgeDispatch && (!pgeDispatch.publicUrl || !pgeDispatch.excerpt),
+  );
   const latestReading = latestDocumentReading(latestDocument);
 
   let result = "O processo continua ativo e avançando, ainda sem decisão final.";
@@ -433,7 +446,20 @@ function buildAutomaticAnalysis(movements, documents) {
   let conclusion =
     "O processo segue aberto. Cada etapa cumprida aproxima a categoria de uma resposta oficial.";
 
-  if (atPropag && propagReferral) {
+  if (atPropag && pgeDispatchClosed) {
+    result = "A PGE já fez um despacho. O texto abre à meia-noite.";
+    resultLevel = "positive";
+    summary = `Em ${pgeDispatch.date || "17/08/2026"}, a área da PGE ligada ao PROPAG registrou o Despacho ${pgeDispatch.number}. O texto ainda está fechado e só deve abrir à meia-noite.`;
+    practicalReading =
+      "É um avanço concreto: a Procuradoria não deixou o processo parado. Como o despacho ainda está fechado, não dá para afirmar se é um encaminhamento interno, um pedido de informação ou um posicionamento jurídico. A leitura segura começa à meia-noite, quando o texto abrir.";
+    positive =
+      "Dois dias após o recebimento, a PGE já produziu um despacho oficial no processo.";
+    negative =
+      "Enquanto o conteúdo não abrir, não é possível saber se houve avanço de mérito ou apenas tramitação interna.";
+    nextMovement = "Abertura pública do despacho da PGE à meia-noite e leitura do próximo destino do processo";
+    conclusion =
+      "O cenário continua positivo. A PGE já atuou. O próximo marco é a abertura do texto, prevista para a meia-noite.";
+  } else if (atPropag && propagReferral) {
     result = "Bom avanço: o processo chegou à PGE. Ainda não há aprovação da migração.";
     resultLevel = "positive";
     summary =
@@ -604,6 +630,10 @@ function historicalSections(latestMovement, latestDocument) {
     {
       period: "15 de agosto de 2026",
       text: "A Assessoria Jurídica da SEEDUC encaminhou o processo à área da PGE responsável pelo apoio ao PROPAG. A PGE recebeu o processo no mesmo dia.",
+    },
+    {
+      period: "17 de agosto de 2026",
+      text: "A PGE registrou um despacho de encaminhamento. O texto ainda estava fechado e a abertura pública ficou prevista para a meia-noite.",
     },
     {
       period: "Situação atual",

@@ -75,6 +75,11 @@ const KEY_DOCUMENTS = {
     meaning:
       "A Assessoria Jurídica da Educação encaminhou o processo à área da PGE ligada ao PROPAG. É o avanço mais concreto até agora, ainda sem aprovação final.",
   },
+  "139134917": {
+    title: "Despacho da PGE — abre à meia-noite",
+    meaning:
+      "A PGE já registrou um despacho em 17/08/2026. O texto ainda está fechado e só deve abrir à meia-noite. Até lá, não dá para afirmar o que foi decidido.",
+  },
 };
 
 const MILESTONES = [
@@ -107,6 +112,11 @@ const MILESTONES = [
     date: "15/08/2026",
     title: "Processo chegou à PGE",
     text: "A área jurídica da Educação enviou o caso à estrutura da PGE ligada ao PROPAG. É o marco mais positivo da tramitação recente.",
+  },
+  {
+    date: "17/08/2026",
+    title: "PGE já despachou",
+    text: "A Procuradoria registrou um despacho oficial. O texto ainda está fechado e só deve abrir à meia-noite.",
   },
 ];
 
@@ -200,41 +210,72 @@ function isAtPropag(data) {
   return data.movements[0]?.unit?.includes("SECEXEC/PROPAG");
 }
 
+function pendingPgeDispatch(data) {
+  return data.documents.find(
+    (document) =>
+      document.number === "139134917" ||
+      (document.unit?.includes("SECEXEC/PROPAG") &&
+        /despacho/i.test(document.type || "") &&
+        (!document.publicUrl || !document.excerpt)),
+  );
+}
+
 function renderCurrentStatus(data) {
   const latest = data.movements[0];
   const atPropag = isAtPropag(data);
+  const pendingDispatch = pendingPgeDispatch(data);
 
   ui.status.textContent = "Atualizado";
-  ui.verdictBadge.textContent = atPropag ? "Bom avanço" : "Em análise";
-  ui.currentTitle.textContent = atPropag
-    ? "Boa notícia: o processo chegou à PGE para análise do PROPAG"
-    : data.analysis?.phase?.title || "O processo continua em análise";
-  ui.currentSummary.textContent = atPropag
-    ? "Em 15/08/2026, a PGE recebeu o processo. Isso coloca o caso na área certa para avaliar o uso do PROPAG. Ainda não é a decisão final, mas é um avanço concreto."
-    : data.analysis?.summary || plainMovement(latest);
+  ui.verdictBadge.textContent = pendingDispatch
+    ? "PGE já despachou"
+    : atPropag
+      ? "Bom avanço"
+      : "Em análise";
+  ui.currentTitle.textContent = pendingDispatch
+    ? "A PGE já fez um despacho. O texto abre à meia-noite."
+    : atPropag
+      ? "Boa notícia: o processo chegou à PGE para análise do PROPAG"
+      : data.analysis?.phase?.title || "O processo continua em análise";
+  ui.currentSummary.textContent = pendingDispatch
+    ? `Em 17/08/2026, a área da PGE ligada ao PROPAG registrou o Despacho ${pendingDispatch.number}. O texto ainda está fechado e só deve abrir à meia-noite.`
+    : atPropag
+      ? "Em 15/08/2026, a PGE recebeu o processo. Isso coloca o caso na área certa para avaliar o uso do PROPAG. Ainda não é a decisão final, mas é um avanço concreto."
+      : data.analysis?.summary || plainMovement(latest);
 
-  ui.directAnswer.textContent = "Ainda não há aprovação final, mas o processo avançou.";
-  ui.directAnswerDetail.textContent = atPropag
-    ? "O pedido saiu da análise interna da Educação e chegou formalmente à PGE. O próximo marco esperado é a manifestação da Procuradoria."
-    : "O processo segue aberto e em tramitação, aguardando a próxima decisão oficial.";
+  ui.directAnswer.textContent = pendingDispatch
+    ? "Ainda não dá para ler o conteúdo, mas a PGE já atuou."
+    : "Ainda não há aprovação final, mas o processo avançou.";
+  ui.directAnswerDetail.textContent = pendingDispatch
+    ? "O processo não ficou parado. Só depois da abertura saberemos se é encaminhamento, pedido de informação ou posicionamento jurídico."
+    : atPropag
+      ? "O pedido saiu da análise interna da Educação e chegou formalmente à PGE. O próximo marco esperado é a manifestação da Procuradoria."
+      : "O processo segue aberto e em tramitação, aguardando a próxima decisão oficial.";
 
   ui.currentUnit.textContent = unitName(latest?.unit);
   ui.lastMovement.textContent = latest?.dateTime || "—";
   ui.lastCheckedAt.textContent = formatCheckedAt(data.lastCheckedAt || data.generatedAt);
 
-  ui.whatHappened.textContent = atPropag
-    ? "Em 15/08/2026, a Assessoria Jurídica da Educação enviou o processo para a área da PGE que acompanha o PROPAG. A PGE recebeu no mesmo dia."
-    : plainMovement(latest);
-  ui.whatItMeans.textContent = atPropag
-    ? "É um avanço relevante: a discussão chegou à Procuradoria, exatamente no setor ligado ao PROPAG. Isso não aprova a migração, mas mostra que o pedido está sendo tratado no lugar certo."
-    : data.analysis?.practicalReading ||
-      "O processo continua tramitando. Cada movimento oficial é um passo a mais rumo a uma definição.";
-  ui.whatIsMissing.textContent = atPropag
-    ? "Ainda falta a PGE dizer se a solução é possível dentro do PROPAG, qual instrumento jurídico usar e como enfrentar a questão orçamentária."
-    : data.analysis?.nextMovement || "Uma manifestação oficial do setor responsável.";
-  ui.nextStepShort.textContent = atPropag
-    ? "Aguardar a manifestação da PGE."
-    : data.analysis?.nextMovement || "Novo despacho oficial.";
+  ui.whatHappened.textContent = pendingDispatch
+    ? "Dois dias depois de receber o processo, a PGE criou um despacho oficial. O documento já aparece na lista, mas ainda está fechado para o público."
+    : atPropag
+      ? "Em 15/08/2026, a Assessoria Jurídica da Educação enviou o processo para a área da PGE que acompanha o PROPAG. A PGE recebeu no mesmo dia."
+      : plainMovement(latest);
+  ui.whatItMeans.textContent = pendingDispatch
+    ? "É um sinal positivo: a Procuradoria começou a trabalhar no caso. Um despacho de encaminhamento, sozinho, não aprova a migração. A leitura segura começa quando o texto abrir."
+    : atPropag
+      ? "É um avanço relevante: a discussão chegou à Procuradoria, exatamente no setor ligado ao PROPAG. Isso não aprova a migração, mas mostra que o pedido está sendo tratado no lugar certo."
+      : data.analysis?.practicalReading ||
+        "O processo continua tramitando. Cada movimento oficial é um passo a mais rumo a uma definição.";
+  ui.whatIsMissing.textContent = pendingDispatch
+    ? "Abrir o despacho da PGE à meia-noite e ver o que ele realmente diz."
+    : atPropag
+      ? "Ainda falta a PGE dizer se a solução é possível dentro do PROPAG, qual instrumento jurídico usar e como enfrentar a questão orçamentária."
+      : data.analysis?.nextMovement || "Uma manifestação oficial do setor responsável.";
+  ui.nextStepShort.textContent = pendingDispatch
+    ? "Ler o despacho à meia-noite."
+    : atPropag
+      ? "Aguardar a manifestação da PGE."
+      : data.analysis?.nextMovement || "Novo despacho oficial.";
 }
 
 function renderNews(data, old) {
