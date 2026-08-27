@@ -12,7 +12,7 @@ const PROCESS_URL =
   "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x";
 const SEI_BASE = "https://sei.rj.gov.br/sei/modulos/pesquisa/";
 const MODEL = process.env.OPENAI_MODEL || "gpt-5.4-mini";
-const DATA_SCHEMA_VERSION = 17;
+const DATA_SCHEMA_VERSION = 18;
 const EXCERPT_VERSION = 4;
 const RECENT_DOCUMENTS_TO_RECHECK = 24;
 const SEI_AGENT = new Agent({ connect: { timeout: 30_000 } });
@@ -459,23 +459,23 @@ function buildAutomaticAnalysis(movements, documents) {
       (pgeText.includes("nao se vislumbra") && pgeText.includes("propag")));
 
   if (pgeDispatchNegative) {
-    result = "O processo segue aberto e o segundo semestre é decisivo.";
+    result = "A FAETEC já recebeu o processo. O semestre segue decisivo.";
     resultLevel = "positive";
-    summary = `Em ${pgeDispatch.date || "17/08/2026"}, a PGE publicou o Despacho ${pgeDispatch.number} e esclareceu que o PROPAG não é o instrumento neste formato. Em 18/08/2026 o processo já voltou à Presidência da FAETEC, com atenção do governador Ricardo Couto e minuta na Casa Civil.`;
+    summary = `Em 26/08/2026, às 19:45, a Presidência da FAETEC recebeu o processo devolvido pela PGE. O Despacho ${pgeDispatch.number} esclareceu que o PROPAG não é o instrumento neste formato, mas o pedido segue aberto.`;
     practicalReading =
-      "O cenário é favorável. Governo já atuou, a PGE deu clareza jurídica e o processo continua vivo. Os próximos meses são a janela para avançar nos vencimentos e formalizar a solução de modo estável, de preferência por lei do Executivo.";
+      "O cenário é favorável. O processo saiu da PGE e está de volta na FAETEC, no órgão que pediu a solução. Os próximos meses são a janela para o encaminhamento à ASSJUR/SECTI, avançar nos vencimentos e formalizar a solução de modo estável.";
     positive =
-      "O governador recebeu a categoria, existe minuta na Casa Civil e a PGE não arquivou o processo.";
+      "A Presidência da FAETEC já recebeu o processo. O caso não foi arquivado e permanece no primeiro escalão da fundação.";
     negative =
       "Ainda falta publicar a migração no SEI e concluir o parecer da ASSJUR/SECTI.";
-    nextMovement = "Continuidade na FAETEC, parecer da ASSJUR/SECTI e formalização política até o fim do ano";
+    nextMovement = "Despacho da Presidência da FAETEC, parecer da ASSJUR/SECTI e formalização política até o fim do ano";
     conclusion =
-      "Leitura favorável: o atalho do PROPAG saiu, mas o caso ganhou caminho mais claro. Ainda não há publicação da migração, porém os próximos meses importam para consolidar a solução.";
-    phase.title = "Caminho aberto após a PGE";
+      "Leitura favorável: a tramitação avançou. A FAETEC tem o processo em mãos para o próximo encaminhamento. Ainda não há publicação da migração, porém o segundo semestre continua decisivo.";
+    phase.title = "Na Presidência da FAETEC";
     phase.explanation =
-      "A Procuradoria esclareceu o instrumento e devolveu o processo à FAETEC, sem encerrar o pedido.";
+      "A PGE esclareceu o instrumento e a FAETEC já recebeu o processo de volta, sem encerrar o pedido.";
     phase.nextSteps = [
-      "Continuidade na FAETEC",
+      "Despacho da Presidência da FAETEC",
       "Parecer da ASSJUR/SECTI sobre lei",
       "Formalização política até o fim do ano",
     ];
@@ -673,10 +673,14 @@ function historicalSections(latestMovement, latestDocument) {
       text: "A PGE publicou despacho esclarecendo que o PROPAG não é o instrumento neste formato. O processo não foi arquivado: volta à FAETEC e os quesitos sobre lei seguem para a ASSJUR/SECTI.",
     },
     {
+      period: "26 de agosto de 2026",
+      text: "A Presidência da FAETEC registrou o recebimento do processo devolvido pela PGE. O caso segue aberto no órgão que pediu a solução.",
+    },
+    {
       period: "Situação atual",
       text:
-        latestDocument?.number === "139134917"
-          ? "Governador interino: Ricardo Couto. Em 18/08/2026 o processo já voltou à Presidência da FAETEC. A PGE esclareceu que o PROPAG não é o instrumento neste formato, mas o pedido segue aberto. Há minuta na Casa Civil e os próximos meses são a janela para formalizar a solução de modo estável."
+        latestMovement?.unit?.startsWith("FAETEC/")
+          ? "O processo está na Presidência da FAETEC, recebido em 26/08/2026. A PGE esclareceu que o PROPAG não é o instrumento neste formato, mas o pedido segue aberto. Os próximos meses são a janela para o encaminhamento jurídico e a formalização da solução."
           : `O registro público mais recente é de ${latestMovement?.dateTime || "data não identificada"}, em ${latestMovement?.unit || "unidade não identificada"}. O documento mais recente é ${latestDocument?.number || "não identificado"}, de ${latestDocument?.unit || "unidade não identificada"}. Ainda não existe publicação definitiva do enquadramento.`,
     },
   ];

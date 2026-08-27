@@ -124,9 +124,14 @@ const MILESTONES = [
     text: "A Assessoria Jurídica da Educação encaminhou o caso à área da PGE ligada ao PROPAG.",
   },
   {
-    date: "18/08/2026",
-    title: "Processo voltou à FAETEC",
-    text: "A PGE devolveu o processo à Presidência da FAETEC. O caso segue aberto, no órgão que pediu a solução.",
+    date: "17/08/2026",
+    title: "PGE esclareceu o caminho",
+    text: "Despacho 139134917: o PROPAG não é o instrumento neste formato. O processo segue aberto.",
+  },
+  {
+    date: "26/08/2026",
+    title: "FAETEC recebeu o processo",
+    text: "A Presidência da FAETEC registrou o recebimento. O caso está de volta no órgão que pediu a solução.",
   },
 ];
 
@@ -237,17 +242,17 @@ function renderCurrentStatus(data) {
 
   ui.status.textContent = "Atualizado";
   ui.verdictBadge.textContent = pgeOpen
-    ? "Caminho aberto"
+    ? "Na FAETEC"
     : atPropag
       ? "Na PGE"
       : "Em análise";
   ui.currentTitle.textContent = pgeOpen
-    ? "O processo segue aberto e o segundo semestre é decisivo"
+    ? "A FAETEC já recebeu o processo. O semestre segue decisivo"
     : atPropag
       ? "Processo na PGE aguardando posicionamento"
       : data.analysis?.phase?.title || "O processo continua em análise";
   ui.currentSummary.textContent = pgeOpen
-    ? `Em 17/08/2026 a PGE publicou o Despacho ${pgeDispatch.number} e esclareceu que o PROPAG não é o instrumento neste formato. Em 18/08 o processo já voltou à Presidência da FAETEC, com atenção do governador Ricardo Couto e minuta na Casa Civil.`
+    ? `Em 26/08/2026, às 19:45, a Presidência da FAETEC recebeu o processo devolvido pela PGE. O Despacho ${pgeDispatch.number} esclareceu que o PROPAG não é o instrumento neste formato, mas o pedido segue aberto.`
     : atPropag
       ? "O processo está na PGE. Ainda não há decisão sobre a migração."
       : data.analysis?.summary || plainMovement(latest);
@@ -256,7 +261,7 @@ function renderCurrentStatus(data) {
     ? "Ainda não há publicação da migração."
     : "Migração ainda não aprovada.";
   ui.directAnswerDetail.textContent = pgeOpen
-    ? "O cenário é favorável: governo já atuou, o processo segue vivo e os próximos meses são a janela para ajustar vencimentos e formalizar a solução."
+    ? "O cenário é favorável: a FAETEC já tem o processo em mãos para o próximo encaminhamento. Os próximos meses são a janela para formalizar a solução."
     : atPropag
       ? "O pedido chegou à Procuradoria. Isso coloca o caso no lugar certo."
       : "O processo segue aberto, aguardando próxima decisão oficial.";
@@ -266,23 +271,23 @@ function renderCurrentStatus(data) {
   ui.lastCheckedAt.textContent = formatCheckedAt(data.lastCheckedAt || data.generatedAt);
 
   ui.whatHappened.textContent = pgeOpen
-    ? "A PGE analisou lei, PROPAG e migração. Disse que o PROPAG não serve neste formato e, em 18/08/2026, devolveu o processo à Presidência da FAETEC. Antes disso, Couto recebeu a categoria e encaminhou estudos à SEPLAG."
+    ? "A PGE devolveu o processo após esclarecer que o PROPAG não serve neste formato. Em 26/08/2026 a Presidência da FAETEC registrou o recebimento."
     : atPropag
       ? "Em 15/08/2026 o processo foi encaminhado à área da PGE ligada ao PROPAG."
       : plainMovement(latest);
   ui.whatItMeans.textContent = pgeOpen
-    ? "Não é arquivamento. A PGE tirou um atalho e apontou o caminho jurídico: ASSJUR/SECTI, FAETEC e formalização política. Uma lei do Executivo deixaria a solução mais estável."
+    ? "O caso saiu da PGE e está de volta na FAETEC, no órgão que pediu a solução. O próximo passo esperado é o encaminhamento à ASSJUR/SECTI e a formalização política."
     : atPropag
       ? "O caso está na Procuradoria, o que é um avanço concreto rumo a uma definição."
       : data.analysis?.practicalReading ||
         "O processo continua tramitando. Cada movimento oficial é um passo a mais rumo a uma definição.";
   ui.whatIsMissing.textContent = pgeOpen
-    ? "Parecer da ASSJUR/SECTI, continuidade na FAETEC e formalização política até o fim do ano."
+    ? "Despacho da Presidência da FAETEC, parecer da ASSJUR/SECTI e formalização política até o fim do ano."
     : atPropag
       ? "Manifestação da PGE e continuidade da tramitação."
       : data.analysis?.nextMovement || "Uma manifestação oficial do setor responsável.";
   ui.nextStepShort.textContent = pgeOpen
-    ? "FAETEC, ASSJUR/SECTI e formalização política."
+    ? "Despacho da FAETEC e parecer da ASSJUR/SECTI."
     : atPropag
       ? "Aguardar manifestação da PGE."
       : data.analysis?.nextMovement || "Novo despacho oficial.";
