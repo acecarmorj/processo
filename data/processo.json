@@ -2,9 +2,9 @@
   "schemaVersion": 19,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-10-16T20:46:49.567Z",
-  "lastCheckedAt": "2026-10-16T20:46:49.562Z",
-  "sourceHash": "9f2aee917bbb131b69ca7597f95707baa7ec58a985aa552c636037ffcbab20a1",
+  "generatedAt": "2026-10-16T20:57:35.793Z",
+  "lastCheckedAt": "2026-10-16T20:57:35.793Z",
+  "sourceHash": "93bbb5427ce608c02bddf342d4a48810535351e86c659482b941b095e3417e71",
   "movements": [
     {
       "dateTime": "16/10/2026 17:13",
@@ -1262,6 +1262,16 @@
       "description": "Processo remetido pela unidade PGE/PG15/COO-CSJ"
     },
     {
+      "dateTime": "26/04/2024 13:15",
+      "unit": "PGE/PG15/COO-CSJ",
+      "description": "Processo recebido na unidade"
+    },
+    {
+      "dateTime": "26/04/2024 12:40",
+      "unit": "PGE/PG15/COO-CSJ",
+      "description": "Processo remetido pela unidade FAETEC/ASSJUR"
+    },
+    {
       "dateTime": "26/04/2024 12:10",
       "unit": "FAETEC/ASSJUR",
       "description": "Processo recebido na unidade"
@@ -1270,6 +1280,16 @@
       "dateTime": "25/04/2024 20:49",
       "unit": "FAETEC/ASSJUR",
       "description": "Processo remetido pela unidade PGE/PG15/COO-CSJ"
+    },
+    {
+      "dateTime": "25/04/2024 20:43",
+      "unit": "PGE/PG15/COO-CSJ",
+      "description": "Processo recebido na unidade"
+    },
+    {
+      "dateTime": "25/04/2024 20:37",
+      "unit": "PGE/PG15/COO-CSJ",
+      "description": "Processo remetido pela unidade PGE/CHEGAB"
     },
     {
       "dateTime": "25/04/2024 20:36",
@@ -3674,11 +3694,31 @@
       "simpleExplanation": "O documento já possui link público, mas o painel ainda não conseguiu extrair seu texto."
     },
     {
+      "number": "72906635",
+      "type": "Despacho de Encaminhamento de Processo - PGE",
+      "date": "25/04/2024",
+      "unit": "PGE/PG15/COO-CSJ",
+      "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj1CE4WbugGV0K4CNKWUBpz3pZ5KKoXRaT7LYPvGyJ73CRB5UbqVEmy8WQi6Laa6kg03xR5UeCdAFKy1cRcplH5z",
+      "excerpt": "",
+      "excerptVersion": 1,
+      "simpleExplanation": "O documento já possui link público, mas o painel ainda não conseguiu extrair seu texto."
+    },
+    {
       "number": "72946282",
       "type": "Despacho de Encaminhamento de Processo",
       "date": "26/04/2024",
       "unit": "FAETEC/ASSJUR",
       "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj3JrYLFZwCOjIMy1xQhRFUug26hG8zfMmrsEbVtoOIDGz94Z0ybFWAIKh1CtRRuIxzEqd6MUbOnMegypzctOlqy",
+      "excerpt": "",
+      "excerptVersion": 1,
+      "simpleExplanation": "O documento já possui link público, mas o painel ainda não conseguiu extrair seu texto."
+    },
+    {
+      "number": "72953400",
+      "type": "Despacho de Encaminhamento de Processo - PGE",
+      "date": "26/04/2024",
+      "unit": "PGE/PG15/COO-CSJ",
+      "publicUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?d-qBlq_KF4_2fdKMgucKGw2SOOsdRDgKOTtYkpTOQj0Cb_6iH-fY064lht4yhuNlSrKGn35lQbHEanRZf2li4eoofZRyHmZhiqgN2pLTowt2gThHGIU81scLVC8gLy0q",
       "excerpt": "",
       "excerptVersion": 1,
       "simpleExplanation": "O documento já possui link público, mas o painel ainda não conseguiu extrair seu texto."
