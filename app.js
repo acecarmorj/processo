@@ -40,6 +40,8 @@ const UNIT_NAMES = {
   "PGE/PG02/SECEXEC/PROPAG": "PGE — área responsável pelo apoio ao PROPAG",
   "SEEDUC/ASSJUR": "Assessoria Jurídica da Secretaria de Educação",
   "FAETEC/PRESI": "Presidência da FAETEC",
+  "FAETEC/VICEPRESAD": "Vice-Presidência Administrativa da FAETEC",
+  "FAETEC/DIVRH": "Divisão de Recursos Humanos da FAETEC",
   "SEPLAG/SUPEFIS": "Área de estudos fiscais da SEPLAG",
   "SEPLAG/SUBORC": "Área de orçamento da SEPLAG",
   "SEPLAG/SUBAORC": "Área de orçamento da SEPLAG",
@@ -79,6 +81,11 @@ const KEY_DOCUMENTS = {
     title: "PGE esclareceu o caminho",
     meaning:
       "A PGE disse que o PROPAG não é o instrumento neste formato. O processo não foi arquivado: volta à FAETEC e os quesitos sobre lei seguem para a ASSJUR/SECTI, o que abre outro caminho.",
+  },
+  "144310444": {
+    title: "Novo despacho da Presidência da FAETEC",
+    meaning:
+      "A Presidência retomou a tramitação e encaminhou o processo para áreas administrativas. O conteúdo ainda não está disponível; o registro, sozinho, não confirma aprovação nem negativa.",
   },
 };
 
@@ -132,6 +139,11 @@ const MILESTONES = [
     date: "26/08/2026",
     title: "FAETEC recebeu o processo",
     text: "A Presidência da FAETEC registrou o recebimento. O caso está de volta no órgão que pediu a solução.",
+  },
+  {
+    date: "15–16/10/2026",
+    title: "FAETEC retoma a tramitação",
+    text: "A Presidência enviou o processo à Vice-Presidência Administrativa e à DIVRH e incluiu o Despacho 144310444. O teor ainda aguarda liberação pública.",
   },
 ];
 
@@ -239,54 +251,81 @@ function renderCurrentStatus(data) {
   const atPropag = isAtPropag(data);
   const pgeDispatch = pgeDispatchDocument(data);
   const pgeOpen = isPgeDispatchOpen(data);
+  const pgeIndex = data.documents.findIndex(
+    (document) => document.number === pgeDispatch?.number,
+  );
+  const hasPostPgeUpdate =
+    pgeOpen && pgeIndex >= 0 && pgeIndex < data.documents.length - 1;
 
   ui.status.textContent = "Atualizado";
-  ui.verdictBadge.textContent = pgeOpen
+  ui.verdictBadge.textContent = hasPostPgeUpdate
+    ? "Na FAETEC"
+    : pgeOpen
     ? "Na FAETEC"
     : atPropag
       ? "Na PGE"
       : "Em análise";
-  ui.currentTitle.textContent = pgeOpen
+  ui.currentTitle.textContent = hasPostPgeUpdate
+    ? data.analysis?.result || "A FAETEC retomou a tramitação"
+    : pgeOpen
     ? "A FAETEC já recebeu o processo. O semestre segue decisivo"
     : atPropag
       ? "Processo na PGE aguardando posicionamento"
       : data.analysis?.phase?.title || "O processo continua em análise";
-  ui.currentSummary.textContent = pgeOpen
+  ui.currentSummary.textContent = hasPostPgeUpdate
+    ? data.analysis?.summary || plainMovement(latest)
+    : pgeOpen
     ? `Em 26/08/2026, às 19:45, a Presidência da FAETEC recebeu o processo devolvido pela PGE. O Despacho ${pgeDispatch.number} esclareceu que o PROPAG não é o instrumento neste formato, mas o pedido segue aberto.`
     : atPropag
       ? "O processo está na PGE. Ainda não há decisão sobre a migração."
       : data.analysis?.summary || plainMovement(latest);
 
-  ui.directAnswer.textContent = pgeOpen
+  ui.directAnswer.textContent = hasPostPgeUpdate
+    ? "Ainda não há decisão final publicada."
+    : pgeOpen
     ? "Ainda não há publicação da migração."
     : "Migração ainda não aprovada.";
-  ui.directAnswerDetail.textContent = pgeOpen
+  ui.directAnswerDetail.textContent = hasPostPgeUpdate
+    ? data.analysis?.practicalReading ||
+      "Houve movimentação interna na FAETEC, mas o teor do novo despacho precisa ser publicado."
+    : pgeOpen
     ? "O cenário é favorável: a FAETEC já tem o processo em mãos para o próximo encaminhamento. Os próximos meses são a janela para formalizar a solução."
     : atPropag
       ? "O pedido chegou à Procuradoria. Isso coloca o caso no lugar certo."
       : "O processo segue aberto, aguardando próxima decisão oficial.";
 
-  ui.currentUnit.textContent = unitName(latest?.unit);
+  ui.currentUnit.textContent =
+    data.analysis?.currentUnit || unitName(latest?.unit);
   ui.lastMovement.textContent = latest?.dateTime || "—";
   ui.lastCheckedAt.textContent = formatCheckedAt(data.lastCheckedAt || data.generatedAt);
 
-  ui.whatHappened.textContent = pgeOpen
+  ui.whatHappened.textContent = hasPostPgeUpdate
+    ? "Em 15 e 16/10/2026, a Presidência da FAETEC encaminhou o processo à Vice-Presidência Administrativa e à DIVRH e criou o Despacho 144310444."
+    : pgeOpen
     ? "A PGE devolveu o processo após esclarecer que o PROPAG não serve neste formato. Em 26/08/2026 a Presidência da FAETEC registrou o recebimento."
     : atPropag
       ? "Em 15/08/2026 o processo foi encaminhado à área da PGE ligada ao PROPAG."
       : plainMovement(latest);
-  ui.whatItMeans.textContent = pgeOpen
+  ui.whatItMeans.textContent = hasPostPgeUpdate
+    ? data.analysis?.practicalReading ||
+      "O processo voltou a andar dentro da FAETEC, ainda sem decisão final pública."
+    : pgeOpen
     ? "O caso saiu da PGE e está de volta na FAETEC, no órgão que pediu a solução. O próximo passo esperado é o encaminhamento à ASSJUR/SECTI e a formalização política."
     : atPropag
       ? "O caso está na Procuradoria, o que é um avanço concreto rumo a uma definição."
       : data.analysis?.practicalReading ||
         "O processo continua tramitando. Cada movimento oficial é um passo a mais rumo a uma definição.";
-  ui.whatIsMissing.textContent = pgeOpen
+  ui.whatIsMissing.textContent = hasPostPgeUpdate
+    ? data.analysis?.nextMovement ||
+      "Publicação do novo despacho e manifestação administrativa da FAETEC."
+    : pgeOpen
     ? "Despacho da Presidência da FAETEC, parecer da ASSJUR/SECTI e formalização política até o fim do ano."
     : atPropag
       ? "Manifestação da PGE e continuidade da tramitação."
       : data.analysis?.nextMovement || "Uma manifestação oficial do setor responsável.";
-  ui.nextStepShort.textContent = pgeOpen
+  ui.nextStepShort.textContent = hasPostPgeUpdate
+    ? "Ler o Despacho 144310444 e acompanhar a Vice-Presidência Administrativa."
+    : pgeOpen
     ? "Despacho da FAETEC e parecer da ASSJUR/SECTI."
     : atPropag
       ? "Aguardar manifestação da PGE."

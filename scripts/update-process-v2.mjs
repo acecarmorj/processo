@@ -12,7 +12,7 @@ const PROCESS_URL =
   "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x";
 const SEI_BASE = "https://sei.rj.gov.br/sei/modulos/pesquisa/";
 const MODEL = process.env.OPENAI_MODEL || "gpt-5.4-mini";
-const DATA_SCHEMA_VERSION = 18;
+const DATA_SCHEMA_VERSION = 19;
 const EXCERPT_VERSION = 4;
 const RECENT_DOCUMENTS_TO_RECHECK = 24;
 const SEI_AGENT = new Agent({ connect: { timeout: 30_000 } });
@@ -234,6 +234,9 @@ function hasRecentDocumentNeedingRead(rawDocuments, previous) {
 
 function explainDocument(document) {
   if (!document.publicUrl) {
+    if (document.number === "144310444") {
+      return "A Presidência da FAETEC registrou novo despacho e movimentou o processo para áreas administrativas. O conteúdo ainda não está disponível; sem o texto, não é possível afirmar aprovação, negativa ou determinação específica.";
+    }
     if (document.number === "139134917" || document.unit?.includes("SECEXEC/PROPAG")) {
       return "A PGE já registrou este despacho, mas o texto ainda está fechado. A abertura pública está prevista para a meia-noite.";
     }
@@ -268,6 +271,20 @@ function explainDocument(document) {
 }
 
 function phaseFor(unit = "") {
+  if (unit.includes("VICEPRESAD")) {
+    return {
+      title: "Na Vice-Presidência Administrativa da FAETEC",
+      explanation: "A Presidência da FAETEC encaminhou o processo para tratamento administrativo interno.",
+      nextSteps: ["Publicação do despacho da Presidência", "Manifestação administrativa da FAETEC", "Novo encaminhamento oficial"],
+    };
+  }
+  if (unit.includes("DIVRH")) {
+    return {
+      title: "Em análise administrativa na FAETEC",
+      explanation: "A área de recursos humanos recebeu o processo e concluiu sua participação nesta etapa.",
+      nextSteps: ["Publicação do despacho da Presidência", "Manifestação da Vice-Presidência Administrativa", "Novo encaminhamento oficial"],
+    };
+  }
   if (unit.includes("SECEXEC/PROPAG")) {
     return {
       title: "Na PGE para análise do PROPAG",
@@ -441,6 +458,35 @@ function buildAutomaticAnalysis(movements, documents) {
   );
   const pgeText = normalized(pgeDispatch?.excerpt || "");
   const latestReading = latestDocumentReading(latestDocument);
+  const pgeDocumentIndex = documents.findIndex(
+    (document) => document.number === pgeDispatch?.number,
+  );
+  const documentsAfterPge =
+    pgeDocumentIndex >= 0 ? documents.slice(pgeDocumentIndex + 1) : [];
+  const newFaetecDispatch = [...documentsAfterPge]
+    .reverse()
+    .find(
+      (document) =>
+        document.unit?.startsWith("FAETEC/") && /despacho/i.test(document.type || ""),
+    );
+  const recentFaetecMoves = movements.slice(0, 12).filter((movement) =>
+    movement.unit?.startsWith("FAETEC/"),
+  );
+  const sentToVicePresad = recentFaetecMoves.some(
+    (movement) =>
+      movement.unit === "FAETEC/VICEPRESAD" &&
+      normalized(movement.description).includes("faetec/presi"),
+  );
+  const sentToDivrh = recentFaetecMoves.some(
+    (movement) =>
+      movement.unit === "FAETEC/DIVRH" &&
+      normalized(movement.description).includes("faetec/presi"),
+  );
+  const divrhConcluded = recentFaetecMoves.some(
+    (movement) =>
+      movement.unit === "FAETEC/DIVRH" &&
+      normalized(movement.description).includes("conclus"),
+  );
 
   let result = "O processo continua ativo e avançando, ainda sem decisão final.";
   let resultLevel = "neutral";
@@ -450,6 +496,7 @@ function buildAutomaticAnalysis(movements, documents) {
   let positive = latestReading.signal || "O processo continua vivo e com tramitação registrada no SEI.";
   let negative = latestReading.risk || "Ainda falta uma decisão expressa sobre o pedido.";
   let nextMovement = phase.nextSteps[0];
+  let currentUnit = "";
   let conclusion =
     "O processo segue aberto. Cada etapa cumprida aproxima a categoria de uma resposta oficial.";
 
@@ -458,7 +505,31 @@ function buildAutomaticAnalysis(movements, documents) {
     (pgeDispatch?.number === "139134917" ||
       (pgeText.includes("nao se vislumbra") && pgeText.includes("propag")));
 
-  if (pgeDispatchNegative) {
+  if (pgeDispatchNegative && newFaetecDispatch) {
+    result = "A FAETEC retomou a tramitação e emitiu novo despacho; ainda não há decisão final pública.";
+    resultLevel = "positive";
+    summary = `Em 15 e 16/10/2026, a Presidência da FAETEC encaminhou o processo para a Vice-Presidência Administrativa${sentToDivrh ? " e para a Divisão de Recursos Humanos" : ""}. Em 16/10 foi incluído o Despacho ${newFaetecDispatch.number}, cujo conteúdo ainda não está disponível para leitura pública.${divrhConcluded ? " A DIVRH concluiu sua participação nesta etapa às 17:13." : ""}`;
+    practicalReading =
+      "A retomada interna é um avanço de tramitação: depois de permanecer na Presidência, o processo passou a áreas administrativas capazes de examinar providências de pessoal. Isso não prova aprovação da migração nem implantação salarial, porque o teor do novo despacho ainda não foi publicado.";
+    positive =
+      "A Presidência da FAETEC voltou a movimentar o processo e o distribuiu para tratamento administrativo interno.";
+    negative =
+      `O conteúdo do Despacho ${newFaetecDispatch.number} ainda não está acessível; qualquer conclusão sobre aprovação, negativa ou providência concreta seria prematura.`;
+    nextMovement = `Abertura pública do Despacho ${newFaetecDispatch.number} e manifestação da Vice-Presidência Administrativa da FAETEC`;
+    conclusion =
+      "O processo ganhou andamento novo e permanece ativo. A avaliação do mérito depende agora da publicação do despacho e dos próximos registros da FAETEC.";
+    currentUnit = sentToVicePresad
+      ? "Vice-Presidência Administrativa da FAETEC"
+      : "Administração da FAETEC";
+    phase.title = "Em tramitação administrativa na FAETEC";
+    phase.explanation =
+      "A Presidência emitiu novo despacho e encaminhou o processo a áreas administrativas, sem decisão final pública até o momento.";
+    phase.nextSteps = [
+      `Abertura pública do Despacho ${newFaetecDispatch.number}`,
+      "Manifestação da Vice-Presidência Administrativa",
+      "Novo encaminhamento oficial sobre a regularização",
+    ];
+  } else if (pgeDispatchNegative) {
     result = "A FAETEC já recebeu o processo. O semestre segue decisivo.";
     resultLevel = "positive";
     summary = `Em 26/08/2026, às 19:45, a Presidência da FAETEC recebeu o processo devolvido pela PGE. O Despacho ${pgeDispatch.number} esclareceu que o PROPAG não é o instrumento neste formato, mas o pedido segue aberto.`;
@@ -635,6 +706,7 @@ function buildAutomaticAnalysis(movements, documents) {
     signals: [positive],
     risks: [negative],
     nextMovement,
+    currentUnit,
   };
 }
 
@@ -676,11 +748,21 @@ function historicalSections(latestMovement, latestDocument) {
       period: "26 de agosto de 2026",
       text: "A Presidência da FAETEC registrou o recebimento do processo devolvido pela PGE. O caso segue aberto no órgão que pediu a solução.",
     },
+    ...(latestDocument?.number === "144310444"
+      ? [
+          {
+            period: "15 e 16 de outubro de 2026",
+            text: "A Presidência da FAETEC retomou a tramitação, encaminhou o processo à Vice-Presidência Administrativa e à Divisão de Recursos Humanos e incluiu o Despacho 144310444. A DIVRH concluiu sua participação; o conteúdo do novo despacho ainda não estava disponível na consulta pública.",
+          },
+        ]
+      : []),
     {
       period: "Situação atual",
       text:
-        latestMovement?.unit?.startsWith("FAETEC/")
-          ? "O processo está na Presidência da FAETEC, recebido em 26/08/2026. A PGE esclareceu que o PROPAG não é o instrumento neste formato, mas o pedido segue aberto. Os próximos meses são a janela para o encaminhamento jurídico e a formalização da solução."
+        latestDocument?.number === "144310444"
+          ? "O processo está em tramitação administrativa dentro da FAETEC. A Vice-Presidência Administrativa recebeu encaminhamento da Presidência; a DIVRH concluiu sua parte. Ainda não existe publicação definitiva do enquadramento, e o teor do Despacho 144310444 precisa ser lido quando for liberado."
+          : latestMovement?.unit?.startsWith("FAETEC/")
+            ? "O processo está na Presidência da FAETEC, recebido em 26/08/2026. A PGE esclareceu que o PROPAG não é o instrumento neste formato, mas o pedido segue aberto. Os próximos meses são a janela para o encaminhamento jurídico e a formalização da solução."
           : `O registro público mais recente é de ${latestMovement?.dateTime || "data não identificada"}, em ${latestMovement?.unit || "unidade não identificada"}. O documento mais recente é ${latestDocument?.number || "não identificado"}, de ${latestDocument?.unit || "unidade não identificada"}. Ainda não existe publicação definitiva do enquadramento.`,
     },
   ];
