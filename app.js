@@ -300,7 +300,7 @@ function renderCurrentStatus(data) {
   ui.lastCheckedAt.textContent = formatCheckedAt(data.lastCheckedAt || data.generatedAt);
 
   ui.whatHappened.textContent = hasPostPgeUpdate
-    ? "Em 15 e 16/10/2026, a Presidência da FAETEC encaminhou o processo à Vice-Presidência Administrativa e à DIVRH e criou o Despacho 144310444."
+    ? "Em 15 e 16/10/2026, a Presidência da FAETEC encaminhou o processo à Vice-Presidência Administrativa e à DIVRH. O Despacho 144310444 pediu tratamento do impacto e pesquisa de formas de resolução."
     : pgeOpen
     ? "A PGE devolveu o processo após esclarecer que o PROPAG não serve neste formato. Em 26/08/2026 a Presidência da FAETEC registrou o recebimento."
     : atPropag
@@ -324,7 +324,7 @@ function renderCurrentStatus(data) {
       ? "Manifestação da PGE e continuidade da tramitação."
       : data.analysis?.nextMovement || "Uma manifestação oficial do setor responsável.";
   ui.nextStepShort.textContent = hasPostPgeUpdate
-    ? "Ler o Despacho 144310444 e acompanhar a Vice-Presidência Administrativa."
+    ? "Aguardar a manifestação da VPA sobre impacto e alternativas."
     : pgeOpen
     ? "Despacho da FAETEC e parecer da ASSJUR/SECTI."
     : atPropag

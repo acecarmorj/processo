@@ -510,7 +510,7 @@ function buildAutomaticAnalysis(movements, documents) {
 
   if (pgeDispatchNegative && newFaetecDispatch) {
     result = "A FAETEC encaminhou à VPA a análise do impacto e a busca de alternativas; ainda não há decisão final.";
-    resultLevel = "positive";
+    resultLevel = "neutral";
     summary = `Em 15 e 16/10/2026, a Presidência da FAETEC encaminhou o processo para a Vice-Presidência Administrativa${sentToDivrh ? " e para a Divisão de Recursos Humanos" : ""}. O Despacho ${newFaetecDispatch.number} pede análise do impacto e pesquisa de formas de resolver a questão. Como já há estudos recentes no processo, a VPA pode analisá-los, atualizá-los ou complementá-los.${divrhConcluded ? " A DIVRH concluiu sua participação nesta etapa às 17:13." : ""}`;
     practicalReading =
       "A retomada interna é um avanço de instrução: a VPA deve tratar do impacto já estudado e pesquisar alternativas. Isso não prova aprovação da migração nem implantação salarial.";
