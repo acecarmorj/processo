@@ -85,7 +85,7 @@ const KEY_DOCUMENTS = {
   "144310444": {
     title: "Novo despacho da Presidência da FAETEC",
     meaning:
-      "A Presidência retomou a tramitação e encaminhou o processo para áreas administrativas. O conteúdo ainda não está disponível; o registro, sozinho, não confirma aprovação nem negativa.",
+      "A Presidência encaminhou à VPA a análise do impacto já estudado e a pesquisa de formas de resolver o caso. O despacho não aprova a migração nem define recursos.",
   },
 };
 
@@ -143,7 +143,7 @@ const MILESTONES = [
   {
     date: "15–16/10/2026",
     title: "FAETEC retoma a tramitação",
-    text: "A Presidência enviou o processo à Vice-Presidência Administrativa e à DIVRH e incluiu o Despacho 144310444. O teor ainda aguarda liberação pública.",
+    text: "A Presidência enviou o processo à Vice-Presidência Administrativa e à DIVRH. O Despacho 144310444 pediu análise do impacto já estudado e pesquisa de formas de resolução.",
   },
 ];
 

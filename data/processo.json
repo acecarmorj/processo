@@ -2,8 +2,8 @@
   "schemaVersion": 19,
   "processNumber": "SEI-030029/004475/2023",
   "officialUrl": "https://sei.rj.gov.br/sei/modulos/pesquisa/md_pesq_processo_exibir.php?IC2o8Z7ACQH4LdQ4jJLJzjPBiLtP6l2FsQacllhUf-duzEubalut9yvd8-CzYYNLu7pd-wiM0k633-D6khhQNbktnAd5iwonOrpJKmKvtZqQfhPRIZoJiTRfNxCUWV1x",
-  "generatedAt": "2026-10-16T20:57:35.793Z",
-  "lastCheckedAt": "2026-10-16T20:57:35.793Z",
+  "generatedAt": "2026-10-17T03:09:09.285Z",
+  "lastCheckedAt": "2026-10-17T03:09:09.285Z",
   "sourceHash": "93bbb5427ce608c02bddf342d4a48810535351e86c659482b941b095e3417e71",
   "movements": [
     {
@@ -4889,27 +4889,27 @@
       "date": "16/10/2026",
       "unit": "FAETEC/PRESI",
       "publicUrl": null,
-      "excerpt": "",
+      "excerpt": "À VPA, Para realização do estudo de impacto e outras medidas para estudos, providências e pesquisa das formas de resolução da questão em tela.",
       "excerptVersion": 4,
-      "simpleExplanation": "A Presidência da FAETEC registrou novo despacho e movimentou o processo para áreas administrativas. O conteúdo ainda não está disponível; sem o texto, não é possível afirmar aprovação, negativa ou determinação específica."
+      "simpleExplanation": "A Presidência determinou à Vice-Presidência Administrativa (VPA) que trate do impacto e pesquise formas de resolver a questão. Como já existem estudos recentes no processo, o despacho pode demandar sua análise, atualização ou complementação, além de outras providências; não é aprovação final da migração nem implantação salarial."
     }
   ],
   "analysis": {
     "mode": "automatic",
     "phase": {
       "title": "Em tramitação administrativa na FAETEC",
-      "explanation": "A Presidência emitiu novo despacho e encaminhou o processo a áreas administrativas, sem decisão final pública até o momento.",
+      "explanation": "A Presidência encaminhou à Vice-Presidência Administrativa a análise do impacto já estudado e a pesquisa de formas de resolução, sem decisão final sobre a migração.",
       "nextSteps": [
-        "Abertura pública do Despacho 144310444",
+        "Análise ou atualização do impacto pela Vice-Presidência Administrativa",
         "Manifestação da Vice-Presidência Administrativa",
         "Novo encaminhamento oficial sobre a regularização"
       ]
     },
-    "result": "A FAETEC retomou a tramitação e emitiu novo despacho; ainda não há decisão final pública.",
+    "result": "A FAETEC encaminhou à VPA a análise do impacto e a busca de alternativas para resolver o caso; ainda não há decisão final.",
     "resultLevel": "positive",
-    "summary": "Em 15 e 16/10/2026, a Presidência da FAETEC encaminhou o processo para a Vice-Presidência Administrativa e para a Divisão de Recursos Humanos. Em 16/10 foi incluído o Despacho 144310444, cujo conteúdo ainda não está disponível para leitura pública. A DIVRH concluiu sua participação nesta etapa às 17:13.",
-    "practicalReading": "A retomada interna é um avanço de tramitação: depois de permanecer na Presidência, o processo passou a áreas administrativas capazes de examinar providências de pessoal. Isso não prova aprovação da migração nem implantação salarial, porque o teor do novo despacho ainda não foi publicado.",
-    "conclusion": "O processo ganhou andamento novo e permanece ativo. A avaliação do mérito depende agora da publicação do despacho e dos próximos registros da FAETEC.",
+    "summary": "Em 15 e 16/10/2026, a Presidência da FAETEC encaminhou o processo à Vice-Presidência Administrativa e à DIVRH. No Despacho 144310444, determinou tratamento do impacto e pesquisa de formas de resolver a questão. Como o processo já contém estudos recentes, a VPA pode analisá-los, atualizá-los ou complementá-los. A DIVRH concluiu sua participação nesta etapa às 17:13.",
+    "practicalReading": "A FAETEC não decidiu pela migração nem pelo pagamento: levou à VPA a análise do impacto já documentado e a busca de alternativas. É um avanço de instrução, mas o resultado depende da manifestação da área e dos próximos encaminhamentos.",
+    "conclusion": "O processo está ativo e em análise técnica dentro da FAETEC. A próxima informação relevante será a manifestação da Vice-Presidência Administrativa e eventual novo encaminhamento oficial.",
     "numbers": [
       {
         "value": "R$ 207,02 milhões",
@@ -4928,12 +4928,12 @@
       }
     ],
     "signals": [
-      "A Presidência da FAETEC voltou a movimentar o processo e o distribuiu para tratamento administrativo interno."
+      "A Presidência encaminhou à VPA a análise do impacto já estudado e a pesquisa de alternativas para resolver a questão."
     ],
     "risks": [
-      "O conteúdo do Despacho 144310444 ainda não está acessível; qualquer conclusão sobre aprovação, negativa ou providência concreta seria prematura."
+      "O despacho não aprova a migração nem define recursos; a VPA ainda precisa se manifestar sobre o impacto e as alternativas."
     ],
-    "nextMovement": "Abertura pública do Despacho 144310444 e manifestação da Vice-Presidência Administrativa da FAETEC",
+    "nextMovement": "Manifestação da Vice-Presidência Administrativa sobre o impacto e as alternativas de solução",
     "currentUnit": "Vice-Presidência Administrativa da FAETEC"
   },
   "history": [
@@ -4975,11 +4975,11 @@
     },
     {
       "period": "15 e 16 de outubro de 2026",
-      "text": "A Presidência da FAETEC retomou a tramitação, encaminhou o processo à Vice-Presidência Administrativa e à Divisão de Recursos Humanos e incluiu o Despacho 144310444. A DIVRH concluiu sua participação; o conteúdo do novo despacho ainda não estava disponível na consulta pública."
+      "text": "A Presidência da FAETEC retomou a tramitação, encaminhou o processo à Vice-Presidência Administrativa e à Divisão de Recursos Humanos e determinou, no Despacho 144310444, análise do impacto e pesquisa de formas de resolução. Como já existem estudos recentes no processo, a etapa pode envolver sua análise, atualização ou complementação. A DIVRH concluiu sua participação."
     },
     {
       "period": "Situação atual",
-      "text": "O processo está em tramitação administrativa dentro da FAETEC. A Vice-Presidência Administrativa recebeu encaminhamento da Presidência; a DIVRH concluiu sua parte. Ainda não existe publicação definitiva do enquadramento, e o teor do Despacho 144310444 precisa ser lido quando for liberado."
+      "text": "O processo está em análise técnica dentro da FAETEC. A Vice-Presidência Administrativa deve tratar do impacto já estudado e pesquisar formas de resolver o caso; a DIVRH concluiu sua parte. Ainda não existe decisão definitiva sobre o enquadramento."
     }
   ]
 }
